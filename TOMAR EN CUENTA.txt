@@ -12,3 +12,6 @@ para iniciar es el comando en la terminal de visual :
 
 cualquier consulta yo les explico como
 conque lo hagan en html y css y js lo pasamos a php sin problema
+
+
+//pagina inicial es el http://localhost:8000/lobby
