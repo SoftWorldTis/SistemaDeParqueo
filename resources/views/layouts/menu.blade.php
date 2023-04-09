@@ -24,13 +24,17 @@
 
        <!-- contenido  -->
 
-
+       <div class="herramientas">
+        @yield('contenido')       
+       </div>
       
-       @yield('contenido')
+      
+     
            <!-- contenido  -->
            <footer>
          
 
            </footer>
+           
 </body>
 </html>

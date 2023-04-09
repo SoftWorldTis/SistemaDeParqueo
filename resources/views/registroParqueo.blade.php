@@ -1,55 +1,64 @@
 
-@extends('layouts.menu')
+@extends('layouts.menu2')
 
 @section('contenido')
 <head>
-    <link rel="stylesheet" href="{{asset('/dash/css/registro.css')}}" >
+    <link rel="stylesheet" href="{{asset('/dash/css/registroParqueo.css')}}" >
     <title>Registro</title>
 </head>
-<body>
-    <div class="herramientas">
+
+
 <div class="ParAr">
     <p> Registro de Parqueos</p>
 </div>
 <div class="ParIzq" >
-   <div class="Ubicacion Pi" >
-        <p>Ubicacion</p>
-        <div class="linea"></div>
-   </div  >
-   <br>
+   <div class="Zona Pi" >
+        <p>Zona</p>
+        <input type="text" class="linea">
+   </div >
+
    <div  class="Horarios Pi">
         <p>Horarios</p>
-        <div class="linea"></div>
+        <input type="text" class="linea">
    </div>
-   <br>
+
    <div  class="SitiosDc Pi">
        <p>Sitios Docente</p>
-       <div class="linea"></div>
+       <input type="text" class="linea">
    </div>
-   <br>
+
    <div  class="PrecioDia Pi">
         <p>Precio por dia</p>
-        <div class="linea"></div>
+        <input type="number" class="linea">
    </div>
 </div>
 <div class="ParDer" >
-    <div class="Zona Pi" >
-        <p>Zona</p>
-        <div class="linea"></div>
+    <div class="CorreoE Pi" >
+        <p>Correo Electronico</p>
+        <input type="email" class="linea">
    </div  >
-   <br>
+
    <div  class="Telefono Pi">
         <p>Telefono</p>
-        <div class="linea"></div>
+        <input type="tel" class="linea">
    </div>
-   <br>
+
    <div  class="SitiosAd Pi">
        <p>Sitios administrador</p>
-       <div class="linea"></div>
+       <input type="text" class="linea">
    </div>
-   <br>
- 
 
+   <div  class="SubirQR ">
+    <p class="sq">SubirQR</p>
+ 
+        <input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
+        <label for="foto" class="butQR button"><p> Agregar</p></label>
+
+    
+</div>
+
+@endsection
+@section('botones')
 
 </div>
     </div>
@@ -67,11 +76,11 @@
         
     </div>   
 
-    </div> 
-    
-</body>
 
+    
 
 @endsection
+
+
 
 
