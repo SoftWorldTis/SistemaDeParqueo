@@ -1,0 +1,108 @@
+
+.herramientas{
+    padding-left: 0px;
+    margin-left: 240px;
+   padding-top: 0px;
+     display: grid;
+     grid-template-columns: repeat(2, 459.72px);
+     grid-template-rows: 84px 678px;
+     grid-column-gap: 0px;
+     grid-row-gap: 0px;
+    }
+
+.button{
+    width:221px ;
+    height:69px ;
+background-color: #0A1C44;
+}
+    .ParAr{
+        text-align: center;
+       margin-top: 10px;
+        grid-area: 1 / 1 / 2 / 3;
+    
+    }
+    .ParAr p {
+        font-size: 38px;
+
+    }
+    .ParIz { 
+        grid-area: 2 / 1 / 3 / 2;
+        margin-right: 65.5px;
+    
+    }
+    .ParDer { 
+        grid-area: 2 / 2 / 3 / 3; 
+        margin-left: 65.5px;
+    }
+
+
+
+
+.ParAr p {
+  color: black;
+
+}
+.Pi p{
+    color: black;
+    font-size: 30px;
+ margin-bottom: 44px;
+}
+.Pi{
+ height: 116.65px;
+ margin-top: 45px;
+ 
+ width: 394.44px;
+ text-align: center;
+}
+.linea{
+    width: 394.44px;
+    height: 36px;
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 30px;
+   
+}
+
+.button p{
+
+ text-align: center;
+ font-size: 30px;
+}
+.SubirQR{
+    height: 116.65px;
+    margin-top: 45px;
+    
+    width: 394.44px;
+    text-align: center;
+
+}
+
+.sq{
+
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+.butQR{
+width: 221px;
+height: 69px;
+display: inline-block;
+ border-radius: 25px;
+ cursor: pointer;
+ color: #FFFFFF;
+ font-size: 30px;
+}
+.butQR p {
+
+   padding-top: 15px; 
+}
+
+.foto{
+display: none;
+  
+
+}
+

@@ -26,9 +26,11 @@ Route::get('/ver/{id}/{email}', function ($id , $email) {
 Route::get('/main/prueba', function () {
     return view('layouts.menu') ;
 });
-Route::group(['prefix'=>'main','as'=>'main'], function () {
-    Route::get('/', function () {return view('main') ;});
+Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
+    Route::get('/', function () {return view('lobby') ;});
     Route::get('/navBar2', function (){return  view('iconos'); });
-    Route::get('/Registro', function () {return view('registroParqueo') ;});
+    Route::get('/RegistroParqueos', function () {return view('registroParqueo') ;});
+    Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
+    Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
 });
 

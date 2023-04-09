@@ -12,6 +12,7 @@ nav{
     border-radius: 0px 0px 50px 50px;
 
 }
+
 .nav2{
    
   margin-left: 1233px;
@@ -19,6 +20,12 @@ padding-top: 50px;
     display: grid;
     grid-template-columns: 90px 546px;
 }
+
+#link{
+  color: black;
+  text-decoration: none;
+}
+
 p{
     margin-top: 4px ;
     margin-bottom: 3px;
@@ -49,29 +56,30 @@ p{
 /*cuadrado contenido */
 .herramientas{
 margin-top: 39px;
-margin-left: 57px;
-padding-left: 78px;
+margin-left: 275px;
+padding-top: 113px;
  background-color: #ffff;
- width: 1731px;
- height: 787px;
- 
+ width: 1400px;
+ height: 762px;
+
  display: grid;
  grid-template-rows: 234px 234px;
- grid-template-columns: 496px 496px 496px;
+ grid-template-columns: 50% 50% ;
 }
-.parqueos , .registrar, .usuarios , .reclamos , .alquiler, .salir{
+.registrar,  .alquiler{
     width: 390px;
     height: 199px;
     margin-top: 35px;
-    margin-left: 106px;
+    margin-left: 155px;
+    margin-right: 155px;
 }
 /*cuadrado contenido */
 /*botones y imagenes*/
-.iconParqueos , .iconRegistrar , .iconUsuario , .iconReclamos , .iconAlquilar , .iconSalir{
+ .iconRegistrar , .iconAlquilar {
   margin-left: 135px;
 
 }
-.botonParqueo , .botonRegistro , .botonUsuario , .botonReclamo , .botonAlquilo , .botonSalo{
+ .botonRegistro , .botonAlquilo {
     position: relative;
   margin-top:30px ;
   border-radius: 25px;
@@ -81,8 +89,8 @@ padding-left: 78px;
   cursor:  pointer;
   transition: transform 0.2s ease;
 }
-.botonParqueo:active , .botonRegistro:active , .botonUsuario:active , .botonReclamo:active ,
- .botonAlquilo:active , .botonSalo:active{
+ .botonRegistro:active 
+ .botonAlquilo:active {
 transform: scale(0.96);
 }
 .botonParqueo p {
@@ -91,27 +99,15 @@ transform: scale(0.96);
   padding-left: 48px;
   padding-top: 9px;
 }
- .botonRegistro p,.botonUsuario p , .botonReclamo p , .botonAlquilo p  {
+ .botonRegistro p, .botonAlquilo p  {
     margin-top: 0px;
     margin-bottom: 0px;
     padding-left: 98px;
     padding-top: 9px;
 
  }
- .botonSalo p{
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-left: 144px;
-    padding-top: 9px;
-
-
-}
-.botonParqueo:hover , .botonRegistro:hover , .botonUsuario:hover , .botonReclamo:hover,
- .botonAlquilo:hover , .botonSalo:hover{
+ 
+ .botonRegistro:hover,.botonAlquilo:hover {
 background-color: #3E60AC ;
 }
 
-footer{
-height: 150px;
-
-}

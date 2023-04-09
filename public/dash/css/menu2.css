@@ -1,0 +1,161 @@
+body{
+    width: 1920px;
+    height: 1080px;
+      padding: 0;
+      margin: 0;
+      background: #DFE0F8;
+  
+  }
+  nav{
+      height: 170px;
+      background: #0A1C44;
+      border-radius: 0px 0px 50px 50px;
+  
+  }
+  
+  #link{
+    color: black;
+    text-decoration: none;
+  }
+
+
+  p{
+      margin-top: 4px ;
+      margin-bottom: 3px;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 25px;
+      line-height: 30px;
+      color: #E4EAEA;
+      font-weight: bold;
+  }
+
+
+  .nav2{
+    display: grid;
+    grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+    height: 170px;
+    margin-left: 38.4px;
+  
+  }
+  .nav2 div{
+   display: flex;
+   flex-direction: column;
+   width: 157px;
+   height: 170px;
+   
+   margin-right: 34.5px;
+   padding: 0;
+   display: grid;
+   grid-template-columns: 104.5px 36px;
+  }
+  .nav2 img{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    margin-top: 58px;
+    flex-direction: column;
+    margin-left: 34.5px;
+  }
+  .nav2 p{
+    text-size-adjust: 30px;
+    margin-top: 70px;
+   
+  }
+  .nav2 div:hover{
+    background-color: #324265;
+    width: 268.8px;
+  }
+.fondo{
+    background-color: #ffff;
+    margin-top: 39px;
+    margin-left: 275px;
+    
+    width: 1400px;
+    height: 762px;
+}
+  .herramientas{
+   
+    padding-top: 113px;
+    
+    
+     display: grid;
+     grid-template-rows: 234px 234px;
+     grid-template-columns: 50% 50% ;
+    }
+
+    /*cuadrado contenido */
+    /*botones y imagenes*/
+     .iconRegistrar  {
+      margin-left: 135px;
+    
+    }
+
+    .rCliente, .rGuardia{
+        width: 390px;
+        height: 199px;
+        margin-top: 35px;
+        margin-left: 155px;
+        margin-right: 155px;
+    }
+    .rAuto, .rUser{
+        width: 390px;
+        height: 199px;
+        margin-top: 35px;
+        margin-left: 155px;
+        margin-right: 155px;
+    }
+
+
+     .botonRegistro{
+        position: relative;
+      margin-top:30px ;
+      border-radius: 25px;
+      width: 390px;
+      height: 81px;
+      background-color: #0A1C44;
+      text-align: center;
+      cursor:  pointer;
+      transition: transform 0.2s ease;
+    }
+     .botonRegistro:active 
+      {
+    transform: scale(0.96);
+    }
+
+     .botonRegistro p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        letter-spacing: 0.45em;
+        padding-top: 9px;
+    
+     }
+     
+     .botonRegistro:hover {
+    background-color: #3E60AC ;
+    }
+ /*botones inferiores*/
+
+    .AbBotones{
+        width: 497px;
+        margin-top: 33px;
+       margin-left: 1178px;
+       display: grid;
+    
+    
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+         
+    }
+    .cancelar {border-radius: 20px;
+        margin-right: 27.5px;
+     
+        background-color: #5A6681;
+        grid-area: 1 / 1 / 2 / 2; }
+    .guardar {border-radius: 20px;
+        margin-left: 27.5px;
+        grid-area: 1 / 2 / 2 / 3; }
+        .cancelar p , .guardar p{
+
+        padding-top: 15px
+        }
