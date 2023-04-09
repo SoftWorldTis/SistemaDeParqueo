@@ -1,0 +1,14 @@
+descomprimir el vendor para que funcione.
+
+las paginas estan dentro de resources /views
+
+las imagenes dentro de public /dash /assets
+
+y el css ta dentro de public /dash /css
+
+
+para iniciar es el comando en la terminal de visual :
+ php artisan serve
+
+cualquier consulta yo les explico como
+conque lo hagan en html y css y js lo pasamos a php sin problema
