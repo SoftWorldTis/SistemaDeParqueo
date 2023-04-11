@@ -1,0 +1,11 @@
+
+    .button{
+        width:221px ;
+        height:69px ;
+    background-color: #0A1C44;
+    }
+    .button p{
+
+        text-align: center;
+        font-size: 30px;
+       }
