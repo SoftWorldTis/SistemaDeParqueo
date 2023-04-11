@@ -24,13 +24,17 @@
 
        <!-- contenido  -->
 
-
+       <div class="herramientas">
+        <?php echo $__env->yieldContent('contenido'); ?>       
+       </div>
       
-       <?php echo $__env->yieldContent('contenido'); ?>
+      
+     
            <!-- contenido  -->
            <footer>
          
 
            </footer>
+           
 </body>
 </html><?php /**PATH D:\softWorldTis\resources\views/layouts/menu.blade.php ENDPATH**/ ?>
