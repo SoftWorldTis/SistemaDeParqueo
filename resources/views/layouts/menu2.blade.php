@@ -24,14 +24,14 @@
 
        <!-- contenido  -->
        <div class="fondo">
-         <div class="herramientas">
+     
             @yield('contenido')
   
-          </div>
+    
        </div>
-       <div class="AbBotones">
+  
         @yield('botones')
-       </div>
+
 
       
      
