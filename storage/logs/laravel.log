@@ -20516,3 +20516,168 @@ DETAIL:  Key (estacionamientoqr)=(1) is not present in table \"factura\". at C:\
 #31 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\server.php(21): require_once('C:\\\\Users\\\\SAMUEL...')
 #32 {main}
 "} 
+[2023-04-15 22:54:29] local.ERROR: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(690): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(624): Illuminate\\Foundation\\Application->resolveProvider()
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register()
+#7 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load()
+#8 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#9 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap()
+#10 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith()
+#11 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#12 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 
+[2023-04-15 22:54:30] local.ERROR: Uncaught ErrorException: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php:582
+Stack trace:
+#0 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include()
+#2 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(433): Composer\Autoload\{closure}()
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#4 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\symfony\string\AbstractString.php(30): spl_autoload_call()
+#5 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include('C:\\Users\\SAMUEL...')
+#6 C:\Users\SAMUEL\Documents\GitHub\SistemaDe {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ErrorException: include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582
+Stack trace:
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractString.php(30): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDe at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-15 22:54:48] local.ERROR: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(690): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(624): Illuminate\\Foundation\\Application->resolveProvider()
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register()
+#7 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load()
+#8 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#9 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap()
+#10 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith()
+#11 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#12 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 
+[2023-04-15 22:54:51] local.ERROR: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractString.php(30): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#7 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#8 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractUnicodeString.php(29): spl_autoload_call()
+#9 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#10 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#11 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#12 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\UnicodeString.php(33): spl_autoload_call()
+#13 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#14 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#15 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#16 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Helper\\Helper.php(65): spl_autoload_call()
+#17 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Application.php(871): Symfony\\Component\\Console\\Helper\\Helper::width()
+#18 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Application.php(840): Symfony\\Component\\Console\\Application->doRenderThrowable()
+#19 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(646): Symfony\\Component\\Console\\Application->renderThrowable()
+#20 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(378): Illuminate\\Foundation\\Exceptions\\Handler->renderForConsole()
+#21 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(133): Illuminate\\Foundation\\Console\\Kernel->renderException()
+#22 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#23 {main}
+"} 
+[2023-04-15 22:54:51] local.ERROR: Uncaught ErrorException: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php:582
+Stack trace:
+#0 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include()
+#2 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(433): Composer\Autoload\{closure}()
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#4 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\symfony\string\AbstractString.php(30): spl_autoload_call()
+#5 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include('C:\\Users\\SAMUEL...')
+#6 C:\Users\SAMUEL\Documents\GitHub\SistemaDe {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ErrorException: include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582
+Stack trace:
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractString.php(30): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDe at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-15 22:55:00] local.ERROR: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../kitloong/laravel-migrations-generator/src/MigrationsGeneratorServiceProvider.php): failed to open stream: No such file or directory at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(690): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(624): Illuminate\\Foundation\\Application->resolveProvider()
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register()
+#7 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load()
+#8 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#9 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap()
+#10 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith()
+#11 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#12 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 
+[2023-04-15 22:55:00] local.ERROR: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractString.php(30): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#7 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#8 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractUnicodeString.php(29): spl_autoload_call()
+#9 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#10 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#11 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#12 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\UnicodeString.php(33): spl_autoload_call()
+#13 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#14 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#15 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#16 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Helper\\Helper.php(65): spl_autoload_call()
+#17 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Application.php(871): Symfony\\Component\\Console\\Helper\\Helper::width()
+#18 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\console\\Application.php(840): Symfony\\Component\\Console\\Application->doRenderThrowable()
+#19 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(646): Symfony\\Component\\Console\\Application->renderThrowable()
+#20 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(378): Illuminate\\Foundation\\Exceptions\\Handler->renderForConsole()
+#21 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(133): Illuminate\\Foundation\\Console\\Kernel->renderException()
+#22 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#23 {main}
+"} 
+[2023-04-15 22:55:00] local.ERROR: Uncaught ErrorException: include(C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php:582
+Stack trace:
+#0 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include()
+#2 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(433): Composer\Autoload\{closure}()
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#4 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\symfony\string\AbstractString.php(30): spl_autoload_call()
+#5 C:\Users\SAMUEL\Documents\GitHub\SistemaDeParqueo\vendor\composer\ClassLoader.php(582): include('C:\\Users\\SAMUEL...')
+#6 C:\Users\SAMUEL\Documents\GitHub\SistemaDe {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ErrorException: include(C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer/../myclabs/php-enum/stubs/Stringable.php): failed to open stream: No such file or directory in C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582
+Stack trace:
+#0 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include()
+#2 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#4 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\symfony\\string\\AbstractString.php(30): spl_autoload_call()
+#5 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php(582): include('C:\\\\Users\\\\SAMUEL...')
+#6 C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDe at C:\\Users\\SAMUEL\\Documents\\GitHub\\SistemaDeParqueo\\vendor\\composer\\ClassLoader.php:582)
+[stacktrace]
+#0 {main}
+"} 
