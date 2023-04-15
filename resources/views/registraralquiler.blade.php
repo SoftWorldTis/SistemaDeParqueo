@@ -53,13 +53,13 @@
     <div class="fila4">
         <div class="rad">
             <label class="nom2">
-                <input type="radio" class=pagar name=pago>
+                <input type="radio" class=pagar name=pago value="QR">
                 Pagar Ahora
             </label>
         </div>
         <div class="rad">
             <label class="nom2">
-                <input type="radio" class=pagar name=pago>
+                <input type="radio" class=pagar name=pago value="Efectivo">
                 Pagar Después
             </label>
         </div>
