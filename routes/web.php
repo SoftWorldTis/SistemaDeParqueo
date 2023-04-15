@@ -30,8 +30,8 @@ Route::get('/main/prueba', function () {
 Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/', function () {return view('lobby') ;});
     Route::get('/navBar2', function (){return  view('iconos'); });
-    Route::get('/RegistroParqueos', [RegisParqueoController::class, 'index'] );
-    Route::post('/RegistroParqueos', [RegisParqueoController::class, 'store'] );
+    Route::resource('/RegistroParqueos',RegisParqueoController::class );
+
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/Alquiler', function () {return view('registraralquiler') ;});
