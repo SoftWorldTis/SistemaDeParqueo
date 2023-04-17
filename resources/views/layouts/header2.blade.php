@@ -1,6 +1,10 @@
 
    <nav>
         <div class="nav2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <a id="link" href="{{('/lobby')}}">  
            <div class="inicio">
                 <img src="{{asset('/dash/assets/inicioNav.png')}}" alt="" class="">
