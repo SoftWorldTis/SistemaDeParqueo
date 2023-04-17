@@ -53,22 +53,56 @@
             <div class="col">
                 <div class="col">
                     <label>Vehiculo 1</label><br>
-                    <span class="agregar">Agregar</span>
+                    <span class="agregar" id="btnVehiculo1">Agregar</span>
                 </div>
             </div>
         </div>
         <div class="row datoPar">
             <div class="col">
                 <label>Vehiculo 2</label><br>
-                <span class="agregar">Agregar</span>
+                <span class="agregar" id="btnVehiculo2">Agregar</span>
             </div>
             <div class="col">
                 <div class="col">
                     <label>Vehiculo 3</label><br>
-                    <span class="agregar">Agregar</span>
+                    <span class="agregar" id="btnVehiculo3">Agregar</span>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="vehiculo" id="vehiculo1">
+        <div class="barraT"><span class="closed" id="close1">x</span></div>
+        <h1>Agregar Vehiculo</h1>
+        <label>Modelo</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Placa</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Descripcion</label><br>
+        <input type="text" class="inputText">
+        <button class="guardarV">Guardar</button>
+    </div>
+    <div class="vehiculo" id="vehiculo2">
+        <div class="barraT"><span class="closed" id="close2">x</span></div>
+        <h1>Agregar Vehiculo</h1>
+        <label>Modelo</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Placa</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Descripcion</label><br>
+        <input type="text" class="inputText">
+        <button class="guardarV">Guardar</button>
+    </div>
+    <div class="vehiculo" id="vehiculo3">
+        <div class="barraT"><span class="closed" id="close3">x</span></div>
+        <h1>Agregar Vehiculo</h1>
+        <label>Modelo</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Placa</label><br>
+        <input type="text" class="inputText"><br>
+        <label>Descripcion</label><br>
+        <input type="text" class="inputText">
+        <button class="guardarV">Guardar</button>
     </div>
     <div class="row">
         <button class="col-1" id="botonCancelar">Cancelar</button>
@@ -76,8 +110,24 @@
     </div>
 
 
-    <div class="vehiculo">
-        
-    </div>
+    <script>
+        var btnVehiculo1=document.getElementById("btnVehiculo1")
+        var Vehiculo1=document.getElementById("vehiculo1")
+        var close1=document.getElementById("close1")
+        btnVehiculo1.onclick=function(){Vehiculo1.style.display="block"}
+        close1.onclick=function(){Vehiculo1.style.display="none"}
+
+        var btnVehiculo2=document.getElementById("btnVehiculo2")
+        var Vehiculo2=document.getElementById("vehiculo2")
+        var close2=document.getElementById("close2")
+        btnVehiculo2.onclick=function(){Vehiculo2.style.display="block"}
+        close2.onclick=function(){Vehiculo2.style.display="none"}
+
+        var btnVehiculo3=document.getElementById("btnVehiculo3")
+        var Vehiculo3=document.getElementById("vehiculo3")
+        var close3=document.getElementById("close3")
+        btnVehiculo3.onclick=function(){Vehiculo3.style.display="block"}
+        close3.onclick=function(){Vehiculo3.style.display="none"}
+    </script>
 </body>
 </html>

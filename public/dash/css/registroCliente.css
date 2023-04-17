@@ -58,6 +58,38 @@ h3{
     padding-left: 5%;
     padding-right: 5%;
     border-radius: 5px;
-    
+    padding-bottom: 1%;
     cursor: pointer;
+ }
+ .vehiculo{
+    width: 50%;
+    height: 30%;
+    background-color:white;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    color:  #0A1C44;
+    text-align: center;
+    display: none;
+ }
+ .barraT{
+    background-color: #0A1C44;
+    height: 15%;
+ }
+ .closed{
+    color: white;
+    text-align: right;
+    cursor: pointer;
+    margin-left: 90%;
+    font-size: 20px;
+    
+ }
+ .guardarV{
+    background-color: #0A1C44;
+    color: white;
+    border: none;
+    text-align: center;
+    width: 20%;
+    margin-left: 75%;
+    border-radius: 5px;
  }
