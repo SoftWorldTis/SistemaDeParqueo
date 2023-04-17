@@ -1,0 +1,59 @@
+ 
+/*botones y imagenes*/
+
+.herramientas{
+   
+    padding-top: 113px;
+
+     width: 1400px;
+     height: 762px;
+    
+     display: grid;
+     grid-template-rows: 234px 234px;
+     grid-template-columns: 50% 50% ;
+    }
+
+
+
+.registrar,  .alquiler{
+    width: 390px;
+    height: 199px;
+    margin-top: 35px;
+    margin-left: 155px;
+    margin-right: 155px;
+}
+
+
+
+.iconRegistrar , .iconAlquilar {
+    margin-left: 135px;
+  
+  }
+   .botonRegistro , .botonAlquilo {
+      position: relative;
+    margin-top:30px ;
+    border-radius: 25px;
+    width: 390px;
+    height: 48px;
+    background-color: #0A1C44;
+    cursor:  pointer;
+    transition: transform 0.2s ease;
+  }
+   .botonRegistro:active 
+   .botonAlquilo:active {
+  transform: scale(0.96);
+  }
+ 
+   .botonRegistro p, .botonAlquilo p  {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding-left: 98px;
+      padding-top: 9px;
+  
+   }
+   
+   .botonRegistro:hover,.botonAlquilo:hover {
+  background-color: #3E60AC ;
+  }
+  
+  

@@ -1,8 +1,13 @@
 @extends('layouts.menu2')
+@section('css')
+<link rel="stylesheet" href="{{asset('/dash/css/registroUsuarios.css')}}" >
+@endsection
+
+
 
 @section('contenido')
 
-
+<div class="herramientas">
        <!-- contenido  -->
       
     <div class="rCliente">
@@ -24,7 +29,7 @@
         </div>
     </div>
 
-
+</div>
       
      
            <!-- contenido  -->

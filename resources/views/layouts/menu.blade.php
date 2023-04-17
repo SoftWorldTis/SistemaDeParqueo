@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="{{asset('/dash/css/menu.css')}}" >
+    <link rel="stylesheet" href="{{asset('/dash/css/header.css')}}" >
+    @yield('css')
+
+    
     <link rel="icon" href="{{asset('/dash/assets/logo40.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,12 +27,13 @@
     <!-- header   -->
 
        <!-- contenido  -->
+       <div class="fondo">
+     
+        @yield('contenido')
 
-       <div class="herramientas">
-        @yield('contenido')       
-       </div>
-      
-      
+
+   </div>
+
      
            <!-- contenido  -->
            <footer>
