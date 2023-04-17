@@ -37,3 +37,5 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/Alquiler', function () {return view('registraralquiler') ;});
 });
 
+Route::get("/registroCliente",function(){return view("registroCliente");});
+Route::get("/registroGuardia",function(){return view("registroGuardia");});

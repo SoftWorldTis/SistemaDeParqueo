@@ -111,7 +111,7 @@ class Kernel implements KernelContract
      */
     protected function scheduleCache()
     {
-        return Env::get('SCHEDULE_CACHE_DRIVER');
+        return $this->app['config']->get('cache.schedule_store', Env::get('SCHEDULE_CACHE_DRIVER'));
     }
 
     /**
@@ -172,7 +172,7 @@ class Kernel implements KernelContract
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the commands for the application.
      *
      * @return void
      */
