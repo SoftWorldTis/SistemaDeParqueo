@@ -1,0 +1,14 @@
+<!--<h1>Factura</h1>
+<p>Nombre: {{ $nombre }}</p>
+<p>Parqueo: {{$park}}</p>
+<p>Desde: {{ $date1 }} hasta {{ $date2 }}</p>
+<p>Horario: {{$hora}} </p>
+<p>Área alquilada: {{$espacio}}</p>
+<p>Costo:{{$costo}}</p> -->
+
+
+boton guardar
+{{route {'factura.blade.php'}}}
+
+
+href="{{('/lobby/factura')}}"
