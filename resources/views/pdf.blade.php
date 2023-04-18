@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head> 
-        <link rel="stylesheet" href="{{asset('/dash/css/factura.css')}}" >      
+     
     <meta charset="utf-8">
     <title>Factura</title>
     

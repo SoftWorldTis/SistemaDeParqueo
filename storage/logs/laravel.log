@@ -21914,3 +21914,19 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2023-04-18 07:55:00] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Users\\HP15-DA0013LA\\Documents\\Trabajos\\Softworld.Parqueo\\SistemaDeParqueo\\vendor\\dompdf\\dompdf\\src\\Helpers.php:578)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-18 08:21:40] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Users\\HP15-DA0013LA\\Documents\\Trabajos\\Softworld.Parqueo\\SistemaDeParqueo\\vendor\\dompdf\\dompdf\\src\\Helpers.php:578)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-18 08:24:37] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Users\\HP15-DA0013LA\\Documents\\Trabajos\\Softworld.Parqueo\\SistemaDeParqueo\\vendor\\dompdf\\dompdf\\src\\Helpers.php:578)
+[stacktrace]
+#0 {main}
+"} 
+[2023-04-18 08:25:54] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Users\\HP15-DA0013LA\\Documents\\Trabajos\\Softworld.Parqueo\\SistemaDeParqueo\\vendor\\dompdf\\dompdf\\src\\Helpers.php:578)
+[stacktrace]
+#0 {main}
+"} 

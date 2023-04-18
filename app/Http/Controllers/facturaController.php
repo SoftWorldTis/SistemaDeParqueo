@@ -41,12 +41,11 @@ class facturaController extends Controller
         /*
         dd($datos);
         */
-        $pdf = Pdf::loadView('pdf',compact('nombre','parqueo','fechaini','fechafin','hora','lugar','cargo'));
-        return $pdf->download('factura.pdf');
-       /*
+       
+       
         $pdf = PDF::loadView('pdf',compact('nombre','parqueo','fechaini','fechafin','hora','lugar','cargo'));
         return $pdf->stream();
-         */     
+              
     }
    
 
