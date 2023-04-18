@@ -1,4 +1,17 @@
 
+.button{
+    width:221px ;
+    height:69px ;
+    background-color: #0A1C44;
+}
+.button p{
+
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+   }
+   
+
 .AbBotones{
     width: 497px;
     margin-top: 33px;

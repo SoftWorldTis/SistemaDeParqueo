@@ -12,11 +12,13 @@
       
     <div class="rCliente">
         <img src="{{asset('/dash/assets/cliente.png')}}" class="iconRegistrarU iconRegistrar"  alt="">
+        <a id="link" href="{{('/lobby/RegistroCliente')}}"> 
         <div class="botonRegistroC botonRegistro">
             <p>Registrar </p>
 
             <p>cliente </p>
         </div>
+        </a>
     </div>
 
 

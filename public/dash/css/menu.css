@@ -1,20 +1,22 @@
+
 body{
-  width: 1920px;
-  height: 1080px;
+
     padding: 0;
     margin: 0;
     background: #DFE0F8;
-
+    font-size:  1.5625rem;
 }
 
 .fondo{
   background-color: #ffff;
-  margin-top: 39px;
-  margin-left: 275px;
+  margin-top: 1.56em;
+  margin-left: 14.3%;
   
-  width: 1400px;
-  height: 762px;
+ width: 72.9%;
+ height: 47.625rem;
 }
 
 /*nav content final */
 /*cuadrado contenido */
+
+

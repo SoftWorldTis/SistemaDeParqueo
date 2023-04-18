@@ -10,11 +10,7 @@
      grid-row-gap: 0px;
     }
 
-.button{
-    width:221px ;
-    height:69px ;
-    background-color: #0A1C44;
-}
+
     .ParAr{
         text-align: center;
        margin-top: 10px;
@@ -84,12 +80,6 @@
    margin-right: 32px;
   
   }
-.button p{
-
- text-align: center;
- font-size: 30px;
- cursor: pointer;
-}
 
 .horas{
   height: 42px;

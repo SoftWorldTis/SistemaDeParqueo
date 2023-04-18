@@ -32,6 +32,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/navBar2', function (){return  view('iconos'); });
     Route::resource('/RegistroParqueos',RegisParqueoController::class );
     Route::get('/RegistroGuardia',function () {return view('registroGuardia') ;} );
+    Route::get("/RegistroCliente",function(){return view("registroCliente");});
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/Alquiler', function () {return view('registraralquiler') ;});

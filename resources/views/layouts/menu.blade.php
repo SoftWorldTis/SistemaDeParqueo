@@ -15,9 +15,14 @@
     <link rel="icon" href="{{asset('/dash/assets/logo40.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.fittext.js"></script>
+   
+
+  </head>
+<body  id="body">
   <!-- header   -->
   <header>
  @include('layouts.header')
@@ -40,6 +45,14 @@
          
 
            </footer>
-           
+           <script>
+
+            function Resize()
+                {
+                document.getElementById("body").style.fontSize = document.body.clientWidth/76.8 + 'px';
+                }
+                window.onresize=Resize;</script>
 </body>
+
+
 </html>

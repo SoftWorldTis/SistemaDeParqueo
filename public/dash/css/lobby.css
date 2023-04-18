@@ -3,38 +3,42 @@
 
 .herramientas{
    
-    padding-top: 113px;
+    padding-top: 10.09%;
 
-     width: 1400px;
-     height: 762px;
+     
+   
     
      display: grid;
-     grid-template-rows: 234px 234px;
-     grid-template-columns: 50% 50% ;
+     grid-template-columns: repeat(2, 50%);
+     grid-template-rows: repeat(1, 100%);
+     
+     grid-template-areas:
+       'registrar alquiler';
+     
     }
-
+     
 
 
 .registrar,  .alquiler{
-    width: 390px;
-    height: 199px;
-    margin-top: 35px;
-    margin-left: 155px;
-    margin-right: 155px;
+    width: 24.375rem;
+  height: 12.4375rem;
+    margin-top: 2.1875rem;
+    margin-left: 9.6875rem;
+    margin-right: 9.6875rem;
 }
 
 
 
 .iconRegistrar , .iconAlquilar {
-    margin-left: 135px;
+    margin-left: 8.4375rem;
   
   }
    .botonRegistro , .botonAlquilo {
       position: relative;
-    margin-top:30px ;
+    margin-top:1.875rem ;
     border-radius: 25px;
-    width: 390px;
-    height: 48px;
+    width: 24.375rem;
+    height: 3rem;
     background-color: #0A1C44;
     cursor:  pointer;
     transition: transform 0.2s ease;
@@ -47,8 +51,8 @@
    .botonRegistro p, .botonAlquilo p  {
       margin-top: 0px;
       margin-bottom: 0px;
-      padding-left: 98px;
-      padding-top: 9px;
+      padding-left: 6.125rem;
+      padding-top: 0.5625rem;
   
    }
    
@@ -56,4 +60,10 @@
   background-color: #3E60AC ;
   }
   
-  
+  @media(max-width: 1600px){ 
+    body{
+      font-size: 23px;
+
+    }
+
+  }

@@ -2,8 +2,9 @@
 @extends('layouts.menu2')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('/dash/css/registroParqueo.css')}}" >
 <link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
+<link rel="stylesheet" href="{{asset('/dash/css/registroParqueo.css')}}" >
+
 @endsection
 
 @section('forminicio')
@@ -97,13 +98,13 @@
 
 @section('botones')
    <div class="AbBotones">
-
+    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
     <button class="cancelar button">
   
     <p>Cancelar</p>
     </button>
     
-    
+    </a>
     <button type="submit" class="guardar button">
        
     <p>Guardar</p>
