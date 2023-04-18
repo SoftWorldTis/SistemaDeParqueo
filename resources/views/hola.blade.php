@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 
-  <link rel="stylesheet" href="./css/modal.css">
-  <script defer src="./js/modal.js"></script>
+  <link rel="stylesheet" href="{{asset('dash/css/modal.css')}}">
+  <script defer src="{{asset('dash/scripts/modal.js')}}"></script>
 </head>
 <body>
 
@@ -84,7 +84,7 @@
     <div class="modal--content">
       <div class="modal--header">
         <button class="modal--header--btn-close" id="modal-close">
-          <img src="./img/icon-close.svg" alt="icon close">
+          <img src="{{asset('dash/assets/icon-close.svg')}}" alt="icon close">
         </button>
       </div>
   
@@ -95,7 +95,7 @@
           <form class="modal--body--search">
             <input class="modal--body--search-input" type="text" placeholder="Escriba una zona">
             <button class="modal--body--search-icon" type="submit">
-              <img src="./img/icon-search.svg" alt="icon close">
+              <img src="{{asset('dash/assets/icon-search.svg')}}" alt="icon close">
             </button>
           </form>
 

@@ -24,7 +24,7 @@
 
     <div class="rGuardia">
         <img src="{{asset('/dash/assets/guardia.png')}}" class="iconRegistrarG  iconRegistrar " alt="">
-        <a id="link" href="{{('/lobby/RegistroGuardia')}}"> 
+        <a id="link" href="{{('/lobby/RegistroGuardias')}}"> 
         <div class="botonRegistroG  botonRegistro">
             <p>Registrar</p>
  
