@@ -32,8 +32,10 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/RegistroParqueos', function () {return view('registroParqueo') ;});
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
+    Route::get('/RegistroCliente', function () {return view('registroCliente') ;});
     Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
     Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
+
     /*
     Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
     */

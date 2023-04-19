@@ -1,0 +1,171 @@
+.tit{
+    text-align: center;
+  }
+  .tit p{
+    font-size: 38px;
+    color: black;
+  }
+
+
+  .button{
+      width:221px ;
+      height:69px ;
+  background-color: #0A1C44;
+  }
+  .button p{
+
+      text-align: center;
+      font-size: 30px;
+     }
+     /* fila 1 inicio
+     */
+     .carro1{
+        justify-items: center;
+        display:grid;
+       
+       }
+     .botonAgregar{
+      border-radius: 20px;
+      width:221px ;
+      height:69px ;
+      background-color: #0A1C44;
+      margin-top: 4px ;
+      margin-bottom: 3px;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 25px;
+      line-height: 30px;
+      color: #E4EAEA;
+      font-weight: bold;
+      cursor:pointer;
+
+     }
+     .Ci{
+      justify-items: center;
+      display: grid;
+     }
+     .nombreAp{
+      justify-items: center;
+      display:grid;
+     }
+    .cabeza{
+      gap: 150px;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      display: grid;
+    }
+    /*fin fila 1
+    */
+    /*fila2 inicio
+    */
+    .sis{
+      text-align: center;
+     }
+     .correo{
+      text-align: center; 
+     }
+     .nacimiento{
+      /*
+      position:relative;
+      right: 75px;
+      */
+      /*
+      background-color: red;
+      */
+      width: 394.44px;
+      text-align: center;
+     }
+     .fila2{
+      
+      margin-top: 50px;
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+      gap:200px
+    }
+     /*Fin fila2
+     */
+   
+   
+    .fila3{
+      /*
+      background-color: purple;
+      */
+       margin-top: 50px;
+       grid-template-columns: 1fr 1fr;
+       display: grid;
+       gap: 200px;
+    }
+    .fila4{
+      grid-template-columns: 1fr 1fr;
+       display: grid;
+       gap: 200px;
+       margin-top: 40px;
+    }
+    
+  
+    .principal{
+      display:grid;
+      grid-template-areas: 
+      "tit"
+      "cabeza"
+      "fila2" 
+      "fila3"
+      "fila4"
+      ;
+    }
+    /*
+     cambios en el fondo para centrar
+    */
+    
+    .fondo{
+      
+        display: flex;
+        justify-content: center;
+       
+      }
+      /*
+      Inputs de texto
+      */
+      .linea{
+
+          width: 394.44px;
+          height: 36px;
+          background-color: transparent;
+          border:0;
+          border-bottom:1px solid #000000;
+          box-shadow: none;
+          outline:none;
+          font-size: 30px;
+         
+         
+      }
+     
+      /*
+      nombres de los campos
+      */
+      .nom{
+          color: black;
+          margin-bottom: 25px;
+          font-size: 30px;
+          font-family: 'Inter', sans-serif;
+          font-style: normal;
+      }
+      
+      .herramientas{
+        padding: 0;
+      }
+      h2{
+        color:#000000;
+      }
+      .azul{
+        width: 500px;
+        background-color: #0A1C44;
+        width: 100px;
+      }
+      .emergente{
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        display: none;
+    }

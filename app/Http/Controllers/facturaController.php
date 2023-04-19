@@ -20,32 +20,36 @@ class facturaController extends Controller
 */
     public function store(Request $request){
       
-        
+        $request->validate([
+          'fechaini' =>['required'],
+          'fechafin' =>['required'],
+        ]);
         $nombre = $request->input('nombre');
-        $parqueo = $request->input('park');
-        $fechaini = $request->input('date1');
-        $fechafin = $request->input('date2');
+        $parqueo = $request->input('parqueo');
+        $fechaini = $request->input('fechaini');
+        $fechafin = $request->input('fechafin');
         $hora = $request->input('hora');
-        $lugar = $request->input('Sitio');
+        $lugar = $request->input('sitio');
         $cargo = $request->input('costo');
+        /*
         $datos= compact ('nombre','parqueo','fechaini','fechafin','hora','lugar','cargo');
         /*
         //dd($datos);
          */
-       
-      /*
+    
+      
         return view('pdf',compact('nombre','parqueo','fechaini','fechafin','hora','lugar','cargo'));
-     */
+     
         /*
         $datos = $request->all();
         /*
         dd($datos);
         */
        
-       
+       /*
         $pdf = PDF::loadView('pdf',compact('nombre','parqueo','fechaini','fechafin','hora','lugar','cargo'));
         return $pdf->stream();
-              
+         */     
     }
    
 
