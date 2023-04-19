@@ -10,11 +10,7 @@
      grid-row-gap: 0px;
     }
 
-.button{
-    width:221px ;
-    height:69px ;
-background-color: #0A1C44;
-}
+
     .ParAr{
         text-align: center;
        margin-top: 10px;
@@ -65,11 +61,32 @@ background-color: #0A1C44;
     font-size: 30px;
    
 }
+.linea2{
+    width: 150px;
+    height: 36px;
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 30px;
+    
+}
+.liDer{
+  margin-left: 32px;
 
-.button p{
+}
+.liIz{
+   margin-right: 32px;
+  
+  }
 
- text-align: center;
- font-size: 30px;
+.horas{
+  height: 42px;
+
+}
+.a {
+  display: inline-block;  
 }
 .SubirQR{
     height: 116.65px;
@@ -106,3 +123,6 @@ display: none;
 
 }
 
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }

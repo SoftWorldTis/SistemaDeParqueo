@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
+use App\Http\Controllers\RegisParqueoController;
+use App\Http\Controllers\GuardiaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +31,10 @@ Route::get('/main/prueba', function () {
 Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/', function () {return view('lobby') ;});
     Route::get('/navBar2', function (){return  view('iconos'); });
-    Route::get('/RegistroParqueos', function () {return view('registroParqueo') ;});
+    Route::resource('/RegistroParqueos',RegisParqueoController::class );
+    Route::resource('/RegistroGuardias',GuardiaController::class );
+
+    Route::get("/RegistroCliente",function(){return view("registroCliente");});
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
@@ -48,4 +53,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
 });
+
+
+Route::get('/hola', function () {return view('hola') ;});
 

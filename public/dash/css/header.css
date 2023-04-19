@@ -1,0 +1,58 @@
+.registrar,  .alquiler{
+    width: 24.375rem;
+    height: 12.4375rem;
+    margin-top: 2.1875rem;
+    margin-left: 9.6875rem;
+    margin-right: 9.6875rem;
+}
+/*cuadrado contenido */
+
+nav{
+
+    height: 10.625rem;
+    background: #0A1C44;
+    border-radius: 0px 0px 50px 50px;
+
+}
+
+.nav2{
+   
+  margin-left: 64%;
+  margin-right: 2.8;
+padding-top: 3.125rem;
+    display: grid;
+    grid-template-columns: 5.625rem 34.125rem;
+}
+
+#link{
+  color: black;
+  text-decoration: none;
+}
+
+p{
+    margin-top: 0.25rem ;
+    margin-bottom: 0.1875rem;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+
+    
+    line-height: 1.875rem;
+    letter-spacing: 0.45em;
+    color: #E4EAEA;
+
+}
+
+/*nav content */
+.logoUsuario{  
+ width: 3.125rem;
+ height: 3.125rem;
+}
+.textoNav{
+    width: 34.1875rem;
+    display: flex;
+    flex-direction: column;
+}
+.textB{
+  margin-top:0px;
+
+}
