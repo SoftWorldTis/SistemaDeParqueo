@@ -13,7 +13,7 @@ class GuardiaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class GuardiaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'guardianombre' => 'required',
+            'guardiafechanacimiento' => 'required',
+            'guardiacorreo' => 'required|email|max:40',
+            'guardiaci' => 'required|min:100000|max:9999999999|numeric|unique:App\Models\guardia,guardiaci',
+            'guardiahoraentrada' => 'required',
+            'guardiahorasalida' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return[
+            'guardianombre.required' => 'El campo Nombre y Apellidos es obligatorio',
+            'guardiafechanacimiento.required' => 'La Fecha de Nacimiento es obligatoria',
+            'guardiacorreo.required' => 'El campo Correo es obligatorio',
+            'guardiacorreo.email' => 'Ingresar correo valio',
+            'guardiacorreo.max' => 'El campo Correo admite máximo 40 carácteres',
+            'guardiaci.required' => 'El campo CI es obligatorio',
+            'guardiaci.max' => 'El campo CI admite máximo 10 dígitos',
+            'guardiaci.min' => 'El campo CI admite minímo 6 dígitos',
+            'guardiaci.min' => 'El campo CI ya fue registrado',
+            'guardiahoraentrada.required' => 'El campo Hora de entrada es obligatorio',
+            'guardiahorasalida.required' => 'El campo Horari es obligatorio'
         ];
     }
 }

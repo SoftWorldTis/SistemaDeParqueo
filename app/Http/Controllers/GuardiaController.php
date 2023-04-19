@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\GuardiaRequest;
 use App\Models\guardia;
 
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class GuardiaController extends Controller
     
         }
 
-     public function store(Request $request){  
+     public function store(GuardiaRequest $request){  
         
         
         $guardia =new guardia();
@@ -24,7 +26,7 @@ class GuardiaController extends Controller
         $guardia -> guardiahorasalida= $request->input('guardiahorasalida');
         $guardia -> guardiaci= $request->input('guardiaci');
         $guardia -> guardiafechanacimiento= $request->input('guardiafechanacimiento');
-        $guardia -> estacionamiento_estacionamientoid='7' ;
+        //$guardia -> estacionamiento_estacionamientoid='7' ;
         $guardia-> save();
         return view('registroGuardia'); 
      }
