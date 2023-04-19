@@ -8,12 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="{{asset('/dash/css/menu.css')}}" >
+    <link rel="stylesheet" href="{{asset('/dash/css/header.css')}}" >
+    @yield('css')
+
+    
     <link rel="icon" href="{{asset('/dash/assets/logo40.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.fittext.js"></script>
+   
+
+  </head>
+<body  id="body">
   <!-- header   -->
   <header>
  @include('layouts.header')
@@ -23,18 +32,27 @@
     <!-- header   -->
 
        <!-- contenido  -->
+       <div class="fondo">
+     
+        @yield('contenido')
 
-       <div class="herramientas">
-        @yield('contenido')       
-       </div>
-      
-      
+
+   </div>
+
      
            <!-- contenido  -->
            <footer>
          
 
            </footer>
-           
+           <script>
+
+            function Resize()
+                {
+                document.getElementById("body").style.fontSize = document.body.clientWidth/76.8 + 'px';
+                }
+                window.onresize=Resize;</script>
 </body>
+
+
 </html>
