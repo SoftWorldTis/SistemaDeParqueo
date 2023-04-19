@@ -153,7 +153,7 @@
             },
             "time": "2022-05-20T20:07:39+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
@@ -259,7 +259,7 @@
                 "bin/doctrine-dbal"
             ],
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Doctrine\\DBAL\\": "lib/Doctrine/DBAL"
@@ -358,7 +358,7 @@
             },
             "time": "2022-05-02T15:47:09+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Deprecations\\": "lib/Doctrine/Deprecations"
@@ -406,7 +406,7 @@
             },
             "time": "2022-10-12T20:51:15+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\": "src"
@@ -747,7 +747,7 @@
             },
             "time": "2022-10-10T22:02:52+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "DragonCode\\Contracts\\": "src"
@@ -825,7 +825,7 @@
             },
             "time": "2021-11-16T17:50:22+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "DragonCode\\PrettyArray\\": "src"
@@ -915,7 +915,7 @@
             },
             "time": "2022-04-01T17:14:16+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "DragonCode\\Support\\": "src"
@@ -2088,7 +2088,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "KitLoong\\MigrationsGenerator\\": "src"
@@ -2162,7 +2162,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "LaravelLang\\Attributes\\": "src"
@@ -2252,7 +2252,7 @@
             },
             "time": "2022-06-27T01:57:27+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "LaravelLang\\Lang\\": "src"
@@ -2339,7 +2339,7 @@
                     ]
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "LaravelLang\\Publisher\\": "src"
@@ -3086,7 +3086,7 @@
             },
             "time": "2022-08-04T09:53:51+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "MyCLabs\\Enum\\": "src/"
