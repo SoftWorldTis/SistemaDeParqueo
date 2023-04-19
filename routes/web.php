@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AlquilerController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlquilerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,6 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     //Route::get('/Alquiler', function () {return view('registraralquiler') ;});
     Route::resource('/Alquiler', AlquilerController::class);
+    //Route::post('/Alquiler', [AlquilerController::class,'estacionamientoid'])->name('alquiler.est');
 });
 

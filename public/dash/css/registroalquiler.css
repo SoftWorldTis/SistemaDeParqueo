@@ -225,3 +225,11 @@
         .herramientas{
           padding: 0;
         }
+
+        .error{
+          font-family: 'Inter';
+          font-weight: 400;
+          font-size: 20px;
+          color: #dc3545;
+          padding-top: 8px
+        }

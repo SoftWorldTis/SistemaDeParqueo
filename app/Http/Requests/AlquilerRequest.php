@@ -39,7 +39,7 @@ class AlquilerRequest extends FormRequest
             /*'Parqueo.required' => 'El campo Parqueo es obligatorio',
             'Usuario.required' => 'El campo Uusario es obligatorio',*/
             'FechaInicio.required' => 'La Fecha Inicial es obligatoria',
-            'FechaFin.required' => 'La Fecha Final es obligatorio',
+            'FechaFin.required' => 'La Fecha Final es obligatoria',
             'FechaFin.after_or_equal' => 'La Fecha debe ser igual o mayor a la Fecha Inicial',
             'Sitio.required' => 'El campo Sitio es obligatorio',
             'Pago.required' => 'Elige una forma de pago'
