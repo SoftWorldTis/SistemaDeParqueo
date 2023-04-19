@@ -1,160 +1,113 @@
+<head>
+    <link rel="stylesheet" href="{{asset('/dash/css/registroCliente.css')}}" >    
+</head>
 @extends('layouts.menu2')
-
-
-
-@section('css')
-<link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
-<link rel="stylesheet" href="{{asset('/dash/css/registroCliente.css')}}" >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-@endsection
-
-
 @section('contenido')
+<div class="principal">
 
-<div id="formulario">
-    <div class="ParAr">
-    <h3>Registro Cliente</h3>
+    <div class="tit">
+        <p> Registro de Cliente</p>
     </div>
-
-
-    <div class="row row1">
-        <div class="col">
-            <label>Nombre(s) y Apellidos</label><br>
-            <input type="text" class="inputText">
-        </div>
-        <div class="col">
-            <div class="col">
-                <label>CI</label><br>
-                <input type="text" class="inputText">
+    <form action="/lobby/registroCliente" method="Post">
+     @csrf <!-- debajo de un forms pones eso atte kiri-->
+        <div class="cabeza">
+            
+            <div class ="NombreAp">
+                <p class="nom">Nombre y Apellidos</p>
+                <input type="text" class="linea" name="nombreyapellido"  >
+            </div>
+            
+            <div class ="Ci">
+                <p class="nom">CI</p>
+                <input type="text" class="linea" name="ci"  >
             </div>
         </div>
-    </div>
-
-    <div class="row row2 datoPar">
-        <div class="col">
-            <label>Fecha de nacimiento</label><br>
-            <input type="date" class="inputText">
-        </div>
-        <div class="col">
-            <div class="col">
-                <label>Codigo SIS</label><br>
-                <input type="text" class="inputText">
-            </div>
-        </div>
-    </div>
-    
-    <div class="row row3 datoPar">
-        <div class="col">
-            <label>Correo electronico</label><br>
-            <input type="text" class="inputText">
-        </div>
-        <div class="col">
-            <div class="col">
-                <label>Vehiculo 1</label><br>
-                <span class="agregar" id="btnVehiculo1">Agregar</span>
-            </div>
-        </div>
-    </div>
-    <div class="row  row4 datoPar">
-        <div class="col">
-            <label>Vehiculo 2</label><br>
-            <span class="agregar" id="btnVehiculo2">Agregar</span>
-        </div>
-        <div class="col">
-            <div class="col">
-                <label>Vehiculo 3</label><br>
-                <span class="agregar" id="btnVehiculo3">Agregar</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="vehiculo" id="vehiculo1">
-    <div class="barraT"><span class="closed" id="close1">x</span></div>
-    <h1>Agregar Vehiculo</h1>
-    <label>Modelo</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Placa</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Descripcion</label><br>
-    <input type="text" class="inputText">
-    <button class="guardarV">Guardar</button>
-</div>
-<div class="vehiculo" id="vehiculo2">
-    <div class="barraT"><span class="closed" id="close2">x</span></div>
-    <h1>Agregar Vehiculo</h1>
-    <label>Modelo</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Placa</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Descripcion</label><br>
-    <input type="text" class="inputText">
-    <button class="guardarV">Guardar</button>
-</div>
-<div class="vehiculo" id="vehiculo3">
-    <div class="barraT"><span class="closed" id="close3">x</span></div>
-    <h1>Agregar Vehiculo</h1>
-    <label>Modelo</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Placa</label><br>
-    <input type="text" class="inputText"><br>
-    <label>Descripcion</label><br>
-    <input type="text" class="inputText">
-    <button class="guardarV">Guardar</button>
-</div>
-
-
-
-<script>
-    var btnVehiculo1=document.getElementById("btnVehiculo1")
-    var Vehiculo1=document.getElementById("vehiculo1")
-    var close1=document.getElementById("close1")
-    btnVehiculo1.onclick=function(){Vehiculo1.style.display="block"}
-    close1.onclick=function(){Vehiculo1.style.display="none"}
-
-    var btnVehiculo2=document.getElementById("btnVehiculo2")
-    var Vehiculo2=document.getElementById("vehiculo2")
-    var close2=document.getElementById("close2")
-    btnVehiculo2.onclick=function(){Vehiculo2.style.display="block"}
-    close2.onclick=function(){Vehiculo2.style.display="none"}
-
-    var btnVehiculo3=document.getElementById("btnVehiculo3")
-    var Vehiculo3=document.getElementById("vehiculo3")
-    var close3=document.getElementById("close3")
-    btnVehiculo3.onclick=function(){Vehiculo3.style.display="block"}
-    close3.onclick=function(){Vehiculo3.style.display="none"}
-</script>
-
-
-
-
-
-@endsection
-
-@section('botones')
-
-<div class="AbBotones">
-
-    <button class="cancelar button">
-  
-    <p>Cancelar</p>
-    </button>
-    
-    
-    <button type="submit" class="guardar button">
-       
-    <p>Guardar</p>
         
-    </button>   
+        <div class="fila2">
+            
+            <div  class="nacimiento">
+                <p class="nom">Fecha de Nacimiento</p>
+                <input type="date" class="linea" class="fecha"  name="fechaNacimiento" >
+                @error('fechaNacimiento')
+                <br>
+                <span style="color: red" style="font-size: 25px">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="sis">
+                <p class="nom">Codigo Sis</p>
+                <input type="text" class="linea" name="sis">
+                <br>
+            </div>
+        </div>
+        <div class="fila3">
+            <div class="Correo">
+                <p class="nom">Correo Electronico</p>
+                <input type="text" class="linea" name="CorreoElectronico"  >
+            </div>
+            
+            <div class="carro1">
+                <p class="nom">Vehiculo 1</p>
+                <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  >
+            </div>
+            
+        </div>
+        
+        <div class="fila4">
+            <div class="carro1">
+                <p class="nom">Vehiculo 2</p>
+                <input type="button" value="Agregar" class="botonAgregar" name="carro1" id="mostrar-ventana-emergente">
+            </div>
+            <div class="carro1">
+                <p class="nom">Vehiculo 3</p>
+                <input type="button" value="Agregar" class="botonAgregar" name="carro1"  >
+            </div>
+        </div>
     </div>
+    <div id="mi-ventana-emergente" class="emergente">
+        <div class="azul">
+        </div>
+        <h2>Agregar Vehículo</h2>
+        <div class="conte">
+
+            <div class="Modelo">
+                <p class="nom">Modelo</p>
+                <input type="text" class="linea" name="modelo"  >
+            </div>
+            <div class="Placa">
+                <p class="nom">Placa</p>
+                <input type="text" class="linea" name="placa">
+            </div>
+            <div class="descripcion">
+                <p class="nom">Descripción</p>
+                <input type="text" class="linea" name="descripcion"  >
+            </div>
+        </div>
+        <button id="cerrar-ventana">Cerrar ventana emergente</button>
+      </div>
+      <script>
+        var mostrarVentana = document.getElementById('mostrar-ventana-emergente');
+        var cerrarVentana = document.getElementById('cerrar-ventana');
+        var ventanaEmergente = document.getElementById('mi-ventana-emergente');
+        
+        mostrarVentana.onclick = function() {
+          ventanaEmergente.style.display = "block";
+        };
+        
+        cerrarVentana.onclick = function() {
+          ventanaEmergente.style.display = "none";
+        };
+      </script>
+    @endsection
+    @section('botones')
     
-</form>
-<script src="{{asset('/dash/scripts/parqueo.js')}}"> </script> 
-
-@endsection
-
-
-
+</div>
+</div>
+<div class="AbBotones">
+    <div class="cancelar button">
+        <p>Cancelar</p>
+    </div>
+    <button class="guardar button"  type="submit" >
+   <p>Guardar</p>
+   </button>   
+   </form>
+   @endsection
