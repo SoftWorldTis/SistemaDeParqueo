@@ -30,4 +30,11 @@ body{
 
  }
 
+ .valido{
+    font-family:'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #35dc46; 
+ }
+
 

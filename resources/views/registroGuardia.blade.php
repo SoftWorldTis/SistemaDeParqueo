@@ -19,13 +19,24 @@
     <div class="ParAr">
         <p> Registro de Guardias</p>
     </div>
-
     <div class="ParIzq" >
+        @if ($message = Session::get('Registrado'))
+            <div class="valido">
+                <span>{{$message}}</span>
+            </div>
+        @else
+            <br>
+        @endif
 
         <div class="Nombre Pi" >
-            <p>Nombre(s) y Apellidos</p>
-            <input type="text"id="zona"class="linea"name="guardianombre" onkeyup="lettersOnly(this)" onblur="verificar(this)" value="{{old('guardianombre')}}"placeholder="Ingrese su nombre">
-            @error('guardianombre')
+            <p>Parqueo</p>
+            <select name="guardiaparqueo"  class="linea sitio" value="{{old('guardiaparqueo')}}" >
+                <option class= "linea" value="">Seleccione un parqueo</option>
+                @foreach ($parqueos as $parqueo)
+                    <option class= "linea" value="{{$parqueo->estacionamientoid}}">{{$parqueo->estacionamientozona}}</option>
+                @endforeach
+            </select>
+            @error('guardiaparqueo')
                 <div class="error">
                     {{$message}}
                 </div>
@@ -57,6 +68,16 @@
 
     </div>
     <div class="ParDer" >
+    <br>
+        <div class="Nombre Pi" >
+            <p>Nombre(s) y Apellidos</p>
+            <input type="text"id="zona"class="linea"name="guardianombre" onkeyup="lettersOnly(this)" onblur="verificar(this)" value="{{old('guardianombre')}}"placeholder="Ingrese su nombre">
+            @error('guardianombre')
+                <div class="error">
+                    {{$message}}
+                </div>
+            @enderror
+        </div >
 
         <div  class="Ci Pi">
             <p>CI</p>
@@ -74,13 +95,12 @@
             <input type="time" class="linea2 liIz" id="liIz" name="guardiahoraentrada"  value="{{old('guardiahoraentrada')}}">     
                <p class="a"> a </p>
             <input type="time" class="linea2 liDer" id="li" name="guardiahorasalida" value="{{old('guardiahorasalida')}}" >
+          </div>
             @error('guardiahorasalida')
                 <div class="error">
                     {{$message}}
                 </div>
             @enderror
-          </div>
-           
        </div>
         
     </div>

@@ -24,6 +24,7 @@ class GuardiaRequest extends FormRequest
     public function rules()
     {
         return [
+            'guardiaparqueo' => 'required|not_in:0',
             'guardianombre' => 'required',
             'guardiafechanacimiento' => 'required',
             'guardiacorreo' => 'required|email|max:40',
@@ -36,6 +37,7 @@ class GuardiaRequest extends FormRequest
     public function messages()
     {
         return[
+            'guardiaparqueo.required' => 'Seleccione un parqueo',
             'guardianombre.required' => 'El campo Nombre y Apellidos es obligatorio',
             'guardiafechanacimiento.required' => 'La Fecha de Nacimiento es obligatoria',
             'guardiacorreo.required' => 'El campo Correo es obligatorio',
@@ -46,7 +48,7 @@ class GuardiaRequest extends FormRequest
             'guardiaci.min' => 'El campo CI admite minímo 6 dígitos',
             'guardiaci.min' => 'El campo CI ya fue registrado',
             'guardiahoraentrada.required' => 'El campo Hora de entrada es obligatorio',
-            'guardiahorasalida.required' => 'El campo Horari es obligatorio'
+            'guardiahorasalida.required' => 'El campo Horario es obligatorio'
         ];
     }
 }
