@@ -100,11 +100,12 @@
    <div class="AbBotones">
     <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
     <button class="cancelar button">
-  
     <p>Cancelar</p>
     </button>
     
     </a>
+
+    
     <button type="submit" class="guardar button">
        
     <p>Guardar</p>

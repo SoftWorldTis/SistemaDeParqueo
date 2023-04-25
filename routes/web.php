@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
+use App\Http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::resource('/RegistroParqueos',RegisParqueoController::class );
     Route::resource('/RegistroGuardias',GuardiaController::class );
 
-    Route::get("/RegistroCliente",function(){return view("registroCliente");});
+    Route::resource("/RegistroCliente",ClienteController::class);
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/RegistroCliente', function () {return view('registroCliente') ;});

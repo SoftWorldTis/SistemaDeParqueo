@@ -19,7 +19,7 @@ class CreateVehiculoTable extends Migration
             $table->string('vehiculoplaca', 45);
             $table->string('vehiculodescripcion', 45)->nullable();
             $table->string('cliente_clienteci', 10)->index('fk_auto_cliente1_idx');
-            $table->char('trial746', 1)->nullable();
+
         });
     }
 

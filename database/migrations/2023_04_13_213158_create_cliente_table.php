@@ -19,7 +19,7 @@ class CreateClienteTable extends Migration
             $table->string('clientenombrecompleto', 45);
             $table->timestamp('clientefechanac');
             $table->string('clientecorreo', 30);
-            $table->char('trial720', 1)->nullable();
+      
         });
     }
 
