@@ -45,6 +45,7 @@ class RegisParqueoController extends Controller
         return view('registroParqueo');
         
 
+        
 
 
     }

@@ -56,6 +56,7 @@
             <div class="carro1">
                 <p class="nom">Vehiculo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
+                <input type="text" value ="Agregar"class="linea" name="carro1" >
             </div>
             
         </div>
@@ -157,7 +158,7 @@
             </div>
             <div class="Placa3 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="vehiculoplaca3">
+                <input type="text" class=" Vplaca linea3" id="Vplaca"name="vehiculoplaca3">
             </div>
             <div class="descripcion3 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -240,13 +241,17 @@ guardar3.onclick = function() {
 
 ventanaEmergente3.style.display = "none";
 };
+
+
+
+
       </script>
     @endsection
     @section('botones')
     
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
+    <a id="link" href="{{('/lobby/RegistroUsuarios')}}"> 
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>

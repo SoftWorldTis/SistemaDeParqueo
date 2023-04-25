@@ -99,7 +99,7 @@
 @section('botones')
    <div class="AbBotones">
     <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
-    <button class="cancelar button">
+    <button type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>
     
