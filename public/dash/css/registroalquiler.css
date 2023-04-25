@@ -204,24 +204,103 @@
             font-family: 'Inter', sans-serif;
             font-style: normal;
         }
+       
         /*
-        cambios en los input date(no funca aun)
-        
-        .fecha::before{
-          content: "FechaInicio"; 
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding: 6px;
-          background-color: #fff;
-          z-index: 1;
-        }
-        .fecha:focus::before,
-        .fecha:valid::before {
-         display: none;
-        }
+        emergente
         */
-        .herramientas{
-          padding: 0;
+        .azul{
+          background-color: #0A1C44;
+          height: 40px;
+          width: 100%;
+          display:flex ;
+          justify-content: right;
+         }
+         .destructor{
+          background-color: transparent;
+          color: white;
+          border-color: transparent;
+          margin-right: 10px;
+          font-size: 20px;
+          -webkit-text-stroke: 0.1fr;
+           
+         }
+         #miEmergente{
+
+          width: 1000px;
+          height: 650px;
+          background-color: white;
+          position:absolute;
+          bottom:15px;
+           display: none;
+           border:1px solid #000000;
+         }
+         .ordenar{
+          display:grid;
+          grid-template-areas:
+          "azul"
+          "tit"
+          "buscador"
+          "tabla"
+          
+          ;
+         }
+         .tabla{
+          border-collapse: collapse;
+          margin-left: 40px;
+          margin-right: 40px;
+          margin-top: 30px;
+         }
+         .buscador{
+          margin-top: 20px;
+          margin-left: 40px;
+          grid-template-columns: 1fr 1fr;
+         display: grid;
+         }
+         .titu{
+          margin-top: 20px;
+          text-align: center;
         }
+        .titu p{
+          font-size: 25px;
+          color: black;
+        }
+        .lupa{
+          display: flex;
+          justify-content: center;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          width: 50px;
+          height: 40px;
+          
+          background-color: #0A1C44;
+          
+        }
+        .imagenlupa{
+          margin-top: 5px;
+          width: 25px;
+          height: 25px;
+          background-color: transparent;
+        }
+        .grillatit{
+          background-color: #0A1C44;
+          color: rgba(255, 255, 255, 0.879);
+          font-family: 'Inter', sans-serif;
+        font-style: normal;
+       
+        }
+        th{
+          height: 40px;
+          width: 30px;
+        }
+        td{
+          height: 40px;
+          width: 30px;
+          text-align: center;
+          font-family: 'Inter', sans-serif;
+          -webkit-text-stroke: 1fr;
+          border-bottom:1px solid #cdcdcd;
+       
+        }
+      

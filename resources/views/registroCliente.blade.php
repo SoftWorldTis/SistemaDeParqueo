@@ -64,35 +64,29 @@
         </div>
     </div>
     <div id="mi-ventana-emergente" class="emergente">
-        <div class="azul">
-        </div>
-        <h2>Agregar Vehículo</h2>
-        <div class="conte">
+        <div class="ordenar">
 
-            <div class="Modelo">
-                <p class="nom">Modelo</p>
-                <input type="text" class="linea" name="modelo"  >
+            <div class="azul" >
             </div>
-            <div class="Placa">
-                <p class="nom">Placa</p>
-                <input type="text" class="linea" name="placa">
+            <span>Agregar Vehículo</span>
+            <div class="conte">
+                
+                
             </div>
-            <div class="descripcion">
-                <p class="nom">Descripción</p>
-                <input type="text" class="linea" name="descripcion"  >
-            </div>
+            <button id="cerrar-ventana">Cerrar ventana emergente</button>
         </div>
-        <button id="cerrar-ventana">Cerrar ventana emergente</button>
       </div>
       <script>
         var mostrarVentana = document.getElementById('mostrar-ventana-emergente');
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('mi-ventana-emergente');
-        
+        var barrita= document.getElementById('azul');
         mostrarVentana.onclick = function() {
           ventanaEmergente.style.display = "block";
-        };
-        
+          barrita.style.backgroundColor = "#0A1C44";
+          barrita.style.width = "300px";
+        }
+
         cerrarVentana.onclick = function() {
           ventanaEmergente.style.display = "none";
         };
@@ -100,7 +94,7 @@
     @endsection
     @section('botones')
     
-</div>
+ </div>
 </div>
 <div class="AbBotones">
     <div class="cancelar button">

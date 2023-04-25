@@ -164,8 +164,20 @@
       }
       .emergente{
         position: absolute;
-        width: 500px;
-        height: 500px;
+        width: 800px;
+        height: 450px;
         background-color: white;
+        border: 1px solid #000000;
         display: none;
     }
+     .ordenar{
+          display: grid;
+          grid-template-areas:  
+          "azul"
+          "Modelo"
+          "Placa"
+          "descripcion";
+        
+     }
+
+    

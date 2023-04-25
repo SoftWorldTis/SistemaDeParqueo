@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 use PDF;
 class facturaController extends Controller
 {
+    
    public function index (){
-        return view('registraralquiler');
+   
+    $parqueo = \DB::table('estacionamiento')
+    ->select('estacionamiento.*')->orderBy('estacionamiento.estacionamientoid','DESC')->get();
+        return view('registraralquiler')->with('parqueo',$parqueo);
     }
     /*
     public function pdf1 ($informacion){
