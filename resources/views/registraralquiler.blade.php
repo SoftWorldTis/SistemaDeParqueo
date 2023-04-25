@@ -1,15 +1,24 @@
-<head>
-    <link rel="stylesheet" href="{{asset('/dash/css/registroalquiler.css')}}" >    
-</head>
 @extends('layouts.menu2')
+
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
+    <link rel="stylesheet" href="{{asset('/dash/css/registroalquiler.css')}}" > 
+  @endsection  
+
+  @section('forminicio')
+  <form action="/lobby/Alquiler" method="Post">
+    @csrf <!-- debajo de un forms pones eso atte kiri-->
+
+  @endsection
+
 @section('contenido')
 <div class="principal">
 
     <div class="tit">
         <p> Alquilar sitio del parqueo</p>
     </div>
-    <form action="/lobby/Alquiler" method="Post">
-     @csrf <!-- debajo de un forms pones eso atte kiri-->
+
         <div class="botonesformu">
             
             <div class ="agregarParqueo">
@@ -139,13 +148,20 @@
     @section('botones')
     
 </div>
-</div>
 <div class="AbBotones">
-    <div class="cancelar button">
-        <p>Cancelar</p>
+    <a id="link" href="{{('/lobby')}}"> 
+    <button  type="button" class="cancelar button">
+    <p>Cancelar</p>
+    </button>
+    
+    </a>
+
+    
+    <button type="submit" class="guardar button">
+       
+    <p>Guardar</p>
+        
+    </button>   
     </div>
-    <button class="guardar button"  type="submit" >
-   <p>Guardar</p>
-   </button>   
    </form>
    @endsection

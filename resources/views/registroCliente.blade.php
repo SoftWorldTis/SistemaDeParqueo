@@ -56,7 +56,10 @@
             <div class="carro1">
                 <p class="nom">Vehiculo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
-                <input type="text" value ="Agregar"class="linea" name="carro1" >
+                <div class=" oculto">
+                 <input type="text" value ="Agregar"class="linea" name="carro1" >
+                 <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar">
+                </div>
             </div>
             
         </div>
@@ -88,7 +91,7 @@
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="vehiculoplaca">
+                <input type="text" class="linea3"id="Vplaca" name="vehiculoplaca">
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -124,7 +127,7 @@
             </div>
             <div class="Placa2 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="vehiculoplaca2">
+                <input type="text" class="linea3"id="Vplaca2" name="vehiculoplaca2">
             </div>
             <div class="descripcion2 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -158,7 +161,7 @@
             </div>
             <div class="Placa3 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class=" Vplaca linea3" id="Vplaca"name="vehiculoplaca3">
+                <input type="text" class=" Vplaca linea3" id="Vplaca3"name="vehiculoplaca3">
             </div>
             <div class="descripcion3 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -180,14 +183,17 @@
 
       <script>
         var mostrarVentana = document.getElementById('mostrar-ventana-emergente');
+        var editar = document.getElementById('editar');
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('mi-ventana-emergente');
         var guardar = document.getElementById('guardar-modal');
+
 
         var mostrarVentana2 = document.getElementById('mostrar-ventana-emergente2');
         var cerrarVentana2 = document.getElementById('cerrar-ventana2');
         var ventanaEmergente2 = document.getElementById('mi-ventana-emergente2');
         var guardar2 = document.getElementById('guardar-modal2');
+
 
         var mostrarVentana3 = document.getElementById('mostrar-ventana-emergente3');
         var cerrarVentana3 = document.getElementById('cerrar-ventana3');
@@ -195,11 +201,17 @@
         var guardar3 = document.getElementById('guardar-modal3');
 
 
+
         mostrarVentana.onclick = function() {
       
           ventanaEmergente.style.display = "block";
 
         };
+        editar.onclick = function() {
+      
+      ventanaEmergente.style.display = "block";
+
+    };
         
         cerrarVentana.onclick = function() {
 
@@ -229,9 +241,12 @@
     };
 
 
-    guardar.onclick = function() {
-
+guardar.onclick = function() {
+    var vplaca=document.getElementById("Vplaca").value;
+document.getElementById("editar").value= vplaca;
 ventanaEmergente.style.display = "none";
+
+ 
 };
 guardar2.onclick = function() {
 

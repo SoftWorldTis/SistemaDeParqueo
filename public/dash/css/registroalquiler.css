@@ -1,6 +1,7 @@
 
     .tit{
       text-align: center;
+      margin-top: 10px;
     }
     .tit p{
       font-size: 38px;
@@ -8,18 +9,7 @@
     }
 
 
-    .button{
-        width:221px ;
-        height:69px ;
-    background-color: #0A1C44;
-    }
-    .button p{
 
-        text-align: center;
-        font-size: 30px;
-       }
-       /* fila 1 inicio
-       */
        .botonAgregar{
         border-radius: 20px;
         width:221px ;
