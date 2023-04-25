@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
     <link rel="stylesheet" href="{{asset('/dash/css/registroCliente.css')}}" >  
 @endsection
+@section('forminicio')
+<form action="/lobby/RegistroCliente" method="Post">
+@csrf
+@endsection
 
 
 @section('contenido')
@@ -12,18 +16,18 @@
     <div class="tit">
         <p> Registro de Cliente</p>
     </div>
-    <form action="/lobby/RegistroCliente" method="Post">
-     @csrf <!-- debajo de un forms pones eso atte kiri-->
+
+   <!-- debajo de un forms pones eso atte kiri-->
         <div class="cabeza">
             
             <div class ="NombreAp">
                 <p class="nom">Nombre y Apellidos</p>
-                <input type="text" class="linea" name="nombreyapellido"  >
+                <input type="text" class="linea" name="clientenombrecompleto"  >
             </div>
             
             <div class ="Ci">
                 <p class="nom">CI</p>
-                <input type="text" class="linea" name="ci"  >
+                <input type="text" class="linea" name="clienteci"  >
             </div>
         </div>
         
@@ -31,7 +35,7 @@
             
             <div  class="nacimiento">
                 <p class="nom">Fecha de Nacimiento</p>
-                <input type="date" class="linea" class="fecha"  name="fechaNacimiento" >
+                <input type="date" class="linea" class="fecha"  name="clientefechanac" >
                 @error('fechaNacimiento')
                 <br>
                 <span style="color: red" style="font-size: 25px">{{$message}}</span>
@@ -39,14 +43,14 @@
             </div>
             <div class="sis">
                 <p class="nom">Codigo Sis</p>
-                <input type="text" class="linea" name="sis">
+                <input type="text" class="linea" name="clientesis">
                 <br>
             </div>
         </div>
         <div class="fila3">
             <div class="Correo">
                 <p class="nom">Correo Electronico</p>
-                <input type="text" class="linea" name="CorreoElectronico"  >
+                <input type="text" class="linea" name="clientecorreo"  >
             </div>
             
             <div class="carro1">
@@ -79,15 +83,15 @@
 
             <div class="Modelo inputmodal">
                 <p class="nom2" data-lastchar="*" >Modelo  </p>
-                <input type="text" class="linea3" name="modelo"  >
+                <input type="text" class="linea3" name="vehiculomodelo"  >
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="placa">
+                <input type="text" class="linea3" name="vehiculoplaca">
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
-                <input type="text" class="linea3" name="descripcion"  >
+                <input type="text" class="linea3" name="vehiculodescripcion"  >
             </div>
         </div>
       
@@ -114,15 +118,15 @@
 
             <div class="Modelo2 inputmodal">
                 <p class="nom2" data-lastchar="*">Modelo  </p>
-                <input type="text" class="linea3" name="modelo"  >
+                <input type="text" class="linea3" name="vehiculomodelo2"  >
             </div>
             <div class="Placa2 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="placa">
+                <input type="text" class="linea3" name="vehiculoplaca2">
             </div>
             <div class="descripcion2 inputmodal">
                 <p class="nom2" >Descripción</p>
-                <input type="text" class="linea3" name="descripcion"  >
+                <input type="text" class="linea3" name="vehiculodescripcion2"  >
             </div>
         </div>
               <button type="button"  id="guardar-modal2" class="guardar button guardar-modal">
@@ -148,15 +152,15 @@
 
             <div class="Modelo3 inputmodal">
                 <p class="nom2" data-lastchar="*">Modelo  </p>
-                <input type="text" class="linea3" name="modelo"  >
+                <input type="text" class="linea3" name="vehiculomodelo3"  >
             </div>
             <div class="Placa3 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3" name="placa">
+                <input type="text" class="linea3" name="vehiculoplaca3">
             </div>
             <div class="descripcion3 inputmodal">
                 <p class="nom2" >Descripción</p>
-                <input type="text" class="linea3" name="descripcion"  >
+                <input type="text" class="linea3" name="vehiculodescripcion3"  >
             </div>
         </div>
                  <button type="button" id="guardar-modal3" class="guardar button guardar-modal">
