@@ -86,9 +86,17 @@
    <div  class="SubirQR " name="estacionamientoqr">
     <p class="sq">SubirQR</p>
  
-        <input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
-        <label for="foto" class="butQR button"><p> Agregar</p></label>
-    
+        <input  class="foto " id="fot" name="foto" type="file" onchange="cambio(event);" accept=".jpg, .png, .jpeg" >
+        <label for="fot" class="butQR button" id="butqr"><p> Agregar</p></label>
+        
+         <label for="fot" id="labelqr" class="labelqr">
+            <img src=" " class="imagenqr" id="Modific_image" alt="">
+            <img src="{{asset('/dash/assets/Lapiz.png')}}" 
+             alt="" class="editar" id="editar" >
+            </label>
+        
+
+
     </div>
 </div>
 
@@ -116,6 +124,7 @@
 </form>
 <script src="{{asset('/dash/scripts/parqueo.js')}}"> </script> 
 @endsection
+
 
 
 

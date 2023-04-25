@@ -33,7 +33,7 @@
 
             @yield('forminicio')
 
-        <div class="fondo">
+        <div class="fondo" id="fondo">
      
             @yield('contenido')
   

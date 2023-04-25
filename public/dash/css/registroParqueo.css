@@ -126,3 +126,22 @@ display: none;
     input[type=number]::-webkit-inner-spin-button {
         -webkit-appearance: none;
       }
+
+
+ .imagenqr{
+ 
+  width: 150px;
+  height:150px ;
+
+
+ }   
+ .editar{
+
+  cursor: pointer;
+  position: absolute;
+  } 
+
+  .labelqr{
+
+    display: none;
+  }
