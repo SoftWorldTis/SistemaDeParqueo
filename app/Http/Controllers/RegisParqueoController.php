@@ -17,7 +17,7 @@ class RegisParqueoController extends Controller
     }
     public function store(Request $request){
         $request-> validate([
-          'estacionamientozona'=> ['required','min:5','max:50', new superior],
+          'estacionamientozona'=> ['required','min:5','max:25', new superior],
           'estacionamientocorreo'=> ['required','email','min:13','max:64', new superior], 
           'estacionamientohoraCierre'=> ['required',
             function ($attribute, $value, $fail) use ($request) {
@@ -26,7 +26,7 @@ class RegisParqueoController extends Controller
           'estacionamientotelefono' =>  ['required',new telefono ], 
           'estacionamientositioAdministrador'=>['required','numeric','min:10','max:200'],
           'estacionamientositioDocente'=>['required','numeric','min:10','max:200'],
-          'estacionamientoprecio'=>['required','numeric','min:10','max:200']
+          'estacionamientoprecio'=>['required','numeric','min:1','max:200']
         ]);
 
         $estacionamiento =new estacionamiento();

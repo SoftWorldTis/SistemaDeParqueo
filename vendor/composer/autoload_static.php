@@ -586,6 +586,7 @@ class ComposerStaticInitfbed60135272c58f0b49b86f2363ea13
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\GuardiaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GuardiaRequest.php',
         'App\\Models\\Parqueo' => __DIR__ . '/../..' . '/app/Models/Parqueo.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\estacionamiento' => __DIR__ . '/../..' . '/app/Models/estacionamiento.php',

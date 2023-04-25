@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\GuardiaRequest' => $baseDir . '/app/Http/Requests/GuardiaRequest.php',
     'App\\Models\\Parqueo' => $baseDir . '/app/Models/Parqueo.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\estacionamiento' => $baseDir . '/app/Models/estacionamiento.php',
