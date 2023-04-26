@@ -1,4 +1,5 @@
 .tit{
+  margin-top: 10px;
     text-align: center;
   }
   .tit p{
@@ -7,18 +8,7 @@
   }
 
 
-  .button{
-      width:221px ;
-      height:69px ;
-  background-color: #0A1C44;
-  }
-  .button p{
-
-      text-align: center;
-      font-size: 30px;
-     }
-     /* fila 1 inicio
-     */
+ 
      .carro1{
         justify-items: center;
         display:grid;
@@ -262,4 +252,15 @@
 p::after {
   content: attr(data-lastchar);
   color: red;
+}
+
+
+.oculto{
+
+  display: none;
+}
+.editar{
+
+cursor: pointer;
+
 }

@@ -29,7 +29,7 @@ class ClienteController extends Controller
         $cliente -> clientefechanac= $request->input('clientefechanac');
         $cliente -> clientecorreo= $request->input('clientecorreo');
         $cliente-> save();
-        usleep(5000000);
+ 
 
         $vehiculo =new vehiculo();
         $vehiculo -> vehiculomodelo= $request->input('vehiculomodelo');
