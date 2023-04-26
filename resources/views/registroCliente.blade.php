@@ -22,51 +22,78 @@
             
             <div class ="NombreAp">
                 <p class="nom">Nombre y Apellidos</p>
-                <input type="text" class="linea" name="clientenombrecompleto"  >
+                <input type="text" class="linea" name="clientenombrecompleto" value="{{old('clientenombrecompleto')}}" >
+                @error('clientenombrecompleto')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
-            
+        
             <div class ="Ci">
                 <p class="nom">CI</p>
-                <input type="text" class="linea" name="clienteci"  >
+                <input type="text" class="linea" name="clienteci" value="{{old('clienteci')}}" >
+                @error('clienteci')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
+
         </div>
         
         <div class="fila2">
             
             <div  class="nacimiento">
                 <p class="nom">Fecha de Nacimiento</p>
-                <input type="date" class="linea" class="fecha"  name="clientefechanac" >
-                @error('fechaNacimiento')
-                <br>
-                <span style="color: red" style="font-size: 25px">{{$message}}</span>
+                <input type="date" class="linea" class="fecha"  name="clientefechanac" value="{{old('clientefechanac')}}" >
+                @error('clientefechanac')
+                    <div class="error">
+                        {{$message}}
+                    </div>
                 @enderror
             </div>
             <div class="sis">
                 <p class="nom">Codigo Sis</p>
-                <input type="text" class="linea" name="clientesis">
+                <input type="text" class="linea" name="clientesis" value="{{old('clientesis')}}" >
                 <br>
+                @error('clientesis')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
         </div>
         <div class="fila3">
             <div class="Correo">
                 <p class="nom">Correo Electronico</p>
-                <input type="text" class="linea" name="clientecorreo"  >
+                <input type="text" class="linea" name="clientecorreo" value="{{old('clientecorreo')}}"  >
+                @error('clientecorreo')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
             
             <div class="carro1">
-                <p class="nom" id="veh1">Vehiculo 1</p>
+                <p class="nom" id="veh1">Vehículo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
                 <div class=" oculto" id="oculto">
-                 <input type="text" class="linea"  id="vinput">
+                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('clienteV1')}}" >
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
+                @error('clienteV1')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
             
         </div>
         
         <div class="fila4">
             <div class="carro1">
-                <p class="nom" id="veh2">Vehiculo 2</p>
+                <p class="nom" id="veh2">Vehículo 2</p>
                
                 <input type="button" value="Agregar" class="botonAgregar" name="carro1" id="mostrar-ventana-emergente2">
                 <div class=" oculto" id="oculto2">
@@ -76,7 +103,7 @@
             
             </div>
             <div class="carro1">
-                <p class="nom" id="veh3">Vehiculo 3</p>
+                <p class="nom" id="veh3">Vehículo 3</p>
                 <input type="button" value="Agregar" class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente3" >
                 <div class=" oculto" id="oculto3">
                     <input type="text" class="linea"  id="vinput3">
@@ -294,6 +321,7 @@
 
 
       </script>
+
     @endsection
     @section('botones')
     

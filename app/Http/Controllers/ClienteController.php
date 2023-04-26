@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\cliente;
 use App\Models\vehiculo;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClienteRequest;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -15,7 +16,7 @@ class ClienteController extends Controller
     
         }
 
-     public function store(Request $request){  
+     public function store(ClienteRequest $request){  
         
        
      
