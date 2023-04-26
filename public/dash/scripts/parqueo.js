@@ -18,7 +18,7 @@ function lettersOnly(input){
 
 
   document.addEventListener("DOMContentLoaded", function() {
-    const $seleccionArchivos = document.querySelector("#fot"),
+    const $seleccionArchivos = document.querySelector("#inputImage"),
       $imagenPrevisualizacion = document.querySelector("#Modific_image");
   
     // Escuchar cuando cambie
