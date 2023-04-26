@@ -10,8 +10,9 @@
 
  
      .carro1{
-        justify-items: center;
-        display:grid;
+ 
+      text-align: center;
+
        
        }
      .botonAgregar{
@@ -39,7 +40,7 @@
       display:grid;
      }
     .cabeza{
-      gap: 150px;
+      gap: 200px;
       grid-template-columns: 1fr 1fr;
       justify-items: center;
       display: grid;
@@ -102,6 +103,7 @@
       "fila3"
       "fila4"
       ;
+      text-align: center;
     }
     /*
      cambios en el fondo para centrar
@@ -256,11 +258,11 @@ p::after {
 
 
 .oculto{
+   display: none;
 
-  display: none;
 }
 .editar{
 
 cursor: pointer;
-
+position: absolute;
 }

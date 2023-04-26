@@ -32,7 +32,7 @@
     <!-- header   -->
 
        <!-- contenido  -->
-       <div class="fondo">
+       <div class="fondo" id="fondo">
      
         @yield('contenido')
 
@@ -45,6 +45,9 @@
          
 
            </footer>
+
+
+           @yield('scripts')
            <script>
 
             function Resize()

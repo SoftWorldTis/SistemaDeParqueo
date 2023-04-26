@@ -89,9 +89,15 @@
         <!--<input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
         <label for="foto" class="butQR button"><p> Agregar</p></label>-->
 
-        <label class="form-label" for="inputImage">Select Image:</label>
-        <input type="file" name="estacionamientoimagen" id="inputImage"class="form-control">
-    
+        <label class="form-label butQR button" id="butqr" for="inputImage">Select Image:</label>
+        <input type="file" name="estacionamientoimagen" id="inputImage"class="form-control
+        foto" onchange="cambio(event);">
+       
+        <label for="inputImage" id="labelqr" class="labelqr">
+            <img src=" " class="imagenqr" id="Modific_image" alt="">
+            <img src="{{asset('/dash/assets/Lapiz.png')}}" 
+             alt="" class="editar" id="editar" >
+            </label>
     </div>
 </div>
 
@@ -119,6 +125,7 @@
 </form>
 <script src="{{asset('/dash/scripts/parqueo.js')}}"> </script> 
 @endsection
+
 
 
 

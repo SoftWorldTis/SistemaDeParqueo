@@ -54,11 +54,11 @@
             </div>
             
             <div class="carro1">
-                <p class="nom">Vehiculo 1</p>
+                <p class="nom" id="veh1">Vehiculo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
-                <div class=" oculto">
-                 <input type="text" value ="Agregar"class="linea" name="carro1" >
-                 <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar">
+                <div class=" oculto" id="oculto">
+                 <input type="text" class="linea"  id="vinput">
+                 <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
             </div>
             
@@ -66,12 +66,22 @@
         
         <div class="fila4">
             <div class="carro1">
-                <p class="nom">Vehiculo 2</p>
+                <p class="nom" id="veh2">Vehiculo 2</p>
+               
                 <input type="button" value="Agregar" class="botonAgregar" name="carro1" id="mostrar-ventana-emergente2">
+                <div class=" oculto" id="oculto2">
+                    <input type="text" class="linea"  id="vinput2">
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar2" >
+                </div>
+            
             </div>
             <div class="carro1">
-                <p class="nom">Vehiculo 3</p>
+                <p class="nom" id="veh3">Vehiculo 3</p>
                 <input type="button" value="Agregar" class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente3" >
+                <div class=" oculto" id="oculto3">
+                    <input type="text" class="linea"  id="vinput3">
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar3" >
+                </div>
             </div>
         </div>
 
@@ -91,7 +101,7 @@
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3"id="Vplaca" name="vehiculoplaca">
+                <input type="text" class="linea3"id="vplaca" name="vehiculoplaca">
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -127,7 +137,7 @@
             </div>
             <div class="Placa2 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3"id="Vplaca2" name="vehiculoplaca2">
+                <input type="text" class="linea3"id="vplaca2" name="vehiculoplaca2">
             </div>
             <div class="descripcion2 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -161,7 +171,7 @@
             </div>
             <div class="Placa3 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class=" Vplaca linea3" id="Vplaca3"name="vehiculoplaca3">
+                <input type="text" class=" vplaca linea3" id="vplaca3"name="vehiculoplaca3">
             </div>
             <div class="descripcion3 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -187,15 +197,18 @@
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('mi-ventana-emergente');
         var guardar = document.getElementById('guardar-modal');
+       
 
 
         var mostrarVentana2 = document.getElementById('mostrar-ventana-emergente2');
+        var editar2 = document.getElementById('editar2');
         var cerrarVentana2 = document.getElementById('cerrar-ventana2');
         var ventanaEmergente2 = document.getElementById('mi-ventana-emergente2');
         var guardar2 = document.getElementById('guardar-modal2');
 
 
         var mostrarVentana3 = document.getElementById('mostrar-ventana-emergente3');
+        var editar3 = document.getElementById('editar3');
         var cerrarVentana3 = document.getElementById('cerrar-ventana3');
         var ventanaEmergente3 = document.getElementById('mi-ventana-emergente3');
         var guardar3 = document.getElementById('guardar-modal3');
@@ -223,6 +236,11 @@
       ventanaEmergente2.style.display = "block";
 
     };
+    editar2.onclick = function() {
+      
+      ventanaEmergente2.style.display = "block";
+
+    };
     
     cerrarVentana2.onclick = function() {
 
@@ -234,6 +252,11 @@
       ventanaEmergente3.style.display = "block";
 
     };
+    editar3.onclick = function() {
+      
+      ventanaEmergente3.style.display = "block";
+
+    };
     
     cerrarVentana3.onclick = function() {
 
@@ -241,21 +264,31 @@
     };
 
 
-guardar.onclick = function() {
-    var vplaca=document.getElementById("Vplaca").value;
-document.getElementById("editar").value= vplaca;
-ventanaEmergente.style.display = "none";
+        guardar.onclick = function() {
+            document.getElementById('veh1').style.marginBottom="18px";
+            document.getElementById('vinput').value=document.getElementById('vplaca').value;
+            document.getElementById('oculto').style.display="block";
+            ventanaEmergente.style.display = "none";
+            mostrarVentana.style.display="none";
+
 
  
-};
-guardar2.onclick = function() {
+        };
+        guardar2.onclick = function() {
+            document.getElementById('veh2').style.marginBottom="18px";
+            document.getElementById('vinput2').value=document.getElementById('vplaca2').value;
+            document.getElementById('oculto2').style.display="block";
+            ventanaEmergente2.style.display = "none";
+            mostrarVentana2.style.display="none";
+        };
 
-ventanaEmergente2.style.display = "none";
-};
-guardar3.onclick = function() {
-
-ventanaEmergente3.style.display = "none";
-};
+        guardar3.onclick = function() {
+            document.getElementById('veh3').style.marginBottom="18px";
+            document.getElementById('vinput3').value=document.getElementById('vplaca3').value;
+            document.getElementById('oculto3').style.display="block";
+            ventanaEmergente3.style.display = "none";
+            mostrarVentana3.style.display="none";
+        };
 
 
 
