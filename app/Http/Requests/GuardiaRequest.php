@@ -46,7 +46,7 @@ class GuardiaRequest extends FormRequest
             'guardiaci.required' => 'El campo CI es obligatorio',
             'guardiaci.max' => 'El campo CI admite máximo 10 dígitos',
             'guardiaci.min' => 'El campo CI admite minímo 6 dígitos',
-            'guardiaci.min' => 'El campo CI ya fue registrado',
+            'guardiaci.unique' => 'El campo CI ya fue registrado',
             'guardiahoraentrada.required' => 'El campo Hora de entrada es obligatorio',
             'guardiahorasalida.required' => 'El campo Horario es obligatorio'
         ];

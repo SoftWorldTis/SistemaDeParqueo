@@ -76,6 +76,14 @@
                 </label>
             </div>
         </div>
+        <div class="fila">
+            <div class="rad">
+                @foreach ($parqueo as $parqueos)
+                <img src="{{asset('images/'.$parqueos->estacionamientoImg)}}" alt="" width="150" height="150">
+                @endforeach
+            </div>
+        </div>
+            
     </div>
     <div id="miEmergente" class="emergente">
         <div class="ordenar">

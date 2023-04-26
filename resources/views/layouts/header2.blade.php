@@ -18,7 +18,7 @@
                 <p>Registrar</p>
            </div>
            </a>
-           <a id="link" href="{{('/lobby/Alquilar')}}">  
+           <a id="link" href="{{('/lobby/Alquiler')}}">  
            <div class="alquilar">
             <img src="{{asset('/dash/assets/alquiloNav.png')}}" alt="" class="">
             <p>Alquilar</p>

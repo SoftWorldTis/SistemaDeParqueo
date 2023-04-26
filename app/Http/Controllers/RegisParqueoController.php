@@ -16,9 +16,11 @@ class RegisParqueoController extends Controller
 
     }
     public function store(Request $request){
+      //dd($request);
+
         $request-> validate([
-          'estacionamientozona'=> ['required','min:5','max:25', new superior],
-          'estacionamientocorreo'=> ['required','email','min:13','max:64', new superior], 
+          'estacionamientozona'=> ['required','min:3','max:25', new superior],
+          'estacionamientocorreo'=> ['required','email','min:10','max:25', new superior], 
           'estacionamientohoraCierre'=> ['required',
             function ($attribute, $value, $fail) use ($request) {
                 if ($value < $request['estacionamientohoraInicio']) {
@@ -26,8 +28,12 @@ class RegisParqueoController extends Controller
           'estacionamientotelefono' =>  ['required',new telefono ], 
           'estacionamientositioAdministrador'=>['required','numeric','min:10','max:200'],
           'estacionamientositioDocente'=>['required','numeric','min:10','max:200'],
-          'estacionamientoprecio'=>['required','numeric','min:1','max:200']
+          'estacionamientoprecio'=>['required','numeric','min:1','max:200'],
+          'estacionamientoimagen' => ['required','image','mimes:jpeg,png,jpg','max:2048'],
         ]);
+      
+        $imageName = time().'.'.$request->estacinamientoimagen->extension();  
+        $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
 
         $estacionamiento =new estacionamiento();
         $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
@@ -40,7 +46,8 @@ class RegisParqueoController extends Controller
         $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
         $estacionamiento -> estacionamientositioAdministrador= $request->input('estacionamientositioAdministrador');
         $estacionamiento -> estacionamientositioDocente= $request->input('estacionamientositioDocente');
-        
+        $estacionamiento -> estacionamientoImg= $imageName;
+
         $estacionamiento -> save();
         return view('registroParqueo');
         

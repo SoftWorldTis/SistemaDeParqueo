@@ -8,7 +8,7 @@
 @endsection
 
 @section('forminicio')
-<form action="/lobby/RegistroParqueos" method="post">
+<form action="/lobby/RegistroParqueos" method="post" enctype="multipart/form-data">
     @csrf
 
 @endsection
@@ -86,8 +86,11 @@
    <div  class="SubirQR " name="estacionamientoqr">
     <p class="sq">SubirQR</p>
  
-        <input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
-        <label for="foto" class="butQR button"><p> Agregar</p></label>
+        <!--<input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
+        <label for="foto" class="butQR button"><p> Agregar</p></label>-->
+
+        <label class="form-label" for="inputImage">Select Image:</label>
+        <input type="file" name="estacionamientoimagen" id="inputImage"class="form-control">
     
     </div>
 </div>

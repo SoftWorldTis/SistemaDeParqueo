@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 class facturaController extends Controller
 {
     
    public function index (){
    
-    $parqueo = \DB::table('estacionamiento')
+    $parqueo = DB::table('estacionamiento')
     ->select('estacionamiento.*')->orderBy('estacionamiento.estacionamientoid','DESC')->get();
         return view('registraralquiler')->with('parqueo',$parqueo);
     }
