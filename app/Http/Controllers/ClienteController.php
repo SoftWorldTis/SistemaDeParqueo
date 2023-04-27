@@ -17,7 +17,6 @@ class ClienteController extends Controller
         }
 
      public function store(ClienteRequest $request){  
-        
        
      
      

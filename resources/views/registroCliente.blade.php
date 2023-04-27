@@ -79,14 +79,16 @@
                 <p class="nom" id="veh1">Vehículo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
                 <div class=" oculto" id="oculto">
-                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('clienteV1')}}" >
+                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vinput')}}" >
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}
-                    </div>
+                    </div> 
                 @enderror
+                
+                
             </div>
             
         </div>
@@ -124,25 +126,31 @@
 
             <div class="Modelo inputmodal">
                 <p class="nom2" data-lastchar="*" >Modelo  </p>
-                <input type="text" class="linea3" name="vehiculomodelo"  >
+                <input type="text" class="linea3" name="vehiculomodelo" id="vehiculomodelo1" >
+                <div id="messageM" class="error" hidden>
+                    Introduzca solo letras. Máximo 20 caracteres.
+                </div>
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
                 <input type="text" class="linea3"id="vplaca" name="vehiculoplaca">
+                <div id="messageP" class="error" hidden>
+                    Introduzca solo letras y/o números. Máximo 8 caracteres.
+                </div>
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
                 <input type="text" class="linea3" name="vehiculodescripcion"  >
             </div>
             <button id="cerrar-ventana">Cerrar ventana emergente</button>
+           
         </div>
-      
-            <button type="button" id="guardar-modal" class="guardar button guardar-modal">
+        <button type="button" id="guardar-modal" class="guardar button guardar-modal">
         
-                <p>Guardar</p>
+            <p>Guardar</p>
+        
+        </button>   
             
-            </button>   
-       
          </div>      
     </div>
     </div>
@@ -160,11 +168,17 @@
 
             <div class="Modelo2 inputmodal">
                 <p class="nom2" data-lastchar="*">Modelo  </p>
-                <input type="text" class="linea3" name="vehiculomodelo2"  >
+                <input type="text" class="linea3" name="vehiculomodelo2"  id="vehiculomodelo2">
+                <div id="messageM" class="error" hidden>
+                    Introduzca solo letras. Máximo 20 caracteres.
+                </div>
             </div>
             <div class="Placa2 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
                 <input type="text" class="linea3"id="vplaca2" name="vehiculoplaca2">
+                <div id="messageP" class="error" hidden>
+                    Introduzca solo letras y/o números. Máximo 8 caracteres.
+                </div>
             </div>
             <div class="descripcion2 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -194,11 +208,17 @@
 
             <div class="Modelo3 inputmodal">
                 <p class="nom2" data-lastchar="*">Modelo  </p>
-                <input type="text" class="linea3" name="vehiculomodelo3"  >
+                <input type="text" class="linea3" name="vehiculomodelo3"  id="vehiculomodelo3">
+                <div id="messageM" class="error" hidden>
+                    Introduzca solo letras. Máximo 20 caracteres.
+                </div>
             </div>
             <div class="Placa3 inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
                 <input type="text" class=" vplaca linea3" id="vplaca3"name="vehiculoplaca3">
+                <div id="messageP" class="error" hidden>
+                    Introduzca solo letras y/o números. Máximo 8 caracteres.
+                </div>
             </div>
             <div class="descripcion3 inputmodal">
                 <p class="nom2" >Descripción</p>
@@ -292,34 +312,128 @@
 
 
         guardar.onclick = function() {
-            document.getElementById('veh1').style.marginBottom="18px";
-            document.getElementById('vinput').value=document.getElementById('vplaca').value;
-            document.getElementById('oculto').style.display="block";
-            ventanaEmergente.style.display = "none";
-            mostrarVentana.style.display="none";
+            
+            const modelo = document.getElementById('vehiculomodelo1')
+            const placa = document.getElementById('vplaca')
+            const validandoM = validarLetras(modelo)
+            const validandoP = validarLetrasNum(placa)
 
-
- 
+            if(validandoM && validandoP){
+                
+                document.getElementById('veh1').style.marginBottom="18px";
+                document.getElementById('vinput').value=document.getElementById('vplaca').value;
+                document.getElementById('oculto').style.display="block";
+                ventanaEmergente.style.display = "none";
+                mostrarVentana.style.display="none";
+            }else{
+                mostrarVentana.style.display="block";
+            }
         };
+
         guardar2.onclick = function() {
+            const modelo = document.getElementById('vehiculomodelo2')
+            const placa = document.getElementById('vplaca2')
+            const validandoM = validarLetras(modelo)
+            const validandoP = validarLetrasNum(placa)
+            if(validandoM && validandoP){
             document.getElementById('veh2').style.marginBottom="18px";
             document.getElementById('vinput2').value=document.getElementById('vplaca2').value;
             document.getElementById('oculto2').style.display="block";
             ventanaEmergente2.style.display = "none";
             mostrarVentana2.style.display="none";
+            }else{
+                mostrarVentana2.style.display="block";
+            }
         };
 
         guardar3.onclick = function() {
+            const modelo = document.getElementById('vehiculomodelo3')
+            const placa = document.getElementById('vplaca3')
+            const validandoM = validarLetras(modelo)
+            const validandoP = validarLetrasNum(placa)
+
+            if(validandoM && validandoP){
             document.getElementById('veh3').style.marginBottom="18px";
             document.getElementById('vinput3').value=document.getElementById('vplaca3').value;
             document.getElementById('oculto3').style.display="block";
             ventanaEmergente3.style.display = "none";
             mostrarVentana3.style.display="none";
+            }else{
+                mostrarVentana3.style.display="block";
+            }
         };
 
 
 
 
+      </script>
+
+      <script>
+        function validarLetras(input) {
+        let isValid = false;
+        const message = document.getElementById('messageM');
+        input.willValidate = false;
+        const maximo = 20;
+        const pattern = new RegExp('^[A-Z]+$', 'i');
+
+        if(!input.value) {
+            isValid = false;
+        } else {
+            if(input.value.length > maximo) {
+            isValid = false;
+            } else {
+            if(!pattern.test(input.value)){ 
+                isValid = false;
+            } else {
+                isValid = true;
+            }
+            }
+        }
+
+        if(!isValid) {
+            message.hidden = false;
+        } else {
+            message.hidden = true;
+        }
+
+        return isValid;
+        }
+      </script>
+
+      <script>
+        function validarLetrasNum(input) {
+        let isValid = false;
+        const message = document.getElementById('messageP');
+        input.willValidate = false;
+        const maximo = 8;
+        const pattern = new RegExp('^[A-Z 0-9]+$' ,'i');
+
+        if(!input.value) {
+            isValid = false;
+        } else {
+            if(input.value.length > maximo) {
+            isValid = false;
+            } else {
+            if(!pattern.test(input.value)){ 
+                isValid = false;
+            } else {
+                isValid = true;
+            }
+            }
+        }
+
+        if(!isValid) {
+            message.hidden = false;
+        } else {
+            message.hidden = true;
+        }
+
+        return isValid;
+        }
+
+        function prueba(){
+            console.log("existe valor antiguo")
+        }
       </script>
 
     @endsection

@@ -25,7 +25,7 @@ class ClienteRequest extends FormRequest
     {
         return [
             'clientenombrecompleto' => 'required|regex:/^[\pL\s\-]+$/u|min:10|max:40',
-            'clienteci' => 'required|numeric|min:100000|max:9999999999',
+            'clienteci' => 'required|numeric|min:100000|max:9999999999||unique:App\Models\cliente,clienteci',
             'clientefechanac' => 'required|date',
             'clientesis' => 'required|numeric|min:120000000|max:999999999|',
             'clientecorreo' => 'required|email|min:10|max:40',
