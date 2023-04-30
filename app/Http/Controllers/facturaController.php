@@ -13,16 +13,33 @@ class facturaController extends Controller
    
     $parqueo = DB::table('estacionamiento')
     ->select('estacionamiento.*')->orderBy('estacionamiento.estacionamientoid','DESC')->get();
-        return view('registraralquiler')->with('parqueo',$parqueo);
-    }
+    $clientes = DB::select("
+    SELECT c.clientenombrecompleto,  c.clientesis, c.clienteci,
+    MAX(CASE WHEN row_num = 1 THEN v.vehiculoplaca END) AS vehiculo1,
+    MAX(CASE WHEN row_num = 2 THEN v.vehiculoplaca END) AS vehiculo2,
+    MAX(CASE WHEN row_num = 3 THEN v.vehiculoplaca END) AS vehiculo3
+    FROM cliente c
+    JOIN (
+    SELECT cliente_clienteci, vehiculoplaca,
+    ROW_NUMBER() OVER(PARTITION BY cliente_clienteci ORDER BY vehiculoplaca) AS row_num
+    FROM vehiculo
+    ) v
+    ON c.clienteci = v.cliente_clienteci
+    GROUP BY c.clienteci, c.clientesis;
+    ");
+
+
+        return view('registraralquiler')->with('parqueo',$parqueo)->with('clientes',$clientes);
+    
+    
     /*
     public function pdf1 ($informacion){
 
         $pdf = PDF::loadView('pdf',['informacion' =>$informacion]);
         $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
+        */
     }
-*/
     public function store(Request $request){
       
         $request->validate([
