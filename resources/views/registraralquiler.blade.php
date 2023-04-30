@@ -23,13 +23,19 @@
             
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
-                <input class="botonAgregar" class="agregarP"type="button" name="parqueo" value="Agregar" id="mostrarEmergente" onclick="">
+                <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
+                <div class=" oculto" id="oculto">
+                    <!-- input donde sacar el dato de parqueo-->
+                    <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{old('parqueodatos')}}" readonly >
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                </div>
             </div>
-            
+          
+     
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
-                <input class="botonAgregar" class="agregarU" type="button" value="Agregar" name="nombre" onclick="">
+                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" onclick="">
             </div>
         </div>
         
@@ -108,7 +114,7 @@
                 <input  type="text" class="linea"  placeholder="Escriba una zona" >
                 <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
             </div>
-            <table class="tabla">
+            <table class="tabla hoverable"  >
                 <thead>
                   <tr >
                     <th class="grillatit">Número</th>
@@ -120,7 +126,7 @@
                 </thead>
                 <tbody>
                     @foreach ( $parqueo as $parqueos )    
-                  <tr id="id=fila-{{$loop->iteration}} ">
+                  <tr class="table-row" id="id=fila-{{$loop->iteration}} ">
                     <td>{{$parqueos->estacionamientoid}}</td>
                     <td>{{$parqueos->estacionamientozona}}</td>
                     <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
@@ -152,6 +158,35 @@
           
         };
       </script>
+<script>
+
+    //scrip para seleccionar de la tabla y guardarlo de parqueo y cambiarlo x texto
+   editar.onclick = function() {
+      
+      ventanaEmergente.style.display = "block";
+
+    };
+
+    $(document).ready(function() {
+      $(".table-row").mouseover(function() {
+        $(this).addClass("highlight");
+      });
+      
+      $(".table-row").mouseout(function() {
+        $(this).removeClass("highlight");
+      });
+      
+      $(".table-row").click(function() {
+        var fila_id = $(this).attr("id");
+        var dato_id = fila_id.split("-")[1];
+        var value = $(this).find("td:nth-child(2)").text();
+        $("#parqueodatos").val(value);
+        document.getElementById('miEmergente').style.display = "none";
+        document.getElementById('mostrarEmergente').style.display = "none";
+        document.getElementById('oculto').style.display="block";
+      });
+    });
+  </script>
     @endsection
     @section('botones')
     
@@ -173,3 +208,4 @@
     </div>
    </form>
    @endsection
+
