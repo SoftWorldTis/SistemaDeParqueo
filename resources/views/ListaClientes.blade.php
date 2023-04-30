@@ -25,8 +25,8 @@
    
     </div>
 
-    <div  class="ParAb">
-        <table class="tablaCli">
+    <div  class="ParAb" style="height: 427px; overflow: auto;" >
+        <table class="tablaCli" >
             <thead class="tablaTitulos">
               <tr>
                 <th>Numero</th>
@@ -40,90 +40,23 @@
               </tr>
             </thead>
             <tbody class="tablaContenido">
-              
-              <tr>
-                <td>32</td>
-                <td>María</td>
-                <td>Argentina</td>
-                <td>Argentina</td>
-                <td>Argentina</td>
-                <td>Argentina</td>
-                <td>Argentina</td>
+              @foreach ( $clientes as $key => $clientess)    
+             
+              <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                <td>{{ $key + 1 }}</td>
+                <td>{{$clientess->clientenombrecompleto}}</td>
+                <td>{{$clientess->clienteci}}</td>
+                <td>{{$clientess->clientesis}}</td>
+                <td>{{$clientess->vehiculo1}}</td>
+                <td>{{$clientess->vehiculo2}}</td>
+                <td>{{$clientess->vehiculo3}}</td>
                 <td>
                     <a href="">Editar</a>
                     <a href="">Eliminar</a>
                 </td>
 
               </tr>
-              <tr>
-                <td>19</td>
-                <td>Pedro</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>19</td>
-                <td>Pedro</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>19</td>
-                <td>Pedro</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>19</td>
-                <td>Pedro</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>19</td>
-                <td>Pedro</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>Colombia</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
         </table>
 

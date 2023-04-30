@@ -103,8 +103,9 @@
         font-family: 'Inter', sans-serif;
         font-style: normal;
         font-size: 24px;
-        height: 428px;
+
         text-align: center;
+
     }
 
     .tablaTitulos{
@@ -117,6 +118,7 @@
     .tablaContenido{
         color: #0A1C44;
         font-weight: lighter;
+
         
     }
     .tablaContenido a{
