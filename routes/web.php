@@ -5,6 +5,8 @@ use App\Http\Controllers\facturaController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DeudasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +57,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
+
+    Route::resource("/ReporteDeudas",DeudasController::class);
 });
 
 

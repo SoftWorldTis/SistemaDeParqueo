@@ -1,0 +1,120 @@
+.titulo p{
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    font-size: 38px;
+    padding-top: 18px;
+}
+
+.subTit p{
+    text-align: center;
+    color: black;
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fila{
+  
+    grid-template-columns: 1fr 1fr;
+    justify-items:  flex-end;
+    display: grid;
+    margin: 30px;
+}
+
+.buscador{
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+}
+
+.linea{
+
+    width: 394.44px;
+    height: 36px;
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 30px;
+   
+   
+}
+.btnExportar{
+    border-radius: 20px;
+    width:180px ;
+    height:58px ;
+    background-color: #0A1C44;
+    margin-top: 4px ;
+    margin-bottom: 3px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #E4EAEA;
+    font-weight: bold;
+    cursor:pointer;
+
+}
+
+
+
+.tabla{
+    width: 1.em;
+    border-collapse: collapse;
+    margin: 30px;
+    font-size: 24px;
+}
+.tabla a{
+    text-decoration: none;
+}
+
+.lupa{
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #0A1C44;
+    
+  }
+
+  .imagenlupa{
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+  }
+
+  .grillatit{
+    background-color: #0A1C44;
+    color: rgba(255, 255, 255, 0.879);
+    font-family: 'Inter', sans-serif;
+  font-style: normal;
+ 
+  }
+
+  .tabla th{
+    width: 225px;
+    height: 50px;
+  }
+
+  td{
+    height: 40px;
+    width: 30px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    -webkit-text-stroke: 1fr;
+    border-bottom:1px solid #cdcdcd;
+  }
+
+  table tr:hover {
+    background-color: rgb(205, 205, 205);
+  }
+  
