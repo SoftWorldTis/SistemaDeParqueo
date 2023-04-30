@@ -11,7 +11,7 @@
         .titulo{
             text-align: center;
             font-size: 2rem;
-            color: #0A1C44;
+            color: #5d0000;
         }
     </style>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,9 +19,9 @@
 </head>
 <body>
     <div class="titulo">
-        <h1>Lista de Deudas</h1>
+        <h3>Lista de Deudas</h3>
     </div>
-    <table class="tabla">
+    <table style="width: 100%;">
         <thead>
           <tr >
             <th class="grillatit">Número</th>
@@ -29,7 +29,6 @@
             <th class="grillatit">CI</th>
             <th class="grillatit">Fecha Alquiler</th>
             <th class="grillatit">Deuda</th>
-            <th class="grillatit">Opciones</th>
           </tr>
         </thead>
         <tbody>  
@@ -38,7 +37,7 @@
                     <td>1</td>
                     <td>{{$deuda->cliente_clienteci}}</td>
                     <td>{{$deuda->cliente_clienteci}}</td>
-                    <td>{{$deuda->alquilerfecha}}/td>
+                    <td>{{$deuda->alquilerfecha}}</td>
                     <td>{{$deuda->alquilerprecio}}</td>
                 </tr>
             @endforeach

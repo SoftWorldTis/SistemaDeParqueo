@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\alquiler;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DeudasController extends Controller
 {
@@ -29,5 +30,16 @@ class DeudasController extends Controller
          //->where('clienteci','=',$consulta)
          ->get();
          return view('listaDeudas',compact('deudas','consulta'));
+    }
+
+    public function show(){
+        $deudas= alquiler::join('cliente','cliente_clienteci', '=' ,'clienteci')
+        ->select('*')
+        ->where('alquilerestadopago', '=', false)
+        ->get();
+        $data=compact('deudas');
+        $pdf = Pdf::loadView('ReportesPDF.reporteDeudas', $data);
+        return $pdf->stream();
+    
     }
 }

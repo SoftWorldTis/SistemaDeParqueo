@@ -24,7 +24,10 @@
             
             
             <div class="exportar">
-                <button class="btnExportar">Exportar</button>
+                
+                <a href="/lobby/ReporteDeudas/imprimir">
+                    <button class="btnExportar">Exportar</button>
+                </a>
             </div>
         </div>
         
