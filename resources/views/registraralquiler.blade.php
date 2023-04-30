@@ -35,7 +35,7 @@
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
-                <input class="botonAgregar" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
+                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
             </div>
         </div>
         

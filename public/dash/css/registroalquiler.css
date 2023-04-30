@@ -238,7 +238,7 @@
           border-collapse: collapse;
           margin-left: 40px;
           margin-right: 40px;
-          margin-top: 30px;
+         
          }
          .buscador{
           margin-top: 20px;
@@ -284,7 +284,8 @@
           height: 40px;
           width: 20px;
           position: sticky;
-          top: 30px;
+          top: 0;
+        
         }
         td{
           height: 40px;
@@ -308,15 +309,18 @@
        }
        .table-conteiner{
         max-height: 450px;
+        width:965px ;
+        margin-top: 30px;
         overflow: auto;
+        overflow-x: hidden;
+        
        }
        .tabla2{
         border-collapse: collapse;
         width: 900px;
-
         margin-left: 40px;
         margin-right: 40px;
-        margin-top: 30px;
+        
         
        }
        .azul2{
