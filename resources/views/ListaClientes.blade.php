@@ -25,7 +25,7 @@
    
     </div>
 
-    <div  class="ParAb" style="height: 427px; overflow: auto;" >
+    <div  class="ParAb"  >
         <table class="tablaCli" >
             <thead class="tablaTitulos">
               <tr>

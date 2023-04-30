@@ -98,6 +98,12 @@
 
 
 /*parte de abajo      //tabla y datos    */
+
+    .ParAb{
+        height: 427px; 
+        overflow: auto;
+
+    }
     .tablaCli{
         width: 100%;
         font-family: 'Inter', sans-serif;
