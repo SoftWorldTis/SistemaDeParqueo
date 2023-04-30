@@ -114,29 +114,31 @@
                 <input  type="text" class="linea"  placeholder="Escriba una zona" >
                 <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
             </div>
-            <table class="tabla hoverable"  >
-                <thead>
-                  <tr >
-                    <th class="grillatit">Número</th>
-                    <th class="grillatit">Zona</th>
-                    <th class="grillatit">Horario</th>
-                    <th class="grillatit">Capacidad</th>
-                    <th class="grillatit">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ( $parqueo as $parqueos )    
-                  <tr class="table-row" id="id=fila-{{$loop->iteration}} ">
-                    <td>{{$parqueos->estacionamientoid}}</td>
-                    <td>{{$parqueos->estacionamientozona}}</td>
-                    <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
-                    <td>{{$parqueos->estacionamientositioAdministrador}}</td>
-                    <td>{{$parqueos->estacionamientoestado}}</td>
-                </tr>
-                @endforeach
-                  
-                </tbody>
-              </table>
+            <div class="table-conteiner2">
+                <table class="tabla hoverable" class="tabla" >
+                    <thead>
+                        <tr >
+                            <th class="grillatit">Número</th>
+                            <th class="grillatit">Zona</th>
+                            <th class="grillatit">Horario</th>
+                            <th class="grillatit">Capacidad</th>
+                            <th class="grillatit">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ( $parqueo as $parqueos )    
+                        <tr class="table-row" id="id=fila-{{$loop->iteration}} ">
+                            <td>{{$parqueos->estacionamientoid}}</td>
+                            <td>{{$parqueos->estacionamientozona}}</td>
+                            <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
+                            <td>{{$parqueos->estacionamientositioAdministrador}}</td>
+                            <td>{{$parqueos->estacionamientoestado}}</td>
+                        </tr>
+                        @endforeach
+                        
+                    </tbody>
+                </table>
+            </div>
            
         </div>
       </div>
