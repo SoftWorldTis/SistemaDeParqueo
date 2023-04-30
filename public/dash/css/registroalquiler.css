@@ -10,7 +10,7 @@
 
 
 
-       .botonAgregar{
+       .botonAgregarP , .botonAgregarU{
         border-radius: 20px;
         width:221px ;
         height:69px ;
@@ -345,3 +345,20 @@
          display: none;
          border:1px solid #000000;
        }
+       .oculto{
+        display: none;
+     
+     }
+
+     .editar{
+     
+     cursor: pointer;
+     position: absolute;
+     }
+     
+
+      .hoverable tbody tr:hover {
+        background-color: #CDCDCD;
+        cursor: pointer;
+      }
+    
