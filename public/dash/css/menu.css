@@ -10,7 +10,8 @@ body{
 .fondo{
   background-color: #ffff;
   margin-top: 1.56em;
-  margin-left: 14.3%;
+  margin-left: auto;
+  margin-right: auto;
   
  width: 72.9%;
  height: 47.625rem;

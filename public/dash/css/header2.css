@@ -33,21 +33,21 @@ p{
 .nav2 div{
  display: flex;
  flex-direction: column;
- width: 9.8125rem;
+ width: 94%;
  height: 10.625rem;
  
- margin-right: 2.1563rem;
+ margin-right: 6%;
  padding: 0;
  display: grid;
- grid-template-columns: 6.5313rem 2.25rem;
+ grid-template-columns: 35.9% 54.4%;
 }
 .nav2 img{
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 67.53%;
+  height: 5.558vh;
   display: flex;
   margin-top: 3.625rem;
   flex-direction: column;
-  margin-left: 2.1563rem;
+  margin-left: 23.47%;
 }
 .nav2 p{
   text-size-adjust: 1.875rem;
@@ -56,7 +56,7 @@ p{
 }
 .nav2 div:hover{
   background-color: #324265;
-  width: 16.8rem;
+  width: 100%;
 }
 
 

@@ -48,13 +48,7 @@
 
 
            @yield('scripts')
-           <script>
-
-            function Resize()
-                {
-                document.getElementById("body").style.fontSize = document.body.clientWidth/76.8 + 'px';
-                }
-                window.onresize=Resize;</script>
+         
 </body>
 
 
