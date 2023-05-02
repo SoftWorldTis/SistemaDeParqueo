@@ -1,6 +1,5 @@
 body{
-    width: 1920px;
-    height: 1080px;
+
       padding: 0;
       margin: 0;
       background: #DFE0F8;
@@ -11,8 +10,9 @@ body{
  
     background-color: #ffff;
     margin-top: 39px;
-    margin-left: 275px;
-    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 72.918%;
     height: 762px;
 }
   

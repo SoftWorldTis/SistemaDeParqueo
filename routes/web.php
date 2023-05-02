@@ -5,6 +5,7 @@ use App\Http\Controllers\facturaController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ListaClientesController;
 use App\Http\Controllers\DeudasController;
 
 /*
@@ -33,14 +34,18 @@ Route::get('/main/prueba', function () {
 });
 Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/', function () {return view('lobby') ;});
-    Route::get('/navBar2', function (){return  view('iconos'); });
+
     Route::resource('/RegistroParqueos',RegisParqueoController::class );
     Route::resource('/RegistroGuardias',GuardiaController::class );
-
     Route::resource("/RegistroCliente",ClienteController::class);
+    Route::resource("/ListaClientes",ListaClientesController::class);
+
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/RegistroCliente', function () {return view('registroCliente') ;});
+
+    Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
+
     Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
     Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
 

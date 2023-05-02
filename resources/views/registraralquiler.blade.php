@@ -23,13 +23,19 @@
             
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
-                <input class="botonAgregar" class="agregarP"type="button" name="parqueo" value="Agregar" id="mostrarEmergente" onclick="">
+                <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
+                <div class=" oculto" id="oculto">
+                    <!-- input donde sacar el dato de parqueo-->
+                    <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{old('parqueodatos')}}" readonly >
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                </div>
             </div>
-            
+          
+     
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
-                <input class="botonAgregar" class="agregarU" type="button" value="Agregar" name="nombre" onclick="">
+                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
             </div>
         </div>
         
@@ -108,30 +114,80 @@
                 <input  type="text" class="linea"  placeholder="Escriba una zona" >
                 <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
             </div>
-            <table class="tabla">
-                <thead>
-                  <tr >
-                    <th class="grillatit">Número</th>
-                    <th class="grillatit">Zona</th>
-                    <th class="grillatit">Horario</th>
-                    <th class="grillatit">Capacidad</th>
-                    <th class="grillatit">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ( $parqueo as $parqueos )    
-                  <tr id="id=fila-{{$loop->iteration}} ">
-                    <td>{{$parqueos->estacionamientoid}}</td>
-                    <td>{{$parqueos->estacionamientozona}}</td>
-                    <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
-                    <td>{{$parqueos->estacionamientositioAdministrador}}</td>
-                    <td>{{$parqueos->estacionamientoestado}}</td>
-                </tr>
-                @endforeach
-                  
-                </tbody>
-              </table>
+            <div class="table-conteiner2">
+                <table class="tabla hoverable" class="tabla" >
+                    <thead>
+                        <tr >
+                            <th class="grillatit">Número</th>
+                            <th class="grillatit">Zona</th>
+                            <th class="grillatit">Horario</th>
+                            <th class="grillatit">Capacidad</th>
+                            <th class="grillatit">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ( $parqueo as $parqueos )    
+                        <tr class="table-row" id="id=fila-{{$loop->iteration}} ">
+                            <td>{{$parqueos->estacionamientoid}}</td>
+                            <td>{{$parqueos->estacionamientozona}}</td>
+                            <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
+                            <td>{{$parqueos->estacionamientositioAdministrador}}</td>
+                            <td>{{$parqueos->estacionamientoestado}}</td>
+                        </tr>
+                        @endforeach
+                        
+                    </tbody>
+                </table>
+            </div>
            
+        </div>
+      </div>
+      <div id="miEmergente2" class="emergente">
+        <div class="ordenar2">
+
+            <div class="azul2" >
+                 
+            <button type="button" class="destructor2" id="cerrar-ventana2">x</button>
+            </div>
+            <div class="titu">
+                <p>Seleccionar Cliente</p>
+            </div>
+            <div class ="buscador">
+                <input  type="text" class="linea"  placeholder="Escriba una zona" >
+                <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
+            </div>
+            <div class="table-conteiner">
+
+                <table class="tabla2" >
+                    <thead>
+                        <tr>
+                            <th class="grillatit">Numero</th>
+                            <th class="grillatit">Usuario</th>
+                            <th class="grillatit">CI</th>
+                            <th class="grillatit">SIS</th>
+                            <th class="grillatit">Vehiculo 1</th>
+                            <th class="grillatit">Vehiculo 2</th>
+                            <th class="grillatit">Vehiculo 3</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        @foreach ( $clientes as $key => $clientess)    
+                        
+                        <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{$clientess->clientenombrecompleto}}</td>
+                            <td>{{$clientess->clienteci}}</td>
+                            <td>{{$clientess->clientesis}}</td>
+                            <td>{{$clientess->vehiculo1}}</td>
+                            <td>{{$clientess->vehiculo2}}</td>
+                            <td>{{$clientess->vehiculo3}}</td>
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+                
         </div>
       </div>
       <script>
@@ -151,7 +207,54 @@
           ventanaEmergente.style.display = "none";
           
         };
+        var mostrarVentana2 = document.getElementById('mostrarEmergente2');
+        var cerrarVentana2 = document.getElementById('cerrar-ventana2');
+        var ventanaEmergente2 = document.getElementById('miEmergente2');
+        var general2= document.getElementById('principal');
+        var barrita2= document.getElementById('azul2');
+        mostrarVentana2.onclick = function() {
+          ventanaEmergente2.style.display = "block";
+          barrita2.style.backgroundColor = "#0A1C44";
+          barrita2.style.width = "300px";
+          
+        }
+
+        cerrarVentana2.onclick = function() {
+          ventanaEmergente2.style.display = "none";
+          
+        };
+
+
       </script>
+<script>
+
+    //scrip para seleccionar de la tabla y guardarlo de parqueo y cambiarlo x texto
+   editar.onclick = function() {
+      
+      ventanaEmergente.style.display = "block";
+
+    };
+
+    $(document).ready(function() {
+      $(".table-row").mouseover(function() {
+        $(this).addClass("highlight");
+      });
+      
+      $(".table-row").mouseout(function() {
+        $(this).removeClass("highlight");
+      });
+      
+      $(".table-row").click(function() {
+        var fila_id = $(this).attr("id");
+        var dato_id = fila_id.split("-")[1];
+        var value = $(this).find("td:nth-child(2)").text();
+        $("#parqueodatos").val(value);
+        document.getElementById('miEmergente').style.display = "none";
+        document.getElementById('mostrarEmergente').style.display = "none";
+        document.getElementById('oculto').style.display="block";
+      });
+    });
+  </script>
     @endsection
     @section('botones')
     
@@ -173,3 +276,4 @@
     </div>
    </form>
    @endsection
+

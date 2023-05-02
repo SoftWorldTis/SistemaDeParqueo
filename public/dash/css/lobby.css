@@ -9,54 +9,63 @@
    
     
      display: grid;
-     grid-template-columns: repeat(2, 50%);
+     grid-template-columns: repeat(3, 33.3%);
      grid-template-rows: repeat(1, 100%);
      
      grid-template-areas:
-       'registrar alquiler';
-     
+       'registrar alquiler usuarios';
+     justify-content: center;
     }
      
 
 
-.registrar,  .alquiler{
-    width: 24.375rem;
+.registrar,  .alquiler , .usuarios{
+  display: flex;
+
   height: 12.4375rem;
-    margin-top: 2.1875rem;
-    margin-left: 9.6875rem;
-    margin-right: 9.6875rem;
+  margin-top: 2.1875rem;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.r1 , .r2 , .r3{
+  width: 72.05%;
+  
 }
 
 
-
-.iconRegistrar , .iconAlquilar {
-    margin-left: 8.4375rem;
+.iconRegistrar , .iconAlquilar , .iconUsuarios {
+    margin-left: 34.62%;
+    width:31.03%;
   
   }
-   .botonRegistro , .botonAlquilo {
-      position: relative;
+   .botonRegistro , .botonAlquilo , .botonUsuarios{
+    display: flex;
     margin-top:1.875rem ;
     border-radius: 25px;
-    width: 24.375rem;
-    height: 3rem;
+    width: 100%;
+    height: 5.0625rem;
     background-color: #0A1C44;
     cursor:  pointer;
     transition: transform 0.2s ease;
+    justify-content: center;
+    align-items: center;
   }
-   .botonRegistro:active 
-   .botonAlquilo:active {
+  
+  .botonRegistro:active ,
+   .botonAlquilo:active,  .botonUsuarios:active {
   transform: scale(0.96);
   }
  
-   .botonRegistro p, .botonAlquilo p  {
+   .botonRegistro p, .botonAlquilo p , .botonUsuarios p  {
       margin-top: 0px;
       margin-bottom: 0px;
-      padding-left: 6.125rem;
-      padding-top: 0.5625rem;
+  
   
    }
    
-   .botonRegistro:hover,.botonAlquilo:hover {
+   .botonRegistro:hover,.botonAlquilo:hover ,.botonUsuarios:hover  {
   background-color: #3E60AC ;
   }
   
