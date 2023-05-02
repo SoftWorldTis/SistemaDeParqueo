@@ -43,7 +43,7 @@
        @yield('botones')
 
 
-
+       @yield('scripts')
      
            <!-- contenido  -->
           

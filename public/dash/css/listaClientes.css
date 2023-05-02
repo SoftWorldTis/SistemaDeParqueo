@@ -44,7 +44,7 @@
     }
     .buscador{
         display: inline-block;
-        width: 37.279%;
+        width: 100%;
 
     }
     .linea{
@@ -95,6 +95,11 @@
         font-size: 30px;
     }
 
+    form{
+        display: inline-block;
+        width: 37.279%;
+    }
+
 
 
 /*parte de abajo      //tabla y datos    */
@@ -131,3 +136,12 @@
         text-decoration: none;
     
     }
+
+
+
+
+
+
+
+
+  
