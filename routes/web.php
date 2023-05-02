@@ -59,7 +59,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     */
 
     Route::resource("/ReporteDeudas",DeudasController::class);
-    Route::get("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
+    //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
+    //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
 });
 
 

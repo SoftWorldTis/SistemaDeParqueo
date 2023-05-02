@@ -51,8 +51,8 @@
                         <td>{{$deuda->alquilerfecha}}</td>
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>
-                            <a href="">Ver Perfil</a>
-                            <a href="">Cobrar</a>
+                            <a href="" >Ver Perfil</a>
+                            <a href="/lobby/ReporteDeudas/{{ $deuda->alquilerid}}" onclick="recargar()">Cobrar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -62,3 +62,10 @@
           </table>
     </div>
 @endsection
+<script>
+    function recargar(){
+      location.reload()
+      console.log("recargado")
+    }
+    
+</script>
