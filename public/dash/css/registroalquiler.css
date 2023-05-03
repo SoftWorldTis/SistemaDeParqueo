@@ -1,396 +1,394 @@
+.tit{
+  text-align: center;
+  margin-top: 10px;
+}
+.tit p{
+  font-size: 38px;
+  color: black;
+}
 
-    .tit{
-      text-align: center;
-      margin-top: 10px;
+
+
+   .botonAgregarP , .botonAgregarU{
+    border-radius: 20px;
+    width:221px ;
+    height:69px ;
+    background-color: #0A1C44;
+    margin-top: 4px ;
+    margin-bottom: 3px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #E4EAEA;
+    font-weight: bold;
+    cursor:pointer;
+
+   }
+   .agregarUsuario{
+    /*
+    background-color: yellow;
+    /*
+    margin-left: 125px;
+    */
+    justify-items: center;
+    display:grid;
+    grid-template-areas:
+    "nomU"
+    "agregarU"
+    ;
+   }
+   .agregarParqueo{
+    /*
+    background-color: yellow;
+    /*
+    margin-right: 125px;
+    */
+    
+    justify-items: center;
+    display:grid;
+    grid-template-areas: 
+    "nomP"
+    "agregarP"
+    ;
+   }
+  .botonesformu{
+    /*
+    background-color: skyblue;
+    */
+    gap: 150px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    display: grid;
+  }
+  /*fin fila 1
+  */
+  /*fila2 inicio
+  */
+  .Horario{
+    /*
+    background-color: green;
+    */
+    text-align: center;
+   }
+   .Duracion{
+    /*
+    position:relative;
+    right: 75px;
+    */
+    /*
+    background-color: red;
+    */
+    width: 394.44px;
+    text-align: center;
+   }
+   .fila2{
+    /*
+    background-color: skyblue;
+    */
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap:200px
+  }
+   /*Fin fila2
+   */
+   .Precio{
+   
+    text-align: center;
+   }
+   .seleccion{
+    text-align: center;
+   }
+ 
+  .fila3{
+    /*
+    background-color: purple;
+    */
+     margin-top: 50px;
+     grid-template-columns: 1fr 1fr;
+     display: grid;
+     gap: 200px;
+  }
+  .fila4{
+    grid-template-columns: 1fr 1fr;
+     display: grid;
+     gap: 200px;
+     margin-top: 40px;
+  }
+  .pagar{
+    width: 25px;
+    height: 25px;
+    
+  }
+  .rad{
+    text-align: center;
+    
+    
+  }
+ 
+  .principal{
+    display:grid;
+    grid-template-areas: 
+    "tit"
+    "botonesformu"
+    "fila2" 
+    "fila3"
+    "fila4"
+    ;
+  }
+  /*
+   cambios en el fondo para centrar
+  */
+  
+  .fondo{
+    
+      display: flex;
+      justify-content: center;
+     
     }
-    .tit p{
-      font-size: 38px;
-      color: black;
+    /*
+    Inputs de texto
+    */
+    .linea{
+
+        width: 394.44px;
+        height: 36px;
+        background-color: transparent;
+        border:0;
+        border-bottom:1px solid #000000;
+        box-shadow: none;
+        outline:none;
+        font-size: 30px;
+       
+       
     }
+    .linea2{
 
-
-
-       .botonAgregarP , .botonAgregarU{
-        border-radius: 20px;
-        width:221px ;
-        height:69px ;
-        background-color: #0A1C44;
-        margin-top: 4px ;
-        margin-bottom: 3px;
+      width: 394.44px;
+      height: 36px;
+      background-color: transparent;
+      border:0;
+      border-bottom:1px solid #000000;
+      box-shadow: none;
+      outline:none;
+      font-size: 30px;
+      margin-top: 30px;
+     
+  }
+    /*
+    nombres de los campos
+    */
+    .nom{
+        color: black;
+        margin-bottom: 25px;
+        font-size: 30px;
         font-family: 'Inter', sans-serif;
         font-style: normal;
+    }
+    .nom2{
+      color: black;
+       margin-bottom: 25px;
         font-size: 25px;
-        line-height: 30px;
-        color: #E4EAEA;
-        font-weight: bold;
-        cursor:pointer;
-
-       }
-       .agregarUsuario{
-        /*
-        background-color: yellow;
-        /*
-        margin-left: 125px;
-        */
-        justify-items: center;
-        display:grid;
-        grid-template-areas:
-        "nomU"
-        "agregarU"
-        ;
-       }
-       .agregarParqueo{
-        /*
-        background-color: yellow;
-        /*
-        margin-right: 125px;
-        */
-        
-        justify-items: center;
-        display:grid;
-        grid-template-areas: 
-        "nomP"
-        "agregarP"
-        ;
-       }
-      .botonesformu{
-        /*
-        background-color: skyblue;
-        */
-        gap: 150px;
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        display: grid;
-      }
-      /*fin fila 1
-      */
-      /*fila2 inicio
-      */
-      .Horario{
-        /*
-        background-color: green;
-        */
-        text-align: center;
-       }
-       .Duracion{
-        /*
-        position:relative;
-        right: 75px;
-        */
-        /*
-        background-color: red;
-        */
-        width: 394.44px;
-        text-align: center;
-       }
-       .fila2{
-        /*
-        background-color: skyblue;
-        */
-        margin-top: 50px;
-        grid-template-columns: 1fr 1fr;
-        display: grid;
-        gap:200px
-      }
-       /*Fin fila2
-       */
-       .Precio{
-       
-        text-align: center;
-       }
-       .seleccion{
-        text-align: center;
-       }
-     
-      .fila3{
-        /*
-        background-color: purple;
-        */
-         margin-top: 50px;
-         grid-template-columns: 1fr 1fr;
-         display: grid;
-         gap: 200px;
-      }
-      .fila4{
-        grid-template-columns: 1fr 1fr;
-         display: grid;
-         gap: 200px;
-         margin-top: 40px;
-      }
-      .pagar{
-        width: 25px;
-        height: 25px;
-        
-      }
-      .rad{
-        text-align: center;
-        
-        
-      }
-     
-      .principal{
-        display:grid;
-        grid-template-areas: 
-        "tit"
-        "botonesformu"
-        "fila2" 
-        "fila3"
-        "fila4"
-        ;
-      }
-      /*
-       cambios en el fondo para centrar
-      */
-      
-      .fondo{
-        
-          display: flex;
-          justify-content: center;
-         
-        }
-        /*
-        Inputs de texto
-        */
-        .linea{
-
-            width: 394.44px;
-            height: 36px;
-            background-color: transparent;
-            border:0;
-            border-bottom:1px solid #000000;
-            box-shadow: none;
-            outline:none;
-            font-size: 30px;
-           
-           
-        }
-        .linea2{
-
-          width: 394.44px;
-          height: 36px;
-          background-color: transparent;
-          border:0;
-          border-bottom:1px solid #000000;
-          box-shadow: none;
-          outline:none;
-          font-size: 30px;
-          margin-top: 30px;
-         
-      }
-        /*
-        nombres de los campos
-        */
-        .nom{
-            color: black;
-            margin-bottom: 25px;
-            font-size: 30px;
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-        }
-        .nom2{
-          color: black;
-           margin-bottom: 25px;
-            font-size: 25px;
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-        }
-       
-        /*
-        emergente
-        */
-        .azul{
-          background-color: #0A1C44;
-          height: 40px;
-          width: 100%;
-          display:flex ;
-          justify-content: right;
-         }
-         .destructor{
-          background-color: transparent;
-          color: white;
-          border-color: transparent;
-          margin-right: 10px;
-          font-size: 20px;
-          -webkit-text-stroke: 0.1fr;
-           
-         }
-         #miEmergente{
-
-          width: 1000px;
-          height: 650px;
-          background-color: white;
-          position:absolute;
-          bottom:15px;
-           display: none;
-           border:1px solid #000000;
-         }
-         .ordenar{
-          display:grid;
-          grid-template-areas:
-          "azul"
-          "tit"
-          "buscador"
-          "tabla"
-          
-          ;
-         }
-         .tabla{
-          border-collapse: collapse;
-        width: 900px;
-        margin-left: 40px;
-        margin-right: 40px;
-        
-        
-       }
-         .buscador{
-          margin-top: 20px;
-          margin-left: 40px;
-          grid-template-columns: 1fr 1fr;
-         display: grid;
-         }
-         .titu{
-          margin-top: 20px;
-          text-align: center;
-        }
-        .titu p{
-          font-size: 25px;
-          color: black;
-        }
-        .lupa{
-          display: flex;
-          justify-content: center;
-          border-top-left-radius: 20px;
-          border-top-right-radius: 20px;
-          border-bottom-left-radius: 20px;
-          border-bottom-right-radius: 20px;
-          width: 50px;
-          height: 40px;
-          
-          background-color: #0A1C44;
-          
-        }
-        .imagenlupa{
-          margin-top: 5px;
-          width: 25px;
-          height: 25px;
-          background-color: transparent;
-        }
-        .grillatit{
-          background-color: #0A1C44;
-          color: rgba(255, 255, 255, 0.879);
-          font-family: 'Inter', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-style: normal;
-       
-        }
-        .table-conteiner2{
-          max-height: 450px;
-          width:965px ;
-          margin-top: 30px;
-          overflow: auto;
-          overflow-x: hidden;
-          
-         }
-        th{
-          height: 40px;
-          width: 20px;
-          position: sticky;
-          top: 0;
-        
-        }
-        td{
-          height: 40px;
-          width: 20px;
-          text-align: center;
-          font-family: 'Inter', sans-serif;
-          -webkit-text-stroke: 1fr;
-          border-bottom:1px solid #cdcdcd;
-       
-        }
-      /*segunda emergente*/
-      .ordenar2{
-        display:grid;
-        grid-template-areas:
-        "azul2"
-        "tit"
-        "buscador"
-        "tabla2"
-        
-        ;
-       }
-       .table-conteiner{
-        max-height: 450px;
-        width:965px ;
-        margin-top: 30px;
-        overflow: auto;
-        overflow-x: hidden;
-        
-       }
-       .tabla2{
-        border-collapse: collapse;
-        width: 900px;
-        margin-left: 40px;
-        margin-right: 40px;
-        
-        
-       }
-       .azul2{
-        background-color: #0A1C44;
-        height: 40px;
-        width: 100%;
-        display:flex ;
-        justify-content: right;
-       }
-       .destructor2{
-        background-color: transparent;
-        color: white;
-        border-color: transparent;
-        margin-right: 10px;
-        font-size: 20px;
-        -webkit-text-stroke: 0.1fr;
-         
-       }
-       #miEmergente2{
-
-        width: 1000px;
-        height: 650px;
-        background-color: white;
-        position:absolute;
-        bottom:15px;
-         display: none;
-         border:1px solid #000000;
-       }
-       .oculto{
-        display: none;
-     
+    }
+   
+    /*
+    emergente
+    */
+    .azul{
+      background-color: #0A1C44;
+      height: 40px;
+      width: 100%;
+      display:flex ;
+      justify-content: right;
      }
-
-     .editar{
-     
-     cursor: pointer;
-     position: absolute;
+     .destructor{
+      background-color: transparent;
+      color: white;
+      border-color: transparent;
+      margin-right: 10px;
+      font-size: 20px;
+      -webkit-text-stroke: 0.1fr;
+       
      }
+     #miEmergente{
 
-     .oculto2{
-      display: none;
-   
-   }
-
-   .editar2{
-   
-   cursor: pointer;
-   position: absolute;
-   }
-
-   
-     
-
-      .hoverable tbody tr:hover {
-        background-color: #CDCDCD;
-        cursor: pointer;
-      }
-
-      .hoverable2 tbody tr:hover {
-        background-color: #CDCDCD;
-        cursor: pointer;
-      }
+      width: 1000px;
+      height: 650px;
+      background-color: white;
+      position:absolute;
+      bottom:15px;
+       display: none;
+       border:1px solid #000000;
+     }
+     .ordenar{
+      display:grid;
+      grid-template-areas:
+      "azul"
+      "tit"
+      "buscador"
+      "tabla"
+      
+      ;
+     }
+     .tabla{
+      border-collapse: collapse;
+    width: 900px;
+    margin-left: 40px;
+    margin-right: 40px;
     
+    
+   }
+     .buscador{
+      margin-top: 20px;
+      margin-left: 40px;
+      grid-template-columns: 1fr 1fr;
+     display: grid;
+     }
+     .titu{
+      margin-top: 20px;
+      text-align: center;
+    }
+    .titu p{
+      font-size: 25px;
+      color: black;
+    }
+    .lupa{
+      display: flex;
+      justify-content: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      width: 50px;
+      height: 40px;
+      
+      background-color: #0A1C44;
+      
+    }
+    .imagenlupa{
+      margin-top: 5px;
+      width: 25px;
+      height: 25px;
+      background-color: transparent;
+    }
+    .grillatit{
+      background-color: #0A1C44;
+      color: rgba(255, 255, 255, 0.879);
+      font-family: 'Inter', sans-serif;
+    font-style: normal;
+   
+    }
+    .table-conteiner2{
+      max-height: 450px;
+      width:965px ;
+      margin-top: 30px;
+      overflow: auto;
+      overflow-x: hidden;
+      
+     }
+    th{
+      height: 40px;
+      width: 20px;
+      position: sticky;
+      top: 0;
+    
+    }
+    td{
+      height: 40px;
+      width: 20px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      -webkit-text-stroke: 1fr;
+      border-bottom:1px solid #cdcdcd;
+   
+    }
+  /*segunda emergente*/
+  .ordenar2{
+    display:grid;
+    grid-template-areas:
+    "azul2"
+    "tit"
+    "buscador"
+    "tabla2"
+    
+    ;
+   }
+   .table-conteiner{
+    max-height: 450px;
+    width:965px ;
+    margin-top: 30px;
+    overflow: auto;
+    overflow-x: hidden;
+    
+   }
+   .tabla2{
+    border-collapse: collapse;
+    width: 900px;
+    margin-left: 40px;
+    margin-right: 40px;
+    
+    
+   }
+   .azul2{
+    background-color: #0A1C44;
+    height: 40px;
+    width: 100%;
+    display:flex ;
+    justify-content: right;
+   }
+   .destructor2{
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+    margin-right: 10px;
+    font-size: 20px;
+    -webkit-text-stroke: 0.1fr;
+     
+   }
+   #miEmergente2{
+
+    width: 1000px;
+    height: 650px;
+    background-color: white;
+    position:absolute;
+    bottom:15px;
+     display: none;
+     border:1px solid #000000;
+   }
+   .oculto{
+    display: none;
+ 
+ }
+
+ .editar{
+ 
+ cursor: pointer;
+ position: absolute;
+ }
+
+ .oculto2{
+  display: none;
+
+}
+
+.editar2{
+
+cursor: pointer;
+position: absolute;
+}
+
+
+ 
+
+  .hoverable tbody tr:hover {
+    background-color: #CDCDCD;
+    cursor: pointer;
+  }
+
+  .hoverable2 tbody tr:hover {
+    background-color: #CDCDCD;
+    cursor: pointer;
+  }

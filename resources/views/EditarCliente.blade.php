@@ -86,9 +86,7 @@
                  <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vinput')}}" >
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
-                @if(isset($resultados[0]))
-                   
-                @endif
+            
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}

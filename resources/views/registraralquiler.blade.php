@@ -24,25 +24,27 @@
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
                 <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
-                <div class=" oculto" id="oculto">
-                    <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{old('parqueodatos')}}" readonly >
-                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
-                </div>
+                    <div class=" oculto" id="oculto" >
+                        <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{$seleccionadoes}}" readonly >
+                        <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                    </div>
+             
+                  
+    
             </div>
           
      
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
-                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
+
+                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre"  id="mostrarEmergente2"onclick="">
                 <div class=" oculto2" id="oculto2">
                     <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="usuarios" id="usuariosdatos" value="{{old('usuariosdatos')}}" readonly >
+                    <input type="text" class="linea" name="usuarios" id="usuariosdatos"  readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
-                   <input type="hidden" class="linea" name="usuariosci" id="usuariosdatosci" value="{{old('usuariosdatosci')}}" readonly >
-            
+                   <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{$valorcl}}" readonly >
             </div>
         </div>
         
@@ -50,36 +52,61 @@
             
             <div  class="Duracion">
                 <p class="nom">Duración</p>
-                <input type="date" class="linea" class="fecha"  name="fechaini" placeholder="FechaInicio">
-                @error('fechaini')
-                <br>
-                <span style="color: red" style="font-size: 25px">{{$message}}</span>
-                @enderror
-                <input type="date" class="linea2" class="fecha"  name="fechafin"placeholder="FechaFin">
-                @error('fechafin')
-                <br>
-                <span style="color: red" >{{$message}}</span>
-                @enderror
+                @if ($seleccionado)
+                    <input type="date" name="FechaInicio" class="linea fecha " id="FechaInicio" value="{{old('FechaInicio')}}" onchange="calcularPrecio()">
+                @else
+                    <input type="date" name="FechaInicio" class="linea fecha " id="FechaInicio" value="{{old('FechaInicio')}}" >
+                @endif
+                
+                    @error('FechaInicio')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
+            
+                <div>
+                    @if ($seleccionado)
+                        <input type="date" name="FechaFin" class="linea2 fecha" id = "FechaFin" value="{{old('FechaFin')}}" onchange="calcularPrecio()">
+                    @else
+                        <input type="date" name="FechaFin" class="linea2 fecha" id = "FechaFin" value="{{old('FechaFin')}}">
+                    @endif
+                    
+                    @error('FechaFin')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
+                 </div>
+
             </div>
+
             <div class="Horario">
                 <p class="nom">Horario</p>
-                <!--readonly es para evitar su edicion en la vista (creo que se rellana automaticamente)-->
-                <input type="text" class="linea" name="hora" readonly >
+                @if ($seleccionado)
+                <input type="text" class="linea" name="hora" readonly value="{{$seleccionado->estacionamientohoraInicio}} - {{$seleccionado->estacionamientohoraCierre}}">
+                @else
+                <input type="text" class="linea" name="hora" readonly value="">
+                @endif
+                
                 <br>
             </div>
         </div>
         <div class="fila3">
             <div class="seleccion">
                 <p class="nom">Sitio</p>
-                <select name="sitio" class="linea" class="sitio">
-                    <option value="Sitio 10">Sitio 10</option>
-                </select>
+                @if ($seleccionado)
+                    <select name="sitio" id="sitio" class="linea" class="sitio" onclick="sitios()">
+                        <option class= "linea" value="">Seleccione un sitio</option>
+                    </select>
+                @else
+                    <input type="text" class="linea" name="sitio" readonly value="Seleccione un parqueo">
+                @endif
+                
             </div>
             
             <div class="Precio">
                 <p class="nom">Precio</p>
-                <!--readonly es para evitar su edicion en la vista (creo que se rellana automaticamente)-->
-                <input type="text" class="linea" name="costo" readonly >
+                <input type="text" class="linea" name="costo" id="Precio" readonly >
             </div>
             
         </div>
@@ -87,22 +114,20 @@
         <div class="fila4">
             <div class="rad">
                 <label class="nom2">
-                    <input type="radio" class=pagar name=pago>
+                    <input type="radio" class=pagar name="Pago" value="QR" id="Ahora">
                     Pagar Ahora
                 </label>
+                <div>
+                    @if ($seleccionado)
+                    <img src="{{asset('images/'.$seleccionado->estacionamientoImg)}}" alt="" width="150" height="150">
+                @endif
+                </div>
             </div>
             <div class="rad">
                 <label class="nom2">
-                    <input type="radio" class=pagar name=pago checked>
+                    <input type="radio" class=pagar name=pago name="Pago" value="Efectivo" id="Despues" checked>
                     Pagar Después
                 </label>
-            </div>
-        </div>
-        <div class="fila">
-            <div class="rad">
-                @foreach ($parqueo as $parqueos)
-                <img src="{{asset('images/'.$parqueos->estacionamientoImg)}}" alt="" width="150" height="150">
-                @endforeach
             </div>
         </div>
             
@@ -122,7 +147,7 @@
                 <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
             </div>
             <div class="table-conteiner2">
-                <table class="tabla hoverable" class="tabla" >
+                <table class="tabla hoverable" >
                     <thead>
                         <tr >
                             <th class="grillatit">Número</th>
@@ -130,17 +155,25 @@
                             <th class="grillatit">Horario</th>
                             <th class="grillatit">Capacidad</th>
                             <th class="grillatit">Estado</th>
+                            <th class="grillatit">Opción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $parqueo as $parqueos )    
-                        <tr class="table-row" id="id=fila-{{$loop->iteration}} ">
-                            <td>{{$parqueos->estacionamientoid}}</td>
-                            <td>{{$parqueos->estacionamientozona}}</td>
-                            <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
-                            <td>{{$parqueos->estacionamientositioAdministrador}}</td>
-                            <td>{{$parqueos->estacionamientoestado}}</td>
-                        </tr>
+                        @foreach ( $parqueo as $parqueos ) 
+                        
+                            <tr class="table-row" id="id=fila-{{$parqueos->estacionamientoid}}">
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$parqueos->estacionamientozona}}</td>
+                                <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
+                                <td>{{$parqueos->estacionamientositioAdministrador}}</td>
+                                <td>{{$parqueos->estacionamientoestado}}</td>
+                                <td>
+                                    <a href="/lobby/Alquiler/{{$parqueos->estacionamientoid}}">Seleccionar</a>
+                                </td>
+                            
+                            </tr>
+                          
+                       
                         @endforeach
                         
                     </tbody>
@@ -149,6 +182,7 @@
            
         </div>
       </div>
+      
       <div id="miEmergente2" class="emergente">
         <div class="ordenar2">
 
@@ -172,22 +206,18 @@
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
                             <th class="grillatit">SIS</th>
-                            <th class="grillatit">Vehiculo 1</th>
-                            <th class="grillatit">Vehiculo 2</th>
-                            <th class="grillatit">Vehiculo 3</th>
+                        
                         </tr>
                     </thead>
                     <tbody >
                         @foreach ( $clientes as $key => $clientess)    
                         
-                        <tr   class="table-row2" id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                        <tr class="table-row2"   id="id=fila-{{$loop->iteration}} " style="height: 61px;">
                             <td>{{ $key + 1 }}</td>
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
                             <td>{{$clientess->clientesis}}</td>
-                            <td>{{$clientess->vehiculo1}}</td>
-                            <td>{{$clientess->vehiculo2}}</td>
-                            <td>{{$clientess->vehiculo3}}</td>
+                     
                             
                         </tr>
                         @endforeach
@@ -198,6 +228,10 @@
         </div>
       </div>
       <script>
+
+{!! $js !!}
+   
+
         var mostrarVentana = document.getElementById('mostrarEmergente');
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('miEmergente');
@@ -213,7 +247,7 @@
         cerrarVentana.onclick = function() {
           ventanaEmergente.style.display = "none";
           
-        };
+        }
         var mostrarVentana2 = document.getElementById('mostrarEmergente2');
         var cerrarVentana2 = document.getElementById('cerrar-ventana2');
         var ventanaEmergente2 = document.getElementById('miEmergente2');
@@ -254,7 +288,9 @@
       $(".table-row").click(function() {
         var fila_id = $(this).attr("id");
         var dato_id = fila_id.split("-")[1];
+        console.log(dato_id)
         var value = $(this).find("td:nth-child(2)").text();
+        
         $("#parqueodatos").val(value);
         document.getElementById('miEmergente').style.display = "none";
         document.getElementById('mostrarEmergente').style.display = "none";
@@ -263,10 +299,11 @@
     });
 
 
+
+
     editar2.onclick = function() {
       
       ventanaEmergente2.style.display = "block";
-
     };
 
     $(document).ready(function() {
@@ -291,14 +328,53 @@
       });
     });
 
-    usuariosdatosci
-
-
-
   </script>
 
+@if ($seleccionado)
+<script>
+    function calcularPrecio(){
+        var fechaIni = $('#FechaInicio').val();
+        var fechaFin = $('#FechaFin').val();
+        if(fechaIni!= "" && fechaFin != ""){
+            var dias = calcularDias(fechaIni, fechaFin)
+            //console.log(dias);
+            if(dias>=0){
+                const precio= @json($seleccionado->estacionamientoprecio);
+                const total = precio * (dias+1)
+                document.getElementById('Precio').value=total
+                
+            }else{
+                document.getElementById('Precio').value=0
+            }
+        }
+    }
+    
+    function calcularDias(fecha1, fecha2){
+        var f1=new Date(fecha1);
+        var f2= new Date(fecha2);
+        //console.log("fechaIni", f1.getDate())
+        return  (f2-f1)/(1000 * 60 * 60 * 24)
+    }
 
-
+    function sitios() {
+        const sitioAdm= @json($seleccionado->estacionamientositioAdministrador);
+        const sitioDoc = @json($seleccionado->estacionamientositioDocente);
+        const sitioSelect = document.getElementById('sitio')
+        for(var i=1; i<= sitioAdm; i++){
+            let opcion = document.createElement('option')
+            opcion.value = i
+            opcion.text = "Espacio "+i+" Adm"
+            sitioSelect.add(opcion);
+        }
+        for(var i=1; i<= sitioDoc; i++){
+            let opcion = document.createElement('option')
+            opcion.value = i
+            opcion.text = "Espacio "+i+" Doc"
+            sitioSelect.add(opcion);
+        }
+    }
+</script>
+@endif
 
     @endsection
     @section('botones')
@@ -321,4 +397,6 @@
     </div>
    </form>
    @endsection
+
+
 

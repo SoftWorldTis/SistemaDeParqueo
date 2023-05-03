@@ -39,7 +39,7 @@ class RegisParqueoController extends Controller
         $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
         $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
         $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
-        $estacionamiento -> estacionamientoqr= '1';
+        $estacionamiento -> estacionamientoqr= $imageName;
         $estacionamiento -> estacionamientoestado= 'activo';
         $estacionamiento -> estacionamientohoraInicio= $request->input('estacionamientohoraInicio');
         $estacionamiento -> estacionamientohoraCierre= $request->input('estacionamientohoraCierre');

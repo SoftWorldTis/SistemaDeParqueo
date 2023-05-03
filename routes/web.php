@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\AlquilerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
-
 use App\Http\Controllers\ListaClientesController;
+use App\Http\Controllers\DeudasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,9 +45,11 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::resource('/RegistroParqueos',RegisParqueoController::class );
     Route::resource('/RegistroGuardias',GuardiaController::class );
     Route::resource("/RegistroCliente",ClienteController::class);
+    Route::resource("/ListaClientes",ListaClientesController::class);
+
    
     Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
-
+    Route::get('/ListaReportes', function () {return view('listaReportes') ;});
   
 
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
@@ -54,8 +58,14 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
 
 
 
-    Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
-    Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
+
+    //Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
+    //Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
+
+    Route::resource('/Alquiler', AlquilerController::class);
+    /*Route::post('/Alquiler', [AlquilerController::class, 'index']);
+    Route::get('/Alquiler/{$id}', [AlquilerController::class, 'showparqueo']);
+    Route::post('/Alquiler', [AlquilerController::class, 'showcliente']);*/
 
     /*
     Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
@@ -70,6 +80,10 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
+
+    Route::resource("/ReporteDeudas",DeudasController::class);
+    //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
+    //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
 
     Route::get("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'index'])->name('/ListaClientes');
     Route::post("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'store'])->name('/ListaClientes');
