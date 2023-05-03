@@ -38,10 +38,10 @@
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
                 <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
-                <div class=" oculto" id="oculto">
+                <div class="oculto2" id="oculto2">
                     <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="cliente" id="clientedatos" value="{{old('clientedatos')}}" readonly >
-                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                    <input type="text" class="linea" name="usuarios" id="usuariosdatos" value="{{old('usuariosdatos')}}" readonly >
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
                 <input type="hidden" class="linea" name="usuariosci" id="usuariosdatosci" value="{{old('usuariosdatosci')}}" readonly >
             </div>
@@ -124,7 +124,7 @@
             </div>
             <div class="rad">
                 <label class="nom2">
-                    <input type="radio" class=pagar name=pago name="Pago" value="Efectivo" id="Despues" checked>
+                    <input type="radio" class=pagar name="Pago" value="Efectivo" id="Despues" checked>
                     Pagar Después
                 </label>
             </div>
@@ -204,7 +204,6 @@
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
                             <th class="grillatit">SIS</th>
-                            <th class="grillatit">Opción</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -215,9 +214,7 @@
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
                             <td>{{$clientess->clientesis}}</td>
-                            <td>
-                                <a href="/lobby/Alquiler/{{$clientess->clienteci}}">Seleccionar</a>
-                            </td>
+                           
                             
                         </tr>
                         @endforeach
