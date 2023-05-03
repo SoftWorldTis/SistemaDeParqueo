@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\cliente;
+use App\Models\alquiler;
 use Illuminate\Http\Request;
+use App\Http\Requests\AlquilerRequest;
 use App\Models\estacionamiento;
 use Illuminate\Support\Facades\DB;
 
@@ -50,7 +52,24 @@ class AlquilerController extends Controller
         return view('registraralquiler', compact('parqueo', 'clientes', 'seleccionado' ,'seleccionadoes','valorcl','js'));
     }
 
-    public function store(Request $request){
+    public function store(AlquilerRequest $request){
+        //dd($request);
+        $estacionamiento = alquiler::find($request->input('parqueo'))->estacionamientoci;
         dd($request);
+
+        $alquiler =new alquiler(); 
+        $alquiler -> estacionamiento_estacionamientoid=$request->input('alquilerparqueo') ;
+        $alquiler -> alquilerprecio= $request->input('alquilercorreo');
+        $alquiler -> alquilerfecha= $request->input('alquilernombre');
+        $alquiler -> alquilertipopago= $request->input('alquilerhoraentrada');
+        $alquiler -> alquilerSitio= $request->input('alquilerhorasalida');
+        $alquiler -> alquilerFechaIni= $request->input('alquilerci');
+        $alquiler -> alquilerFechaFin= $request->input('alquilerci');
+        $alquiler -> cliente_clienteci= $request->input('alquilerfechanacimiento');
+        $alquiler -> alquilerestadopago= $request->input('alquilerfechanacimiento');
+        $alquiler-> save();
+        $parqueos = estacionamiento::all();
+        //return view('registroGuardia',compact('parqueos'));
+        return back() -> with('Registrado', 'Guardia registrado correctamente');
     }
 }

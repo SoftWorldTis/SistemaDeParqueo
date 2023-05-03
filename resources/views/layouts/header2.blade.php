@@ -2,7 +2,14 @@
    <nav>
         <div class="nav2">
             <div></div>
-            <div></div>
+
+
+            <a id="link" href="{{('/ReporteDeudas')}}">  
+               <div class="reportes">
+                <img src="{{asset('/dash/assets/parqueoNav.png')}}" alt="" class="">
+                <p>Reportes</p>
+               </div>
+           </a>
  
         
             <a id="link" href="{{('/lobby')}}">  
