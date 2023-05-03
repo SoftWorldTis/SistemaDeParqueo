@@ -1,0 +1,174 @@
+.contenedorlogin{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+  
+}
+.linea{
+
+    width: 394.44px;
+    height: 36px;
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 30px;
+   
+   
+}
+span{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    color:black;
+}
+
+.titulo{
+    font-size: 26px;
+}
+.izquierda{
+    margin-top: 100px;
+    display: grid;
+    grid-template-areas: 
+    "tit"
+    "Usuario"
+    "Contraseña"
+    "botones"
+    ;
+   
+}
+.tit{
+    text-align: center;
+}
+.botones{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+.Usuario{
+    margin: 50px;
+    display: grid;
+    grid-template-areas: 
+    "nombre"
+    "linea"
+    ;   
+    justify-content: center;
+}
+.Contraseña{
+    margin-top: 45px;
+    display: grid;
+    grid-template-areas: 
+    "contra"
+    "linea"
+    ;   
+    justify-content: center;
+}
+.imagen{
+    border-radius: 250px;
+    
+}
+.derecha{
+    margin-top: 100px;
+}
+.cabeza{
+  height: 10.625rem;
+  background: #0A1C44;
+  border-radius: 0px 0px 50px 50px;
+  display: grid;
+  justify-items: right;
+  width: 100%;
+  position: fixed;
+  top: 0;
+ right:0 ;
+}
+.fondo{
+
+    background-color: #ffff;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 72.918%;
+    height: 700px;
+}
+body{
+    background-color: #DFE0F8;
+}
+
+
+.button{
+    width:221px ;
+    height:69px ;
+    background-color: #0A1C44;
+    border-radius: 20px;
+    border: 0px;
+    line-height: 10px;
+    cursor: pointer;
+
+}
+.button p{
+    color: #ffff;
+    text-align: center;
+    font-size: 30px;
+    
+
+   }
+   
+ .salir{
+    display: flex;
+    justify-items: center;
+ }
+
+
+
+
+.cabeza p{
+  text-size-adjust: 1.875rem;
+  margin-top: 4.375rem;
+  margin-top: 0.25rem ;
+  margin-bottom: 0.1875rem;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #E4EAEA;
+  font-weight: bold;
+}
+ 
+
+.cabeza div:hover{
+  
+  border-bottom-right-radius: 60px ;  
+  background-color: #324265;
+  width: 150px;
+ 
+}
+
+.salir{
+    display:grid;
+    text-align: center;
+    align-content: center;
+    grid-template-areas: 
+    "imagenIcono"
+    "titicono"
+    ;
+    height: 170px;
+    width: 150px;
+}
+.imagenIcono{
+    margin-top: 25px;
+}
+#link{
+    color: black;
+    text-decoration: none;
+  }
+  
+   
+    /*para errores*/
+   
+        .error{
+            color: red;
+            margin-top: 5px;
+        }
+    

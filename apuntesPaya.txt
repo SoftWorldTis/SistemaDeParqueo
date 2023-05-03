@@ -103,3 +103,39 @@ href="{{('/lobby/factura')}}"
    </button>   
    </form>
    @endsection
+
+
+   //////////////
+   registrar administrador controller
+    /*
+    $validatedData = $request->validate([
+        'name' => 'required|string|unique:administrador|max:15',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+    */
+    /*
+    $nombre = $request->input('name');
+    $contraseña = $request->input('password');
+    */
+      
+   /*
+    
+    $password = Hash::make($validateData['password']);
+    */
+    /*
+    $password =Hash::make($contraseña);
+    */
+    /*
+    DB::table('administrador')->insert([
+        'administradornombre' => $validatedData['name'],
+        'administradorcontraseña' => $password]);
+       */ 
+        /*
+        'administradornombre' => $nombre,
+        'administradorcontraseña' => $password]);
+        */
+   /*
+    $user->password = Hash::make($validatedDa['password']);
+   */
+    // Redirigimos al usuario a la página de inicio de sesión
+
