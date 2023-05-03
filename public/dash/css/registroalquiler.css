@@ -306,73 +306,22 @@
           border-bottom:1px solid #cdcdcd;
        
         }
-      /*segunda emergente*/
-      .ordenar2{
-        display:grid;
-        grid-template-areas:
-        "azul2"
-        "tit"
-        "buscador"
-        "tabla2"
-        
-        ;
-       }
-       .table-conteiner{
-        max-height: 450px;
-        width:965px ;
-        margin-top: 30px;
-        overflow: auto;
-        overflow-x: hidden;
-        
-       }
-       .tabla2{
-        border-collapse: collapse;
-        width: 900px;
-        margin-left: 40px;
-        margin-right: 40px;
-        
-        
-       }
-       .azul2{
-        background-color: #0A1C44;
-        height: 40px;
-        width: 100%;
-        display:flex ;
-        justify-content: right;
-       }
-       .destructor2{
-        background-color: transparent;
-        color: white;
-        border-color: transparent;
-        margin-right: 10px;
-        font-size: 20px;
-        -webkit-text-stroke: 0.1fr;
-         
-       }
-       #miEmergente2{
 
-        width: 1000px;
-        height: 650px;
-        background-color: white;
-        position:absolute;
-        bottom:15px;
-         display: none;
-         border:1px solid #000000;
+
+        .oculto{
+          display: none;
+       
        }
-       .oculto{
-        display: none;
-     
-     }
+  
+       .editar{
+       
+       cursor: pointer;
+       position: absolute;
+       }
+       
 
-     .editar{
-     
-     cursor: pointer;
-     position: absolute;
-     }
-     
-
-      .hoverable tbody tr:hover {
-        background-color: #CDCDCD;
-        cursor: pointer;
-      }
-    
+        .hoverable tbody tr:hover {
+          background-color: #CDCDCD;
+          cursor: pointer;
+        }
+      

@@ -43,6 +43,7 @@
                     <input type="text" class="linea" name="cliente" id="clientedatos" value="{{old('clientedatos')}}" readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
+                <input type="hidden" class="linea" name="usuariosci" id="usuariosdatosci" value="{{old('usuariosdatosci')}}" readonly >
             </div>
         </div>
         
@@ -145,7 +146,7 @@
                 <button class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
             </div>
             <div class="table-conteiner2">
-                <table class="tabla hoverable" class="tabla" >
+                <table class="tabla hoverable" >
                     <thead>
                         <tr >
                             <th class="grillatit">Número</th>
@@ -361,4 +362,6 @@
     </div>
    </form>
    @endsection
+
+
 

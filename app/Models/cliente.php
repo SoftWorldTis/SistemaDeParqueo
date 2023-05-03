@@ -11,4 +11,14 @@ class cliente extends Model
     protected $table ="cliente";
     protected $primaryKey = "clienteci";
     public $timestamps = false;
+
+
+    public function vehiculos()
+{
+    return $this->hasMany(Vehiculo::class);
 }
+
+
+
+}
+

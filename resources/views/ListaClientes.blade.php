@@ -16,13 +16,18 @@
     </div>
   
     <div  class="ParMed">
+      <form  action="/lobby/ListaClientes" method="POST" autocomplete="off" role="search">
+        @csrf
         <div class="buscador" id="buscador">
-            <input type="text" class="linea" id="buscadorinput" value="{{old('buscadorinput')}}" >
-            <button type="button" class="botonBuscar"> <img src="{{asset('/dash/assets/lupita_icono.png')}}" class="lupa" alt="">    </button>
+            <input type="text" class="linea" id="buscadorinput" name="buscador" value="{{$searchValue}}" placeholder="Buscar..." >
+            <button  type="submit" id="search-button"  class="botonBuscar"> <img src="{{asset('/dash/assets/lupita_icono.png')}}" class="lupa" alt="">    </button>
         </div>
+      </form>
 
-        <button type="button" class="botonExportar"> <p> Exportar </p> </button>
-   
+       <a href="/lobby/ReporteClientes/imprimir">
+        <button  type="button"  class="botonExportar"> <p> Exportar </p> </button>
+       </a>
+      
     </div>
 
     <div  class="ParAb"  >
@@ -39,7 +44,7 @@
                 <th>Opciones</th>
               </tr>
             </thead>
-            <tbody class="tablaContenido">
+            <tbody id="table-body" class="tablaContenido">
               @foreach ( $clientes as $key => $clientess)    
              
               <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
@@ -51,8 +56,10 @@
                 <td>{{$clientess->vehiculo2}}</td>
                 <td>{{$clientess->vehiculo3}}</td>
                 <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
+                  <a href="{{ url('/lobby/EditarCliente', ['idd' => $clientess->clienteci  ]) }}">Editar</a>
+                  <a href="#">Eliminar</a>
+                  
+      
                 </td>
 
               </tr>
@@ -60,11 +67,16 @@
             </tbody>
         </table>
 
+
+
+
+
+        
     </div>
 
-    
+  
 </div>
 
 
-
+ 
 @endsection

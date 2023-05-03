@@ -1,0 +1,269 @@
+.tit{
+    margin-top: 10px;
+      text-align: center;
+    }
+    .tit p{
+      font-size: 38px;
+      color: black;
+    }
+  
+  
+   
+       .carro1{
+   
+        text-align: center;
+  
+         
+         }
+       .botonAgregar{
+        border-radius: 20px;
+        width:221px ;
+        height:69px ;
+        background-color: #0A1C44;
+        margin-top: 4px ;
+        margin-bottom: 3px;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-size: 25px;
+        line-height: 30px;
+        color: #E4EAEA;
+        font-weight: bold;
+        cursor:pointer;
+  
+       }
+       .Ci{
+        justify-items: center;
+        display: grid;
+       }
+       .nombreAp{
+        justify-items: center;
+        display:grid;
+       }
+      .cabeza{
+        gap: 200px;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        display: grid;
+      }
+      /*fin fila 1
+      */
+      /*fila2 inicio
+      */
+      .sis{
+        text-align: center;
+       }
+       .correo{
+        text-align: center; 
+       }
+       .nacimiento{
+        /*
+        position:relative;
+        right: 75px;
+        */
+        /*
+        background-color: red;
+        */
+        width: 394.44px;
+        text-align: center;
+       }
+       .fila2{
+        
+        margin-top: 50px;
+        grid-template-columns: 1fr 1fr;
+        display: grid;
+        gap:200px
+      }
+       /*Fin fila2
+       */
+     
+     
+      .fila3{
+        /*
+        background-color: purple;
+        */
+         margin-top: 50px;
+         grid-template-columns: 1fr 1fr;
+         display: grid;
+         gap: 200px;
+      }
+      .fila4{
+        grid-template-columns: 1fr 1fr;
+         display: grid;
+         gap: 200px;
+         margin-top: 40px;
+      }
+      
+    
+      .principal{
+        display:grid;
+        grid-template-areas: 
+        "tit"
+        "cabeza"
+        "fila2" 
+        "fila3"
+        "fila4"
+        ;
+        text-align: center;
+      }
+      /*
+       cambios en el fondo para centrar
+      */
+      
+      .fondo{
+        
+          display: flex;
+          justify-content: center;
+         
+        }
+        /*
+        Inputs de texto
+        */
+        .linea{
+  
+            width: 394.44px;
+            height: 36px;
+            background-color: transparent;
+            border:0;
+            border-bottom:1px solid #000000;
+            box-shadow: none;
+            outline:none;
+            font-size: 30px;
+           
+           
+        }
+       
+        /*
+        nombres de los campos
+        */
+        .nom{
+            color: black;
+            margin-bottom: 25px;
+            font-size: 30px;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            text-align: center;
+        }
+        
+        .herramientas{
+          padding: 0;
+        }
+        h2{
+          color:#000000;
+        }
+       
+  
+  
+        .modal-fondo, .modal-fondo2 , .modal-fondo3  {
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 9999;
+  
+        }
+        .modal-contenido , .modal-contenido2 , .modal-contenido3 {
+          text-align: center;
+          position: fixed;
+   
+          top: 53%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 1px solid black;
+  
+          width: 1172px;
+          height: 722px;
+          background-color: white;
+  
+  
+        }
+        .emergente , .emergente2 , .emergente3{
+          display: none;
+         
+    
+      }
+  
+      h2{
+        margin-top: 27px;
+        margin-bottom: 14px;
+        font-family:'Inter', sans-serif;
+       font-size: 35px;
+  
+  
+      }
+  .nom2{
+    font-size: 25px;
+    margin-top: 0px;
+    margin-bottom: 17px;
+    text-align: left;
+    color: black;
+    
+  
+  }
+      .linea3{
+  
+        width: 802px;
+        height: 41px;
+        background-color: transparent;
+        border:0;
+        border-bottom:1px solid #000000;
+        box-shadow: none;
+        outline:none;
+        font-size: 30px;
+       
+       
+    }
+    .azul{
+      display: flex;
+      width: 100%;
+      height: 55px;
+     
+      background-color: #0A1C44;
+      justify-content: flex-end;
+    
+     
+      
+    }
+  
+  
+    .inputmodal{
+      margin: 0 auto;
+      width: 68%;
+      padding-bottom: 31px;
+  
+    }
+  
+    #cerrar-ventana , #cerrar-ventana2 , #cerrar-ventana3
+  {
+     color: #fff;
+     background-color: transparent;
+     border: none;
+     font-size: 18px;
+     cursor: pointer;
+     margin-right: 29px;
+  }
+  
+  .guardar-modal{
+    /*margin-top: 97px;*/
+   margin-left: 60%;
+  }
+  
+  p::after {
+    content: attr(data-lastchar);
+    color: red;
+  }
+  
+  
+  .oculto{
+     display: none;
+  
+  }
+  .editar{
+  
+  cursor: pointer;
+  position: absolute;
+  }
+  
