@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
@@ -25,6 +26,12 @@ Route::get('/ver/{id}/{email}', function ($id , $email) {
     return " estas viendo el perfil " .$id ."con el email" .$email ;
 });
 
+Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class,'log'])->name('login');
+Route::get('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'index'])->name('registrarAdmin');
+Route::post('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'store'])->name('registrarAdmin');
+Route::get('/inicio', function () {return view('inicio') ;});
+
 
 
 Route::get('/main/prueba', function () {
@@ -41,12 +48,15 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
     Route::get('/RegistroCliente', function () {return view('registroCliente') ;});
-
+    
     Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
 
     Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
     Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
-
+    
+    
+    /*
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     /*
     Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
     */

@@ -33,7 +33,7 @@
                </div>
           </a>
 
-          <a id="link" href="{{('/lobby/Salir')}}">  
+          <a id="link" href="{{('/inicio')}}">  
                <div class="salir">
                 <img src="{{asset('/dash/assets/salirNav.png')}}" alt="" class="">
                 <p>Salir</p>
