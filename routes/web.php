@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlquilerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
@@ -25,6 +26,12 @@ Route::get('/profile/{editar}', function ($editar) {
 });
 
 
+
+Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class,'log'])->name('login');
+Route::get('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'index'])->name('registrarAdmin');
+Route::post('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'store'])->name('registrarAdmin');
+Route::get('/inicio', function () {return view('inicio') ;});
 
 
 
@@ -67,6 +74,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/Alquiler/{$id}', [AlquilerController::class, 'showparqueo']);
     Route::post('/Alquiler', [AlquilerController::class, 'showcliente']);*/
 
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
     /*
     Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
     */
@@ -80,7 +89,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
-
+    Route::get("/ListaDeudas",[App\Http\Controllers\DeudasController::class,'index'])->name('/ListaDeudas');
     Route::resource("/ReporteDeudas",DeudasController::class);
     //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
     //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);

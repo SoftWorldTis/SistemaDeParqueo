@@ -62,7 +62,7 @@
     <div class="salir">
         <div class="r5">
           <img src="{{asset('/dash/assets/cerrar-sesion 1.png')}}" class="iconSalir" alt="">
-            <a id="link" href="{{('/lobby')}}">
+            <a id="link" href="{{('/inicio')}}">
                 <div class="botonSalir">
                     <p>Salir</p>
                 </div>

@@ -44,10 +44,11 @@
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
-                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
-                <div class="oculto2" id="oculto2">
+
+                <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre"  id="mostrarEmergente2"onclick="">
+                <div class=" oculto2" id="oculto2">
                     <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="usuarios" id="usuariosdatos" value="{{old('usuariosdatos')}}" readonly >
+                    <input type="text" class="linea" name="usuarios" id="usuariosdatos"  readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
                    <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{$valorcl}}" readonly >
@@ -212,6 +213,7 @@
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
                             <th class="grillatit">SIS</th>
+                        
                         </tr>
                     </thead>
                     <tbody >
@@ -222,7 +224,7 @@
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
                             <td>{{$clientess->clientesis}}</td>
-                           
+                     
                             
                         </tr>
                         @endforeach
