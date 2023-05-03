@@ -8,7 +8,7 @@
     
      display: grid;
      grid-template-columns: repeat(2, 50%);
-     grid-template-rows: repeat(1, 100%);
+     grid-template-rows: 234px 234px;
      
      grid-template-areas:
        'guardias docentes ';

@@ -17,20 +17,27 @@
 
     <div class="tit">
         <p> Alquilar sitio del parqueo</p>
+        @if ($message = Session::get('Registrado'))
+                <div class="valido">
+                    <span>{{$message}}</span>
+                </div>
+            @else
+            @endif
     </div>
 
         <div class="botonesformu">
             
+
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
-                @if ($seleccionado)
-                    <div >
-                        <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{$seleccionado->estacionamientozona}}" readonly >
+                <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
+                    <div class=" oculto" id="oculto" >
+                        <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{$seleccionadoes}}" readonly >
                         <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                     </div>
-                @else
-                    <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
-                @endif
+             
+                  
+    
             </div>
           
      
@@ -43,7 +50,7 @@
                     <input type="text" class="linea" name="usuarios" id="usuariosdatos" value="{{old('usuariosdatos')}}" readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
-                <input type="hidden" class="linea" name="usuariosci" id="usuariosdatosci" value="{{old('usuariosdatosci')}}" readonly >
+                   <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{$valorcl}}" readonly >
             </div>
         </div>
         
@@ -181,6 +188,7 @@
            
         </div>
       </div>
+      
       <div id="miEmergente2" class="emergente">
         <div class="ordenar2">
 
@@ -197,7 +205,7 @@
             </div>
             <div class="table-conteiner">
 
-                <table class="tabla2" >
+                <table class="tabla2 hoverable2" >
                     <thead>
                         <tr>
                             <th class="grillatit">Numero</th>
@@ -209,7 +217,7 @@
                     <tbody >
                         @foreach ( $clientes as $key => $clientess)    
                         
-                        <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                        <tr class="table-row2"   id="id=fila-{{$loop->iteration}} " style="height: 61px;">
                             <td>{{ $key + 1 }}</td>
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
@@ -225,6 +233,10 @@
         </div>
       </div>
       <script>
+
+{!! $js !!}
+   
+
         var mostrarVentana = document.getElementById('mostrarEmergente');
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('miEmergente');
@@ -290,6 +302,37 @@
         document.getElementById('oculto').style.display="block";
       });
     });
+
+
+
+
+    editar2.onclick = function() {
+      
+      ventanaEmergente2.style.display = "block";
+    };
+
+    $(document).ready(function() {
+      $(".table-row2").mouseover(function() {
+        $(this).addClass("highlight");
+      });
+      
+      $(".table-row2").mouseout(function() {
+        $(this).removeClass("highlight");
+      });
+      
+      $(".table-row2").click(function() {
+        var fila_id = $(this).attr("id");
+        var dato_id = fila_id.split("-")[1];
+        var value = $(this).find("td:nth-child(2)").text();
+        $("#usuariosdatos").val(value);
+        var value2 = $(this).find("td:nth-child(3)").text();
+        $("#usuariosdatosci").val(value2);
+        document.getElementById('miEmergente2').style.display = "none";
+        document.getElementById('mostrarEmergente2').style.display = "none";
+        document.getElementById('oculto2').style.display="block";
+      });
+    });
+
   </script>
 
 @if ($seleccionado)
