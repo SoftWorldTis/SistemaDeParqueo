@@ -369,9 +369,27 @@
      cursor: pointer;
      position: absolute;
      }
+
+     .oculto2{
+      display: none;
+   
+   }
+
+   .editar2{
+   
+   cursor: pointer;
+   position: absolute;
+   }
+
+   
      
 
       .hoverable tbody tr:hover {
+        background-color: #CDCDCD;
+        cursor: pointer;
+      }
+
+      .hoverable2 tbody tr:hover {
         background-color: #CDCDCD;
         cursor: pointer;
       }
