@@ -36,6 +36,13 @@
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
                 <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre" id="mostrarEmergente2"onclick="">
+                <div class=" oculto2" id="oculto2">
+                    <!-- input donde sacar el dato de parqueo-->
+                    <input type="text" class="linea" name="usuarios" id="usuariosdatos" value="{{old('usuariosdatos')}}" readonly >
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
+                </div>
+                   <input type="hidden" class="linea" name="usuariosci" id="usuariosdatosci" value="{{old('usuariosdatosci')}}" readonly >
+            
             </div>
         </div>
         
@@ -158,7 +165,7 @@
             </div>
             <div class="table-conteiner">
 
-                <table class="tabla2" >
+                <table class="tabla2 hoverable2" >
                     <thead>
                         <tr>
                             <th class="grillatit">Numero</th>
@@ -173,7 +180,7 @@
                     <tbody >
                         @foreach ( $clientes as $key => $clientess)    
                         
-                        <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                        <tr   class="table-row2" id="id=fila-{{$loop->iteration}} " style="height: 61px;">
                             <td>{{ $key + 1 }}</td>
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
@@ -254,7 +261,45 @@
         document.getElementById('oculto').style.display="block";
       });
     });
+
+
+    editar2.onclick = function() {
+      
+      ventanaEmergente2.style.display = "block";
+
+    };
+
+    $(document).ready(function() {
+      $(".table-row2").mouseover(function() {
+        $(this).addClass("highlight");
+      });
+      
+      $(".table-row2").mouseout(function() {
+        $(this).removeClass("highlight");
+      });
+      
+      $(".table-row2").click(function() {
+        var fila_id = $(this).attr("id");
+        var dato_id = fila_id.split("-")[1];
+        var value = $(this).find("td:nth-child(2)").text();
+        $("#usuariosdatos").val(value);
+        var value2 = $(this).find("td:nth-child(3)").text();
+        $("#usuariosdatosci").val(value2);
+        document.getElementById('miEmergente2').style.display = "none";
+        document.getElementById('mostrarEmergente2').style.display = "none";
+        document.getElementById('oculto2').style.display="block";
+      });
+    });
+
+    usuariosdatosci
+
+
+
   </script>
+
+
+
+
     @endsection
     @section('botones')
     
