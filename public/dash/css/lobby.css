@@ -10,37 +10,44 @@
     
      display: grid;
      grid-template-columns: repeat(3, 33.3%);
-     grid-template-rows: repeat(1, 100%);
+
+
+     grid-template-rows: repeat(2, 50%);
      
      grid-template-areas:
-       'registrar alquiler usuarios';
+       'registrar alquiler usuarios'
+       'reportes salir';
      justify-content: center;
     }
      
 
 
-.registrar,  .alquiler , .usuarios{
+.registrar,  .alquiler , .usuarios, .reportes , .salir{
   display: flex;
 
   height: 12.4375rem;
-  margin-top: 2.1875rem;
+  
   justify-content: center;
   align-items: center;
   
 }
+.reportes, .salir {
 
-.r1 , .r2 , .r3{
+  margin-top: 4.1875rem;
+}
+
+.r1 , .r2 , .r3 , .r4 , .r5{
   width: 72.05%;
   
 }
 
 
-.iconRegistrar , .iconAlquilar , .iconUsuarios {
+.iconRegistrar , .iconAlquilar , .iconUsuarios, .iconReportes , .iconSalir {
     margin-left: 34.62%;
     width:31.03%;
   
   }
-   .botonRegistro , .botonAlquilo , .botonUsuarios{
+   .botonRegistro , .botonAlquilo , .botonUsuarios , .botonReportes , .botonSalir{
     display: flex;
     margin-top:1.875rem ;
     border-radius: 25px;
@@ -54,18 +61,18 @@
   }
   
   .botonRegistro:active ,
-   .botonAlquilo:active,  .botonUsuarios:active {
+   .botonAlquilo:active,  .botonUsuarios:active , .botonReportes:active , .botonSalir:active  {
   transform: scale(0.96);
   }
  
-   .botonRegistro p, .botonAlquilo p , .botonUsuarios p  {
+   .botonRegistro p, .botonAlquilo p , .botonUsuarios p , .botonReportes p , .botonSalir p  {
       margin-top: 0px;
       margin-bottom: 0px;
   
   
    }
    
-   .botonRegistro:hover,.botonAlquilo:hover ,.botonUsuarios:hover  {
+   .botonRegistro:hover,.botonAlquilo:hover ,.botonUsuarios:hover , .botonReportes:hover , .botonSalir:hover  {
   background-color: #3E60AC ;
   }
   

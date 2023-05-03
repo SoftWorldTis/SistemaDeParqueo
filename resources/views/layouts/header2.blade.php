@@ -1,8 +1,10 @@
 
    <nav>
         <div class="nav2">
-            <div></div>
-            <div></div>
+                <br>
+
+
+        
  
         
             <a id="link" href="{{('/lobby')}}">  
@@ -11,6 +13,13 @@
                  <p>Inicio</p>
                 </div>
             </a>
+
+            <a id="link" href="{{('/lobby/ListaReportes')}}">  
+               <div class="reportes">
+                <img src="{{asset('/dash/assets/parqueoNav.png')}}" alt="" class="">
+                <p>Reportes</p>
+               </div>
+           </a>
         
            <a id="link" href="{{('/lobby/RegistroOpciones')}}">  
                 <div class="registrar">

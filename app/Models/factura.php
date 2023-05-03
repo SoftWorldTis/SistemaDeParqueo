@@ -9,6 +9,6 @@ class factura extends Model
 {
     use HasFactory;
     protected $table='factura';
-    protected $primarykey='facturaid';
+    protected $primaryKey='facturaid';
     public $timestamps=false;
 }
