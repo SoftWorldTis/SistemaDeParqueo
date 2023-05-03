@@ -47,6 +47,29 @@
     </div>
 
    
+    <div class="reportes">
+        <div class="r4">
+          <img src="{{asset('/dash/assets/p 1.png')}}" class="iconReportes" alt="">
+            <a id="link" href="{{('/lobby/RegistroOpciones')}}">
+                <div class="botonReportes">
+                    <p>Reportes</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="salir">
+        <div class="r5">
+          <img src="{{asset('/dash/assets/cerrar-sesion 1.png')}}" class="iconSalir" alt="">
+            <a id="link" href="{{('/lobby')}}">
+                <div class="botonSalir">
+                    <p>Salir</p>
+                </div>
+            </a>
+         </div>
+    </div>
+
 </div>
 
 @endsection 

@@ -49,7 +49,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
 
    
     Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
-
+    Route::get('/ListaReportes', function () {return view('listaReportes') ;});
   
 
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
