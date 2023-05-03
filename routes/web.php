@@ -80,7 +80,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
-
+    Route::get("/ListaDeudas",[App\Http\Controllers\DeudasController::class,'index'])->name('/ListaDeudas');
     Route::resource("/ReporteDeudas",DeudasController::class);
     //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
     //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);

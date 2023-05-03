@@ -17,7 +17,7 @@
     <div class="deudas">
         <div class="r1">
           <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconDeudas" alt="">
-            <a id="link" href="{{('/lobby/ListaGuardias')}}">
+            <a id="link" href="{{('/lobby/ListaDeudas')}}">
                 <div class="botonDeudas">
                     <p>Ver Deudas</p>
                 </div>
