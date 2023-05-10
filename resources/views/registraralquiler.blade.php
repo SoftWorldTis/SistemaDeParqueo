@@ -21,8 +21,7 @@
                 <div class="valido">
                     <span>{{$message}}</span>
                 </div>
-            @else
-            @endif
+        @endif
     </div>
 
         <div class="botonesformu">
@@ -31,12 +30,19 @@
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
                 <input type="button" value ="Agregar"class="botonAgregarP" name="botonparqueo"  id="mostrarEmergente" >
-                    <div class=" oculto" id="oculto" >
-                        <input type="text" class="linea" name="parqueo" id="parqueodatos" value="{{$seleccionadoes}}" readonly >
-                        <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                <div class=" oculto" id="oculto" >
+                    <input type="text" class="linea" name="Parqueo" id="parqueodatos" value="{{$seleccionadoes}}" readonly>
+                    <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
+                    @if($seleccionado != null)
+                    <input type="hidden" class="linea" name="parqueoid" id="parqueoid"  value="{{$seleccionado->estacionamientoid}}" readonly >
+                    @endif
+                   
+                </div>
+                @error('Parqueo')
+                    <div class="error">
+                        {{$message}}
                     </div>
-             
-                  
+                @enderror
     
             </div>
           
@@ -48,10 +54,15 @@
                 <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre"  id="mostrarEmergente2"onclick="">
                 <div class=" oculto2" id="oculto2">
                     <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="usuarios" id="usuariosdatos"  readonly >
+                    <input type="text" class="linea" name="Usuario" id="usuariosdatos"  value="{{$valorcl}}" readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
                    <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{$valorcl}}" readonly >
+                   @error('Usuario')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
             </div>
         </div>
         
@@ -102,18 +113,28 @@
             <div class="seleccion">
                 <p class="nom">Sitio</p>
                 @if ($seleccionado)
-                    <select name="sitio" id="sitio" class="linea" class="sitio" onclick="sitios()">
-                        <option class= "linea" value="">Seleccione un sitio</option>
+                    <select name="sitio" id="sitio" class="linea" class="sitio" valorAnt="{{old('sitio')}}">
+                        <option class= "linea" value="" selected>Seleccione un sitio</option>
                     </select>
+                    @error('sitio')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
                 @else
                     <input type="text" class="linea" name="sitio" readonly value="Seleccione un parqueo">
+                    @error('sitio')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
                 @endif
                 
             </div>
             
             <div class="Precio">
                 <p class="nom">Precio</p>
-                <input type="text" class="linea" name="costo" id="Precio" readonly >
+                <input type="text" class="linea" name="costo" id="Precio" readonly value="{{old('costo')}}" >
             </div>
             
         </div>
@@ -172,7 +193,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$parqueos->estacionamientozona}}</td>
                                 <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
-                                <td>{{$parqueos->estacionamientositioAdministrador}}</td>
+                                <td>{{$parqueos->estacionamientositios}}</td>
                                 <td>{{$parqueos->estacionamientoestado}}</td>
                                 <td>
                                     <a href="/lobby/Alquiler/{{$parqueos->estacionamientoid}}">Seleccionar</a>
@@ -296,6 +317,7 @@
         var fila_id = $(this).attr("id");
         var dato_id = fila_id.split("-")[1];
         console.log(dato_id)
+        $("#parqueoid").val(dato_id);
         var value = $(this).find("td:nth-child(2)").text();
         
         $("#parqueodatos").val(value);
@@ -364,22 +386,23 @@
     }
 
     function sitios() {
-        const sitioAdm= @json($seleccionado->estacionamientositioAdministrador);
-        const sitioDoc = @json($seleccionado->estacionamientositioDocente);
+        var valorAntiguo = "{{ old('sitio') }}";
+        const sitios= @json($seleccionado->estacionamientositios);
         const sitioSelect = document.getElementById('sitio')
-        for(var i=1; i<= sitioAdm; i++){
+        for(var i=1; i<= sitios; i++){
             let opcion = document.createElement('option')
             opcion.value = i
-            opcion.text = "Espacio "+i+" Adm"
+            opcion.text = "Espacio "+i
+            if (valorAntiguo == i) {
+                opcion.selected = true;
+            }
             sitioSelect.add(opcion);
-        }
-        for(var i=1; i<= sitioDoc; i++){
-            let opcion = document.createElement('option')
-            opcion.value = i
-            opcion.text = "Espacio "+i+" Doc"
-            sitioSelect.add(opcion);
-        }
+        }  
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        sitios();
+  });
 </script>
 @endif
 

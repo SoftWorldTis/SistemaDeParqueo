@@ -26,35 +26,35 @@ class RegisParqueoController extends Controller
                 if ($value < $request['estacionamientohoraInicio']) {
                     $fail('ingrese un hora inicial mayor a la de cierre'); } }],
           'estacionamientotelefono' =>  ['required',new telefono ], 
-          'estacionamientositioAdministrador'=>['required','numeric','min:10','max:200'],
-          'estacionamientositioDocente'=>['required','numeric','min:10','max:200'],
+          'estacionamientositios'=>['required','numeric','min:10','max:200'],
           'estacionamientoprecio'=>['required','numeric','min:1','max:200'],
-          'estacionamientoimagen' => ['required','image','mimes:jpeg,png,jpg','max:2048'],
+          'estacionamientoimagen' => ['required','mimes:jpeg,png,jpg','max:2048'],
         ]);
       
-        $imageName = time().'.'.$request->estacinamientoimagen->extension();  
-        $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
+        if ($request->hasFile('estacionamientoimagen')) {
+            $archivo = $request->file('estacionamientoimagen');
+            if ($archivo->isValid()) {
+                $imageName = time().'.'.$request->estacionamientoimagen->extension();  
+                $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
 
-        $estacionamiento =new estacionamiento();
-        $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
-        $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
-        $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
-        $estacionamiento -> estacionamientoqr= $imageName;
-        $estacionamiento -> estacionamientoestado= 'activo';
-        $estacionamiento -> estacionamientohoraInicio= $request->input('estacionamientohoraInicio');
-        $estacionamiento -> estacionamientohoraCierre= $request->input('estacionamientohoraCierre');
-        $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
-        $estacionamiento -> estacionamientositioAdministrador= $request->input('estacionamientositioAdministrador');
-        $estacionamiento -> estacionamientositioDocente= $request->input('estacionamientositioDocente');
-        $estacionamiento -> estacionamientoImg= $imageName;
+                $estacionamiento =new estacionamiento();
+                $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
+                $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
+                $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
+                $estacionamiento -> estacionamientoestado= 'activo';
+                $estacionamiento -> estacionamientohoraInicio= $request->input('estacionamientohoraInicio');
+                $estacionamiento -> estacionamientohoraCierre= $request->input('estacionamientohoraCierre');
+                $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
+                $estacionamiento -> estacionamientositios= $request->input('estacionamientositios');
+                $estacionamiento -> estacionamientoImg= $imageName;
 
-        $estacionamiento -> save();
-        return view('registroParqueo');
-        
+                $estacionamiento -> save();
+                return back() -> with('Registrado', 'Parqueo registrado correctamente');
 
-        
-
-
+            }
+        }else{
+          return back() -> with('Mal', 'Algo salió mal');
+        }
     }
 
 }

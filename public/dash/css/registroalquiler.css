@@ -1,6 +1,7 @@
 .tit{
   text-align: center;
-  margin-top: 10px;
+  margin: 20px;
+  margin-bottom: 60px;
 }
 .tit p{
   font-size: 38px;
@@ -56,7 +57,7 @@
     /*
     background-color: skyblue;
     */
-    gap: 150px;
+    gap: 100px;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     display: grid;
@@ -89,7 +90,7 @@
     margin-top: 50px;
     grid-template-columns: 1fr 1fr;
     display: grid;
-    gap:200px
+    gap:100px
   }
    /*Fin fila2
    */
@@ -108,12 +109,12 @@
      margin-top: 50px;
      grid-template-columns: 1fr 1fr;
      display: grid;
-     gap: 200px;
+     gap: 100px;
   }
   .fila4{
     grid-template-columns: 1fr 1fr;
      display: grid;
-     gap: 200px;
+     gap: 100px;
      margin-top: 40px;
   }
   .pagar{

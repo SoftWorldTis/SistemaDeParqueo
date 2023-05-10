@@ -14,7 +14,7 @@
         </div>
         <div class="fila">
 
-            <form action="/lobby/ReporteDeudas" method="POST" autocomplete="off" role="search">
+            <form action="/lobby/ListaDeudas" method="POST" autocomplete="off" role="search">
                 @csrf
                 <div class ="buscador">
                     <input  type="text" class="linea"  name="buscador" placeholder="Escriba un nombre " value="{{$consulta}}">
@@ -25,7 +25,7 @@
             
             <div class="exportar">
                 
-                <a href="/lobby/ReporteDeudas/imprimir">
+                <a href="/lobby/ListaDeudas/imprimir">
                     <button class="btnExportar">Exportar</button>
                 </a>
             </div>
@@ -52,7 +52,7 @@
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>
                             <a href="" >Ver Perfil</a>
-                            <a href="/lobby/ReporteDeudas/{{ $deuda->alquilerid}}" onclick="recargar()">Cobrar</a>
+                            <a href="/lobby/ListaDeudas/{{ $deuda->alquilerid}}" onclick="recargar()">Cobrar</a>
                         </td>
                     </tr>
                 @endforeach

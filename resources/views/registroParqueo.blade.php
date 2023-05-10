@@ -18,6 +18,16 @@
 
 <div class="ParAr">
     <p> Registro de Parqueos</p>
+    @if ($message = Session::get('Registrado'))
+    <div class="valido">
+        <span>{{$message}}</span>
+    </div>
+    @endif
+    @if ($message = Session::get('Mal'))
+    <div class="error">
+        <span>{{$message}}</span>
+    </div>
+    @endif
 </div>
 <div class="ParIzq" >
    <div class="Zona Pi" >
@@ -42,20 +52,34 @@
    
 
    <div  class="SitiosDc Pi">
-       <p>Sitios Docente</p>
-       <input type="number" class="linea"  onkeyup="telephone(this)" name="estacionamientositioDocente" value="{{old('estacionamientositioDocente')}}"  placeholder="Ingrese la cantidad de sitios">
-       @error('estacionamientositioDocente')
+       <p>Sitios</p>
+       <input type="number" class="linea"  onkeyup="telephone(this)" name="estacionamientositios" value="{{old('estacionamientositios')}}"  placeholder="Ingrese la cantidad de sitios">
+       @error('estacionamientositios')
          <b class="error">{{$message}}<b>
        @enderror
     </div>
 
-   <div  class="PrecioDia Pi">
-        <p>Precio por dia</p>
-        <input type="number" class="linea" onkeyup="telephone(this)" name="estacionamientoprecio" value="{{old('estacionamientoprecio')}}"  placeholder="precio por dia que se cobrara">
-        @error('estacionamientoprecio')
-        <b class="error">{{$message}}<b>
-       @enderror
-    </div>
+    <div  class="SubirQR " name="estacionamientoqr">
+        <p class="sq">SubirQR</p>
+     
+            <!--<input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
+            <label for="foto" class="butQR button"><p> Agregar</p></label>-->
+    
+            <label class="form-label butQR button" id="butqr" for="inputImage">Select Image:</label>
+            <input type="file" name="estacionamientoimagen" id="inputImage"class="form-control
+            foto" onchange="cambio(event);">
+            <br>
+           
+            <label for="inputImage" id="labelqr" class="labelqr">
+                <img src=" " class="imagenqr" id="Modific_image" alt="">
+                <img src="{{asset('/dash/assets/Lapiz.png')}}" 
+                 alt="" class="editar" id="editar" >
+            </label>
+            @error('estacionamientoimagen')
+            <b class="error">{{$message}}<b>
+           @enderror
+        </div>
+   
 </div>
 <div class="ParDer" >
     <div class="CorreoE Pi" >
@@ -75,30 +99,14 @@
  
     </div>
 
-   <div  class="SitiosAd Pi">
-       <p>Sitios Administrador</p>
-       <input type="number" class="linea"   onkeyup="telephone(this)" name="estacionamientositioAdministrador" value="{{old('estacionamientositioAdministrador')}}" placeholder="Ingrese la cantidad de sitios" >
-       @error('estacionamientositioAdministrador')
+    <div  class="PrecioDia Pi">
+        <p>Precio por dia</p>
+        <input type="number" class="linea" onkeyup="telephone(this)" name="estacionamientoprecio" value="{{old('estacionamientoprecio')}}"  placeholder="Precio por dia que se cobrará">
+        @error('estacionamientoprecio')
         <b class="error">{{$message}}<b>
        @enderror
     </div>
-
-   <div  class="SubirQR " name="estacionamientoqr">
-    <p class="sq">SubirQR</p>
- 
-        <!--<input  class="foto " id="foto" name="foto" type="file" accept=".jpg, .png, .jpeg" >
-        <label for="foto" class="butQR button"><p> Agregar</p></label>-->
-
-        <label class="form-label butQR button" id="butqr" for="inputImage">Select Image:</label>
-        <input type="file" name="estacionamientoimagen" id="inputImage"class="form-control
-        foto" onchange="cambio(event);">
-       
-        <label for="inputImage" id="labelqr" class="labelqr">
-            <img src=" " class="imagenqr" id="Modific_image" alt="">
-            <img src="{{asset('/dash/assets/Lapiz.png')}}" 
-             alt="" class="editar" id="editar" >
-            </label>
-    </div>
+</div>
 </div>
 
 </div>

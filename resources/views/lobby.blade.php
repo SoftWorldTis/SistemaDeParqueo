@@ -50,7 +50,7 @@
     <div class="reportes">
         <div class="r4">
           <img src="{{asset('/dash/assets/p 1.png')}}" class="iconReportes" alt="">
-            <a id="link" href="{{('/lobby/RegistroOpciones')}}">
+            <a id="link" href="{{('/lobby/ListaReportes')}}">
                 <div class="botonReportes">
                     <p>Reportes</p>
                 </div>

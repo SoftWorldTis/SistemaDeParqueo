@@ -1,11 +1,11 @@
 
 .herramientas{
     padding-left: 0px;
-    margin-left: 240px;
+    margin-left: 100px;
    padding-top: 0px;
      display: grid;
      grid-template-columns: repeat(2, 459.72px);
-     grid-template-rows: 84px 678px;
+     /*grid-template-rows: 84px 678px;*/
      grid-column-gap: 0px;
      grid-row-gap: 0px;
     }
@@ -13,7 +13,7 @@
 
     .ParAr{
         text-align: center;
-       margin-top: 10px;
+       margin: 20px;
         grid-area: 1 / 1 / 2 / 3;
     
     }
@@ -105,12 +105,14 @@
 }
 .butQR{
 width: 221px;
-height: 69px;
+height: auto;
 display: inline-block;
  border-radius: 25px;
  cursor: pointer;
  color: #FFFFFF;
  font-size: 30px;
+ font-family: 'Inter';
+ padding: 10px;
 }
 .butQR p {
 

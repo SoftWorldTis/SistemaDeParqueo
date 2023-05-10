@@ -15,6 +15,11 @@
 
     <div class="tit">
         <p> Registro de Cliente</p>
+        @if ($message = Session::get('Registrado'))
+                <div class="valido">
+                    <span>{{$message}}</span>
+                </div>
+        @endif
     </div>
 
    <!-- debajo de un forms pones eso atte kiri-->
@@ -22,7 +27,7 @@
             
             <div class ="NombreAp">
                 <p class="nom">Nombre y Apellidos</p>
-                <input type="text" class="linea" name="clientenombrecompleto" value="{{old('clientenombrecompleto')}}" >
+                <input type="text" class="linea" name="clientenombrecompleto" value="{{old('clientenombrecompleto')}}" placeholder="Ingrese su nombre">
                 @error('clientenombrecompleto')
                     <div class="error">
                         {{$message}}
@@ -32,7 +37,7 @@
         
             <div class ="Ci">
                 <p class="nom">CI</p>
-                <input type="text" class="linea" name="clienteci" value="{{old('clienteci')}}" >
+                <input type="text" class="linea" name="clienteci" value="{{old('clienteci')}}" placeholder="Ingrese su CI ">
                 @error('clienteci')
                     <div class="error">
                         {{$message}}
@@ -55,7 +60,7 @@
             </div>
             <div class="sis">
                 <p class="nom">Codigo Sis</p>
-                <input type="text" class="linea" name="clientesis" value="{{old('clientesis')}}" >
+                <input type="text" class="linea" name="clientesis" value="{{old('clientesis')}}" placeholder="Ingrese su código SIS" >
                 <br>
                 @error('clientesis')
                     <div class="error">
@@ -67,7 +72,7 @@
         <div class="fila3">
             <div class="Correo">
                 <p class="nom">Correo Electronico</p>
-                <input type="text" class="linea" name="clientecorreo" value="{{old('clientecorreo')}}"  >
+                <input type="text" class="linea" name="clientecorreo" value="{{old('clientecorreo')}}" placeholder="Ingrese su correo"  >
                 @error('clientecorreo')
                     <div class="error">
                         {{$message}}

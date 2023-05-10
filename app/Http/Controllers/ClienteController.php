@@ -59,7 +59,8 @@ class ClienteController extends Controller
         }
 
 
-        return view('registroCliente'); 
+        //return view('registroCliente'); 
+        return back() -> with('Registrado', 'Cliente registrado correctamente');
      }
 
   
