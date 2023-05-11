@@ -9,6 +9,8 @@ use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
 use App\Http\Controllers\DeudasController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controller\ListaGuardiasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +98,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
  
-   
+    Route::get("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'index'])->name('/ListaGuardias');
+    Route::post("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'store'])->name('/ListaGuardias');
 });
 
 
