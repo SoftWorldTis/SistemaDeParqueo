@@ -5,37 +5,22 @@
 
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/dash/css/listaGuardias.css')}}" > 
+    <link rel="stylesheet" href="{{asset('/dash/css/listaClientes.css')}}" > 
 @endsection
 
 @section('contenido')
 <div class="herramientas">
 
     <div class="ParAr">
-        <p> Usuarios</p>
+        <p> Guardias</p>
     </div>
   
-    <div  class="ParMed">
-      <form  action="/lobby/ListaGuardias" method="POST" autocomplete="off" role="search">
-        @csrf
-        <div class="buscador" id="buscador">
-            <input type="text" class="linea" id="buscadorinput" name="buscador" value="{{$searchValue}}" placeholder="Buscar..." >
-            <button  type="submit" id="search-button"  class="botonBuscar"> <img src="{{asset('/dash/assets/lupita_icono.png')}}" class="lupa" alt="">    </button>
-        </div>
-      </form>
-
-       <a href="/lobby/ReporteGuardias/imprimir">
-        <button  type="button"  class="botonExportar"> <p> Exportar </p> </button>
-       </a>
-      
-    </div>
-
     <div  class="ParAb"  >
         <table class="tablaCli" >
             <thead class="tablaTitulos">
               <tr>
                 <th>Numero</th>
-                <th>Usuario</th>
+                <th>Guardia</th>
                 <th>CI</th>
                 <th>Horario</th>
                 <th>Opciones</th>
@@ -46,12 +31,11 @@
              
               <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
                 <td>{{ $key + 1 }}</td>
-                <td>{{$guardiass->guardarnombrecompleto}}</td>
-                <td>{{$guardiass->guardiaci}}</td>
-                <td>{{$guardiass->guardiasis}}</td>
-                <td>{{$guardiass->horario}}</td>
+                <td>{{ $guardiass->guardianombre }}</td>
+                <td>{{ $guardiass->guardiaci }}</td>
+                <td>{{ $guardiass->guardiahoraentrada }} - {{ $guardiass->guardiahorasalida }}</td>
                 <td>
-                  <a href="{{ url('/lobby/EditarCliente', ['idd' => $clientess->clienteci  ]) }}">Editar</a>
+                  <a href="{{ url('/lobby/EditarGuardia', ['idd' => $guardiass->guardiaci  ]) }}">Editar</a>
                   <a href="#">Eliminar</a>
                   
       
