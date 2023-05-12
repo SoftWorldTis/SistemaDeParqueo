@@ -91,7 +91,7 @@
     </div>
 
    <div  class="Telefono Pi">
-        <p>Telefono</p>
+        <p>Teléfono</p>
         <input type="number" class="linea" name="estacionamientotelefono" onkeyup="telephone(this)" value="{{old('estacionamientotelefono')}}" placeholder="Ingrese el telefono del lugar">
         @error('estacionamientotelefono')
             <b class="error">{{$message}}<b>

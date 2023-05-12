@@ -6,6 +6,7 @@ use App\Models\estacionamiento;
 use App\Rules\superior;
 use App\Rules\telefono;
 use Illuminate\Http\Request;
+use App\Http\Requests\ParqueoRequest;
 
 class RegisParqueoController extends Controller
 {
@@ -15,21 +16,8 @@ class RegisParqueoController extends Controller
 
 
     }
-    public function store(Request $request){
+    public function store(ParqueoRequest $request){
       //dd($request);
-
-        $request-> validate([
-          'estacionamientozona'=> ['required','min:3','max:25', new superior],
-          'estacionamientocorreo'=> ['required','email','min:10','max:25', new superior], 
-          'estacionamientohoraCierre'=> ['required',
-            function ($attribute, $value, $fail) use ($request) {
-                if ($value < $request['estacionamientohoraInicio']) {
-                    $fail('ingrese un hora inicial mayor a la de cierre'); } }],
-          'estacionamientotelefono' =>  ['required',new telefono ], 
-          'estacionamientositios'=>['required','numeric','min:10','max:200'],
-          'estacionamientoprecio'=>['required','numeric','min:1','max:200'],
-          'estacionamientoimagen' => ['required','mimes:jpeg,png,jpg','max:2048'],
-        ]);
       
         if ($request->hasFile('estacionamientoimagen')) {
             $archivo = $request->file('estacionamientoimagen');

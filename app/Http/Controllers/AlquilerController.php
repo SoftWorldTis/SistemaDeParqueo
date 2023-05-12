@@ -104,7 +104,7 @@ class AlquilerController extends Controller
 
 
         }else{
-            return back() -> with('Registrado', 'Alquiler registrado correctamente');
+            return back() -> with('Registrado', 'Alquiler registrado correctamente, debe pagar dentro de 2 semanas');
         }
         
     

@@ -411,7 +411,7 @@
     
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby')}}"> 
+    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>

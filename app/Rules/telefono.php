@@ -40,6 +40,6 @@ class telefono implements Rule
      */
     public function message()
     {
-        return 'Ingrese un numero de telefono valido';
+        return 'Ingrese un número de teléfono válido';
     }
 }
