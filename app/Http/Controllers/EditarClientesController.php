@@ -67,8 +67,8 @@ class EditarClientesController extends Controller
             $vehiculo-> save();
 
         }
+        return redirect()->route('lobby.vercliente');
 
-    return view('ListaUsuarios');
      }
 
   
