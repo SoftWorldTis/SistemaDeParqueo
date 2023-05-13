@@ -73,10 +73,20 @@ class ListaClientesController extends Controller
     
     }
 
-    public function eliminarCliente($cliente)
-    {
-        $clienteAEliminar = Cliente::findOrFail($cliente);
-        $clienteAEliminar->delete();
-        return response()->json(['success' => true]);
+
+    public function destroy($idd){
+            $factura=DB::table('factura')
+            ->where('facturacliente', $idd);
+            $factura->delete();
+            $alquiler=DB::table('alquiler')
+            ->where('cliente_clienteci', $idd);
+            $alquiler->delete();
+            $vehiculo=DB::table('vehiculo')
+            ->where('cliente_clienteci', $idd);
+            $vehiculo->delete();
+            $cliente= Cliente::findOrFail($idd);
+            $cliente-> delete();
+            return redirect()->route('lobby.vercliente');
+
     }
 }

@@ -41,13 +41,13 @@ Route::get('/main/prueba', function () {
 });
 
 
- 
 
 
-Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
+
+Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
     Route::get('/', function () {return view('lobby') ;});
-    Route::get('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'index'])->name('/EditarCliente');
-    Route::put('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'update'])->name('/EditarCliente');
+    Route::get('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'index'])->name('editarcliente');
+    Route::put('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'update'])->name('actualizarcliente');
     //Route::resource('/EditarCliente/{idd}', EditarClientesController::class)->name('/EditarCliente');
     Route::resource('/RegistroParqueos',RegisParqueoController::class );
     Route::resource('/RegistroGuardias',GuardiaController::class );
@@ -90,9 +90,9 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
     //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
 
-    Route::get("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'index'])->name('/ListaClientes');
-    Route::post("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'store'])->name('/ListaClientes');
-    Route::delete('/EliminarCliente/{id}',[App\Http\Controllers\ListaClientesController::class,'eliminarCliente'])->name('cliente.eliminar');
+    Route::get("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'index'])->name('vercliente');
+    Route::post("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'store'])->name('guardarcliente');
+    Route::delete('/ListaClientes/{idd}',[App\Http\Controllers\ListaClientesController::class,'destroy'])->name('borrarcliente');
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
  
