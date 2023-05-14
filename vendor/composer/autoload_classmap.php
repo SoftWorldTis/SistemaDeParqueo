@@ -16,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Guardia2Controller' => $baseDir . '/app/Http/Controllers/Guardia2Controller.php',
     'App\\Http\\Controllers\\GuardiaController' => $baseDir . '/app/Http/Controllers/GuardiaController.php',
     'App\\Http\\Controllers\\ListaClientesController' => $baseDir . '/app/Http/Controllers/ListaClientesController.php',
+    'App\\Http\\Controllers\\ListaGuardiasController' => $baseDir . '/app/Http/Controllers/ListaGuardiasController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\RegisParqueoController' => $baseDir . '/app/Http/Controllers/RegisParqueoController.php',
     'App\\Http\\Controllers\\facturaController' => $baseDir . '/app/Http/Controllers/facturaController.php',

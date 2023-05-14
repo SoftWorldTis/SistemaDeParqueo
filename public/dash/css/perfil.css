@@ -1,0 +1,75 @@
+.card{
+    font-family: 'Inter', sans-serif;
+}
+
+.card--options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card--title{
+    text-align: center;
+}
+
+.card--datos{
+    width: 96%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card--datos--table{
+    border-collapse: collapse;
+    align-self: flex-start;
+}
+
+.card--datos--table tr td,
+.card--datos--table tr th{
+    text-align: left;
+    font-size: 18px;
+    padding: 6px 14px;
+}
+
+
+.card--alquiler{
+    width: 96%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card--alquiler--title{
+    font-size: 18px;
+}
+
+
+
+.card--alquiler--table{
+    box-shadow: 0px 0px 6px rgba(0,0,0, 0.1);
+}
+
+.card--alquiler--table tr th{
+    background-color: #0A1C44;
+    color: #f1f1f1;
+}
+
+
+.card--alquiler--table tr th,
+.card--alquiler--table tr td{
+    padding: 15px 20px;
+}
+
+.card--alquiler--table tr td{
+    border-bottom: solid 3px rgba(0,0,0, 0.05);
+}
+
+
+.card--alquiler--table .td-green{
+    color: green;
+}
+
+.card--alquiler--table .td-red{
+    color: red;
+}

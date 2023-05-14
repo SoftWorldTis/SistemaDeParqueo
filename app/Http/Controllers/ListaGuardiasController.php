@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\estacionamiento;
+use App\Models\guardia;
 use App\Models\listaCliente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,18 +15,31 @@ class ListaGuardiasController extends Controller
 {
     public function index(Request $request){
        
-        
+        $searchValue = trim($request->get('buscador'));
+
         $guardias = DB::table('guardia')
             ->select('guardianombre', 'guardiaci', DB::raw("to_char(guardiahoraentrada, 'HH:MI') AS guardiahoraentrada"), DB::raw("to_char(guardiahorasalida, 'HH24:MI') AS guardiahorasalida"), 'guardiacorreo', 'guardiafechanacimiento')
             ->groupBy('guardianombre', 'guardiaci', 'guardiahoraentrada', 'guardiahorasalida', 'guardiacorreo', 'guardiafechanacimiento')
             ->orderBy('guardianombre', 'ASC')
             ->get();
-                    return view('listaGuardias', compact('guardias' ));
-
+        
+        return view('ListaGuardias', compact('guardias', 'searchValue'));
     }
 
 
+    public function edit($idd){
+        $guardia = guardia::where('guardiaci', $idd)->first();
+        $parqueos = estacionamiento::all();
 
+        $parqueo_id = $guardia->estacionamiento_estacionamientoid;
+        $parqueo_select = estacionamiento::where('estacionamientoid', $parqueo_id)->first();
+
+        return view("EditarGuardia", [
+            'guardia' => $guardia,
+            'parqueos' => $parqueos,
+            'parqueo_select' => $parqueo_select
+        ]);
+    }
 
     
     public function show(){
@@ -37,6 +52,20 @@ class ListaGuardiasController extends Controller
         $pdf = Pdf::loadView('GuardiasRepPDF.ReporteGuardias', $data);
         return $pdf->stream();
     
+    }
+
+    public function store(Request $request){
+        //busqueda por nombre
+        $searchValue = trim($request->get('buscador'));
+
+        $guardias = DB::table('guardia')
+            ->select('guardianombre', 'guardiaci', DB::raw("to_char(guardiahoraentrada, 'HH:MI') AS guardiahoraentrada"), DB::raw("to_char(guardiahorasalida, 'HH24:MI') AS guardiahorasalida"), 'guardiacorreo', 'guardiafechanacimiento')
+            ->groupBy('guardianombre', 'guardiaci', 'guardiahoraentrada', 'guardiahorasalida', 'guardiacorreo', 'guardiafechanacimiento')
+            ->orderBy('guardianombre', 'ASC')
+            ->where('guardianombre', 'LIKE', '%' .$searchValue. '%')
+            ->get();
+
+        return view('ListaGuardias', compact('guardias','searchValue'));
     }
 
     public function eliminarGuardia($guardia)

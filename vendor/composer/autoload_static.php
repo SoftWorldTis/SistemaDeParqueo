@@ -579,6 +579,7 @@ class ComposerStaticInitfbed60135272c58f0b49b86f2363ea13
         'App\\Http\\Controllers\\Guardia2Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Guardia2Controller.php',
         'App\\Http\\Controllers\\GuardiaController' => __DIR__ . '/../..' . '/app/Http/Controllers/GuardiaController.php',
         'App\\Http\\Controllers\\ListaClientesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListaClientesController.php',
+        'App\\Http\\Controllers\\ListaGuardiasController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListaGuardiasController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\RegisParqueoController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisParqueoController.php',
         'App\\Http\\Controllers\\facturaController' => __DIR__ . '/../..' . '/app/Http/Controllers/facturaController.php',

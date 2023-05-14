@@ -51,8 +51,10 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'index'])->name('/EditarCliente');
     Route::put('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'update'])->name('/EditarCliente');
     //Route::resource('/EditarCliente/{idd}', EditarClientesController::class)->name('/EditarCliente');
-    Route::resource('/RegistroParqueos',RegisParqueoController::class );
-    Route::resource('/RegistroGuardias',GuardiaController::class );
+    Route::resource('/RegistroParqueos',RegisParqueoController::class);
+
+    Route::resource('/RegistroGuardias', GuardiaController::class);
+
     Route::resource("/RegistroCliente",ClienteController::class);
     Route::resource("/ListaClientes",ListaClientesController::class);
 
@@ -99,7 +101,13 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
  
     Route::get("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'index'])->name('/ListaGuardias');
+    Route::get("/ReporteGuardias/imprimir",[App\Http\Controllers\ListaGuardiasController::class,'show'])->name('/ReporteGuardias');
+
+    Route::get("/EditarGuardia/{idd}",[App\Http\Controllers\ListaGuardiasController::class,'edit'])->name('guardia.edit.view');
     Route::post("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'store'])->name('/ListaGuardias');
+
+
+    Route::resource('Perfil', PerfilController::class);
 });
 
 
