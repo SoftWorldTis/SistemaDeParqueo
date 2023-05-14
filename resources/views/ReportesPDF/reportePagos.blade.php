@@ -28,16 +28,17 @@
 </head>
 <body>
     <div class="titulo" >
-        <h3>Lista de Deudas</h3>
+        <h3>Lista de Pagos</h3>
     </div>
     <table style="width: 100%;">
         <thead>
           <tr >
-            <th class="grillatit">Número</th>
-            <th class="grillatit">Usuario</th>
-            <th class="grillatit">CI</th>
-            <th class="grillatit">Fecha Alquiler</th>
-            <th class="grillatit">Deuda</th>
+                <th class="grillatit">Número</th>
+                <th class="grillatit">Usuario</th>
+                <th class="grillatit">CI</th>
+                <th class="grillatit">Fecha Alquiler</th>
+                <th class="grillatit">Saldado</th>
+                <th class="grillatit">Tipo</th>
           </tr>
         </thead>
         <tbody>  
@@ -48,6 +49,7 @@
                     <td>{{$deuda->cliente_clienteci}}</td>
                     <td>{{$deuda->alquilerfecha}}</td>
                     <td>{{$deuda->alquilerprecio}}</td>
+                    <td>{{$deuda->alquilertipopago}}</td>
                 </tr>
             @endforeach
           
