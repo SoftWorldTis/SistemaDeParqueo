@@ -8,6 +8,7 @@ use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
 use App\Http\Controllers\DeudasController;
+use App\Http\Controllers\PerfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::delete('/EliminarCliente/{id}',[App\Http\Controllers\ListaClientesController::class,'eliminarCliente'])->name('cliente.eliminar');
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
- 
+    Route::get("/Perfil/{id}", [PerfilController::class, 'index']);
    
 });
 

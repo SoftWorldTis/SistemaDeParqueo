@@ -1,0 +1,85 @@
+
+.Nombre p{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fila{
+    grid-template-columns: 1fr 1fr;
+    display: flex;
+    margin: 30px;
+}
+
+.columna{
+    /*margin-top: 20px;
+    grid-template-columns: 1fr 1fr;*/
+    display: grid;    
+    width: 35%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 22px;
+}
+
+.titulo{
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 22px;
+}
+
+.datos{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.vh{
+    display: flex;
+}
+
+.vehiculo{
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.tabla{
+    width: 1.em;
+    border-collapse: collapse;
+    margin: 30px;
+    font-size: 24px;
+}
+.tabla a{
+    text-decoration: none;
+}
+
+.grillatit{
+    background-color: #0A1C44;
+    color: rgba(255, 255, 255, 0.879);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+ 
+  }
+
+.tabla th{
+    width: 225px;
+    height: 50px;
+  }
+
+  td{
+    height: 40px;
+    width: 30px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    -webkit-text-stroke: 1fr;
+    border-bottom:1px solid #cdcdcd;
+  }
+
+  table tr:hover {
+    background-color: rgb(205, 205, 205);
+  }
+
+  .margen{
+    margin: 30px;
+  }
