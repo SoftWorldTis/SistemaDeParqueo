@@ -50,7 +50,7 @@
     <div class="reportes">
         <div class="r4">
           <img src="{{asset('/dash/assets/p 1.png')}}" class="iconReportes" alt="">
-            <a id="link" href="{{('/lobby/RegistroOpciones')}}">
+            <a id="link" href="{{('/lobby/ListaReportes')}}">
                 <div class="botonReportes">
                     <p>Reportes</p>
                 </div>
@@ -62,7 +62,7 @@
     <div class="salir">
         <div class="r5">
           <img src="{{asset('/dash/assets/cerrar-sesion 1.png')}}" class="iconSalir" alt="">
-            <a id="link" href="{{('/lobby')}}">
+            <a id="link" href="{{('/inicio')}}">
                 <div class="botonSalir">
                     <p>Salir</p>
                 </div>

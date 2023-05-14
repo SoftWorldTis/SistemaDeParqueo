@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        *{
-            color: black;
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
+         body{
+             font-family: 'Inter', sans-serif;
+             font-style: normal;
+             min-height: 100vh;
+             position:relative;
+             padding-bottom: 3em;
+         }
+         .titulo{
+             text-align: center;
+             font-size: 2rem;
+             color: #1042ad;
+         }
+         table{
+            text-align:center
         }
-        .titulo{
-            text-align: center;
-            font-size: 2rem;
-            color: #0A1C44;
+        thead{
+            border: 1px solid black;
         }
+
     </style>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -44,11 +53,7 @@
                 <td>{{$clientess->vehiculo1}}</td>
                 <td>{{$clientess->vehiculo2}}</td>
                 <td>{{$clientess->vehiculo3}}</td>
-                <td>
-                    <a href="">Editar</a>
-                    <a href="">Eliminar</a>
-                </td>
-
+               
               </tr>
               @endforeach
 

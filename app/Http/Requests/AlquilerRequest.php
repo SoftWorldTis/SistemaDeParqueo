@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AlquilerRequest extends FormRequest
 {
@@ -23,25 +24,47 @@ class AlquilerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            /*'Parqueo' => 'required',
-            'Usuario' => 'required',*/
+
+        //$reserva = $this->route('reserva');
+        $fecha_inicio = $this->input('FechaInicio');
+        $fecha_fin = $this->input('FechaFin');
+        $rules = [
+            'Parqueo' => 'required',
+            'Usuario' => 'required',
             'FechaInicio' => 'required',
             'FechaFin' => 'required|after_or_equal:FechaInicio',
-            'Sitio' => 'required',
-            'Pago' => 'required' 
+            'Pago' => 'required',
+            'sitio' => 'required'
+            
         ];
+        if($fecha_fin !=null){
+            $rules ['sitio'] = Rule::unique('alquiler', 'alquilerSitio')->where(function ($query) use ($fecha_inicio, $fecha_fin) {
+                return $query->where('alquilerSitio', $this->input('sitio'))
+                    ->where(function ($query) use ($fecha_inicio, $fecha_fin) {
+                        $query->whereBetween('alquilerFechaIni', [$fecha_inicio, $fecha_fin])
+                            ->orWhereBetween('alquilerFechaFin', [$fecha_inicio, $fecha_fin])
+                            ->orWhere(function ($query) use ($fecha_inicio, $fecha_fin) {
+                                $query->where('alquilerFechaIni', '<=', $fecha_inicio)
+                                    ->where('alquilerFechaFin', '>=', $fecha_fin);
+                            });
+                        }) ;
+            });
+        }
+        return $rules;
     }
 
     public function messages()
     {
         return[
-            /*'Parqueo.required' => 'El campo Parqueo es obligatorio',
-            'Usuario.required' => 'El campo Uusario es obligatorio',*/
-            'FechaInicio.required' => 'La Fecha Inicial es obligatoria',
-            'FechaFin.required' => 'La Fecha Final es obligatoria',
+            'Parqueo.required' => 'El campo Parqueo es obligatorio',
+            'Usuario.required' => 'El campo Usario es obligatorio',
+            //'FechaInicio.required' => 'La Fecha Inicial es obligatoria',
+            'FechaInicio.required' => 'Llene la Fecha de Inico',
+            //'FechaFin.required' => 'La Fecha Final es obligatoria',
+            'FechaFin.required' => 'Llene la Fecha Final',
             'FechaFin.after_or_equal' => 'La Fecha debe ser igual o mayor a la Fecha Inicial',
-            'Sitio.required' => 'El campo Sitio es obligatorio',
+            'sitio.required' => 'El campo Sitio es obligatorio',
+            'sitio.unique' => 'El Sitio ya fue registrado',
             'Pago.required' => 'Elige una forma de pago'
         ];
     }

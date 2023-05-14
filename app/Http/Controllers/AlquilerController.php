@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AlquilerRequest;
 use App\Models\alquiler;
 use Illuminate\Support\Carbon;
+use App\Models\factura;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
 
 class AlquilerController extends Controller
 {
@@ -53,16 +57,12 @@ class AlquilerController extends Controller
         return view('registraralquiler', compact('parqueo', 'clientes', 'seleccionado' ,'seleccionadoes','valorcl','js'));
     }
 
-    public function store(Request $request){
-      // dd($request);
-       $estacionamiento =DB::table('estacionamiento')
-       ->select('estacionamientoid')
-       ->where('estacionamientozona', '=', $request->input('parqueo'))
-       ->get()
-       ->first();
+    public function store(AlquilerRequest $request){
+      //dd($request);
+      
 
         $alquiler =new alquiler(); 
-        $alquiler -> estacionamiento_estacionamientoid=$estacionamiento ->estacionamientoid;
+        $alquiler -> estacionamiento_estacionamientoid=$request->input('parqueoid');;
         $alquiler -> alquilerprecio= $request->input('costo');
         $alquiler -> alquilerfecha=  Carbon::now()->format('Y-m-d');
         $alquiler -> alquilertipopago= $request->input('Pago');
@@ -74,11 +74,60 @@ class AlquilerController extends Controller
             $alquiler -> alquilerestadopago= false;
         }else{
             $alquiler -> alquilerestadopago= true;
+            
         }
-        //dd($alquiler);
 
         $alquiler-> save();
+
+        $id = $alquiler->alquilerid;
+        if($request->input('Pago') == "QR"){
+            $factura = new factura();
+            $factura -> facturafecha =  Carbon::now()->format('Y-m-d');
+            $factura -> facturacliente = $alquiler-> cliente_clienteci;
+            $factura -> facturaalquiler =  $alquiler-> alquilerid;
+            $factura -> facturacargo =  $alquiler -> alquilerprecio;
+            $factura -> save();
+
+            $datosFactura= factura::join('cliente','facturacliente', '=' ,'clienteci')
+            ->join('alquiler','facturaalquiler','=','alquilerid')
+            ->join('estacionamiento','estacionamiento_estacionamientoid','=','estacionamientoid')
+            ->select("estacionamientozona","estacionamientotelefono", "clientenombrecompleto", 
+            "facturafecha", "facturacargo", "alquilerSitio","alquilerFechaIni", "alquilerFechaFin", "facturaid")
+            ->where('alquilerid', '=', $alquiler->alquilerid)
+            ->get();
+                
+            $data=compact('datosFactura');
+            $pdf = Pdf::loadView('ReportesPDF.factura', $data);
+            session()->flash('Registrado', 'Alquiler registrado correctamente con PDF');         
+            return $pdf->stream();
+            //return $pdf->download('ReporteDeudas.pdf');
+
+
+        }else{
+            return back() -> with('Registrado', 'Alquiler registrado correctamente, debe pagar dentro de 2 semanas');
+        }
         
-        return back() -> with('Registrado', 'Alquiler registrado correctamente');
+    
+    }
+
+    public function factura($alquiler){
+        $factura = new factura();
+        $factura -> facturafecha =  Carbon::now()->format('Y-m-d');
+        $factura -> facturacliente = $alquiler-> cliente_clienteci;
+        $factura -> facturaalquiler =  $alquiler-> alquilerid;
+        $factura -> facturacargo =  $alquiler -> alquilerprecio;
+        $factura -> save();
+
+        $datosFactura= factura::join('cliente','facturacliente', '=' ,'clienteci')
+        ->join('alquiler','facturaalquiler','=','alquilerid')
+        ->join('estacionamiento','estacionamiento_estacionamientoid','=','estacionamientoid')
+        ->select("estacionamientozona","estacionamientotelefono", "clientenombrecompleto", 
+        "facturafecha", "facturacargo", "alquilerSitio","alquilerFechaIni", "alquilerFechaFin", "facturaid")
+        ->where('alquilerid', '=', $alquiler->alquilerid)
+        ->get();
+            
+        $data=compact('datosFactura');
+        $pdf = Pdf::loadView('ReportesPDF.factura', $data);
+        //return $pdf->stream(); 
     }
 }

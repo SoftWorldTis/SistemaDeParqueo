@@ -18,15 +18,13 @@
 
     <div class="ParAr">
         <p> Registro de Guardias</p>
-    </div>
-    <div class="ParIzq" >
         @if ($message = Session::get('Registrado'))
             <div class="valido">
                 <span>{{$message}}</span>
             </div>
-        @else
-            <br>
         @endif
+    </div>
+    <div class="ParIzq" >
 
         <div class="Nombre Pi" >
             <p>Parqueo</p>
@@ -68,7 +66,6 @@
 
     </div>
     <div class="ParDer" >
-    <br>
         <div class="Nombre Pi" >
             <p>Nombre(s) y Apellidos</p>
             <input type="text"id="zona"class="linea"name="guardianombre" onkeyup="lettersOnly(this)" onblur="verificar(this)" value="{{old('guardianombre')}}"placeholder="Ingrese su nombre">

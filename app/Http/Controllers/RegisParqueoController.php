@@ -6,6 +6,7 @@ use App\Models\estacionamiento;
 use App\Rules\superior;
 use App\Rules\telefono;
 use Illuminate\Http\Request;
+use App\Http\Requests\ParqueoRequest;
 
 class RegisParqueoController extends Controller
 {
@@ -15,46 +16,33 @@ class RegisParqueoController extends Controller
 
 
     }
-    public function store(Request $request){
+    public function store(ParqueoRequest $request){
       //dd($request);
-
-        $request-> validate([
-          'estacionamientozona'=> ['required','min:3','max:25', new superior],
-          'estacionamientocorreo'=> ['required','email','min:10','max:25', new superior], 
-          'estacionamientohoraCierre'=> ['required',
-            function ($attribute, $value, $fail) use ($request) {
-                if ($value < $request['estacionamientohoraInicio']) {
-                    $fail('ingrese un hora inicial mayor a la de cierre'); } }],
-          'estacionamientotelefono' =>  ['required',new telefono ], 
-          'estacionamientositioAdministrador'=>['required','numeric','min:10','max:200'],
-          'estacionamientositioDocente'=>['required','numeric','min:10','max:200'],
-          'estacionamientoprecio'=>['required','numeric','min:1','max:200'],
-          'estacionamientoimagen' => ['required','image','mimes:jpeg,png,jpg','max:2048'],
-        ]);
       
-        $imageName = time().'.'.$request->estacinamientoimagen->extension();  
-        $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
+        if ($request->hasFile('estacionamientoimagen')) {
+            $archivo = $request->file('estacionamientoimagen');
+            if ($archivo->isValid()) {
+                $imageName = time().'.'.$request->estacionamientoimagen->extension();  
+                $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
 
-        $estacionamiento =new estacionamiento();
-        $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
-        $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
-        $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
-        $estacionamiento -> estacionamientoqr= $imageName;
-        $estacionamiento -> estacionamientoestado= 'activo';
-        $estacionamiento -> estacionamientohoraInicio= $request->input('estacionamientohoraInicio');
-        $estacionamiento -> estacionamientohoraCierre= $request->input('estacionamientohoraCierre');
-        $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
-        $estacionamiento -> estacionamientositioAdministrador= $request->input('estacionamientositioAdministrador');
-        $estacionamiento -> estacionamientositioDocente= $request->input('estacionamientositioDocente');
-        $estacionamiento -> estacionamientoImg= $imageName;
+                $estacionamiento =new estacionamiento();
+                $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
+                $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
+                $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
+                $estacionamiento -> estacionamientoestado= 'activo';
+                $estacionamiento -> estacionamientohoraInicio= $request->input('estacionamientohoraInicio');
+                $estacionamiento -> estacionamientohoraCierre= $request->input('estacionamientohoraCierre');
+                $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
+                $estacionamiento -> estacionamientositios= $request->input('estacionamientositios');
+                $estacionamiento -> estacionamientoImg= $imageName;
 
-        $estacionamiento -> save();
-        return view('registroParqueo');
-        
+                $estacionamiento -> save();
+                return back() -> with('Registrado', 'Parqueo registrado correctamente');
 
-        
-
-
+            }
+        }else{
+          return back() -> with('Mal', 'Algo salió mal');
+        }
     }
 
 }

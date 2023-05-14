@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlquilerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
@@ -26,6 +27,12 @@ Route::get('/profile/{editar}', function ($editar) {
 });
 
 
+
+Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class,'log'])->name('login');
+Route::get('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'index'])->name('registrarAdmin');
+Route::post('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'store'])->name('registrarAdmin');
+Route::get('/inicio', function () {return view('inicio') ;});
 
 
 
@@ -59,14 +66,12 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
 
 
 
-
-    //Route::get('/Alquiler',[App\Http\Controllers\facturaController::class,'index'])->name('Alquiler');
-    //Route::post('/Alquiler',[App\Http\Controllers\facturaController::class,'store'])->name('Alquiler');
-
     Route::resource('/Alquiler', AlquilerController::class);
     /*Route::post('/Alquiler', [AlquilerController::class, 'index']);
     Route::get('/Alquiler/{$id}', [AlquilerController::class, 'showparqueo']);
     Route::post('/Alquiler', [AlquilerController::class, 'showcliente']);*/
+
+    //Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     /*
     Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
@@ -81,8 +86,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
-
-    Route::resource("/ReporteDeudas",DeudasController::class);
+    //Route::get("/ListaDeudas",[App\Http\Controllers\DeudasController::class,'index'])->name('/ListaDeudas');
+    Route::resource("/ListaDeudas", DeudasController::class);
     //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
     //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
 
@@ -91,8 +96,8 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
     Route::delete('/EliminarCliente/{id}',[App\Http\Controllers\ListaClientesController::class,'eliminarCliente'])->name('cliente.eliminar');
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
+ 
     Route::get("/Perfil/{id}", [PerfilController::class, 'index']);
-   
 });
 
 
