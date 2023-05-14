@@ -51,7 +51,7 @@
                         <td>{{$deuda->alquilerfecha}}</td>
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>
-                            <a href="" >Ver Perfil</a>
+                            <a href="/lobby/Perfil/{{$deuda->cliente_clienteci}}" >Ver Perfil</a>
                             <a href="/lobby/ListaDeudas/{{ $deuda->alquilerid}}" onclick="recargar()">Cobrar</a>
                         </td>
                     </tr>
