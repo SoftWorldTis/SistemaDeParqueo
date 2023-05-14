@@ -42,10 +42,16 @@
                     <div class="Usuario">
                         <span class="nombre">Usuario</span>
                         <input type="text"  class="linea" name="name" >
+                        @error('name')
+                        <b class="error">{{$message}}</b>
+                        @enderror
                     </div>
                     <div class="Contraseña">
                         <span class="contra">Contraseña</span>
                         <input type="text" class="linea" name="password" >
+                         @error('name')
+                        <b class="error">{{$message}}</b>
+                        @enderror
                     </div>
                     <div class="botones">
                         <a id="link" href="{{('/login/registrarAdministrador')}}"> 

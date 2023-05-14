@@ -18,7 +18,7 @@ class registrarAdministradorController extends Controller
    public function store (Request $request){
 
         $request->validate([
-            'name'=> ['required','min:5','max:25','unique:administrador,administradornombre'],
+            'name'=> ['required','email','max:100','unique:administrador,administradornombre'],
             'password'=> ['required','min:8','max:25'], 
         ]);
         $nombre = $request->input('name');
@@ -32,7 +32,6 @@ class registrarAdministradorController extends Controller
         
    
     
-
    }
 
 }

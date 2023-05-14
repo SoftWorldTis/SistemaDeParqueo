@@ -15,7 +15,10 @@ class LoginController extends Controller
     }
 
     public function log(Request $request) {
-
+        $request->validate([
+            'name'=> ['required','email','max:100'],
+            'password'=> ['required','min:8','max:25'], 
+        ]);
         $nombre = $request->input('name');
         $contraseña = $request->input('password');
     

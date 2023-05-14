@@ -114,12 +114,12 @@ body{
     
 
    }
-   
+   /*
  .salir{
     display: flex;
     justify-items: center;
  }
-
+*/
 
 
 
@@ -146,13 +146,17 @@ body{
 }
 
 .salir{
+    
     display:grid;
     text-align: center;
     align-content: center;
+    grid-template-columns: 1fr 1fr;
+    /*
     grid-template-areas: 
     "imagenIcono"
     "titicono"
     ;
+    */
     height: 170px;
     width: 150px;
 }
@@ -163,7 +167,11 @@ body{
     color: black;
     text-decoration: none;
   }
-  
+  .titicono{
+    display:flex;
+     align-items: center;
+  justify-content: center;
+  }
    
     /*para errores*/
    
