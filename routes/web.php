@@ -97,6 +97,9 @@ Route::group(['prefix'=>'lobby','as'=>'lobby'], function () {
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
  
+    Route::get("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'index'])->name('/ListaGuardias');
+    Route::post("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'store'])->name('/ListaGuardias');
+
     Route::get("/Perfil/{id}", [PerfilController::class, 'index']);
 });
 
