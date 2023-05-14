@@ -9,7 +9,7 @@
     <section class="card">
 
         <div class="card--options">
-            <a href="">Editar Perfil</a>
+            <a href="/lobby/EditarCliente/{{$cliente->clienteci}}">Editar Perfil</a>
         </div>
 
         <h2 class="card--title">{{$cliente->clientenombrecompleto}}</h2>
@@ -64,7 +64,9 @@
                         @endif
 
                         <td>
-                            <a href="">Pagar</a>
+                            @if(!$item->alquilerestadopago)
+                                <a href="/lobby/ListaDeudas/{{$item->alquilerid}}">Pagar</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
