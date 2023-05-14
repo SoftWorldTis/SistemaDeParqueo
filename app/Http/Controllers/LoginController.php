@@ -23,11 +23,6 @@ class LoginController extends Controller
         ->where('administradornombre', $nombre)
         ->first();
         if ($usuario&& Hash::check($contraseña, $usuario->administradorcontraseña) ) {
-
-            $data = [
-                'user' => $usuario,
-                'rol' => 'admin'
-            ];
             return redirect('/lobby')->with('success', '¡Inicio sesion sin problemas!');
         } else {
             dd("pi pi pi ");
