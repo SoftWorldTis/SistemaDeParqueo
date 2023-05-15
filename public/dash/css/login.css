@@ -137,7 +137,7 @@ body{
 }
  
 
-.cabeza div:hover{
+.salir:hover{
   
   border-bottom-right-radius: 60px ;  
   background-color: #324265;
@@ -159,10 +159,14 @@ body{
     */
     height: 170px;
     width: 150px;
+    padding-right: 30px;
+   
 }
+
 .imagenIcono{
-    margin-top: 25px;
+    margin-top: 8px;
 }
+
 #link{
     color: black;
     text-decoration: none;
