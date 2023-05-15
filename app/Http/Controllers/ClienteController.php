@@ -18,10 +18,7 @@ class ClienteController extends Controller
 
      public function store(ClienteRequest $request){  
        
-     
-     
-   
-      
+    
         $cliente =new cliente();
         $cliente -> clienteci= $request->input('clienteci');
         $cliente -> clientesis= $request->input('clientesis');

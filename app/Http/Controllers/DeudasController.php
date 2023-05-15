@@ -69,7 +69,8 @@ class DeudasController extends Controller
             $pdf = Pdf::loadView('ReportesPDF.factura', $data);
             return $pdf->stream(); 
             //return $pdf->download('FacturaParqueo.pdf');
-        }   
-     return redirect()->action([DeudasController::class, 'index']);    
+        }
+
+        return redirect()->action([DeudasController::class, 'index']);
     }
 }

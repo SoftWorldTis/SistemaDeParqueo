@@ -27,9 +27,9 @@ class LoginController extends Controller
         ->first();
         if ($usuario&& Hash::check($contraseña, $usuario->administradorcontraseña) ) {
             return redirect('/lobby')->with('success', '¡Inicio sesion sin problemas!');
-            } else {
+        } else {
             dd("pi pi pi ");
-            }
+        }
 
 /*
         if ($usuario && Hash::check($contraseña, $usuario->administradorcontraseña)) {
