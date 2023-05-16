@@ -29,7 +29,7 @@
     <div class="pagos">
         <div class="r2">
           <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconPagos" alt="">
-            <a id="link" href="{{('/lobby/ListaClientes')}}">
+            <a id="link" href="{{('/lobby/ListaPagos')}}">
                 <div class="botonPagos">
                     <p>Ver Pagos</p>
                 </div>

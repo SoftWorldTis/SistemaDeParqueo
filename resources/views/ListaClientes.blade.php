@@ -56,8 +56,12 @@
                 <td>{{$clientess->vehiculo2}}</td>
                 <td>{{$clientess->vehiculo3}}</td>
                 <td>
-                  <a href="{{ url('/lobby/EditarCliente', ['idd' => $clientess->clienteci  ]) }}">Editar</a>
-                  <a href="#">Eliminar</a>
+                  <a href="{{ route('lobby.editarcliente', ['idd' => $clientess->clienteci]) }}" class="editarclie">Editar</a>
+                  <form action="{{ route('lobby.borrarcliente', ['idd' => $clientess->clienteci]) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <input type="submit"  class="borrarclie" value="Eliminar">
+                </form>
                   
       
                 </td>

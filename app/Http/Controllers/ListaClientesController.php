@@ -13,26 +13,25 @@ class ListaClientesController extends Controller
 {
     public function index(Request $request){
        
-        $searchValue = trim($request-> get('buscador'));
-        $clientes = DB::table('cliente as c')
-    ->select('c.clientenombrecompleto', 'c.clientesis', 'c.clienteci','c.clientefechanac',
-        DB::raw('MAX(CASE WHEN row_num = 1 THEN v.vehiculoplaca END) AS vehiculo1'),
-        DB::raw('MAX(CASE WHEN row_num = 2 THEN v.vehiculoplaca END) AS vehiculo2'),
-        DB::raw('MAX(CASE WHEN row_num = 3 THEN v.vehiculoplaca END) AS vehiculo3')
-    )
-    ->join(DB::raw('(SELECT cliente_clienteci, vehiculoplaca,
-            ROW_NUMBER() OVER(PARTITION BY cliente_clienteci ORDER BY vehiculoplaca) AS row_num
-            FROM vehiculo
-        ) as v'), 'c.clienteci', '=', 'v.cliente_clienteci')
-    ->groupBy('c.clienteci', 'c.clientesis', 'c.clientenombrecompleto')
-    ->get();
-                    return view('listaClientes', compact('clientes' , 'searchValue' ));
+        $searchValue = trim($request->get('buscador'));
+        $clientes = DB::table('cliente as c')->select('c.clientenombrecompleto', 'c.clientesis', 'c.clienteci','c.clientefechanac',
+            DB::raw('MAX(CASE WHEN row_num = 1 THEN v.vehiculoplaca END) AS vehiculo1'),
+            DB::raw('MAX(CASE WHEN row_num = 2 THEN v.vehiculoplaca END) AS vehiculo2'),
+            DB::raw('MAX(CASE WHEN row_num = 3 THEN v.vehiculoplaca END) AS vehiculo3')
+        )
+        ->join(DB::raw('(SELECT cliente_clienteci, vehiculoplaca,
+                ROW_NUMBER() OVER(PARTITION BY cliente_clienteci ORDER BY vehiculoplaca) AS row_num
+                FROM vehiculo
+            ) as v'), 'c.clienteci', '=', 'v.cliente_clienteci')
+        ->groupBy('c.clienteci', 'c.clientesis', 'c.clientenombrecompleto')
+        ->get();
 
+        return view('listaClientes', compact('clientes' , 'searchValue' ));
     }
 
     public function store(Request $request){
       //busqueda por nombre
-      $searchValue = trim($request-> get('buscador'));
+      $searchValue = trim($request->get('buscador'));
 
       $clientes = DB::table('cliente as c')
     ->select('c.clientenombrecompleto', 'c.clientesis', 'c.clienteci','c.clientefechanac',
@@ -70,13 +69,22 @@ class ListaClientesController extends Controller
         $data=compact('clientes');
         $pdf = Pdf::loadView('ClientesRepPDF.ReporteClientes', $data);
         return $pdf->stream();
-    
     }
 
-    public function eliminarCliente($cliente)
-    {
-        $clienteAEliminar = Cliente::findOrFail($cliente);
-        $clienteAEliminar->delete();
-        return response()->json(['success' => true]);
+
+    public function destroy($idd){
+            $factura=DB::table('factura')
+            ->where('facturacliente', $idd);
+            $factura->delete();
+            $alquiler=DB::table('alquiler')
+            ->where('cliente_clienteci', $idd);
+            $alquiler->delete();
+            $vehiculo=DB::table('vehiculo')
+            ->where('cliente_clienteci', $idd);
+            $vehiculo->delete();
+            $cliente= Cliente::findOrFail($idd);
+            $cliente-> delete();
+            return redirect()->route('lobby.vercliente');
+
     }
 }

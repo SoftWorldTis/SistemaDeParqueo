@@ -3,23 +3,66 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\cliente;
 use App\Models\alquiler;
+use App\Models\cliente;
+use App\Models\vehiculo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PerfilController extends Controller
 {
-    public function index($id){
-        $usuario = cliente::join('vehiculo', 'cliente_clienteci', '=' ,'clienteci')
-        ->select('*')
-        ->where('clienteci', '=', $id)
-        ->get();
-        $alquileres = cliente::join('alquiler', 'cliente_clienteci', '=' ,'clienteci')
-        ->join('estacionamiento','estacionamiento_estacionamientoid','=','estacionamientoid')
-        ->select('*')
-        ->where('clienteci', '=', $id)
-        ->get();
-        //dd($alquileres);
-        return view ('Perfil', compact('usuario','alquileres'));
+
+    public function index()
+    {
+
+    }
+
+
+    public function create()
+    {
+        //
+    }
+
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function show($id)
+    {
+        $cliente = cliente::where('clienteci', '=', $id)->first();
+        $vehiculos = vehiculo::where('cliente_clienteci', '=', $id)->get();
+        $alquileres = DB::table('alquiler as al')
+            ->join('estacionamiento as es', 'es.estacionamientoid', '=', 'al.estacionamiento_estacionamientoid')
+            ->select('al.alquilerid', 'al.alquilerfecha', 'es.estacionamientozona', 'al.alquilerSitio', 'al.alquilerprecio', 'al.alquilerestadopago')
+            ->where('cliente_clienteci', '=', $id)
+            ->get();
+
+        //dd($vehiculos);
+        return view('Perfil', [
+            'cliente' =>  $cliente,
+            'vehiculos' => $vehiculos,
+            'alquileres' => $alquileres
+        ]);
+    }
+
+
+
+    public function edit($id)
+    {
+        //
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+
+    public function destroy($id)
+    {
+        //
     }
 }

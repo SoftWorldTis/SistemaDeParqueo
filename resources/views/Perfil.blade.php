@@ -5,74 +5,107 @@
 @endsection
 
 @section('contenido')
-    <div class="principal">
-        <div class="Nombre">
-            <p>{{$usuario[0]->clientenombrecompleto}}</p>
+
+    <section class="card">
+
+        <div class="card--options">
+            <a href="/lobby/EditarCliente/{{$cliente->clienteci}}">Editar Perfil</a>
         </div>
-        <div class="fila">
-            <div class ="columna">
-                <div class="titulo">Datos</div>
-                <div class="datos">{{$usuario[0]->clienteci}}</div >
-                <div class="datos">{{$usuario[0]->clientesis}}</div >
-                <div class="datos">{{$usuario[0]->clientecorreo}}</div >
+
+        <h2 class="card--title">{{$cliente->clientenombrecompleto}}</h2>
+
+        <div class="card--datos">
+            <div class="card--datos--img">
+                <img src="{{asset('dash/assets/cliente.png')}}" alt="cliente">
             </div>
-            
-            <div class="columna">
-                <div class="titulo">Vehículos</div>
-                <div class="vh">
-                    <div class="vehiculo">
-                        @foreach ($usuario as $usuarioo)
-                        <div class="datos">{{$usuarioo->vehiculomodelo}} </div>
-                        @endforeach
-                        
-                    </div>
-                    <div class="vehiculo">
-                        @foreach ($usuario as $usuarioo)
-                            <div class="datos">{{$usuarioo->vehiculoplaca}}</div> 
-                        @endforeach
-                    </div>
-                </div>         
-            </div>
+
+            <table class="card--datos--table">
+                <tr>
+                    <th>Datos</th>
+                    <th>Vehiculos</th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <td>{{$cliente->clienteci}}</td>
+                    <td>{{$vehiculos[0]->vehiculomodelo}}</td>
+                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>   
+                </tr>
+
+                @if(isset($vehiculos[1]))
+                <tr>
+                    <td>{{$cliente->clientesis}}</td>
+                    <td>{{$vehiculos[1]->vehiculomodelo}}</td>
+                    <td>{{$vehiculos[1]->vehiculoplaca}}</td>
+                </tr>
+                @else
+                <tr>
+                    <td>{{$cliente->clientesis}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endif
+
+                @if(isset($vehiculos[2]))
+                <tr>
+                    <td>{{$cliente->clientecorreo}}</td>
+                    <td>{{$vehiculos[2]->vehiculomodelo}}</td>
+                    <td>{{$vehiculos[2]->vehiculoplaca}}</td>
+                </tr>
+                @else
+                <tr>
+                    <td>{{$cliente->clientecorreo}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endif
+
+            </table>
         </div>
-        <div class="titulo margen">Alquiler</div>
-        <table class="tabla">
-            <thead>
-              <tr >
-                <th class="grillatit">Fecha Alquiler</th>
-                <th class="grillatit">Parqueo</th>
-                <th class="grillatit">Espacio</th>
-                <th class="grillatit">Precio</th>
-                <th class="grillatit">Estado</th>
-                <th class="grillatit">Opción</th>
-              </tr>
-            </thead>
-            <tbody>  
-                @foreach ($alquileres as $alquiler)
-                    <tr id="id=fila-{{$loop->iteration}}">
-                        <td>{{$alquiler->alquilerfecha}}</td>
-                        <td>{{$alquiler->estacionamientozona}}</td>
-                        <td>{{$alquiler->alquilerSitio}}</td>
-                        <td>{{$alquiler->alquilerprecio}}</td>
-                        @if ($alquiler->alquilerestadopago == true)
-                        <td style="color:#11BE0D">Pagado</td>
+
+
+        <div class="card--alquiler">
+            <h2 class="card--alquiler--title">Alquiler</h2>
+            <table class="card--datos--table card--alquiler--table">
+                <tr>
+                    <th>Fecha Alquiler</th>
+                    <th>Parqueo</th>
+                    <th>Espacio</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Opcion</th>
+                </tr>
+
+                @foreach ($alquileres as $item)
+                    <tr>
+                        <td>{{$item->alquilerfecha}}</td>
+                        <td>{{$item->estacionamientozona}}</td>
+                        <td>{{$item->alquilerSitio}}</td>
+                        <td>{{$item->alquilerprecio}}</td>
+
+                        @if($item->alquilerestadopago)
+                            <td class="td-green">Pagado</td>
                         @else
-                        <td style="color: #FC0505">Deuda</td> 
+                            <td class="td-red">Deuda</td>
                         @endif
+
                         <td>
-                            <a href="" onclick="recargar()">Pagar</a>
+                            @if(!$item->alquilerestadopago)
+                                <a href="/lobby/ListaDeudas/{{$item->alquilerid}}" onclick="recargar()">Pagar</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
-              
-            </tbody>
-          </table>
-    </div>
+            </table>
+        </div>
+
+    </section>
+
 @endsection
 
 <script>
     function recargar(){
       location.reload()
-      console.log("recargado")
     }
     
 </script>

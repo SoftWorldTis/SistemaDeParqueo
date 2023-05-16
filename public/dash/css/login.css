@@ -114,12 +114,12 @@ body{
     
 
    }
-   
+   /*
  .salir{
     display: flex;
     justify-items: center;
  }
-
+*/
 
 
 
@@ -137,7 +137,7 @@ body{
 }
  
 
-.cabeza div:hover{
+.salir:hover{
   
   border-bottom-right-radius: 60px ;  
   background-color: #324265;
@@ -146,24 +146,36 @@ body{
 }
 
 .salir{
+    
     display:grid;
     text-align: center;
     align-content: center;
+    grid-template-columns: 1fr 1fr;
+    /*
     grid-template-areas: 
     "imagenIcono"
     "titicono"
     ;
+    */
     height: 170px;
     width: 150px;
+    padding-right: 30px;
+   
 }
+
 .imagenIcono{
-    margin-top: 25px;
+    margin-top: 8px;
 }
+
 #link{
     color: black;
     text-decoration: none;
   }
-  
+  .titicono{
+    display:flex;
+     align-items: center;
+  justify-content: center;
+  }
    
     /*para errores*/
    

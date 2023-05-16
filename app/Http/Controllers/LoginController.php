@@ -15,7 +15,10 @@ class LoginController extends Controller
     }
 
     public function log(Request $request) {
-
+        $request->validate([
+            'name'=> ['required','email','max:100'],
+            'password'=> ['required','min:8','max:25'], 
+        ]);
         $nombre = $request->input('name');
         $contraseña = $request->input('password');
     
@@ -24,9 +27,9 @@ class LoginController extends Controller
         ->first();
         if ($usuario&& Hash::check($contraseña, $usuario->administradorcontraseña) ) {
             return redirect('/lobby')->with('success', '¡Inicio sesion sin problemas!');
-            } else {
+        } else {
             dd("pi pi pi ");
-            }
+        }
 
 /*
         if ($usuario && Hash::check($contraseña, $usuario->administradorcontraseña)) {

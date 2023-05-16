@@ -1,85 +1,81 @@
+.card{
+    font-family: 'Inter', sans-serif;
+}
 
-.Nombre p{
+.card--options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card--title{
     text-align: center;
-    color: black;
-    font-size: 30px;
-    font-weight: 400;
-    margin-top: 15px;
-    margin-bottom: 15px;
 }
 
-.fila{
-    grid-template-columns: 1fr 1fr;
+.card--datos{
+    width: 96%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    margin: 30px;
+    justify-content: center;
 }
 
-.columna{
-    /*margin-top: 20px;
-    grid-template-columns: 1fr 1fr;*/
-    display: grid;    
-    width: 35%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 22px;
-}
-
-.titulo{
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 22px;
-}
-
-.datos{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.vh{
-    display: flex;
-}
-
-.vehiculo{
-    width: 50%;
-    margin-bottom: 20px;
-}
-
-.tabla{
-    width: 1.em;
+.card--datos--table{
     border-collapse: collapse;
-    margin: 30px;
-    font-size: 24px;
-}
-.tabla a{
-    text-decoration: none;
+    align-self: flex-start;
+    margin: auto;
 }
 
-.grillatit{
+.card--datos--table tr td,
+.card--datos--table tr th{
+    text-align: left;
+    font-size: 18px;
+    padding: 6px 14px;
+}
+
+
+.card--alquiler{
+    width: 96%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card--alquiler--title{
+    font-size: 18px;
+    padding-left: 44.35px;
+}
+
+
+
+.card--alquiler--table{
+    box-shadow: 0px 0px 6px rgba(0,0,0, 0.1);
+}
+
+.card--alquiler--table tr th{
     background-color: #0A1C44;
-    color: rgba(255, 255, 255, 0.879);
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
- 
-  }
+    color: #f1f1f1;
+}
 
-.tabla th{
-    width: 225px;
-    height: 50px;
-  }
 
-  td{
-    height: 40px;
-    width: 30px;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    -webkit-text-stroke: 1fr;
-    border-bottom:1px solid #cdcdcd;
-  }
+.card--alquiler--table tr th,
+.card--alquiler--table tr td{
+    padding: 15px 20px;
+}
 
-  table tr:hover {
-    background-color: rgb(205, 205, 205);
-  }
+.card--alquiler--table tr td{
+    border-bottom: solid 3px rgba(0,0,0, 0.05);
+}
 
-  .margen{
-    margin: 30px;
+
+.card--alquiler--table .td-green{
+    color: green;
+}
+
+.card--alquiler--table .td-red{
+    color: red;
+}
+
+.card--alquiler--table a {
+    text-decoration: none;
   }

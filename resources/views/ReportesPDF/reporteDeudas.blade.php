@@ -44,7 +44,7 @@
             @foreach ($deudas as $deuda)
                 <tr id="id=fila-{{$loop->iteration}}">
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$deuda->cliente_clienteci}}</td>
+                    <td>{{$deuda->clientenombrecompleto}}</td>
                     <td>{{$deuda->cliente_clienteci}}</td>
                     <td>{{$deuda->alquilerfecha}}</td>
                     <td>{{$deuda->alquilerprecio}}</td>
