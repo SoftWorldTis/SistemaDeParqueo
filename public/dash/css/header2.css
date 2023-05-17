@@ -59,4 +59,10 @@ p{
   width: 100%;
 }
 
+.nav2 .salir:hover{
+  background-color: #324265;
+  width: 114%;
+  border-radius: 0px 0px 50px 0px;
+}
+
 

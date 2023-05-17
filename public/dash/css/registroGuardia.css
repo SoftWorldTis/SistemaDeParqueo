@@ -1,12 +1,14 @@
 .herramientas{
     padding-left: 0px;
-    margin-left: 100px;
+
    padding-top: 0px;
      display: grid;
      grid-template-columns: repeat(2, 459.72px);
      /*grid-template-rows: 84px 678px;*/
      grid-column-gap: 0px;
      grid-row-gap: 0px;
+     justify-content: center;
+  align-items: center;
     }
 
 
