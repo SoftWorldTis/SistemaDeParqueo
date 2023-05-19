@@ -17,6 +17,14 @@ body{
  height: 47.625rem;
 }
 
+label{
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 /*nav content final */
 /*cuadrado contenido */
 

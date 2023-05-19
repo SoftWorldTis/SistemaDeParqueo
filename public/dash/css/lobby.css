@@ -22,7 +22,7 @@
      
 
 
-.registrar,  .alquiler , .usuarios, .reportes , .salir{
+.registrar,  .alquiler , .usuarios, .reportes , .salir , .rol{
   display: flex;
 
   height: 12.4375rem;
@@ -31,12 +31,12 @@
   align-items: center;
   
 }
-.reportes, .salir {
+.reportes, .salir , .rol {
 
   margin-top: 4.1875rem;
 }
 
-.r1 , .r2 , .r3 , .r4 , .r5{
+.r1 , .r2 , .r3 , .r4 , .r5 , .r6{
   width: 72.05%;
   
 }

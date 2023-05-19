@@ -10,6 +10,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
 use App\Http\Controllers\DeudasController;
 use App\Http\Controllers\PerfilController;
+
 use App\Http\Controller\ListaGuardiasController;
 
 /*
@@ -47,7 +48,23 @@ Route::get('/main/prueba', function () {
 
 
 Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
-    Route::get('/', function () {return view('lobby') ;});
+
+
+
+    Route::get('/RegistroRol', [\App\Http\Controllers\RolController::class, 'index'])->name('crearRol');
+    Route::post('/RegistroRol', [\App\Http\Controllers\RolController::class, 'store'])->name('crearRolGuardar');
+
+    Route::get('/', [\App\Http\Controllers\LobbyController::class, 'index'])->name('inicio');
+
+
+
+
+
+
+
+
+
+   
     Route::get('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'index'])->name('editarcliente');
     Route::put('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'update'])->name('actualizarcliente');
     //Route::resource('/EditarCliente/{idd}', EditarClientesController::class)->name('/EditarCliente');

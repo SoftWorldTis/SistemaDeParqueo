@@ -9,8 +9,7 @@
 @endsection
 @section('contenido')
 <div class="herramientas">
-    
-
+  {{--
     <div class="registrar">
         <div class="r1">
           <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
@@ -19,7 +18,7 @@
                     <p>Registrar</p>
                 </div>
             </a>
-        </div>
+        </div> 
     </div>
 
 
@@ -70,7 +69,64 @@
          </div>
     </div>
 
+  
 </div>
+--}}
+
+@php
+    $valor1Encontrado = false;
+    $valor2Encontrado = false;
+@endphp
+
+@foreach($resultado as $item)
+    @if($item->rf_funcionalidadid == 1)
+        @php
+            $valor1Encontrado = true;
+        @endphp
+    @elseif($item->rf_funcionalidadid == 2)
+        @php
+            $valor2Encontrado = true;
+        @endphp
+    @endif
+@endforeach
+
+@if($valor1Encontrado && $valor2Encontrado)
+            <div class="rol">
+                <div class="r6">
+                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
+                    <a id="link" href="{{('/lobby/RegistroOpciones')}}">
+                        <div class="botonRegistro">
+                            <p>Rol</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+@elseif ($valor1Encontrado  && $valor2Encontrado==false )
+            <div class="rol">
+                <div class="r6">
+                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
+                    <a id="link" href="{{('/lobby/RegistroRol')}}">
+                        <div class="botonRegistro">
+                            <p>Crear Rol</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+@elseif ($valor1Encontrado==false  && $valor2Encontrado ) 
+            <div class="rol">
+                <div class="r6">
+                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
+                    <a id="link" href="{{('/lobby/EditarRol')}}">
+                        <div class="botonRegistro">
+                            <p>Editar Rol</p>
+                        </div>
+                    </a>
+                </div>
+            </div>          
+@endif 
+
+
+
 
 @endsection 
 
