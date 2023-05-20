@@ -24,19 +24,14 @@ p{
 
 
 .nav2{
-  display: grid;
-  grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
-  height: 10.625rem;
-  margin-left: 2.4rem;
+  display: flex;
+  justify-content: space-between;
 
 }
 .nav2 div{
  display: flex;
  flex-direction: column;
- width: 94%;
  height: 10.625rem;
- 
- margin-right: 6%;
  padding: 0;
  display: grid;
  grid-template-columns: 35.9% 54.4%;
@@ -52,7 +47,7 @@ p{
 .nav2 p{
   text-size-adjust: 1.875rem;
   margin-top: 4.375rem;
- 
+
 }
 .nav2 div:hover{
   background-color: #324265;
