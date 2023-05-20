@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class LobbyController extends Controller
 {
     public function index (){
-        $rol="Administrador"; //aqui viene el dato del login
+        $rol="Cliente"; //aqui viene el dato del login
         $resultado = DB::table('rol_funcionalidad as rf')
                 ->join('rol as r', 'r.rolid', '=', 'rf.rf_rolid')
                 ->select('rf.rfid', 'rf.rf_funcionalidadid', 'r.rolnombre')

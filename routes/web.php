@@ -53,6 +53,11 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
 
     Route::get('/RegistroRol', [\App\Http\Controllers\RolController::class, 'index'])->name('crearRol');
     Route::post('/RegistroRol', [\App\Http\Controllers\RolController::class, 'store'])->name('crearRolGuardar');
+  
+    Route::get('/EditarRol', [\App\Http\Controllers\EditarRolController::class, 'index'])->name('editarRol');
+    Route::post('/EditarRol', [\App\Http\Controllers\EditarRolController::class, 'store'])->name('editarRolGuardar');
+  
+    Route::get('/RolOpciones', [\App\Http\Controllers\RolController::class, 'opciones'])->name('tiposRol');
 
     Route::get('/', [\App\Http\Controllers\LobbyController::class, 'index'])->name('inicio');
 

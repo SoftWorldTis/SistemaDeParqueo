@@ -74,57 +74,33 @@
 --}}
 
 @php
-    $valor1Encontrado = false;
-    $valor2Encontrado = false;
+    $rolLink = '';
+    $rolTexto = '';
+
+    if ($resultado->contains('rf_funcionalidadid', 1) && $resultado->contains('rf_funcionalidadid', 2)) {
+        $rolLink = '/lobby/RolOpciones';
+        $rolTexto = 'Rol';
+    } elseif ($resultado->contains('rf_funcionalidadid', 1) && !$resultado->contains('rf_funcionalidadid', 2)) {
+        $rolLink = '/lobby/RegistroRol';
+        $rolTexto = 'Crear Rol';
+    } elseif (!$resultado->contains('rf_funcionalidadid', 1) && $resultado->contains('rf_funcionalidadid', 2)) {
+        $rolLink = '/lobby/EditarRol';
+        $rolTexto = 'Editar Rol';
+    }
 @endphp
 
-@foreach($resultado as $item)
-    @if($item->rf_funcionalidadid == 1)
-        @php
-            $valor1Encontrado = true;
-        @endphp
-    @elseif($item->rf_funcionalidadid == 2)
-        @php
-            $valor2Encontrado = true;
-        @endphp
-    @endif
-@endforeach
-
-@if($valor1Encontrado && $valor2Encontrado)
-            <div class="rol">
-                <div class="r6">
-                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
-                    <a id="link" href="{{('/lobby/RegistroOpciones')}}">
-                        <div class="botonRegistro">
-                            <p>Rol</p>
-                        </div>
-                    </a>
+@if ($rolLink)
+    <div class="rol">
+        <div class="r6">
+            <img src="{{ asset('/dash/assets/documento icono 1.png') }}" class="iconRegistrar" alt="">
+            <a id="link" href="{{ $rolLink }}">
+                <div class="botonRegistro">
+                    <p>{{ $rolTexto }}</p>
                 </div>
-            </div>
-@elseif ($valor1Encontrado  && $valor2Encontrado==false )
-            <div class="rol">
-                <div class="r6">
-                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
-                    <a id="link" href="{{('/lobby/RegistroRol')}}">
-                        <div class="botonRegistro">
-                            <p>Crear Rol</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-@elseif ($valor1Encontrado==false  && $valor2Encontrado ) 
-            <div class="rol">
-                <div class="r6">
-                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
-                    <a id="link" href="{{('/lobby/EditarRol')}}">
-                        <div class="botonRegistro">
-                            <p>Editar Rol</p>
-                        </div>
-                    </a>
-                </div>
-            </div>          
+            </a>
+        </div>
+    </div>
 @endif 
-
 
 
 
