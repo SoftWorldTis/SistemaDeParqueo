@@ -32,7 +32,7 @@ class AlquilerController extends Controller
         //$seleccionado =  estacionamiento::where('estacionamientoid', $id)
         //->first();
       
-        //dd($seleccionado);
+        //dd($request);
         $parqueo = estacionamiento::all();
         $clientes = cliente::all();
         $seleccionado = DB::table('estacionamiento')
@@ -104,7 +104,7 @@ class AlquilerController extends Controller
 
 
         }else{
-            return back() -> with('Registrado', 'Alquiler registrado correctamente, debe pagar dentro de 2 semanas');
+            return back() -> with('Registrado', 'Alquiler registrado correctamente');
         }
         
     
@@ -129,5 +129,9 @@ class AlquilerController extends Controller
         $data=compact('datosFactura');
         $pdf = Pdf::loadView('ReportesPDF.factura', $data);
         //return $pdf->stream(); 
+    }
+
+    public function edit(){
+
     }
 }

@@ -54,7 +54,7 @@ class GuardiaController extends Controller
 
      public function destroy($idd){
       $guardia = guardia::findOrFail($idd);
-      $guardia->delete();
+      $guardia->delete(); 
       return redirect('/lobby/ListaGuardias');
      }
 

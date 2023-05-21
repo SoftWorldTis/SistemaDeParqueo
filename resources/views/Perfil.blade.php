@@ -10,6 +10,10 @@
 
         <div class="card--options">
             <a href="/lobby/EditarCliente/{{$cliente->clienteci}}">Editar Perfil</a>
+            <br>
+            <a href="/lobby/RenovarAlquiler/{{$cliente->clienteci}}"> Renovar Alquiler</a>
+          
+            
         </div>
 
         <h2 class="card--title">{{$cliente->clientenombrecompleto}}</h2>

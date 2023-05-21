@@ -12,6 +12,7 @@ use App\Http\Controllers\DeudasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controller\ListaGuardiasController;
 use App\Http\Controllers\PagosController;
+use App\Http\Controllers\RenovarAlquilerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +111,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
 
     Route::resource('Perfil', PerfilController::class);
     Route::resource("/ListaPagos", PagosController::class);
+    Route::resource('/RenovarAlquiler/{id}', RenovarAlquilerController::class);
 });
 
 

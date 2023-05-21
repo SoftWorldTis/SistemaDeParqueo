@@ -54,11 +54,16 @@
                 <input class="botonAgregarU" class="agregarU" type="button" value="Agregar" name="nombre"  id="mostrarEmergente2"onclick="">
                 <div class=" oculto2" id="oculto2">
                     <!-- input donde sacar el dato de parqueo-->
-                    <input type="text" class="linea" name="Usuario" id="usuariosdatos"  value="{{$valorcl}}" readonly >
+                    <input type="text" class="linea" name="Usuario" id="usuariosdatos"  value="{{old('Usuario')}}" readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
-                   <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{$valorcl}}" readonly >
+                   <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{old('usuariosdatosci')}}" readonly >
                    @error('Usuario')
+                        <div class="error">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    @error('usuariosdatosci')
                         <div class="error">
                             {{$message}}
                         </div>
@@ -357,6 +362,13 @@
       });
     });
 
+    var input = document.getElementById("usuariosdatos");
+
+        if (input.value !== "") {
+        console.log("El campo de entrada tiene un valor");
+        document.getElementById('mostrarEmergente2').style.display = "none";
+        document.getElementById('oculto2').style.display="block";
+        } 
   </script>
 
 @if ($seleccionado)

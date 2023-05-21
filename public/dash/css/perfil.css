@@ -3,7 +3,8 @@
 }
 
 .card--options{
-    display: flex;
+    /*display: flex;*/
+    text-align: right;
     justify-content: flex-end;
 }
 
