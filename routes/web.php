@@ -12,6 +12,7 @@ use App\Http\Controllers\DeudasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controller\ListaGuardiasController;
 use App\Http\Controllers\PagosController;
+use App\Http\Controllers\FuncionalidadController;
 use App\Http\Controllers\RenovarAlquilerController;
 
 /*
@@ -41,7 +42,7 @@ Route::get('/inicio', function () {return view('inicio') ;});
 
 Route::get('/main/prueba', function () {
     return view('layouts.menu') ;
-  
+
 });
 
 
@@ -56,14 +57,15 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
     Route::resource('/RegistroParqueos',RegisParqueoController::class);
 
     Route::resource('/RegistroGuardias', GuardiaController::class);
+    Route::resource('/CrearFuncionalidad', FuncionalidadController::class);
 
     Route::resource("/RegistroCliente",ClienteController::class);
     Route::resource("/ListaClientes",ListaClientesController::class);
 
-   
+
     Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
     Route::get('/ListaReportes', function () {return view('listaReportes') ;});
-  
+
 
     Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
     Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
@@ -101,7 +103,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
     Route::delete('/ListaClientes/{idd}',[App\Http\Controllers\ListaClientesController::class,'destroy'])->name('borrarcliente');
 
     Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
- 
+
     Route::get("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'index'])->name('/ListaGuardias');
     Route::get("/ReporteGuardias/imprimir",[App\Http\Controllers\ListaGuardiasController::class,'show'])->name('/ReporteGuardias');
 

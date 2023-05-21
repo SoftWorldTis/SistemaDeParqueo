@@ -1,0 +1,68 @@
+
+.fondo {
+    background-color: #ffff;
+    margin-top: 39px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 72.918%;
+    height: 55vh;
+    padding: 20px;
+}
+.herramientas{
+    padding-left: 0px;
+    padding-top: 0px;
+     display: grid;
+     grid-template-columns: repeat(2, 459.72px);
+     /*grid-template-rows: 84px 678px;*/
+     grid-column-gap: 0px;
+     grid-row-gap: 0px;
+     justify-content: center;
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+    }
+
+
+    .ParAr{
+        text-align: center;
+       margin: 20px;
+        grid-area: 1 / 1 / 2 / 3;
+
+    }
+    .ParAr p {
+        font-size: 38px;
+        color: black;
+
+
+    }
+
+
+    .Pi p{
+        color: black;
+        font-size: 30px;
+     margin-bottom: 44px;
+    }
+    .Pi{
+     height: 116.65px;
+     margin-top: 45px;
+
+     width: 50%;
+     text-align: center;
+    }
+    .linea{
+        width: 100%;
+        height: 36px;
+        background-color: transparent;
+        border:0;
+        border-bottom:1px solid #000000;
+        box-shadow: none;
+        outline:none;
+        font-size: 30px;
+
+    }
+    .linea::placeholder{
+        text-align: center;
+    }
+    .a {
+      display: inline-block;
+    }

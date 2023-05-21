@@ -39,7 +39,7 @@ class ClienteRequest extends FormRequest
     {
         return[
             'clientenombrecompleto.required' => 'El campo Nombre y Apellidos es obligatorio',
-            'clientenombrecompleto.regex' => 'El campo solo adminte carácteres alfabéticos',
+            'clientenombrecompleto.regex' => 'El campo solo admite carácteres alfabéticos',
             'clientenombrecompleto.min' => 'El campo admite mínimo 10 carácteres',
             'clientenombrecompleto.max' => 'El campo admite máximo 40 carácteres',
             'clienteci.required' => 'El campo CI es obligatorio',
@@ -54,7 +54,7 @@ class ClienteRequest extends FormRequest
             'clientesis.max' => 'El campo Código sis admite máximo 9 dígitos',
             'clientesis.min' => 'El campo Código sis admite minímo 9 dígitos',
             'clientecorreo.required' => 'El campo Correo es obligatorio',
-            'clientecorreo.email' => 'Ingresar un correo valio',
+            'clientecorreo.email' => 'Ingresar un correo valido',
             'clientecorreo.max' => 'El campo Correo admite máximo 40 carácteres',
             'clientecorreo.min' => 'El campo Correo admite máximo 10 carácteres',
             'clienteV1.required' => 'Ingrese al menos un Vehículo',
