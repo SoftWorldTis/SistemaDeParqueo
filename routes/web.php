@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\AlquilerController;
+use Illuminate\Support\Facades\Route;
+
+/*use App\Http\Controllers\AlquilerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\LoginController;
@@ -28,7 +30,7 @@ use App\Http\Controllers\RenovarAlquilerController;
 |
 */
 
-Route::get('/profile/{editar}', function ($editar) {
+/*Route::get('/profile/{editar}', function ($editar) {
     return view('profile').$editar;
 });
 
@@ -91,12 +93,12 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
       /*
     Route::resource('/Alquiler',facturaController::class);
     */
-    Route::get('/pdf', function () {return view('pdf') ;});
+  /*  Route::get('/pdf', function () {return view('pdf') ;});
     /*
     Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
     */
     //Route::get("/ListaDeudas",[App\Http\Controllers\DeudasController::class,'index'])->name('/ListaDeudas');
-    Route::resource("/ListaDeudas", DeudasController::class);
+/* Route::resource("/ListaDeudas", DeudasController::class);
     //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
     //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
 
@@ -121,8 +123,7 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
 
 Route::get('/hola', function () {return view('hola') ;});
 
-
-
+*/
 //rutas
 Route::get('/login', function () {
     return view('login');

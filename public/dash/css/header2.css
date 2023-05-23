@@ -27,6 +27,8 @@ p{
   display: flex;
   justify-content: space-between;
 
+
+
 }
 .nav2 div{
  display: flex;
@@ -59,5 +61,6 @@ p{
   width: 114%;
   border-radius: 0px 0px 50px 0px;
 }
+
 
 

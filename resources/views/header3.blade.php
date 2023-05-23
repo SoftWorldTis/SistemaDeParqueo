@@ -11,13 +11,14 @@
         <div class="col">
             <img src="{{asset('dash/assets/user2 2.png')}}" width="45">
             <span class="label">Rol</span>
+            </select>
         </div>
         <div class="col">
             <img src="{{asset('dash/assets/user2 2.png')}}" width="45">
             <span class="label">Usuarios</span>
         </div>
         <div class="col">
-            <img src="{{asset('dash/assets/parqueNav.png')}}" width="45">
+            <img src="{{asset('dash/assets/parqueoNav.png')}}" width="45">
             <span class="label">Reportes</span>
         </div>
         <div class="col">

@@ -16,10 +16,9 @@
 
 </header>
 <body>
-   
     <div class="fondo">
 
-        
+
         <div class="contenedorlogin">
             <div class="izquierda">
                 <div class="tit">
@@ -36,7 +35,7 @@
                         <input type="text" class="linea" name="password" >
                     </div>
                     <div class="botones">
-                        <a id="link" href="{{/login/RegistroCliente}}"> 
+                        <a id="link" href="{{/login/RegistroCliente}}">
                         <div class="registrarse">
                             <button type="button" class="button">
                                 <p>Registrar</p>
@@ -49,18 +48,18 @@
                             </button>
                         </div>
                     </div>
-                 </form>
+                </form>
 
                 </div>
-                
+
                 <div class="derecha">
                     <img src="{{asset('/dash/assets/autoparqueo.png')}}" alt="Logo Parqueo" class="imagen">
                 </div>
-                
+
             </div>
-            
+
         </div>
-        
+
     </body>
-    
+
 </html>

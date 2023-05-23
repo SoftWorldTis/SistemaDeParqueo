@@ -1,6 +1,6 @@
 .icono{
     color: white;
-    font-size: 45px;
+    font-size: 30px;
     margin-top: 40px;
     margin-left: 1%;
 }
@@ -8,6 +8,16 @@
     color: white;
 }
 body{
-    width: 99%;
-    padding-left: 1%;
+    padding-left: 0%;
+}
+h1{
+    text-align: right;
+    color: white;
+    font-size: 25px;
+    padding-top: 47px;
+    margin-right: 1%;
+}
+.col{
+    margin-top: 40px;
+    margin-left: 40px;
 }

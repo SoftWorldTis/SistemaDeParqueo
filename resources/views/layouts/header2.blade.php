@@ -12,7 +12,7 @@
             <a id="link" href="{{('/lobby/')}}">
                 <div class="roles">
                     <img src="{{asset('/dash/assets/user2 2.png')}}" alt="" class="">
-                    <p>Rol</p>
+                    <p>Role</p>
                 </div>
             </a>
 

@@ -1,6 +1,6 @@
 
 /*cuadrado contenido */
-
+.deple{}
 nav{
 
     height: 10.625rem;
@@ -10,7 +10,7 @@ nav{
 }
 
 .nav2{
-   
+
   margin-left: 64%;
   margin-right: 2.8%;
 padding-top: 3.125rem;
@@ -35,7 +35,7 @@ p{
 }
 
 /*nav content */
-.logoUsuario{  
+.logoUsuario{
  width: 3.125rem;
  height: 3.125rem;
 }

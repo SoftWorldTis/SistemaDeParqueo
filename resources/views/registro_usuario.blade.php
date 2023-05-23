@@ -29,7 +29,7 @@
             <h5 for="">Fecha de nacimiento</h5><br>
             <input type="text" name="" id="" class="inputB"><br>
             <h5 for="">Confirmar Contraseña</h5><br>
-            <input type="text" name="" id="" class="inputB"><br><br><br>
+            <input type="password" name="" id="" class="inputB"><br><br><br>
             <div class="col">
                 <input type="radio" name="" id=""><label for="">Funcionalidad X</label>
             </div>
@@ -41,7 +41,7 @@
     <div class="row botones">
         <div class="col"><button class="btn" id="cancelar">Cancelar</button></div>
         <div class="col"><button class="btn" id="guardar">Guardar</button></div>
-        
+
     </div>
 </form>
 
