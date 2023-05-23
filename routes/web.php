@@ -15,6 +15,11 @@ use App\Http\Controllers\PagosController;
 use App\Http\Controllers\FuncionalidadController;
 use App\Http\Controllers\RenovarAlquilerController;
 
+//Nuevo
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Middleware\RevisarPermiso;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,21 +33,6 @@ use App\Http\Controllers\RenovarAlquilerController;
 
 Route::get('/profile/{editar}', function ($editar) {
     return view('profile').$editar;
-});
-
-
-
-Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->name('login');
-Route::post('/login', [App\Http\Controllers\LoginController::class,'log'])->name('login');
-Route::get('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'index'])->name('registrarAdmin');
-Route::post('login/registrarAdministrador', [App\Http\Controllers\registrarAdministradorController::class,'store'])->name('registrarAdmin');
-Route::get('/inicio', function () {return view('inicio') ;});
-
-
-
-Route::get('/main/prueba', function () {
-    return view('layouts.menu') ;
-
 });
 
 
@@ -113,9 +103,37 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
 
     Route::resource('Perfil', PerfilController::class);
     Route::resource("/ListaPagos", PagosController::class);
-    Route::resource('/RenovarAlquiler/{id}', RenovarAlquilerController::class);
+   // Route::resource('/RenovarAlquiler/{id}', RenovarAlquilerController::class);
 });
 
 
-Route::get('/hola', function () {return view('hola') ;});
 
+
+
+Route::get('/', function () {return view('welcome') ;});
+
+Route::get('/login', [LoginController::class,'index']);
+Route::post('/login', [LoginController::class,'login'])->name('login');
+Route::post('/logout', [LoginController::class,'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::resource('usuario', UsuarioController::class);
+   
+    Route::get('/lobby', function () {return view('lobby') ;});
+    
+    //Rutas Rol
+    Route::get('/crear-rol', [RolController::class,'create'])->middleware('permiso:crear-rol');
+    Route::post('/crear-rol', [RolController::class,'store'])->middleware('permiso:crear-rol');
+
+    //Rutas Usuarios
+    Route::get('/crear-usuario', [UsuarioController::class,'create'])->middleware('permiso:crear-usuario');
+    Route::post('/crear-usuario', [UsuarioController::class,'store'])->middleware('permiso:crear-usuario');
+
+
+    Route::get('/profile/{editar}', function ($editar) {return view('profile').$editar;});
+});
+
+
+/*Ruta ejemplo para verificar permisos
+Route::get('/ruta-restringida', 'Controlador@metodo')->middleware('permiso:crear-rol');
+*/

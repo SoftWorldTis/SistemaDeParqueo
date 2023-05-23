@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,30 +16,32 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function log(Request $request) {
+    public function login(Request $request) {
+        //dd($request);
+
         $request->validate([
-            'name'=> ['required','email','max:100'],
-            'password'=> ['required','min:8','max:25'], 
+            'email'=> ['required','email','max:25'],
+            'password'=> ['required','min:8','max:20'], 
         ]);
-        $nombre = $request->input('name');
-        $contraseña = $request->input('password');
-    
-        $usuario = DB::table('administrador')
-        ->where('administradornombre', $nombre)
-        ->first();
-        if ($usuario&& Hash::check($contraseña, $usuario->administradorcontraseña) ) {
-            return redirect('/lobby')->with('success', '¡Inicio sesion sin problemas!');
-        } else {
-            dd("pi pi pi ");
+        
+        $credentials = $request->only('email','password');
+        if (Auth::attempt($credentials)) {
+            // Inicio de sesión exitoso
+            $request->session()->regenerate();
+            return redirect()->intended('/lobby');
         }
 
-/*
-        if ($usuario && Hash::check($contraseña, $usuario->administradorcontraseña)) {
-        dd("kiri, facilito facilito fififiififi");
-        } else {
-        dd("pi pi pi ");
-        }
-        */
+        // Inicio de sesión fallido
+        return redirect()->back()->withErrors(['email' => 'Credenciales inválidas']);
+        
+
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
 

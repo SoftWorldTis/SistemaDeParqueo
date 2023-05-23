@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
        // libreria para crear pdf
-       Barryvdh\DomPDF\ServiceProvider::class
+       Barryvdh\DomPDF\ServiceProvider::class,
+       Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

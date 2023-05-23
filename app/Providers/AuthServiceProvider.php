@@ -25,6 +25,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //definiendo super Administrador
+       /* Gate::before(function ($user, $ability) {
+            return $user->hasRole('Super Admin') ? true : null;
+            
+        });*/
+        Gate::before(function ($user, $ability) {
+            return $user->email == 'softworl@admin.com' ?? null;
+        });
     }
 }

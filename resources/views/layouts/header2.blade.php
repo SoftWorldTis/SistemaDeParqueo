@@ -8,14 +8,15 @@
                     <p>Inicio</p>
                 </div>
             </a>
-
-            <a id="link" href="{{('/lobby/')}}">
+            @can('crear-rol')
+            <a id="link" href="{{('/crear-rol')}}">
                 <div class="roles">
                     <img src="{{asset('/dash/assets/user2 2.png')}}" alt="" class="">
                     <p>Roles</p>
                 </div>
             </a>
-
+            @endcan
+            
             <a id="link" href="{{('/lobby/ListaUsuarios')}}">
                 <div class="usuarios">
                     <img src="{{asset('/dash/assets/user2 2.png')}}" alt="" class="">
@@ -51,12 +52,17 @@
                 </div>
             </a>
 
-            <a id="link" href="{{('/inicio')}}">
+
+            <a id="link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <div class="salir">
                     <img src="{{asset('/dash/assets/salirNav.png')}}" alt="" class="">
                     <p>Salir</p>
                 </div>
             </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
 
 
         </div>

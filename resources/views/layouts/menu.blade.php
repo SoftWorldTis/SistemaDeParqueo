@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +16,13 @@
    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="jquery.fittext.js"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
   </head>
 <body  id="body">
   <!-- header   -->
   <header>
- @include('layouts.header')
+    @include('layouts.header')
 
   </header>
 
@@ -37,8 +34,8 @@
         @yield('contenido')
 
 
-   </div>
-
+        </div>
+        @yield('botones')
      
            <!-- contenido  -->
            <footer>

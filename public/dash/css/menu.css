@@ -16,6 +16,14 @@ body{
  width: 72.9%;
  height: 47.625rem;
 }
+.error{
+
+  font-family:'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #dc3545;
+
+ }
 
 /*nav content final */
 /*cuadrado contenido */

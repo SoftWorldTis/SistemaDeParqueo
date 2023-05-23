@@ -82,13 +82,20 @@
         <div class="usuarios">
             <div class="r5">
             <img src="{{asset('/dash/assets/cerrar-sesion 1.png')}}" class="iconSalir" alt="">
-                <a id="link" href="{{('/inicio')}}">
-                    <div class="botonSalir">
-                        <p>Salir</p>
-                    </div>
-                </a>
+
+            <a id="link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <div class="botonSalir">
+                    <p>Salir</p>
+                </div>
+            </a>
+    
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             </div>
         </div>
+
+        
     </div>
 
 

@@ -8,7 +8,7 @@
 .button p{
 
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
    }
    
@@ -23,7 +23,8 @@ grid-column-gap: 0px;
 grid-row-gap: 0px;
      
 }
-.cancelar {border-radius: 20px;
+.cancelar {
+    border-radius: 20px;
     margin-right: 27.5px;
     background-color: #5A6681;
     grid-area: 1 / 1 / 2 / 2;
@@ -32,10 +33,10 @@ grid-row-gap: 0px;
  }
 
 
-.guardar {border-radius: 20px;
+.guardar {
+    border-radius: 20px;
     margin-left: 27.5px;
     border: 0px;
-
     grid-area: 1 / 2 / 2 / 3;
 
 }

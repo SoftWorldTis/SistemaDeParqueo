@@ -13,7 +13,7 @@
     border-bottom:1px solid #000000;
     box-shadow: none;
     outline:none;
-    font-size: 30px;
+    font-size: 20px;
    
    
 }
@@ -28,7 +28,7 @@ span{
     font-size: 26px;
 }
 .izquierda{
-    margin-top: 100px;
+    margin-top: 20px;
     display: grid;
     grid-template-areas: 
     "tit"
@@ -43,9 +43,7 @@ span{
 }
 .botones{
     display:grid;
-    grid-template-columns: 1fr 1fr;
     margin-top: 50px;
-    margin-left: 70px;
 }
 .Usuario{
     margin: 50px;
@@ -83,23 +81,15 @@ span{
   top: 0;
  right:0 ;
 }
-.fondo{
 
-    background-color: #ffff;
-    margin-top: 10%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 72.918%;
-    height: 700px;
-}
 body{
     background-color: #DFE0F8;
 }
 
 
 .button{
-    width:221px ;
-    height:69px ;
+    width:394.44px ;
+    height:50px ;
     background-color: #0A1C44;
     border-radius: 20px;
     border: 0px;
@@ -110,7 +100,7 @@ body{
 .button p{
     color: #ffff;
     text-align: center;
-    font-size: 30px;
+    font-size: 23px;
     
 
    }
@@ -177,10 +167,12 @@ body{
   justify-content: center;
   }
    
-    /*para errores*/
-   
-        .error{
-            color: red;
-            margin-top: 5px;
-        }
-    
+
+
+
+
+.guardar {
+    border-radius: 20px;
+    border: 0px;
+    grid-area: 1 / 2 / 2 / 3;
+}
