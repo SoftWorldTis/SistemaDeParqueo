@@ -40,7 +40,7 @@
             <th class="grillatit">Deuda</th>
           </tr>
         </thead>
-        <tbody>  
+        <tbody>
             @foreach ($deudas as $deuda)
                 <tr id="id=fila-{{$loop->iteration}}">
                     <td>{{$loop->iteration}}</td>
@@ -50,10 +50,10 @@
                     <td>{{$deuda->alquilerprecio}}</td>
                 </tr>
             @endforeach
-          
-          
+
+
         </tbody>
       </table>
-    
+
 </body>
 </html>

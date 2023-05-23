@@ -2,7 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
-    <link rel="stylesheet" href="{{asset('/dash/css/registroCliente.css')}}" >  
+    <link rel="stylesheet" href="{{asset('/dash/css/registroCliente.css')}}" >
 @endsection
 @section('forminicio')
 <form action="/lobby/RegistroCliente" method="Post">
@@ -24,7 +24,7 @@
 
    <!-- debajo de un forms pones eso atte kiri-->
         <div class="cabeza">
-            
+
             <div class ="NombreAp">
                 <p class="nom">Nombre y Apellidos</p>
                 <input type="text" class="linea" name="clientenombrecompleto" value="{{old('clientenombrecompleto')}}" placeholder="Ingrese su nombre">
@@ -34,7 +34,7 @@
                     </div>
                 @enderror
             </div>
-        
+
             <div class ="Ci">
                 <p class="nom">CI</p>
                 <input type="text" class="linea" name="clienteci" value="{{old('clienteci')}}" placeholder="Ingrese su CI ">
@@ -46,9 +46,9 @@
             </div>
 
         </div>
-        
+
         <div class="fila2">
-            
+
             <div  class="nacimiento">
                 <p class="nom">Fecha de Nacimiento</p>
                 <input type="date" class="linea" class="fecha"  name="clientefechanac" value="{{old('clientefechanac')}}" >
@@ -58,14 +58,6 @@
                     </div>
                 @enderror
             </div>
-            <div class="sis">
-                <p class="nom">Codigo Sis</p>
-                <input type="text" class="linea" name="clientesis" value="{{old('clientesis')}}" placeholder="Ingrese su código SIS" >
-                <br>
-                @error('clientesis')
-                    <div class="error">
-                        {{$message}}
-                    </div>
                 @enderror
             </div>
         </div>
@@ -79,7 +71,7 @@
                     </div>
                 @enderror
             </div>
-            
+
             <div class="carro1">
                 <p class="nom" id="veh1">Vehículo 1</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
@@ -90,24 +82,24 @@
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}
-                    </div> 
+                    </div>
                 @enderror
-                
-                
+
+
             </div>
-            
+
         </div>
-        
+
         <div class="fila4">
             <div class="carro1">
                 <p class="nom" id="veh2">Vehículo 2</p>
-               
+
                 <input type="button" value="Agregar" class="botonAgregar" name="carro1" id="mostrar-ventana-emergente2">
                 <div class=" oculto" id="oculto2">
                     <input type="text" class="linea"  id="vinput2">
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar2" >
                 </div>
-            
+
             </div>
             <div class="carro1">
                 <p class="nom" id="veh3">Vehículo 3</p>
@@ -148,15 +140,15 @@
                 <input type="text" class="linea3" name="vehiculodescripcion"  >
             </div>
             <button id="cerrar-ventana">Cerrar ventana emergente</button>
-           
+
         </div>
         <button type="button" id="guardar-modal" class="guardar button guardar-modal">
-        
+
             <p>Guardar</p>
-        
-        </button>   
-            
-         </div>      
+
+        </button>
+
+         </div>
     </div>
     </div>
 
@@ -191,12 +183,12 @@
             </div>
         </div>
               <button type="button"  id="guardar-modal2" class="guardar button guardar-modal">
-        
+
                     <p>Guardar</p>
-        
-              </button>   
- 
-         </div>      
+
+              </button>
+
+         </div>
     </div>
     </div>
 
@@ -231,12 +223,12 @@
             </div>
         </div>
                  <button type="button" id="guardar-modal3" class="guardar button guardar-modal">
-        
+
                       <p>Guardar</p>
-        
-                 </button>   
- 
-         </div>      
+
+                 </button>
+
+         </div>
     </div>
     </div>
 
@@ -249,7 +241,7 @@
         var cerrarVentana = document.getElementById('cerrar-ventana');
         var ventanaEmergente = document.getElementById('mi-ventana-emergente');
         var guardar = document.getElementById('guardar-modal');
-       
+
 
 
         var mostrarVentana2 = document.getElementById('mostrar-ventana-emergente2');
@@ -268,48 +260,48 @@
 
 
         mostrarVentana.onclick = function() {
-      
+
           ventanaEmergente.style.display = "block";
 
         };
         editar.onclick = function() {
-      
+
       ventanaEmergente.style.display = "block";
 
     };
-        
+
         cerrarVentana.onclick = function() {
 
           ventanaEmergente.style.display = "none";
         };
 
         mostrarVentana2.onclick = function() {
-      
+
       ventanaEmergente2.style.display = "block";
 
     };
     editar2.onclick = function() {
-      
+
       ventanaEmergente2.style.display = "block";
 
     };
-    
+
     cerrarVentana2.onclick = function() {
 
       ventanaEmergente2.style.display = "none";
     };
 
     mostrarVentana3.onclick = function() {
-      
+
       ventanaEmergente3.style.display = "block";
 
     };
     editar3.onclick = function() {
-      
+
       ventanaEmergente3.style.display = "block";
 
     };
-    
+
     cerrarVentana3.onclick = function() {
 
       ventanaEmergente3.style.display = "none";
@@ -317,14 +309,14 @@
 
 
         guardar.onclick = function() {
-            
+
             const modelo = document.getElementById('vehiculomodelo1')
             const placa = document.getElementById('vplaca')
             const validandoM = validarLetras(modelo)
             const validandoP = validarLetrasNum(placa)
 
             if(validandoM && validandoP){
-                
+
                 document.getElementById('veh1').style.marginBottom="18px";
                 document.getElementById('vinput').value=document.getElementById('vplaca').value;
                 document.getElementById('oculto').style.display="block";
@@ -387,7 +379,7 @@
             if(input.value.length > maximo) {
             isValid = false;
             } else {
-            if(!pattern.test(input.value)){ 
+            if(!pattern.test(input.value)){
                 isValid = false;
             } else {
                 isValid = true;
@@ -419,7 +411,7 @@
             if(input.value.length > maximo) {
             isValid = false;
             } else {
-            if(!pattern.test(input.value)){ 
+            if(!pattern.test(input.value)){
                 isValid = false;
             } else {
                 isValid = true;
@@ -443,22 +435,22 @@
 
     @endsection
     @section('botones')
-    
+
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby/RegistroUsuarios')}}"> 
+    <a id="link" href="{{('/lobby/RegistroUsuarios')}}">
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>
-    
+
     </a>
 
-    
+
     <button type="submit" class="guardar button">
-       
+
     <p>Guardar</p>
-        
-    </button>   
+
+    </button>
     </div>
    </form>
    @endsection

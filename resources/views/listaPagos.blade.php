@@ -1,7 +1,7 @@
 @extends('layouts.menu2')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/dash/css/deudas.css')}}" > 
+    <link rel="stylesheet" href="{{asset('/dash/css/deudas.css')}}" >
 @endsection
 
 @section('contenido')
@@ -21,16 +21,16 @@
                     <button type="submit" class="lupa"><img src="{{asset('/dash/assets/lupita_icono.png')}}" class="imagenlupa"> </button>
                 </div>
             </form>
-            
-            
+
+
             <div class="exportar">
-                
+
                 <a href="/lobby/ListaPagos/imprimir">
                     <button class="btnExportar">Exportar</button>
                 </a>
             </div>
         </div>
-        
+
         <table class="tabla">
             <thead>
               <tr >
@@ -40,10 +40,9 @@
                 <th class="grillatit">Fecha Alquiler</th>
                 <th class="grillatit">Saldado</th>
                 <th class="grillatit">Tipo</th>
-                <th class="grillatit">Opciones</th>
               </tr>
             </thead>
-            <tbody>  
+            <tbody>
                 @foreach ($deudas as $deuda)
                     <tr id="id=fila-{{$loop->iteration}}">
                         <td>{{$loop->iteration}}</td>
@@ -52,13 +51,10 @@
                         <td>{{$deuda->alquilerfecha}}</td>
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>{{$deuda->alquilertipopago}}</td>
-                        <td>
-                            <a href="/lobby/Perfil/{{$deuda->cliente_clienteci}}">Ver Perfil</a>
-                        </td>
                     </tr>
                 @endforeach
-              
-              
+
+
             </tbody>
           </table>
     </div>

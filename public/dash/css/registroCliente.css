@@ -9,12 +9,12 @@
   }
 
 
- 
+
      .carro1{
- 
+
       text-align: center;
 
-       
+
        }
      .botonAgregar{
       border-radius: 20px;
@@ -50,11 +50,8 @@
     */
     /*fila2 inicio
     */
-    .sis{
-      text-align: center;
-     }
      .correo{
-      text-align: center; 
+      text-align: center;
      }
      .nacimiento{
       /*
@@ -68,7 +65,7 @@
       text-align: center;
      }
      .fila2{
-      
+
       margin-top: 50px;
       grid-template-columns: 1fr 1fr;
       display: grid;
@@ -76,8 +73,8 @@
     }
      /*Fin fila2
      */
-   
-   
+
+
     .fila3{
       /*
       background-color: purple;
@@ -93,14 +90,14 @@
        gap: 100px;
        margin-top: 40px;
     }
-    
-  
+
+
     .principal{
       display:grid;
-      grid-template-areas: 
+      grid-template-areas:
       "tit"
       "cabeza"
-      "fila2" 
+      "fila2"
       "fila3"
       "fila4"
       ;
@@ -109,12 +106,12 @@
     /*
      cambios en el fondo para centrar
     */
-    
+
     .fondo{
-      
+
         display: flex;
         justify-content: center;
-       
+
       }
       /*
       Inputs de texto
@@ -129,10 +126,10 @@
           box-shadow: none;
           outline:none;
           font-size: 30px;
-         
-         
+
+
       }
-     
+
       /*
       nombres de los campos
       */
@@ -144,14 +141,14 @@
           font-style: normal;
           text-align: center;
       }
-      
+
       .herramientas{
         padding: 0;
       }
       h2{
         color:#000000;
       }
-     
+
 
 
       .modal-fondo, .modal-fondo2 , .modal-fondo3  {
@@ -169,7 +166,7 @@
       .modal-contenido , .modal-contenido2 , .modal-contenido3 {
         text-align: center;
         position: fixed;
- 
+
         top: 53%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -183,8 +180,8 @@
       }
       .emergente , .emergente2 , .emergente3{
         display: none;
-       
-  
+
+
     }
 
     h2{
@@ -201,7 +198,7 @@
   margin-bottom: 17px;
   text-align: left;
   color: black;
-  
+
 
 }
     .linea3{
@@ -214,19 +211,19 @@
       box-shadow: none;
       outline:none;
       font-size: 30px;
-     
-     
+
+
   }
   .azul{
     display: flex;
     width: 100%;
     height: 55px;
-   
+
     background-color: #0A1C44;
     justify-content: flex-end;
-  
-   
-    
+
+
+
   }
 
 

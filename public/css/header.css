@@ -1,0 +1,23 @@
+header{
+    background-color: #0A1C44;
+    height: 120px;
+    border-radius: 0px 0px 40px 40px;
+}
+body{
+    background-color: #DFE0F8;
+}
+
+#main{
+    margin-top: 5%;
+    margin-left: 3%;
+    width: 1410px;
+
+    background-color: white;
+}
+h1{
+    text-align: right;
+    color: white;
+    font-size: 25px;
+    padding-top: 47px;
+    margin-right: 1%;
+}

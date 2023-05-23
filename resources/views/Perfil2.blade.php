@@ -1,7 +1,7 @@
 @extends('layouts.menu2')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/dash/css/perfil.css')}}" > 
+    <link rel="stylesheet" href="{{asset('/dash/css/perfil.css')}}" >
 @endsection
 
 @section('contenido')
@@ -29,20 +29,13 @@
                 <tr>
                     <td>{{$cliente->clienteci}}</td>
                     <td>{{$vehiculos[0]->vehiculomodelo}}</td>
-                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>   
+                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>
                 </tr>
 
                 @if(isset($vehiculos[1]))
                 <tr>
-                    <td>{{$cliente->clientesis}}</td>
                     <td>{{$vehiculos[1]->vehiculomodelo}}</td>
                     <td>{{$vehiculos[1]->vehiculoplaca}}</td>
-                </tr>
-                @else
-                <tr>
-                    <td>{{$cliente->clientesis}}</td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 @endif
 

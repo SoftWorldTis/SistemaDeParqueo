@@ -14,7 +14,7 @@
 
     <div class="rAuto">
         <img src="{{asset('/dash/assets/opAuto.png')}}" class="iconRegistrarA iconRegistrar"  alt="">
-        <a id="link" href="{{('/lobby/RegistroParqueos')}}"> 
+        <a id="link" href="{{('/lobby/RegistroParqueos')}}">
         <div class="botonRegistroA botonRegistro">
             <p>Registrar </p>
 
@@ -29,21 +29,12 @@
         <a id="link" href="{{('/lobby/RegistroUsuarios')}}">
         <div class="botonRegistroU  botonRegistro">
             <p>Registrar</p>
- 
+
             <p>usuarios</p>
-            
+
         </div>
         </a>
     </div>
-
-
-
-      
-     
-   
-
-
-
         </div>
 
                 <!-- contenido  -->

@@ -1,0 +1,57 @@
+h2,h5{text-align: center;
+margin-top: 2%;}
+.input{
+    width: 30%;
+    margin-left: 35%;
+    border: none;
+    margin-bottom: 5%;
+    border-bottom: solid black 2px;
+}
+.col{
+    text-align: center;
+}
+#formulario{
+    padding: 2%;
+}
+.botones{
+    width: 40%;
+    margin-top: 5%;
+    margin-left: 55%;
+}
+#cancelar{
+    background-color: #5A6681;
+    padding: 1%;
+    color: white;
+    width: 80%;
+}
+#guardar{
+    background-color: #0A1C44;
+    padding: 1%;
+    color: white;
+    width: 80%;
+}
+.boton{
+    background-color: #0A1C44;
+    padding: 1%;
+    color: white;
+    width: 30%;
+}
+#exportar{
+    color: white;
+    background-color: #0A1C44;
+}
+#encabezado{
+    background-color: #0A1C44;
+    color: white;
+}
+.table{margin-top: 2%;}
+.inputB{
+    width: 50%;
+    margin-left: 1%;
+    border: none;
+    margin-bottom: 5%;
+    border-bottom: solid black 2px;
+}
+#usuario{
+    font-size: 100px;
+}

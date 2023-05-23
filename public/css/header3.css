@@ -1,0 +1,13 @@
+.icono{
+    color: white;
+    font-size: 45px;
+    margin-top: 40px;
+    margin-left: 1%;
+}
+.label{
+    color: white;
+}
+body{
+    width: 99%;
+    padding-left: 1%;
+}

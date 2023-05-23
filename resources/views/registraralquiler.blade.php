@@ -3,8 +3,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/dash/css/botones.css')}}" >
-    <link rel="stylesheet" href="{{asset('/dash/css/registroalquiler.css')}}" > 
-  @endsection  
+    <link rel="stylesheet" href="{{asset('/dash/css/registroalquiler.css')}}" >
+  @endsection
 
   @section('forminicio')
   <form action="/lobby/Alquiler" method="Post">
@@ -25,7 +25,7 @@
     </div>
 
         <div class="botonesformu">
-            
+
 
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
@@ -36,17 +36,17 @@
                     @if($seleccionado != null)
                     <input type="hidden" class="linea" name="parqueoid" id="parqueoid"  value="{{$seleccionado->estacionamientoid}}" readonly >
                     @endif
-                   
+
                 </div>
                 @error('Parqueo')
                     <div class="error">
                         {{$message}}
                     </div>
                 @enderror
-    
+
             </div>
-          
-     
+
+
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <!--cambiar type="button" y value ="Agregar"-->
@@ -70,9 +70,9 @@
                     @enderror
             </div>
         </div>
-        
+
         <div class="fila2">
-            
+
             <div  class="Duracion">
                 <p class="nom">Duración</p>
                 @if ($seleccionado)
@@ -80,20 +80,20 @@
                 @else
                     <input type="date" name="FechaInicio" class="linea fecha " id="FechaInicio" value="{{old('FechaInicio')}}" >
                 @endif
-                
+
                     @error('FechaInicio')
                         <div class="error">
                             {{$message}}
                         </div>
                     @enderror
-            
+
                 <div>
                     @if ($seleccionado)
                         <input type="date" name="FechaFin" class="linea2 fecha" id = "FechaFin" value="{{old('FechaFin')}}" onchange="calcularPrecio()">
                     @else
                         <input type="date" name="FechaFin" class="linea2 fecha" id = "FechaFin" value="{{old('FechaFin')}}">
                     @endif
-                    
+
                     @error('FechaFin')
                         <div class="error">
                             {{$message}}
@@ -110,7 +110,7 @@
                 @else
                 <input type="text" class="linea" name="hora" readonly value="">
                 @endif
-                
+
                 <br>
             </div>
         </div>
@@ -134,16 +134,16 @@
                         </div>
                     @enderror
                 @endif
-                
+
             </div>
-            
+
             <div class="Precio">
                 <p class="nom">Precio</p>
                 <input type="text" class="linea" name="costo" id="Precio" readonly value="{{old('costo')}}" >
             </div>
-            
+
         </div>
-        
+
         <div class="fila4">
             <div class="rad">
                 <label class="nom2">
@@ -163,13 +163,13 @@
                 </label>
             </div>
         </div>
-            
+
     </div>
     <div id="miEmergente" class="emergente">
         <div class="ordenar">
 
             <div class="azul" >
-                 
+
             <button type="button" class="destructor" id="cerrar-ventana">x</button>
             </div>
             <div class="titu">
@@ -192,8 +192,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $parqueo as $parqueos ) 
-                        
+                        @foreach ( $parqueo as $parqueos )
+
                             <tr class="table-row" id="id=fila-{{$parqueos->estacionamientoid}}">
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$parqueos->estacionamientozona}}</td>
@@ -203,24 +203,24 @@
                                 <td>
                                     <a href="/lobby/Alquiler/{{$parqueos->estacionamientoid}}">Seleccionar</a>
                                 </td>
-                            
+
                             </tr>
-                          
-                       
+
+
                         @endforeach
-                        
+
                     </tbody>
                 </table>
             </div>
-           
+
         </div>
       </div>
-      
+
       <div id="miEmergente2" class="emergente">
         <div class="ordenar2">
 
             <div class="azul2" >
-                 
+
             <button type="button" class="destructor2" id="cerrar-ventana2">x</button>
             </div>
             <div class="titu">
@@ -238,32 +238,30 @@
                             <th class="grillatit">Numero</th>
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
-                            <th class="grillatit">SIS</th>
-                        
+
                         </tr>
                     </thead>
                     <tbody >
-                        @foreach ( $clientes as $key => $clientess)    
-                        
+                        @foreach ( $clientes as $key => $clientess)
+
                         <tr class="table-row2"   id="id=fila-{{$loop->iteration}} " style="height: 61px;">
                             <td>{{ $key + 1 }}</td>
                             <td>{{$clientess->clientenombrecompleto}}</td>
                             <td>{{$clientess->clienteci}}</td>
-                            <td>{{$clientess->clientesis}}</td>
-                     
-                            
+
+
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-                
+
         </div>
       </div>
       <script>
 
 {!! $js !!}
-   
+
 
         var mostrarVentana = document.getElementById('mostrarEmergente');
         var cerrarVentana = document.getElementById('cerrar-ventana');
@@ -274,12 +272,12 @@
           ventanaEmergente.style.display = "block";
           barrita.style.backgroundColor = "#0A1C44";
           barrita.style.width = "300px";
-          
+
         }
 
         cerrarVentana.onclick = function() {
           ventanaEmergente.style.display = "none";
-          
+
         }
         var mostrarVentana2 = document.getElementById('mostrarEmergente2');
         var cerrarVentana2 = document.getElementById('cerrar-ventana2');
@@ -290,12 +288,12 @@
           ventanaEmergente2.style.display = "block";
           barrita2.style.backgroundColor = "#0A1C44";
           barrita2.style.width = "300px";
-          
+
         }
 
         cerrarVentana2.onclick = function() {
           ventanaEmergente2.style.display = "none";
-          
+
         };
 
 
@@ -304,7 +302,7 @@
 
     //scrip para seleccionar de la tabla y guardarlo de parqueo y cambiarlo x texto
    editar.onclick = function() {
-      
+
       ventanaEmergente.style.display = "block";
 
     };
@@ -313,18 +311,18 @@
       $(".table-row").mouseover(function() {
         $(this).addClass("highlight");
       });
-      
+
       $(".table-row").mouseout(function() {
         $(this).removeClass("highlight");
       });
-      
+
       $(".table-row").click(function() {
         var fila_id = $(this).attr("id");
         var dato_id = fila_id.split("-")[1];
         console.log(dato_id)
         $("#parqueoid").val(dato_id);
         var value = $(this).find("td:nth-child(2)").text();
-        
+
         $("#parqueodatos").val(value);
         document.getElementById('miEmergente').style.display = "none";
         document.getElementById('mostrarEmergente').style.display = "none";
@@ -336,7 +334,7 @@
 
 
     editar2.onclick = function() {
-      
+
       ventanaEmergente2.style.display = "block";
     };
 
@@ -344,11 +342,11 @@
       $(".table-row2").mouseover(function() {
         $(this).addClass("highlight");
       });
-      
+
       $(".table-row2").mouseout(function() {
         $(this).removeClass("highlight");
       });
-      
+
       $(".table-row2").click(function() {
         var fila_id = $(this).attr("id");
         var dato_id = fila_id.split("-")[1];
@@ -368,7 +366,7 @@
         console.log("El campo de entrada tiene un valor");
         document.getElementById('mostrarEmergente2').style.display = "none";
         document.getElementById('oculto2').style.display="block";
-        } 
+        }
   </script>
 
 @if ($seleccionado)
@@ -383,13 +381,13 @@
                 const precio= @json($seleccionado->estacionamientoprecio);
                 const total = precio * (dias+1)
                 document.getElementById('Precio').value=total
-                
+
             }else{
                 document.getElementById('Precio').value=0
             }
         }
     }
-    
+
     function calcularDias(fecha1, fecha2){
         var f1=new Date(fecha1);
         var f2= new Date(fecha2);
@@ -409,7 +407,7 @@
                 opcion.selected = true;
             }
             sitioSelect.add(opcion);
-        }  
+        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -420,22 +418,22 @@
 
     @endsection
     @section('botones')
-    
+
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
+    <a id="link" href="{{('/lobby/RegistroOpciones')}}">
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>
-    
+
     </a>
 
-    
+
     <button type="submit" class="guardar button">
-       
+
     <p>Guardar</p>
-        
-    </button>   
+
+    </button>
     </div>
    </form>
    @endsection

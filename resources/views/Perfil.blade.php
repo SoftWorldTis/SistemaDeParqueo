@@ -1,7 +1,7 @@
 @extends('layouts.menu2')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/dash/css/perfil.css')}}" > 
+    <link rel="stylesheet" href="{{asset('/dash/css/perfil.css')}}" >
 @endsection
 
 @section('contenido')
@@ -12,8 +12,8 @@
             <a href="/lobby/EditarCliente/{{$cliente->clienteci}}">Editar Perfil</a>
             <br>
             <a href="/lobby/RenovarAlquiler/{{$cliente->clienteci}}"> Renovar Alquiler</a>
-          
-            
+
+
         </div>
 
         <h2 class="card--title">{{$cliente->clientenombrecompleto}}</h2>
@@ -33,20 +33,13 @@
                 <tr>
                     <td>{{$cliente->clienteci}}</td>
                     <td>{{$vehiculos[0]->vehiculomodelo}}</td>
-                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>   
+                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>
                 </tr>
 
                 @if(isset($vehiculos[1]))
                 <tr>
-                    <td>{{$cliente->clientesis}}</td>
                     <td>{{$vehiculos[1]->vehiculomodelo}}</td>
                     <td>{{$vehiculos[1]->vehiculoplaca}}</td>
-                </tr>
-                @else
-                <tr>
-                    <td>{{$cliente->clientesis}}</td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 @endif
 
@@ -77,7 +70,6 @@
                     <th>Espacio</th>
                     <th>Precio</th>
                     <th>Estado</th>
-                    <th>Opcion</th>
                 </tr>
 
                 @foreach ($alquileres as $item)
@@ -92,12 +84,6 @@
                         @else
                             <td class="td-red">Deuda</td>
                         @endif
-
-                        <td>
-                            @if(!$item->alquilerestadopago)
-                                <a href="/lobby/ListaDeudas/{{$item->alquilerid}}" onclick="recargar()">Pagar</a>
-                            @endif
-                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -111,5 +97,5 @@
     function recargar(){
       location.reload()
     }
-    
+
 </script>
