@@ -99,7 +99,7 @@
                 <p class="nom" >Roles</p>
                 @foreach ($roles as $rol)
                 <div class="checkcentreado">
-                    <input type="checkbox" class="check" name="roles[]" value="{{$rol->id}}">
+                    <input type="checkbox" class="check" name="roles[]" value="{{$rol->id}}" {{ in_array($rol->id, (array) old('roles', [])) ? 'checked' : '' }}>
                     <label for="creaRol">{{$rol->name}}</label>
               </div> 
                 @endforeach

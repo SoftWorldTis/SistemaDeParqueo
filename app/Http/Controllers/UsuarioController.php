@@ -27,6 +27,7 @@ class UsuarioController extends Controller
     {
         //con paginacion
         $usuarios = User::paginate(5);
+        //dd($usuarios);
         return view ('Usuarios.index', compact('usuarios'));
     }
 
@@ -41,12 +42,12 @@ class UsuarioController extends Controller
     
     public function store(UsuarioRequest $request)
     {
-        dd($request);
+        //dd($request);
         $input = $request ->all();
         $input['password'] = Hash::make($input['password']);
         $usuario = User::create($input);
         $usuario->assignRole($request->input('roles'));
-        return redirect()->route('Usuarios.index');
+        return back() -> with('Registrado', 'Usuario registrado correctamente');
     }
 
     

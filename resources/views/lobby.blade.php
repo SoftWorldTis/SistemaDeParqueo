@@ -10,6 +10,7 @@
 @section('contenido')
 <div class="herramientas">
     <div class="fila1">
+        @can('crear-rol')
         <div class="usuarios">
             <div class="r3">
               <img src="{{asset('/dash/assets/user 3.png')}}" class="iconUsuarios" alt="">
@@ -20,17 +21,23 @@
                </a>
             </div>
         </div>
+        @endcan
+
+
+        @can('ver-usuario')
         <div class="usuarios">
             <div class="r3">
               <img src="{{asset('/dash/assets/user 3.png')}}" class="iconUsuarios" alt="">
-               <a id="link" href="{{('/lobby/ListaUsuarios')}}">
+               <a id="link" href="{{('/ver-usuario')}}">
                   <div class="botonUsuarios">
                     <p>Usuarios</p>
                   </div>
                </a>
             </div>
         </div>
+        @endcan
 
+        @can('ver-reporte')
         <div class="usuarios">
             <div class="r4">
               <img src="{{asset('/dash/assets/p 1.png')}}" class="iconReportes" alt="">
@@ -41,21 +48,25 @@
                 </a>
             </div>
         </div>
+        @endcan
 
     </div>
     <div class="fila2">
 
-        <div class="usuarios">
-            <div class="r2">
-            <img src="{{asset('/dash/assets/dia-de-pago 1 .png')}}" class="iconAlquilar" alt="">
-                <a id="link" href="{{('/lobby/Alquiler')}}">
-                    <div class="botonAlquilo">
-                        <p>Alquiler</p>
-                    </div>
-                </a>
-            </div>
+       @can('crear-alquiler')
+       <div class="usuarios">
+        <div class="r2">
+        <img src="{{asset('/dash/assets/dia-de-pago 1 .png')}}" class="iconAlquilar" alt="">
+            <a id="link" href="{{('/lobby/Alquiler')}}">
+                <div class="botonAlquilo">
+                    <p>Alquiler</p>
+                </div>
+            </a>
         </div>
+    </div>
+       @endcan
 
+        @can('crear-reclamos')
         <div class="usuarios">
             <div class="r1">
             <img src="{{asset('/dash/assets/Reclamos.png')}}" class="iconRegistrar" alt="">
@@ -66,7 +77,9 @@
                 </a>
             </div>
         </div>
+        @endcan
 
+        @can('crear-parqueo')
         <div class="usuarios">
             <div class="r1">
             <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
@@ -77,6 +90,7 @@
                 </a>
             </div>
         </div>
+        @endcan
 
 
         <div class="usuarios">
