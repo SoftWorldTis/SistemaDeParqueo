@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\alquiler;
 class UsuarioController extends Controller
 {
     public function __construct()
@@ -20,15 +22,17 @@ class UsuarioController extends Controller
         $this -> middleware('permission: ver-usuario|crear-usuario|editar-usuario|borrar-usuario' , ['only' => ['index']]);
         $this -> middleware('permission: crear-usuario' , ['only' => ['create, store']]);
         $this -> middleware('permission: editar-usuario' , ['only' => ['edit, update']]);
-        $this -> middleware('permission: borrar-usuario' , ['only' => ['destroy']]);
+        $this -> middleware('permission: borrar-usuario' , ['only' => ['destroy, borrar']]);
     }
 
     public function index()
     {
         //con paginacion
-        $usuarios = User::paginate(5);
+        $usuarios = User::paginate(5)->where('name', '!=', 'Superadmin');
+        $consulta='';
         //dd($usuarios);
-        return view ('Usuarios.index', compact('usuarios'));
+        return view ('Usuarios.index', compact('usuarios','consulta'));
+       
     }
 
     
@@ -51,9 +55,13 @@ class UsuarioController extends Controller
     }
 
     
-    public function show($id)
+    public function show()
     {
-        //
+        $usuarios = User::all()->where('name', '!=', 'Superadmin');
+        $data=compact('usuarios');
+        $pdf = Pdf::loadView('Reportes.Usuarios', $data);
+        return $pdf->stream();
+        //return $pdf->download('ReporteDeudas.pdf');
     }
 
     
@@ -85,8 +93,47 @@ class UsuarioController extends Controller
 
     
     public function destroy($id)
-    {
-        User::find($id);
-        return redirect()->route('Usuarios.index');
+    {   //dd($id);
+        $consulta='';
+        $usuarios='';
+        if(User::find($id)){
+            //descomentar para eliminar
+            //User::find($id)->delete();
+            return redirect()->route('borrarUsuario')-> with('Eliminado', 'Usuario eliminado correctamente');
+        }else{
+            return redirect()->route('borrarUsuario')-> with('Error', 'Algo salio mal');
+        }
+        
+    }
+
+    public function buscar(Request $request){
+        $consulta= trim($request-> get('buscador'));
+        $usuarios = User::where('name','LIKE','%'.$consulta.'%')->where('name', '!=', 'Superadmin')->get();;
+        //dd($usuarios);
+        return view ('Usuarios.index', compact('usuarios','consulta'));
+    }
+
+    public function borrar(Request $request){
+        //dd($request);
+        $consulta= trim($request-> get('buscador'));
+        if (!empty($consulta)) {
+            $usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+        }else{
+            $usuarios = '';
+        }
+        return view ('Usuarios.borrar', compact('usuarios','consulta'));
+    }
+
+    public function editarusuarios(Request $request){
+        //dd($request);
+        $consulta= trim($request-> get('buscador'));
+        
+        if (!empty($consulta)) {
+            $usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+        }else{
+            $usuarios = '';
+        }
+
+        return view ('Usuarios.editarusuarios', compact('usuarios','consulta'));
     }
 }

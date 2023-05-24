@@ -128,10 +128,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/crear-usuario', [UsuarioController::class,'create'])->middleware('permiso:crear-usuario');
     Route::post('/crear-usuario', [UsuarioController::class,'store'])->middleware('permiso:crear-usuario');
     Route::get('/ver-usuario', [UsuarioController::class,'index'])->middleware('permiso:ver-usuario');
+    Route::post('/ver-usuario', [UsuarioController::class,'buscar'])->middleware('permiso:ver-usuario');
+    Route::get('/ver-usuario/reporte',[UsuarioController::class,'show'])->middleware('permiso:ver-usuario');
+    Route::get('/editar-usuario', [UsuarioController::class,'editarusuarios'])->middleware('permiso:editar-usuario');
     Route::get('/editar-usuario/{id}', [UsuarioController::class,'edit'])->middleware('permiso:editar-usuario');
     Route::get('/editar-usuario/{id}', [UsuarioController::class,'update'])->middleware('permiso:editar-usuario');
+    Route::get('/borrar-usuario', [UsuarioController::class,'borrar'])->middleware('permiso:borrar-usuario')->name('borrarUsuario');
     Route::get('/borrar-usuario/{id}', [UsuarioController::class,'destroy'])->middleware('permiso:borrar-usuario');
-    
+
+    /*
 
     //Rutas Parqueos 
     Route::get('/crear-parqueo', [ParqueoController::class,'create'])->middleware('permiso:crear-parqueo');
@@ -177,6 +182,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');
     Route::get('/crear-salidas', [SalidasController::class,'create'])->middleware('permiso:crear-salidas');
     Route::post('/crear-salidas', [SalidasController::class,'store'])->middleware('permiso:crear-salidas');
+    */
 });
 
 

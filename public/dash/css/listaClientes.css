@@ -5,7 +5,7 @@
     margin-top: 1.56em;
     margin-left: auto;
     margin-right: auto;
-    
+    height: auto;
    width: 90.157%;
   
 
@@ -19,7 +19,7 @@
     width: 98.441%;
    padding-top: 0px;
      display: grid;
-     grid-template-rows: 114px 155px 460px;
+     grid-template-rows: 114px 155px auto;
 
 
     }
@@ -105,18 +105,18 @@
 /*parte de abajo      //tabla y datos    */
 
     .ParAb{
-        height: 427px; 
+        /*height: 427px; */
         overflow: auto;
 
     }
-    .tablaCli{
+    .tabla{
         width: 100%;
         font-family: 'Inter', sans-serif;
         font-style: normal;
         font-size: 24px;
-
+        border-collapse: collapse;
         text-align: center;
-
+        border: 1px solid #cdcdcd
     }
 
     .tablaTitulos{
@@ -135,6 +135,11 @@
     .tablaContenido a{
         text-decoration: none;
     
+    }
+
+    td{
+        border-bottom: 1px solid #cdcdcd;
+        padding-bottom: 5px;
     }
     .borrarclie{
 
