@@ -40,7 +40,7 @@
                   <th>Numero</th>
                   <th>Usuario</th>
                   <th>CI</th>
-                  <th>Rol</th>
+                  <!--<th>Rol</th>-->
                   <th>Editar</th>
                 </tr>
               </thead>
@@ -51,9 +51,9 @@
                   <td>{{$loop->iteration}}</td>
                   <td>{{$usuario->name}}</td>
                   <td>{{$usuario->ci}}</td>
-                  @foreach ($usuario->getRoleNames() as $nombreRol)
+                 <!-- @foreach ($usuario->getRoleNames() as $nombreRol)
                       <td>{{$nombreRol}}</td>
-                  @endforeach
+                  @endforeach-->
                 <td>
                   <a href="/editar-usuario/{{$usuario->id}}">Editar</a>
                 </td>

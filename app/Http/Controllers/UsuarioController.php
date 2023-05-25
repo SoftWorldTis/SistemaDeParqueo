@@ -68,15 +68,23 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $usuario= User::find($id);
-        $roles = Role::pluck('name','name') -> all();
-        $usuarioRol = $usuario->roles->plunck('name', 'name')->all();
-        return view('Usuarios.editar', compact('usuario','roles','usuarioRol'));
+        if(User::find($id)){
+            $roles = Role::where('name', '!=', 'Superadmin')->get();
+            $usuarioRol = $usuario->roles->pluck('name', 'name')->all();
+            return view('Usuarios.editar', compact('usuario','roles','usuarioRol'));
+        }else{
+            $usuarios='';
+            $consulta='';
+            //dd('nos bot aquiiiii');
+            return redirect()->route('editarUsuarios');
+        }
+        
     }
 
     
     public function update(Request $request, $id)
     {
-        //Agregar validaciones
+        
         //Verificar cambios en password
         $input = $request ->all();
         if(!empty($input['password'])){
@@ -88,7 +96,7 @@ class UsuarioController extends Controller
         $usuario->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $usuario->assignRole($request->input('roles'));
-        return redirect()->route('Usuarios.index');
+        return back() -> with('Registrado', 'Usuario actualizado correctamente');
     }
 
     

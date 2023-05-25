@@ -43,9 +43,12 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$usuario->name}}</td>
                 <td>{{$usuario->ci}}</td>
-                @foreach ($usuario->getRoleNames() as $nombreRol)
-                    <td>{{$nombreRol}}</td>
+                <td>
+                  @foreach ($usuario->getRoleNames() as $nombreRol)
+                    {{$nombreRol}}
                 @endforeach
+                </td>
+                
                
 
               </tr>

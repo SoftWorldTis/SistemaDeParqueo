@@ -130,9 +130,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-usuario', [UsuarioController::class,'index'])->middleware('permiso:ver-usuario');
     Route::post('/ver-usuario', [UsuarioController::class,'buscar'])->middleware('permiso:ver-usuario');
     Route::get('/ver-usuario/reporte',[UsuarioController::class,'show'])->middleware('permiso:ver-usuario');
-    Route::get('/editar-usuario', [UsuarioController::class,'editarusuarios'])->middleware('permiso:editar-usuario');
+    Route::get('/editar-usuario', [UsuarioController::class,'editarusuarios'])->middleware('permiso:editar-usuario')->name('editarUsuarios');
     Route::get('/editar-usuario/{id}', [UsuarioController::class,'edit'])->middleware('permiso:editar-usuario');
-    Route::get('/editar-usuario/{id}', [UsuarioController::class,'update'])->middleware('permiso:editar-usuario');
+    Route::post('/editar-usuario/{id}', [UsuarioController::class,'update'])->middleware('permiso:editar-usuario');
     Route::get('/borrar-usuario', [UsuarioController::class,'borrar'])->middleware('permiso:borrar-usuario')->name('borrarUsuario');
     Route::get('/borrar-usuario/{id}', [UsuarioController::class,'destroy'])->middleware('permiso:borrar-usuario');
 
