@@ -1,5 +1,5 @@
 .icono{
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 30px;
     margin-top: 40px;
     margin-left: 1%;
@@ -20,4 +20,45 @@ h1{
 .col{
     margin-top: 40px;
     margin-left: 40px;
+}
+
+
+
+
+
+
+
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 15px 20px;
+	color: white;
+	text-decoration: none;
+}
+.menu-horizontal > li:hover{
+	background-color: #0A1C44;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+	list-style: none;
+	width: 200px;
+	background-color: #0A1C44;
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li:hover{
+	background-color: rgba(102, 92, 92, 0.601);
+}
+
+.menu-vertical li a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 15px 15px 15px 20px;
 }
