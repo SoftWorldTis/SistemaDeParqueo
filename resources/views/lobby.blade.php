@@ -91,7 +91,19 @@
             </div>
         </div>
         @endcan
-
+        
+        @auth
+        <div class="usuarios">
+            <div class="r1">
+            <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconRegistrar" alt="">
+                <a id="link" href="{{('/ver-perfil')}}">
+                    <div class="botonRegistro">
+                        <p>Ver Perfil</p>
+                    </div>
+                </a>
+            </div>
+        </div>    
+        @endauth
 
         <div class="usuarios">
             <div class="r5">

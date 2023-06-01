@@ -16,8 +16,9 @@
 .AbBotones{
     width: 25.886%;
     margin-top: 33px;
-   margin-left: 61.355%;
+   margin-left: 55%;
    margin-right: auto;
+   margin-bottom: 20px;
    display: grid;
 grid-column-gap: 0px;
 grid-row-gap: 0px;

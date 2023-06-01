@@ -8,9 +8,13 @@ use App\Models\cliente;
 use App\Models\vehiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class PerfilController extends Controller
 {
+   
 
     public function index()
     {
@@ -29,30 +33,46 @@ class PerfilController extends Controller
         //
     }
 
-    public function show($id)
+    public function show()
     {
-        $cliente = cliente::where('clienteci', '=', $id)->first();
-        $vehiculos = vehiculo::where('cliente_clienteci', '=', $id)->get();
-        $alquileres = DB::table('alquiler as al')
-            ->join('estacionamiento as es', 'es.estacionamientoid', '=', 'al.estacionamiento_estacionamientoid')
-            ->select('al.alquilerid', 'al.alquilerfecha', 'es.estacionamientozona', 'al.alquilerSitio', 'al.alquilerprecio', 'al.alquilerestadopago')
-            ->where('cliente_clienteci', '=', $id)
-            ->get();
+        if (Auth::check()) {
+            $user = Auth::user();
+            //dd($user);
+            $vehiculos = vehiculo::where('userid', '=', $user->id)->get();
+            $alquileres = DB::table('alquiler as al')
+                ->join('estacionamiento as es', 'es.estacionamientoid', '=', 'al.estacionamientoid')
+                ->select('al.alquilerid', 'al.alquilerfecha', 'es.estacionamientozona', 'al.alquilersitio', 'al.alquilerprecio', 'al.alquilerestadopago')
+                ->where('userid', '=', $user->id)
+                ->get();
 
-        //dd($vehiculos);
-        return view('Perfil', [
-            'cliente' =>  $cliente,
-            'vehiculos' => $vehiculos,
-            'alquileres' => $alquileres
-        ]);
+            //dd($vehiculos);
+            return view('Perfil', [
+                'usuario' =>  $user,
+                'vehiculos' => $vehiculos,
+                'alquileres' => $alquileres
+            ]);
+        } else {
+            dd('Algo salio mal');
+        }
+        
+        
+        
     }
 
 
 
-    public function edit($id)
+    public function edit()
     {
-        //
+        if (Auth::check()) {
+            $usuario= Auth::user();
+            $roles = Role::where('name', '!=', 'Superadmin')->get();;
+            $usuarioRol = $usuario->roles->pluck('name', 'name')->all();
+            return view('Usuarios.editar', compact('usuario','roles','usuarioRol'));
+           
+        }
+        
     }
+
 
 
     public function update(Request $request, $id)

@@ -48,14 +48,14 @@ class AlquilerRequest extends FormRequest
         }
 
         if($fecha_fin !=null && $fecha_inicio != null && $espacio !=null){
-            $rules ['sitio'] = Rule::unique('alquiler', 'alquilerSitio')->where(function ($query) use ($fecha_inicio, $fecha_fin) {
-                return $query->where('alquilerSitio', $this->input('sitio'))
+            $rules ['sitio'] = Rule::unique('alquiler', 'alquilersitio')->where(function ($query) use ($fecha_inicio, $fecha_fin) {
+                return $query->where('alquilersitio', $this->input('sitio'))
                     ->where(function ($query) use ($fecha_inicio, $fecha_fin) {
-                        $query->whereBetween('alquilerFechaIni', [$fecha_inicio, $fecha_fin])
-                            ->orWhereBetween('alquilerFechaFin', [$fecha_inicio, $fecha_fin])
+                        $query->whereBetween('alquilerfechaini', [$fecha_inicio, $fecha_fin])
+                            ->orWhereBetween('alquilerfechafin', [$fecha_inicio, $fecha_fin])
                             ->orWhere(function ($query) use ($fecha_inicio, $fecha_fin) {
-                                $query->where('alquilerFechaIni', '<=', $fecha_inicio)
-                                    ->where('alquilerFechaFin', '>=', $fecha_fin);
+                                $query->where('alquilerfechaini', '<=', $fecha_inicio)
+                                    ->where('alquilerfechafin', '>=', $fecha_fin);
                             });
                         }) ;
             });

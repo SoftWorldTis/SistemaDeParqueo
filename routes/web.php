@@ -136,7 +136,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/borrar-usuario', [UsuarioController::class,'borrar'])->middleware('permiso:borrar-usuario')->name('borrarUsuario');
     Route::get('/borrar-usuario/{id}', [UsuarioController::class,'destroy'])->middleware('permiso:borrar-usuario');
 
-    /*
+    
 
     //Rutas Parqueos 
     Route::get('/crear-parqueo', [ParqueoController::class,'create'])->middleware('permiso:crear-parqueo');
@@ -156,19 +156,23 @@ Route::group(['middleware' => ['auth']], function(){
     //Rutas Alquiler
     Route::get('/crear-alquiler', [AlquilerController::class,'create'])->middleware('permiso:crear-alquiler');
     Route::post('/crear-alquiler', [AlquilerController::class,'store'])->middleware('permiso:crear-alquiler');
+    Route::get('/crear-alquiler/{id}', [AlquilerController::class,'show'])->middleware('permiso:crear-alquiler');
     Route::get('/ver-alquiler', [AlquilerController::class,'index'])->middleware('permiso:ver-alquiler');
-    Route::get('/editar-alquiler/{id}', [AlquilerController::class,'index'])->middleware('permiso:editar-alquiler');
+    Route::get('/editar-alquiler/{id}', [AlquilerController::class,'edit'])->middleware('permiso:editar-alquiler');
+    Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update'])->middleware('permiso:editar-alquiler');
 
+    
     //Rutas Perfil
-    Route::get('/ver-perfil', [PerfilController::class,'index'])->middleware('permiso:ver-perfil');
-    Route::get('/editar-perfil/{id}', [PerfilController::class,'index'])->middleware('permiso:editar-perfil');
-
+    Route::get('/ver-perfil', [PerfilController::class,'show']);
+    Route::get('/editar-perfil', [PerfilController::class,'edit']);
+    //Route::get('/ver-perfil/{id}', [PerfilController::class,'index'])->middleware('permiso:editar-perfil');
+/*
     //Rutas deudas
     Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
 
     //Rutas pagos
     Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-    Route::get('/editar-pagos/{id}', [PagoController::class,'index'])->middleware('permiso:editar-perfil');
+    Route::get('/editar-pagos/{id}', [PagoController::class,'index'])->middleware('permiso:editar-');
 
     //Rutas caja
     Route::get('/ver-caja', [CajaController::class,'index'])->middleware('permiso:ver-caja');

@@ -9,14 +9,20 @@
     <section class="card">
 
         <div class="card--options">
-            <a href="/lobby/EditarCliente/{{$cliente->clienteci}}">Editar Perfil</a>
+            <a href="/editar-perfil">Editar Perfil</a>
             <br>
-            <a href="/lobby/RenovarAlquiler/{{$cliente->clienteci}}"> Renovar Alquiler</a>
+            @if (isset($vehiculos[0]) && isset($vehiculos[1]) && isset($vehiculos[2]))
+                <a href="/lobby/EditarCliente/{{$usuario->ci}}">Editar Vehiculos</a>
+            @else
+                <a href="/lobby/EditarCliente/{{$usuario->ci}}">Agregar Vehiculo</a>
+            @endif
+            <br>
+            <a href="/lobby/RenovarAlquiler/{{$usuario->ci}}"> Renovar Alquiler</a>
           
             
         </div>
 
-        <h2 class="card--title">{{$cliente->clientenombrecompleto}}</h2>
+        <h2 class="card--title">{{$usuario->name}}</h2>
 
         <div class="card--datos">
             <div class="card--datos--img">
@@ -31,20 +37,24 @@
                 </tr>
 
                 <tr>
-                    <td>{{$cliente->clienteci}}</td>
+                    <td>{{$usuario->ci}}</td>
+                    @if (isset($vehiculos[0]))
                     <td>{{$vehiculos[0]->vehiculomodelo}}</td>
-                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>   
+                    <td>{{$vehiculos[0]->vehiculoplaca}}</td>  
+                    @endif
+                    <td></td>
+                    <td></td>   
                 </tr>
 
                 @if(isset($vehiculos[1]))
                 <tr>
-                    <td>{{$cliente->clientesis}}</td>
+                    <td>{{$usuario->ci}}</td>
                     <td>{{$vehiculos[1]->vehiculomodelo}}</td>
                     <td>{{$vehiculos[1]->vehiculoplaca}}</td>
                 </tr>
                 @else
                 <tr>
-                    <td>{{$cliente->clientesis}}</td>
+                    <td>{{$usuario->ci}}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -52,13 +62,13 @@
 
                 @if(isset($vehiculos[2]))
                 <tr>
-                    <td>{{$cliente->clientecorreo}}</td>
+                    <td>{{$usuario->email}}</td>
                     <td>{{$vehiculos[2]->vehiculomodelo}}</td>
                     <td>{{$vehiculos[2]->vehiculoplaca}}</td>
                 </tr>
                 @else
                 <tr>
-                    <td>{{$cliente->clientecorreo}}</td>
+                    <td>{{$usuario->email}}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -84,7 +94,7 @@
                     <tr>
                         <td>{{$item->alquilerfecha}}</td>
                         <td>{{$item->estacionamientozona}}</td>
-                        <td>{{$item->alquilerSitio}}</td>
+                        <td>{{$item->alquilersitio}}</td>
                         <td>{{$item->alquilerprecio}}</td>
 
                         @if($item->alquilerestadopago)

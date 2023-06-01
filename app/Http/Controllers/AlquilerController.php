@@ -14,27 +14,40 @@ use App\Models\factura;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
+use App\Models\User;
 
 class AlquilerController extends Controller
 {
+    public function __construct()
+    {
+        //asignacion de permisos
+        $this -> middleware('permission: ver-alquiler|crear-alquiler|editar-alquiler' , ['only' => ['index']]);
+        $this -> middleware('permission: crear-alquiler' , ['only' => ['create, store, show']]);
+        $this -> middleware('permission: editar-alquiler' , ['only' => ['edit, update, show']]);
+    }
+
     public function index(Request $request){
+    }
+
+    public function create(Request $request){
         $parqueo = estacionamiento::all();
-        $clientes = cliente::all();
+        $clientes = User::all()->where('name', '!=', 'Superadmin');;
         $seleccionado="";
         $seleccionadoes="";
         $valorcl = $request->input('usuariosdatosci');
         session(['valorcl' => $valorcl]);
         $js ="";
-        return view('registraralquiler', compact('parqueo', 'clientes', 'seleccionado','seleccionadoes','valorcl','js'));
+        return view('Alquiler.crear', compact('parqueo', 'clientes', 'seleccionado','seleccionadoes','valorcl','js'));
+
     }
 
-    public function show(Request $request,$id){
+    public function show($id){
         //$seleccionado =  estacionamiento::where('estacionamientoid', $id)
         //->first();
       
         //dd($request);
         $parqueo = estacionamiento::all();
-        $clientes = cliente::all();
+        $clientes = User::all()->where('name', '!=', 'Superadmin');;
         $seleccionado = DB::table('estacionamiento')
         ->select('*')
         ->where('estacionamientoid','=',$id)
@@ -54,31 +67,32 @@ class AlquilerController extends Controller
         $seleccionadoes =$seleccionado->estacionamientozona;
 
 
-        return view('registraralquiler', compact('parqueo', 'clientes', 'seleccionado' ,'seleccionadoes','valorcl','js'));
+        return view('Alquiler.crear', compact('parqueo', 'clientes', 'seleccionado' ,'seleccionadoes','valorcl','js'));
     }
 
-    public function store(AlquilerRequest $request){
-      //dd($request);
-      
 
+    public function store(AlquilerRequest $request){
+        $usuario= User::where('ci',$request->input('usuariosdatosci'))->first();
+  
         $alquiler =new alquiler(); 
-        $alquiler -> estacionamiento_estacionamientoid=$request->input('parqueoid');;
+        $alquiler -> estacionamientoid=$request->input('parqueoid');;
         $alquiler -> alquilerprecio= $request->input('costo');
         $alquiler -> alquilerfecha=  Carbon::now()->format('Y-m-d');
         $alquiler -> alquilertipopago= $request->input('Pago');
-        $alquiler -> alquilerSitio= $request->input('sitio');
-        $alquiler -> alquilerFechaIni= $request->input('FechaInicio');
-        $alquiler -> alquilerFechaFin= $request->input('FechaFin');
-        $alquiler -> cliente_clienteci= $request->input('usuariosdatosci');
+        $alquiler -> alquilersitio= $request->input('sitio');
+        $alquiler -> alquilerfechaini= $request->input('FechaInicio');
+        $alquiler -> alquilerfechafin= $request->input('FechaFin');
+        //$alquiler -> cliente_clienteci= $request->input('usuariosdatosci');
+        $alquiler -> userid= $usuario->id;
         if($request->input('Pago') == "Efectivo"){
             $alquiler -> alquilerestadopago= false;
         }else{
             $alquiler -> alquilerestadopago= true;
-            
         }
 
         $alquiler-> save();
-
+        return back() -> with('Registrado', 'Alquiler registrado correctamente');
+/*
         $id = $alquiler->alquilerid;
         if($request->input('Pago') == "QR"){
             $factura = new factura();
@@ -105,33 +119,29 @@ class AlquilerController extends Controller
 
         }else{
             return back() -> with('Registrado', 'Alquiler registrado correctamente');
-        }
+        }*/
         
     
     }
 
-    public function factura($alquiler){
-        $factura = new factura();
-        $factura -> facturafecha =  Carbon::now()->format('Y-m-d');
-        $factura -> facturacliente = $alquiler-> cliente_clienteci;
-        $factura -> facturaalquiler =  $alquiler-> alquilerid;
-        $factura -> facturacargo =  $alquiler -> alquilerprecio;
-        $factura -> save();
+    public function edit($id){
+        $alquiler = alquiler::where('userid', '=', $id)
+        -> orderby('alquilerfecha','desc')
+        ->first();
+        
+        $parqueo = estacionamiento::where('estacionamientoid', $alquiler ->estacionamientoid)
+        ->first();
 
-        $datosFactura= factura::join('cliente','facturacliente', '=' ,'clienteci')
-        ->join('alquiler','facturaalquiler','=','alquilerid')
-        ->join('estacionamiento','estacionamiento_estacionamientoid','=','estacionamientoid')
-        ->select("estacionamientozona","estacionamientotelefono", "clientenombrecompleto", 
-        "facturafecha", "facturacargo", "alquilerSitio","alquilerFechaIni", "alquilerFechaFin", "facturaid")
-        ->where('alquilerid', '=', $alquiler->alquilerid)
+        $usuario = user::fing($id)
         ->get();
-            
-        $data=compact('datosFactura');
-        $pdf = Pdf::loadView('ReportesPDF.factura', $data);
-        //return $pdf->stream(); 
+        return view('Alquiler.editar', compact('alquiler','parqueo', 'usuario'));
+
     }
 
-    public function edit(){
-
+    public function update(AlquilerRequest $request, $id){
+        $input = $request ->all();
+        $usuario= User::find($id);
+        $usuario->update($input);
+        return back() -> with('Registrado', 'Alquiler renovado');
     }
 }

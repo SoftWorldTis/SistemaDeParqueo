@@ -45,9 +45,6 @@ class PermisosSeeder extends Seeder
             'crear-alquiler',
             'editar-alquiler',
 
-            //permisos perfil
-            'ver-perfil',
-            'editar-perfil',
 
             //permisos deuda
             'ver-deuda',
@@ -66,6 +63,16 @@ class PermisosSeeder extends Seeder
             //permisos entradas
             'ver-salidas',
             'crear-salidas',
+
+             //permisos entradas
+             'ver-salidas',
+             'crear-salidas',
+
+             //permisos reclamos
+             'ver-reclamos',
+             'crear-reclamos',
+             'borrar-reclamos',
+             
         ];
 
         foreach($permisos as $permiso){

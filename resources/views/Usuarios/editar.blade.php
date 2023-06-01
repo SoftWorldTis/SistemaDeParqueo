@@ -93,7 +93,7 @@
             </div>
         </div>
     
-    
+        @can('editar-usuario')
         <div class="fila4">
             <div class="carro1">
                 <p class="nom" >Roles</p>
@@ -110,7 +110,9 @@
             <div class="carro1">
                 
             </div>
-        </div>
+        </div>  
+        @endcan
+ 
 
     @endsection
 

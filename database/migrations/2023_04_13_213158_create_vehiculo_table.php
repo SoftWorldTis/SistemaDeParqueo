@@ -18,8 +18,10 @@ class CreateVehiculoTable extends Migration
             $table->string('vehiculomodelo', 40)->nullable();
             $table->string('vehiculoplaca', 45);
             $table->string('vehiculodescripcion', 45)->nullable();
-            $table->string('cliente_clienteci', 10)->index('fk_auto_cliente1_idx');
 
+            $table->unsignedBigInteger('userid');
+            $table->foreign('userid')->references('id')->on('users');
+           
         });
     }
 
@@ -30,6 +32,10 @@ class CreateVehiculoTable extends Migration
      */
     public function down()
     {
+        Schema::table('vehiculo', function (Blueprint $table) {
+            $table->dropForeign(['userid']);
+            $table->dropColumn('userid');
+        });
         Schema::dropIfExists('vehiculo');
     }
 }
