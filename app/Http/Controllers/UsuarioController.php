@@ -116,7 +116,9 @@ class UsuarioController extends Controller
 
     public function buscar(Request $request){
         $consulta= trim($request-> get('buscador'));
-        $usuarios = User::where('name','LIKE','%'.$consulta.'%')->where('name', '!=', 'Superadmin')->get();;
+        //$usuarios = User::where('name','LIKE','%'.$consulta.'%')->where('name', '!=', 'Superadmin')->get();
+        $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
+        ->where('name', '!=', 'Superadmin')->get();
         //dd($usuarios);
         return view ('Usuarios.index', compact('usuarios','consulta'));
     }
@@ -125,7 +127,9 @@ class UsuarioController extends Controller
         //dd($request);
         $consulta= trim($request-> get('buscador'));
         if (!empty($consulta)) {
-            $usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+            //$usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+            $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
+            ->where('name', '!=', 'Superadmin')->get();
         }else{
             $usuarios = '';
         }
@@ -137,7 +141,9 @@ class UsuarioController extends Controller
         $consulta= trim($request-> get('buscador'));
         
         if (!empty($consulta)) {
-            $usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+            //$usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
+            $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
+            ->where('name', '!=', 'Superadmin')->get();
         }else{
             $usuarios = '';
         }

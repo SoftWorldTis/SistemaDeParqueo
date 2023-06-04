@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('ci')->nullable();
+            $table->date('fechanacimiento')->nullable();
         });
     }
 

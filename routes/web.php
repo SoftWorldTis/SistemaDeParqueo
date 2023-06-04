@@ -19,6 +19,8 @@ use App\Http\Controllers\RenovarAlquilerController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\RevisarPermiso;
+use App\Http\Controllers\ParqueoController;
+use App\Http\Controllers\VehiculoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,16 +144,25 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/crear-parqueo', [ParqueoController::class,'create'])->middleware('permiso:crear-parqueo');
     Route::post('/crear-parqueo', [ParqueoController::class,'store'])->middleware('permiso:crear-parqueo');
     Route::get('/ver-parqueo', [ParqueoController::class,'index'])->middleware('permiso:ver-parqueo');
+    Route::post('/ver-parqueo', [ParqueoController::class,'buscar'])->middleware('permiso:ver-parqueo');
+    Route::get('/ver-parqueo/reporte',[ParqueoController::class,'show'])->middleware('permiso:ver-parqueo');
+    Route::get('/editar-parqueo', [ParqueoController::class,'editarparqueos'])->middleware('permiso:editar-parqueo')->name('editarParqueos');
     Route::get('/editar-parqueo/{id}', [ParqueoController::class,'edit'])->middleware('permiso:editar-parqueo');
-    Route::get('/editar-parqueo/{id}', [ParqueoController::class,'update'])->middleware('permiso:editar-parqueo');
+    Route::post('/editar-parqueo/{id}', [ParqueoController::class,'update'])->middleware('permiso:editar-parqueo');
+    Route::get('/borrar-parqueo', [ParqueoController::class,'borrar'])->middleware('permiso:borrar-parqueo')->name('borrarParqueo');
     Route::get('/borrar-parqueo/{id}', [ParqueoController::class,'destroy'])->middleware('permiso:borrar-parqueo');
 
     //Rutas Vehiculos
-    Route::get('/crear-vehiculo', [VehiculoController::class,'create'])->middleware('permiso:crear-vehiculo');
-    Route::post('/crear-vehiculo', [VehiculoController::class,'store'])->middleware('permiso:crear-vehiculo');
-    Route::get('/ver-vehiculo', [VehiculoController::class,'index'])->middleware('permiso:ver-vehiculo');
-    Route::get('/editar-vehiculo/{id}', [VehiculoController::class,'index'])->middleware('permiso:editar-vehiculo');
-    Route::get('/borrar-vehiculo/{id}', [VehiculoController::class,'index'])->middleware('permiso:borrar-vehiculo');   
+    Route::get('/crear-vehiculo', [VehiculoController::class,'create'])->middleware('permiso:crear-vehiculos');
+    Route::post('/crear-vehiculo', [VehiculoController::class,'store'])->middleware('permiso:crear-vehiculos');
+    Route::get('/ver-vehiculo', [VehiculoController::class,'index'])->middleware('permiso:ver-vehiculos');
+    Route::post('/ver-vehiculo', [VehiculoController::class,'buscar'])->middleware('permiso:ver-vehiculos');
+    Route::get('/ver-vehiculo/reporte',[VehiculoController::class,'show'])->middleware('permiso:ver-vehiculos');
+    Route::get('/editar-vehiculo', [VehiculoController::class,'editarvehiculos'])->middleware('permiso:editar-vehiculos')->name('editarVehiculos');
+    Route::get('/editar-vehiculo/{id}', [VehiculoController::class,'edit'])->middleware('permiso:editar-vehiculos');
+    Route::post('/editar-vehiculo/{id}', [VehiculoController::class,'update'])->middleware('permiso:editar-vehiculos');
+    Route::get('/borrar-vehiculo', [VehiculoController::class,'borrar'])->middleware('permiso:borrar-vehiculos'); 
+    Route::get('/borrar-vehiculo/{id}', [VehiculoController::class,'destroy'])->middleware('permiso:borrar-vehiculos');   
 
     //Rutas Alquiler
     Route::get('/crear-alquiler', [AlquilerController::class,'create'])->middleware('permiso:crear-alquiler');

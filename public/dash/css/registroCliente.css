@@ -1,6 +1,5 @@
 .tit{
     margin: 20px;
-    margin-bottom: 60px;
     text-align: center;
   }
   .tit p{
@@ -138,7 +137,7 @@
       */
       .nom{
           color: black;
-          margin-bottom: 25px;
+          margin-bottom: 18px;
           font-size: 30px;
           font-family: 'Inter', sans-serif;
           font-style: normal;
@@ -175,8 +174,8 @@
         transform: translate(-50%, -50%);
         border: 1px solid black;
 
-        width: 1172px;
-        height: 722px;
+        width: auto;
+        height: auto;
         background-color: white;
 
 
@@ -188,15 +187,15 @@
     }
 
     h2{
-      margin-top: 27px;
-      margin-bottom: 14px;
+      margin-top: 15px;
+      margin-bottom: 15px;
       font-family:'Inter', sans-serif;
-     font-size: 35px;
+     font-size: 25px;
 
 
     }
 .nom2{
-  font-size: 25px;
+  font-size: 20px;
   margin-top: 0px;
   margin-bottom: 17px;
   text-align: left;
@@ -206,14 +205,14 @@
 }
     .linea3{
 
-      width: 802px;
-      height: 41px;
+      width: 600px;
+      height: 40px;
       background-color: transparent;
       border:0;
       border-bottom:1px solid #000000;
       box-shadow: none;
       outline:none;
-      font-size: 30px;
+      font-size: 20px;
      
      
   }
@@ -232,8 +231,7 @@
 
   .inputmodal{
     margin: 0 auto;
-    width: 68%;
-    padding-bottom: 31px;
+    padding: 0 35px 20px 35px;
 
   }
 
@@ -248,8 +246,10 @@
 }
 
 .guardar-modal{
-  /*margin-top: 97px;*/
- margin-left: 60%;
+    margin: 20px;
+    width: 150px;
+    height: 50px;
+    margin-left: 420px
 }
 
 p::after {
@@ -259,7 +259,7 @@ p::after {
 
 
 .oculto{
-   display: none;
+   display: block;
 
 }
 .editar{
