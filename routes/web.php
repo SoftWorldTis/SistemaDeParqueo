@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
+use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
@@ -196,7 +197,7 @@ Route::group(['middleware' => ['auth']], function(){
     //Rutas pagos
     Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
     Route::get('/editar-pagos/{id}', [PagoController::class,'index'])->middleware('permiso:editar-');
-
+/*
     //Rutas caja
     Route::get('/ver-caja', [CajaController::class,'index'])->middleware('permiso:ver-caja');
 
