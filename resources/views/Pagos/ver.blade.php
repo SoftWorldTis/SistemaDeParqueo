@@ -12,8 +12,7 @@
 <div class="principal">
 
     <div class="titulo">
-        <p>Deudas</p>
-    </div>
+        <p>Pagos</p>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
                     <span>{{$message}}</span>
@@ -24,7 +23,7 @@
         </div>
         <div class="fila">
 
-            <form action="/ver-deuda" method="POST" autocomplete="off" role="search">
+            <form action="/ver-pagos" method="POST" autocomplete="off" role="search">
                 @csrf
                 <div class ="buscador">
                     <input  type="text" class="linea"  name="buscador" placeholder="Escriba un nombre " value="{{$consulta}}">
@@ -35,7 +34,7 @@
             
             <div class="exportar">
                 
-                <a href="/ver-deuda/reporte">
+                <a href="/ver-pagos/reporte">
                     <button class="btnExportar">Exportar</button>
                 </a>
             </div>
@@ -49,18 +48,19 @@
                 <th class="grillatit">CI</th>
                 <th class="grillatit">Fecha Alquiler</th>
                 <th class="grillatit">Deuda</th>
+                <th class="grillatit">Tipo</th>
       
               </tr>
             </thead>
             <tbody>  
-                @foreach ($deudas as $deuda)
+                @foreach ($pagos as $pago)
                     <tr id="id=fila-{{$loop->iteration}}">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$deuda->name}}</td>
-                        <td>{{$deuda->ci}}</td>
-                        <td>{{$deuda->alquilerfecha}}</td>
-                        <td>{{$deuda->alquilerprecio}}</td>
-                       
+                        <td>{{$pago->name}}</td>
+                        <td>{{$pago->ci}}</td>
+                        <td>{{$pago->alquilerfecha}}</td>
+                        <td>{{$pago->alquilerprecio}}</td>
+                        <td>{{$pago->alquilertipopago}}</td>
                     </tr>
                 @endforeach
               
@@ -71,6 +71,6 @@
     
     
     
-
+    </div>
     @endsection
- 
+   

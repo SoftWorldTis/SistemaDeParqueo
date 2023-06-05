@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
-use App\Http\Controllers\DeudaController;
+
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
@@ -22,7 +22,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\RevisarPermiso;
 use App\Http\Controllers\ParqueoController;
 use App\Http\Controllers\VehiculoController;
-
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\DeudaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -181,11 +182,19 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Rutas deudas
     Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
-
+    Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+    Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
     //Rutas pagos
     Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-    Route::get('/editar-pagos/{id}', [PagoController::class,'index'])->middleware('permiso:editar-');
-/*
+    Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+    Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
+    Route::get('/editar-pagos', [PagoController::class,'editarpagos'])->middleware('permiso:editar-pagos')->name('editarPagos');
+    Route::get('/editar-pagos/{id}', [PagoController::class,'edit'])->middleware('permiso:editar-pagos');
+    Route::post('/editar-pagos/{id}', [PagoController::class,'update'])->middleware('permiso:editar-pagos');
+
+
+    /*
+
     //Rutas caja
     Route::get('/ver-caja', [CajaController::class,'index'])->middleware('permiso:ver-caja');
 
