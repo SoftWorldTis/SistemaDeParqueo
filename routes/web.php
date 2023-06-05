@@ -21,7 +21,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\RevisarPermiso;
 use App\Http\Controllers\ParqueoController;
 use App\Http\Controllers\VehiculoController;
-
+use App\Http\Controllers\EntradasController;
+use App\Http\Controllers\SalidasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -176,7 +177,18 @@ Route::group(['middleware' => ['auth']], function(){
     //Rutas Perfil
     Route::get('/ver-perfil', [PerfilController::class,'show']);
     Route::get('/editar-perfil', [PerfilController::class,'edit']);
-    //Route::get('/ver-perfil/{id}', [PerfilController::class,'index'])->middleware('permiso:editar-perfil');
+      //Route::get('/ver-perfil/{id}', [PerfilController::class,'index'])->middleware('permiso:editar-perfil');
+
+    //Rutas entradas
+    Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
+    //Rutas salidas
+    Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');
+
+   // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
+   // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
+    //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
+
+  
 /*
     //Rutas deudas
     Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
