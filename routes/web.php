@@ -171,7 +171,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-alquiler', [AlquilerController::class,'index'])->middleware('permiso:ver-alquiler');
     Route::get('/editar-alquiler/{id}', [AlquilerController::class,'edit'])->middleware('permiso:editar-alquiler');
     Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update'])->middleware('permiso:editar-alquiler');
-
     
     //Rutas Perfil
     Route::get('/ver-perfil', [PerfilController::class,'show']);

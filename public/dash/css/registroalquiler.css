@@ -217,12 +217,13 @@
      #miEmergente{
 
       width: 1000px;
-      height: 650px;
+      height: auto;
       background-color: white;
       position:absolute;
       bottom:15px;
        display: none;
        border:1px solid #000000;
+       padding-bottom: 30px;
      }
      .ordenar{
       display:grid;
@@ -352,12 +353,13 @@
    #miEmergente2{
 
     width: 1000px;
-    height: 650px;
+    height: auto;
     background-color: white;
     position:absolute;
     bottom:15px;
      display: none;
      border:1px solid #000000;
+     padding-bottom: 30px;
    }
    .oculto{
     display: none;

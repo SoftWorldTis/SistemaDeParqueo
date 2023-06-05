@@ -148,10 +148,25 @@
     }
     
     function calcularDias(fecha1, fecha2){
+        var domingos = [];
         var f1=new Date(fecha1);
         var f2= new Date(fecha2);
-        //console.log("fechaIni", f1.getDate())
-        return  (f2-f1)/(1000 * 60 * 60 * 24)
+        while (f1 <= f2) {
+            //console.log(f1.getDay())
+        if (f1.getDay() === 6) { 
+            domingos.push(f1.toISOString().split('T')[0]);
+        }
+
+            f1.setDate(f1.getDate() + 1);
+        }
+
+        if (domingos.length > 0) {
+            var menos = domingos.length;
+        } else {
+            var menos = 0;
+        }
+        var f01 = new Date(fecha1);
+        return  (f2-f01)/(1000 * 60 * 60 * 24)-menos
     }
 
     function sitios() {

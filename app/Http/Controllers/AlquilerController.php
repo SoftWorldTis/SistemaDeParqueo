@@ -15,6 +15,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\pruebaCorreo;
+use App\Mail\facturaCorreo;
 
 class AlquilerController extends Controller
 {
@@ -31,7 +34,8 @@ class AlquilerController extends Controller
 
     public function create(Request $request){
         $parqueo = estacionamiento::all();
-        $clientes = User::all()->where('name', '!=', 'Superadmin');;
+        //$clientes = User::all()->where('name', '!=', 'Superadmin');
+        $clientes = User::has('vehiculo')->get();
         $seleccionado="";
         $seleccionadoes="";
         $valorcl = $request->input('usuariosdatosci');
@@ -91,37 +95,30 @@ class AlquilerController extends Controller
         }
 
         $alquiler-> save();
-        return back() -> with('Registrado', 'Alquiler registrado correctamente');
-/*
-        $id = $alquiler->alquilerid;
+
         if($request->input('Pago') == "QR"){
             $factura = new factura();
             $factura -> facturafecha =  Carbon::now()->format('Y-m-d');
-            $factura -> facturacliente = $alquiler-> cliente_clienteci;
-            $factura -> facturaalquiler =  $alquiler-> alquilerid;
-            $factura -> facturacargo =  $alquiler -> alquilerprecio;
+            $factura -> alquilerid = $alquiler->alquilerid;
+            $factura -> facturatotal =  $alquiler -> alquilerprecio;
             $factura -> save();
 
-            $datosFactura= factura::join('cliente','facturacliente', '=' ,'clienteci')
-            ->join('alquiler','facturaalquiler','=','alquilerid')
-            ->join('estacionamiento','estacionamiento_estacionamientoid','=','estacionamientoid')
-            ->select("estacionamientozona","estacionamientotelefono", "clientenombrecompleto", 
-            "facturafecha", "facturacargo", "alquilerSitio","alquilerFechaIni", "alquilerFechaFin", "facturaid")
-            ->where('alquilerid', '=', $alquiler->alquilerid)
-            ->get();
-                
-            $data=compact('datosFactura');
-            $pdf = Pdf::loadView('ReportesPDF.factura', $data);
-            session()->flash('Registrado', 'Alquiler registrado correctamente con PDF');         
-            return $pdf->stream();
-            //return $pdf->download('ReporteDeudas.pdf');
+            $facturaid= $factura->facturaid;
+            $factura = factura::with('alquiler.user', 'alquiler.estacionamiento')->where('facturaid', $facturaid)->first();
+    
+            $datos=compact('factura');
+            $pdf = PDF::loadView('Reportes.factura', $datos);
+            $pdfContent = $pdf->output();
 
+            $mail = new facturaCorreo($pdfContent);
+            Mail::to($factura->alquiler->user->email)->send($mail);
+
+            return back() -> with('Registrado', 'Alquiler registrado correctamente. Factura enviada');
 
         }else{
             return back() -> with('Registrado', 'Alquiler registrado correctamente');
-        }*/
+        }
         
-    
     }
 
     public function edit($id){
@@ -143,5 +140,11 @@ class AlquilerController extends Controller
         $usuario= User::find($id);
         $usuario->update($input);
         return back() -> with('Registrado', 'Alquiler renovado');
+    }
+
+
+    public function enviar (){
+        $correo = new pruebaCorreo();
+        Mail::to('softworldtis@gmail.com')->send($correo);
     }
 }

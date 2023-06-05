@@ -40,8 +40,8 @@ class AlquilerRequest extends FormRequest
             
         ];
         if($usuario != null){
-            $rules['usuariosdatosci'] =Rule::unique('alquiler', 'cliente_clienteci')->where(function ($query) {
-                    $query->where('cliente_clienteci', $this->input('usuariosdatosci'))
+            $rules['usuariosdatosci'] =Rule::unique('alquiler', 'userid')->where(function ($query) {
+                    $query->where('userid', $this->input('usuariosdatosci'))
                     ->where('alquiler.alquilerestadopago', false);
                 });
            

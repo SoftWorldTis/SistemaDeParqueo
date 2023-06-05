@@ -11,4 +11,9 @@ class factura extends Model
     protected $table='factura';
     protected $primaryKey='facturaid';
     public $timestamps=false;
+
+    public function alquiler()
+    {
+        return $this->belongsTo(alquiler::class, 'alquilerid');
+    }
 }

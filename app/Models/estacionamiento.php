@@ -18,4 +18,8 @@ class estacionamiento extends Model
    'estacionamientozona','estacionamientohorario','estacionamientositioDocente',
    'estacionamientoprecio','estacionamientoestado','estacionamientositioAdministrador'
    ,'estacionamientoqr','estacionamientotelefono'];*/
+   public function alquileres()
+   {
+       return $this->hasMany(alquiler::class, 'estacionamientoid');
+   }
 }

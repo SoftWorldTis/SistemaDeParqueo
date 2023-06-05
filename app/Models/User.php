@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(vehiculo::class, 'userid');
     }
+    public function alquileres()
+    {
+        return $this->hasMany(alquiler::class, 'userid');
+    }
+    
 }

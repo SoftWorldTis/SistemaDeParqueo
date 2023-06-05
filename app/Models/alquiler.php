@@ -11,4 +11,19 @@ class alquiler extends Model
     protected $table ="alquiler";
     protected $primaryKey = "alquilerid";
     public $timestamps = false;
+
+    public function factura()
+    {
+        return $this->hasOne(factura::class, 'alquilerid');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userid');
+    }
+
+    public function estacionamiento()
+    {
+        return $this->belongsTo(estacionamiento::class, 'estacionamientoid');
+    }
 }

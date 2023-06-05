@@ -106,7 +106,7 @@
             <div class="Horario">
                 <p class="nom">Horario</p>
                 @if ($seleccionado)
-                <input type="text" class="linea" name="hora" readonly value="{{$seleccionado->estacionamientohoraInicio}} - {{$seleccionado->estacionamientohoraCierre}}">
+                <input type="text" class="linea" name="hora" readonly value="{{$seleccionado->estacionamientohorainicio}} - {{$seleccionado->estacionamientohoracierre}}">
                 @else
                 <input type="text" class="linea" name="hora" readonly value="">
                 @endif
@@ -152,7 +152,7 @@
                 </label>
                 <div>
                     @if ($seleccionado)
-                    <img src="{{asset('images/'.$seleccionado->estacionamientoImg)}}" alt="" width="150" height="150">
+                    <img src="{{asset('images/'.$seleccionado->estacionamientoimagen)}}" alt="" width="150" height="150">
                 @endif
                 </div>
             </div>
@@ -181,7 +181,6 @@
                         <tr >
                             <th class="grillatit">Número</th>
                             <th class="grillatit">Zona</th>
-                            <th class="grillatit">Horario</th>
                             <th class="grillatit">Capacidad</th>
                             <th class="grillatit">Estado</th>
                             <th class="grillatit">Opción</th>
@@ -193,7 +192,6 @@
                             <tr class="table-row" id="id=fila-{{$parqueos->estacionamientoid}}">
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$parqueos->estacionamientozona}}</td>
-                                <td>{{$parqueos->estacionamientohoraInicio}} - {{$parqueos->estacionamientohoraCierre}}</td>
                                 <td>{{$parqueos->estacionamientositios}}</td>
                                 <td>{{$parqueos->estacionamientoestado}}</td>
                                 <td>
@@ -227,7 +225,7 @@
                 <table class="tabla2 hoverable2" >
                     <thead>
                         <tr>
-                            <th class="grillatit">Numero</th>
+                            <th class="grillatit">Número</th>
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
                         
@@ -368,7 +366,7 @@
         var fechaFin = $('#FechaFin').val();
         if(fechaIni!= "" && fechaFin != ""){
             var dias = calcularDias(fechaIni, fechaFin)
-            //console.log(dias);
+            //console.log(dias)
             if(dias>=0){
                 const precio= @json($seleccionado->estacionamientoprecio);
                 const total = precio * (dias+1)
@@ -381,10 +379,25 @@
     }
     
     function calcularDias(fecha1, fecha2){
+        var domingos = [];
         var f1=new Date(fecha1);
         var f2= new Date(fecha2);
-        //console.log("fechaIni", f1.getDate())
-        return  (f2-f1)/(1000 * 60 * 60 * 24)
+        while (f1 <= f2) {
+            //console.log(f1.getDay())
+        if (f1.getDay() === 6) { 
+            domingos.push(f1.toISOString().split('T')[0]);
+        }
+
+            f1.setDate(f1.getDate() + 1);
+        }
+
+        if (domingos.length > 0) {
+            var menos = domingos.length;
+        } else {
+            var menos = 0;
+        }
+        var f01 = new Date(fecha1);
+        return  (f2-f01)/(1000 * 60 * 60 * 24)-menos
     }
 
     function sitios() {
