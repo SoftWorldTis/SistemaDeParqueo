@@ -20,7 +20,7 @@ class LoginController extends Controller
         //dd($request);
 
         $request->validate([
-            'email'=> ['required','email','max:25'],
+            'email'=> ['required','email','max:30'],
             'password'=> ['required','min:8','max:20'], 
         ]);
         

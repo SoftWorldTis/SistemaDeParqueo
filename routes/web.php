@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\facturaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisParqueoController;
+
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ListaClientesController;
@@ -21,7 +22,10 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\RevisarPermiso;
 use App\Http\Controllers\ParqueoController;
 use App\Http\Controllers\VehiculoController;
-
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\DeudaController;
+use App\Http\Controllers\EntradasController;
+use App\Http\Controllers\SalidasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -169,20 +173,44 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/crear-alquiler', [AlquilerController::class,'store'])->middleware('permiso:crear-alquiler');
     Route::get('/crear-alquiler/{id}', [AlquilerController::class,'show'])->middleware('permiso:crear-alquiler');
     Route::get('/ver-alquiler', [AlquilerController::class,'index'])->middleware('permiso:ver-alquiler');
-    Route::get('/editar-alquiler/{id}', [AlquilerController::class,'edit'])->middleware('permiso:editar-alquiler');
-    Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update'])->middleware('permiso:editar-alquiler');
+    Route::get('/editar-alquiler/{id}', [AlquilerController::class,'edit']);
+    Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update']);
+ 
+ 
+    //Rutas deudas
+    Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+    Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+    Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
+    //Rutas pagos
+    Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
+    Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+    Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
+    Route::get('/editar-pagos', [PagoController::class,'editarpagos'])->middleware('permiso:editar-pagos')->name('editarPagos');
+    Route::get('/editar-pagos/{id}', [PagoController::class,'edit'])->middleware('permiso:editar-pagos');
+    Route::post('/editar-pagos/{id}', [PagoController::class,'update'])->middleware('permiso:editar-pagos');
+
+
     
     //Rutas Perfil
     Route::get('/ver-perfil', [PerfilController::class,'show']);
     Route::get('/editar-perfil', [PerfilController::class,'edit']);
-    //Route::get('/ver-perfil/{id}', [PerfilController::class,'index'])->middleware('permiso:editar-perfil');
-/*
-    //Rutas deudas
-    Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+    Route::post('/editar-perfil/{id}', [PerfilController::class,'update']);
 
-    //Rutas pagos
-    Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-    Route::get('/editar-pagos/{id}', [PagoController::class,'index'])->middleware('permiso:editar-');
+    //Rutas entradas
+    Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
+    //Rutas salidas
+    Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');
+
+   // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
+   // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
+    //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
+
+  
+
+   
+
+
+    /*
 
     //Rutas caja
     Route::get('/ver-caja', [CajaController::class,'index'])->middleware('permiso:ver-caja');

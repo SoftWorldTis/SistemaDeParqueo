@@ -18,6 +18,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\pruebaCorreo;
 use App\Mail\facturaCorreo;
+use Illuminate\Support\Facades\Auth;
 
 class AlquilerController extends Controller
 {
@@ -76,7 +77,6 @@ class AlquilerController extends Controller
 
 
     public function store(AlquilerRequest $request){
-        $usuario= User::where('ci',$request->input('usuariosdatosci'))->first();
   
         $alquiler =new alquiler(); 
         $alquiler -> estacionamientoid=$request->input('parqueoid');;
@@ -87,7 +87,7 @@ class AlquilerController extends Controller
         $alquiler -> alquilerfechaini= $request->input('FechaInicio');
         $alquiler -> alquilerfechafin= $request->input('FechaFin');
         //$alquiler -> cliente_clienteci= $request->input('usuariosdatosci');
-        $alquiler -> userid= $usuario->id;
+        $alquiler -> userid= $request->input('usuarioid');
         if($request->input('Pago') == "Efectivo"){
             $alquiler -> alquilerestadopago= false;
         }else{
@@ -123,23 +123,57 @@ class AlquilerController extends Controller
 
     public function edit($id){
         $alquiler = alquiler::where('userid', '=', $id)
-        -> orderby('alquilerfecha','desc')
+        -> orderBy('alquilerid','desc')
         ->first();
         
         $parqueo = estacionamiento::where('estacionamientoid', $alquiler ->estacionamientoid)
         ->first();
-
-        $usuario = user::fing($id)
-        ->get();
+        $usuario = Auth::user();
         return view('Alquiler.editar', compact('alquiler','parqueo', 'usuario'));
 
     }
 
     public function update(AlquilerRequest $request, $id){
-        $input = $request ->all();
-        $usuario= User::find($id);
-        $usuario->update($input);
-        return back() -> with('Registrado', 'Alquiler renovado');
+        $alquiler =alquiler::find($id);
+        
+        $alquiler -> estacionamientoid=$request->input('parqueoid');;
+        $alquiler -> alquilerprecio= $request->input('costo');
+        $alquiler -> alquilerfecha=  Carbon::now()->format('Y-m-d');
+        $alquiler -> alquilertipopago= $request->input('Pago');
+        $alquiler -> alquilersitio= $request->input('sitio');
+        $alquiler -> alquilerfechaini= $request->input('FechaInicio');
+        $alquiler -> alquilerfechafin= $request->input('FechaFin');
+        $alquiler -> userid= $request->input('usuarioid');
+        if($request->input('Pago') == "Efectivo"){
+            $alquiler -> alquilerestadopago= false;
+        }else{
+            $alquiler -> alquilerestadopago= true;
+        }
+        $alquiler-> save();
+
+        
+        if($request->input('Pago') == "QR"){
+            $factura = new factura();
+            $factura -> facturafecha =  Carbon::now()->format('Y-m-d');
+            $factura -> alquilerid = $alquiler->alquilerid;
+            $factura -> facturatotal =  $alquiler -> alquilerprecio;
+            $factura -> save();
+
+            $facturaid= $factura->facturaid;
+            $factura = factura::with('alquiler.user', 'alquiler.estacionamiento')->where('facturaid', $facturaid)->first();
+    
+            $datos=compact('factura');
+            $pdf = PDF::loadView('Reportes.factura', $datos);
+            $pdfContent = $pdf->output();
+
+            $mail = new facturaCorreo($pdfContent);
+            Mail::to($factura->alquiler->user->email)->send($mail);
+
+            return back() -> with('Registrado', 'Alquiler renovado correctamente. Factura enviada');
+
+        }else{
+            return back() -> with('Registrado', 'Alquiler renovado correctamente');
+        }
     }
 
 

@@ -57,13 +57,13 @@
                     <input type="text" class="linea" name="Usuario" id="usuariosdatos"  value="{{old('Usuario')}}" readonly >
                     <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar2" id="editar2" >
                 </div>
-                   <input type="hidden" class="linea" name="usuariosdatosci" id="usuariosdatosci"  value="{{old('usuariosdatosci')}}" readonly >
+                   <input type="hidden" class="linea" name="usuarioid" id="usuarioid"  value="{{old('usuarioid')}}" readonly >
                    @error('Usuario')
                         <div class="error">
                             {{$message}}
                         </div>
                     @enderror
-                    @error('usuariosdatosci')
+                    @error('usuarioid')
                         <div class="error">
                             {{$message}}
                         </div>
@@ -228,6 +228,7 @@
                             <th class="grillatit">Número</th>
                             <th class="grillatit">Usuario</th>
                             <th class="grillatit">CI</th>
+                            <th class="grillatit" style="display: none">ID</th>
                         
                         </tr>
                     </thead>
@@ -238,7 +239,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$clientess->name}}</td>
                             <td>{{$clientess->ci}}</td>
-                     
+                            <td style="display: none">{{$clientess->id}}</td>
                             
                         </tr>
                         @endforeach
@@ -342,8 +343,8 @@
         var dato_id = fila_id.split("-")[1];
         var value = $(this).find("td:nth-child(2)").text();
         $("#usuariosdatos").val(value);
-        var value2 = $(this).find("td:nth-child(3)").text();
-        $("#usuariosdatosci").val(value2);
+        var value2 = $(this).find("td:nth-child(4)").text();
+        $("#usuarioid").val(value2);
         document.getElementById('miEmergente2').style.display = "none";
         document.getElementById('mostrarEmergente2').style.display = "none";
         document.getElementById('oculto2').style.display="block";
@@ -426,7 +427,7 @@
     
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
+    <a id="link" href="{{('/lobby')}}"> 
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>

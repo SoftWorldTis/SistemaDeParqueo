@@ -7,7 +7,7 @@
   @endsection  
 
   @section('forminicio')
-  <form action="/editar-alquiler/{{$usuario->id}}" method="Post">
+  <form action="/editar-alquiler/{{$alquiler->alquilerid}}" method="Post">
     @csrf <!-- debajo de un forms pones eso atte kiri-->
 
   @endsection
@@ -30,7 +30,7 @@
             <div class ="agregarParqueo">
                 <p class="nom">Parqueo</p>
                 <input type="text" class="linea" name="Parqueo" id="parqueodatos" value="{{$parqueo->estacionamientozona}}" readonly>
-
+                <input type="hidden" class="linea" name="parqueoid" id="parqueoid"  value="{{$parqueo->estacionamientoid}}" readonly >
                 @error('Parqueo')
                     <div class="error">
                         {{$message}}
@@ -43,12 +43,17 @@
             <div class ="agregarUsuario">
                 <p class="nom">Usuario</p>
                 <input type="text" class="linea" name="Usuario" id="usuariosdatos"  value="{{$usuario->name}}" readonly >
-
+                <input type="hidden" class="linea" name="usuarioid" id="usuarioid"  value="{{$usuario->id}}" readonly >
                 @error('Usuario')
                     <div class="error">
                         {{$message}}
                     </div>
                 @enderror
+                @error('usuarioid')
+                <div class="error">
+                    {{$message}}
+                </div>
+            @enderror
             </div>
         </div>
         
@@ -79,7 +84,7 @@
 
             <div class="Horario">
                 <p class="nom">Horario</p>
-                <input type="text" class="linea" name="hora" readonly value="{{$parqueo->estacionamientohoraInicio}} - {{$parqueo->estacionamientohoraCierre}}">
+                <input type="text" class="linea" name="hora" readonly value="{{$parqueo->estacionamientohorainicio}} - {{$parqueo->estacionamientohoracierre}}">
                
                 
                 <br>
@@ -88,8 +93,8 @@
         <div class="fila3">
             <div class="seleccion">
                 <p class="nom">Sitio</p>
-                <select name="sitio" id="sitio" class="linea" class="sitio" valorAnt="{{old('sitio')}}">
-                    <option class= "linea" value="" selected>{{$alquiler->alquilerSitio}}</option>
+                <select name="sitio" id="sitio" class="linea" class="sitio" valorAnt="{{$alquiler->alquilersitio}}">
+                    <option class= "linea" value="{{$alquiler->alquilersitio}}" selected>{{$alquiler->alquilersitio}}</option>
                 </select>
                 @error('sitio')
                     <div class="error">
@@ -113,7 +118,7 @@
                     Pagar Ahora
                 </label>
                 <div>
-                    <img src="{{asset('images/'.$parqueo->estacionamientoImg)}}" alt="" width="150" height="150">
+                    <img src="{{asset('images/'.$parqueo->estacionamientoimagen)}}" alt="" width="150" height="150">
               
                 </div>
             </div>
@@ -195,7 +200,7 @@
     
 </div>
 <div class="AbBotones">
-    <a id="link" href="{{('/lobby/RegistroOpciones')}}"> 
+    <a id="link" href="{{('/ver-perfil')}}"> 
     <button  type="button" class="cancelar button">
     <p>Cancelar</p>
     </button>

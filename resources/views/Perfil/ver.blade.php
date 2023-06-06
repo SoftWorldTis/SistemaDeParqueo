@@ -11,13 +11,7 @@
         <div class="card--options">
             <a href="/editar-perfil">Editar Perfil</a>
             <br>
-            @if (isset($vehiculos[0]) && isset($vehiculos[1]) && isset($vehiculos[2]))
-                <a href="/lobby/EditarCliente/{{$usuario->ci}}">Editar Vehiculos</a>
-            @else
-                <a href="/lobby/EditarCliente/{{$usuario->ci}}">Agregar Vehiculo</a>
-            @endif
-            <br>
-            <a href="/lobby/RenovarAlquiler/{{$usuario->ci}}"> Renovar Alquiler</a>
+            <a href="/editar-alquiler/{{$usuario->id}}"> Renovar Alquiler</a>
           
             
         </div>
@@ -48,13 +42,13 @@
 
                 @if(isset($vehiculos[1]))
                 <tr>
-                    <td>{{$usuario->ci}}</td>
+                    <td>{{$usuario->fechanacimiento}}</td>
                     <td>{{$vehiculos[1]->vehiculomodelo}}</td>
                     <td>{{$vehiculos[1]->vehiculoplaca}}</td>
                 </tr>
                 @else
                 <tr>
-                    <td>{{$usuario->ci}}</td>
+                    <td>{{$usuario->fechanacimiento}}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -87,7 +81,6 @@
                     <th>Espacio</th>
                     <th>Precio</th>
                     <th>Estado</th>
-                    <th>Opcion</th>
                 </tr>
 
                 @foreach ($alquileres as $item)
@@ -103,11 +96,6 @@
                             <td class="td-red">Deuda</td>
                         @endif
 
-                        <td>
-                            @if(!$item->alquilerestadopago)
-                                <a href="/lobby/ListaDeudas/{{$item->alquilerid}}" onclick="recargar()">Pagar</a>
-                            @endif
-                        </td>
                     </tr>
                 @endforeach
             </table>

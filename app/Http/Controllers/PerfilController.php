@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
 
 class PerfilController extends Controller
 {
@@ -28,9 +30,17 @@ class PerfilController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        $input = $request ->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input, array('password'));
+        }
+        $usuario= User::find($id);
+        $usuario->update($input);
+        return back() -> with('Registrado', 'Datos actualizados correctamente');
     }
 
     public function show()
@@ -46,7 +56,7 @@ class PerfilController extends Controller
                 ->get();
 
             //dd($vehiculos);
-            return view('Perfil', [
+            return view('Perfil.ver', [
                 'usuario' =>  $user,
                 'vehiculos' => $vehiculos,
                 'alquileres' => $alquileres
@@ -67,18 +77,13 @@ class PerfilController extends Controller
             $usuario= Auth::user();
             $roles = Role::where('name', '!=', 'Superadmin')->get();;
             $usuarioRol = $usuario->roles->pluck('name', 'name')->all();
-            return view('Usuarios.editar', compact('usuario','roles','usuarioRol'));
+            return view('Perfil.editar', compact('usuario','roles','usuarioRol'));
            
         }
         
     }
 
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
 
     public function destroy($id)

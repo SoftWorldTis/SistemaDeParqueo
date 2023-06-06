@@ -120,7 +120,7 @@
 
     </div>
     <div class="AbBotones">
-        <a id="link" href="{{('/')}}"> 
+        <a id="link" href="{{('/lobby')}}"> 
         <button  type="button" class="cancelar button">
         <p>Cancelar</p>
         </button>

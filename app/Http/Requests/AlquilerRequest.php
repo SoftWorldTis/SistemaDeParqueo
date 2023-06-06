@@ -29,7 +29,7 @@ class AlquilerRequest extends FormRequest
         $fecha_inicio = $this->input('FechaInicio');
         $fecha_fin = $this->input('FechaFin');
         $espacio = $this->input('sitio');
-        $usuario = $this->input('usuariosdatosci');
+        $usuario = $this->input('usuarioid');
         $rules = [
             'Parqueo' => 'required',
             'Usuario' => 'required',
@@ -40,8 +40,8 @@ class AlquilerRequest extends FormRequest
             
         ];
         if($usuario != null){
-            $rules['usuariosdatosci'] =Rule::unique('alquiler', 'userid')->where(function ($query) {
-                    $query->where('userid', $this->input('usuariosdatosci'))
+            $rules['usuarioid'] =Rule::unique('alquiler', 'userid')->where(function ($query) {
+                    $query->where('userid', $this->input('usuarioid'))
                     ->where('alquiler.alquilerestadopago', false);
                 });
            
@@ -68,7 +68,7 @@ class AlquilerRequest extends FormRequest
         return[
             'Parqueo.required' => 'El campo Parqueo es obligatorio',
             'Usuario.required' => 'El campo Usario es obligatorio',
-            'usuariosdatosci.unique' => 'El usuario tiene una deuda',
+            'usuarioid.unique' => 'El usuario tiene una deuda',
             //'FechaInicio.required' => 'La Fecha Inicial es obligatoria',
             'FechaInicio.required' => 'Llene la Fecha de Inico',
             //'FechaFin.required' => 'La Fecha Final es obligatoria',
