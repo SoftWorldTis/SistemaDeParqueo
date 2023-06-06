@@ -42,7 +42,6 @@ class VehiculoController extends Controller
     public function store(VehiculoRequest $request)
     {
         $user= User::where('ci',$request->input('ci'))->first();
-        //dd($user);
         $vehiculo =new vehiculo();
         $vehiculo -> vehiculomodelo= $request->input('vehiculomodelo');
         $vehiculo -> vehiculoplaca= $request->input('vehiculoplaca');
@@ -79,6 +78,11 @@ class VehiculoController extends Controller
     
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'clienteV1' => 'required|unique:App\Models\vehiculo,vehiculoplaca,' . $id,
+        ],[
+            'clienteV1.unique' => 'El número de placa ya fue resgistrado.', 
+        ]);
         $user= User::where('ci',$request->input('ci'))->first();
         $vehiculo = vehiculo::find($id);
         $vehiculo -> vehiculomodelo= $request->input('vehiculomodelo');

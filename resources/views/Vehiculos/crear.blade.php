@@ -47,7 +47,6 @@
                     </div> 
                 @enderror
                 
-                
             </div>
             
         </div>
@@ -138,6 +137,7 @@
                 
                 document.getElementById('veh1').style.marginBottom="18px";
                 document.getElementById('vinput').value=document.getElementById('vplaca').value;
+                //document.getElementById('placa').value=document.getElementById('vplaca').value;
                 document.getElementById('oculto').style.display="block";
                 ventanaEmergente.style.display = "none";
                 mostrarVentana.style.display="none";

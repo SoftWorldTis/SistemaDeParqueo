@@ -27,8 +27,7 @@ class VehiculoRequest extends FormRequest
         return [
             //'ci' => 'required|numeric|min:100000|max:9999999999|exists:users,ci',
             'ci' =>  ['required','numeric','min:100000', 'max:9999999999', 'exists:users,ci', new MaxVehiculos], 
-            'clienteV1' => 'required',
-
+            'clienteV1' => 'required|unique:App\Models\vehiculo,vehiculoplaca',
         ];
     }
 
@@ -42,7 +41,7 @@ class VehiculoRequest extends FormRequest
             'ci.min' => 'El campo CI admite minímo 6 dígitos',
             'ci.exists' => 'No existe ningun usuario con ese CI',
             'clienteV1.required' => 'El campo es obligatorio',
-
+            'clienteV1.unique' => 'El número de placa ya fue resgistrado',
             'vehiculomodelo.required' => 'El campo es obligatorio'
         ];
     }

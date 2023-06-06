@@ -50,6 +50,7 @@ class AlquilerRequest extends FormRequest
         if($fecha_fin !=null && $fecha_inicio != null && $espacio !=null){
             $rules ['sitio'] = Rule::unique('alquiler', 'alquilersitio')->where(function ($query) use ($fecha_inicio, $fecha_fin) {
                 return $query->where('alquilersitio', $this->input('sitio'))
+                ->where('estacionamientoid', $this->input('parqueoid'))
                     ->where(function ($query) use ($fecha_inicio, $fecha_fin) {
                         $query->whereBetween('alquilerfechaini', [$fecha_inicio, $fecha_fin])
                             ->orWhereBetween('alquilerfechafin', [$fecha_inicio, $fecha_fin])

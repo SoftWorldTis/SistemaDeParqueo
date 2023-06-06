@@ -84,7 +84,12 @@ class UsuarioController extends Controller
     
     public function update(Request $request, $id)
     {
-        
+        $usuario= User::find($id);
+        $validatedData = $request->validate([
+            'ci' => 'required|unique:App\Models\User,ci,' . $usuario->ci,
+        ],[
+            'ci.unique' => 'El campo CI ya fue registrado', 
+        ]);
         //Verificar cambios en password
         $input = $request ->all();
         if(!empty($input['password'])){

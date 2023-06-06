@@ -52,7 +52,7 @@ class AlquilerController extends Controller
       
         //dd($request);
         $parqueo = estacionamiento::all();
-        $clientes = User::all()->where('name', '!=', 'Superadmin');;
+        $clientes = User::has('vehiculo')->get();
         $seleccionado = DB::table('estacionamiento')
         ->select('*')
         ->where('estacionamientoid','=',$id)

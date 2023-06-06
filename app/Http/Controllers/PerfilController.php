@@ -32,13 +32,19 @@ class PerfilController extends Controller
 
     public function update(Request $request, $id)
     {
+        $usuario= User::find($id);
+        $validatedData = $request->validate([
+            'ci' => 'required|unique:App\Models\User,ci,' . $usuario->ci,
+        ],[
+            'ci.unique' => 'El campo CI ya fue registrado', 
+        ]);
         $input = $request ->all();
         if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{
             $input = Arr::except($input, array('password'));
         }
-        $usuario= User::find($id);
+       
         $usuario->update($input);
         return back() -> with('Registrado', 'Datos actualizados correctamente');
     }

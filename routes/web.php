@@ -197,7 +197,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/editar-perfil/{id}', [PerfilController::class,'update']);
 
     //Rutas entradas
-    Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
+    Route::get('/registrar-entrada', [EntradasController::class,'buscarEntrada'])->middleware('permiso:crear-entradas');
+    Route::get('/registrar-entrada/{alquiler}/{vehiculo}', [EntradasController::class,'marcarEntrada'])->middleware('permiso:crear-entradas');
+    Route::get('/registrar-salida', [EntradasController::class,'buscarSalida'])->middleware('permiso:crear-salidas');
+    Route::get('/registrar-salida/{id}', [EntradasController::class,'marcarSalida'])->middleware('permiso:crear-salidas');
+    Route::get('/ver-entradas-salidas', [EntradasController::class,'index'])->middleware('permiso:ver-salidas');
+
     //Rutas salidas
     Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');
 
