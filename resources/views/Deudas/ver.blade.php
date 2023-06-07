@@ -13,15 +13,11 @@
 
     <div class="titulo">
         <p>Deudas</p>
-    </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
                     <span>{{$message}}</span>
                 </div>
         @endif
-        <div class="subTit">
-            <p>Parqueo: Fcyt</p>
-        </div>
         <div class="fila">
 
             <form action="/ver-deuda" method="POST" autocomplete="off" role="search">
@@ -60,7 +56,6 @@
                         <td>{{$deuda->ci}}</td>
                         <td>{{$deuda->alquilerfecha}}</td>
                         <td>{{$deuda->alquilerprecio}}</td>
-                       
                     </tr>
                 @endforeach
               
@@ -71,6 +66,6 @@
     
     
     
-
+    </div>
     @endsection
- 
+   

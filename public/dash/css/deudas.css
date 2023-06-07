@@ -117,4 +117,16 @@
   table tr:hover {
     background-color: rgb(205, 205, 205);
   }
+
+
+  .buttonCobrar{
+    
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
   

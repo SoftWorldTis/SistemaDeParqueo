@@ -13,14 +13,12 @@
 
     <div class="titulo">
         <p>Pagos</p>
+    </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
                     <span>{{$message}}</span>
                 </div>
         @endif
-        <div class="subTit">
-            <p>Parqueo: Fcyt</p>
-        </div>
         <div class="fila">
 
             <form action="/ver-pagos" method="POST" autocomplete="off" role="search">
@@ -47,7 +45,7 @@
                 <th class="grillatit">Usuario</th>
                 <th class="grillatit">CI</th>
                 <th class="grillatit">Fecha Alquiler</th>
-                <th class="grillatit">Deuda</th>
+                <th class="grillatit">Pago</th>
                 <th class="grillatit">Tipo</th>
       
               </tr>
@@ -71,6 +69,6 @@
     
     
     
-    </div>
+
     @endsection
-   
+ 

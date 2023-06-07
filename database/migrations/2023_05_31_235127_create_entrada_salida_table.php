@@ -14,16 +14,13 @@ class CreateEntradaSalidaTable extends Migration
     public function up()
     {
         Schema::create('entrada_salida', function (Blueprint $table) {
-            $table->increments('esid');
-            $table->unsignedBigInteger('userid');
-            $table->unsignedBigInteger('estacionamientoid');
+            $table->Bigincrements('esid');
+            $table->unsignedInteger('alquilerid');
             $table->unsignedBigInteger('vehiculoid');
             $table->dateTime('entradatime');
             $table->dateTime('salidatime')->nullable();
-            $table->timestamps();
 
-            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('estacionamientoid')->references('estacionamientoid')->on('estacionamiento')->onDelete('cascade');
+            $table->foreign('alquilerid')->references('alquilerid')->on('alquiler')->onDelete('cascade');
             $table->foreign('vehiculoid')->references('vehiculoid')->on('vehiculo')->onDelete('cascade');
         });
     }
@@ -36,10 +33,8 @@ class CreateEntradaSalidaTable extends Migration
     public function down()
     {
         Schema::table('entrada_salida', function (Blueprint $table) {
-            $table->dropForeign(['userid']);
-            $table->dropColumn('userid');
-            $table->dropForeign(['estacionamientoid']);
-            $table->dropColumn('estacionamientoid');
+            $table->dropForeign(['alquilerid']);
+            $table->dropColumn('alquilerid');
             $table->dropForeign(['vehiculoid']);
             $table->dropColumn('vehiculoid');
         });

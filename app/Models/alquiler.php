@@ -26,4 +26,9 @@ class alquiler extends Model
     {
         return $this->belongsTo(estacionamiento::class, 'estacionamientoid');
     }
+
+    public function entradaSalida()
+    {
+        return $this->hasMany(entradaSalida::class, 'alquilerid');
+    }
 }

@@ -17,4 +17,9 @@ class vehiculo extends Model
     {
         return $this->belongsTo(User::class, 'userid');
     }
+
+    public function entradaSalida()
+    {
+        return $this->hasMany(entradaSalida::class, 'vehiculoid');
+    }
 }

@@ -36,7 +36,8 @@
             <div class="carro1">
                 <p class="nom" id="veh1">Vehículo 1</p>
                 <div class=" oculto" id="oculto">
-                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{$vehiculo->vehiculoplaca}}" readonly>
+                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{$vehiculo->vehiculoplaca}}" readonly>  
+               
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
                 @error('clienteV1')

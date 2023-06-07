@@ -14,7 +14,7 @@
         <div class="usuarios">
             <div class="r3">
               <img src="{{asset('/dash/assets/user 3.png')}}" class="iconUsuarios" alt="">
-               <a id="link" href="{{('/lobby/#')}}">
+               <a id="link" href="{{('/crear-rol')}}">
                   <div class="botonUsuarios">
                     <p>Rol</p>
                   </div>
