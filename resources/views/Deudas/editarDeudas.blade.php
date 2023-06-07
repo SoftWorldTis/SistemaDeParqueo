@@ -11,19 +11,17 @@
 <div class="principal">
 
     <div class="titulo">
-        <p>Pagos</p>
+        <p>Deudas</p>
     </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
                     <span>{{$message}}</span>
                 </div>
         @endif
-        <div class="subTit">
-            <p>Parqueo: Fcyt</p>
-        </div>
+  
         <div class="fila">
 
-            <form action="/editar-pagos" method="get" autocomplete="off" role="search">
+            <form action="/editar-deuda" method="get" autocomplete="off" role="search">
                 @csrf
                 <div class ="buscador"  id="buscador">
                     <input  type="text" class="linea"  name="buscador" placeholder="Escriba un nombre " value="{{$consulta}}">
@@ -34,12 +32,12 @@
             
             <div class="exportar">
                 
-                <a href="/editar-pagos/imprimir">
+                <a href="/editar-deuda/imprimir">
                     <button class="btnExportar">Exportar</button>
                 </a>
             </div>
         </div>
-        @if($pagos)
+        @if($deudas)
         <table class="tabla">
             <thead>
               <tr >
@@ -53,16 +51,17 @@
               </tr>
             </thead>
             <tbody>  
-                @foreach ($pagos as $pago)
+                @foreach ($deudas as $deuda)
                     <tr id="id=fila-{{$loop->iteration}}">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$pago->name}}</td>
-                        <td>{{$pago->ci}}</td>
-                        <td>{{$pago->alquilerfecha}}</td>
-                        <td>{{$pago->alquilerprecio}}</td>
+                        <td>{{$deuda->name}}</td>
+                        <td>{{$deuda->ci}}</td>
+                        <td>{{$deuda->alquilerfecha}}</td>
+                        <td>{{$deuda->alquilerprecio}}</td>
                         <td>
-                            <a href="/editar-pago/">Editar</a>
-                          </td>
+                        
+                           <a href="/cobrar-deudas/{{$deuda->alquilerid }}" onclick="recargar()">Cobrar</a>
+                        </td>
                     </tr>
                 @endforeach
               

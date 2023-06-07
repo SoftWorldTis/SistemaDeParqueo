@@ -48,10 +48,10 @@ class PermisosSeeder extends Seeder
 
             //permisos deuda
             'ver-deuda',
-            
+            'editar-deuda',
             //permisos pagos
             'ver-pagos',
-            'editar-pagos',
+           
 
             //permisos caja
             'ver-caja',
