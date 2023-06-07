@@ -30,12 +30,7 @@
             </form>
             
             
-            <div class="exportar">
-                
-                <a href="/editar-deuda/reporte">
-                    <button class="btnExportar">Exportar</button>
-                </a>
-            </div>
+         
         </div>
         @if($deudas)
         <table class="tabla">

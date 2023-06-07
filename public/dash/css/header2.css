@@ -14,7 +14,10 @@ p{
   color: #E4EAEA;
 
 }
-
+#link{
+  color: black;
+  text-decoration: none;
+}
 .icono{
   color: rgb(255, 255, 255);
   font-size: 30px;
@@ -78,3 +81,10 @@ color: white;
 text-decoration: none;
 padding: 15px 15px 15px 20px;
 }
+
+
+@media(max-width: 1600px){
+  body{
+    font-size: 23px;
+
+  }}

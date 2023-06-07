@@ -25,29 +25,30 @@
 				</ul>
 			</li>@endif
           
-            @if(Gate::any(['ver-usuario','ver-parqueo','ver-alquiler','ver-vehiculos','ver-deuda','ver-pagos']))  <li>
-            <a href="#"><img src="{{asset('dash/assets/report.png')}}" width="45">
+            @if(Gate::any(['ver-usuario','ver-parqueo','ver-vehiculos','ver-deuda','ver-pagos','editar-deuda']))  <li>
+            <a href="/ver-reportes"><img src="{{asset('dash/assets/report.png')}}" width="45">
             <span class="label">Reportes</span></a>
 				<ul class="menu-vertical">
-                    @can	('ver-usuario')
-                    <li><a href="/ver-usuario">Lista de Usuarios</a></li>@endcan
-                    @can	('ver-parqueo')
-                    <li><a href="/ver-parqueo">Lista de Parqueos</a></li>@endcan
-                    @can	('ver-alquiler')
-                    <li><a href="/ver-alquiler">Lista de Alquileres</a></li>@endcan
-                    @can	('ver-vehiculos')
-                    <li><a href="/ver-vehiculo">Lista de Vehiculos</a></li>@endcan
                     @can	('ver-deuda')
-                    <li><a href="/ver-deuda">Lista de Deudas </a></li>@endcan
+                    <li><a href="/ver-deuda">Ver Deudas </a></li>@endcan
                     @can	('ver-pagos')
-                    <li><a href="/ver-pagos">Lista de Pagos</a></li>@endcan
+                    <li><a href="/ver-pagos">Ver Pagos</a></li>@endcan
+                    @can	('ver-usuario')
+                    <li><a href="/ver-usuario">Ver Usuarios</a></li>@endcan
+                    @can	('ver-parqueo')
+                    <li><a href="/ver-parqueo">Ver Parqueos</a></li>@endcan
+                    @can	('ver-vehiculos')
+                    <li><a href="/ver-vehiculo">Ver Vehiculos</a></li>@endcan
+                  
                     @can	('ver-salidas')
-                    <li><a href="/ver-salidas">Ver Salidas</a></li>@endcan
-				</ul>
+                    <li><a href="/ver-entradas-salidas">Reporte de Entradas y Salidas</a></li>@endcan
+                    @can	('editar-deuda')
+                    <li><a href="/editar-deuda">Cobrar</a></li>@endcan
+                </ul>
 			</li>@endif
            
-            @if(Gate::any(['crear-usuario','crear-parqueo','crear-alquiler','crear-vehiculo','editar-deuda']))  <li>
-            <a href="#"><img src="{{asset('dash/assets/registroNav.png')}}" width="45">
+            @if(Gate::any(['crear-usuario','crear-parqueo','crear-alquiler','crear-vehiculo']))  <li>
+            <a href="/ver-registros"><img src="{{asset('dash/assets/registroNav.png')}}" width="45">
             <span class="label">Registrar</span></a>
 				<ul class="menu-vertical">
                     @can	('crear-usuario')
@@ -58,8 +59,7 @@
                     <li><a href="/crear-alquiler">Registrar Alquiler</a></li>@endcan
                     @can	('crear-vehiculos')
                     <li><a href="/crear-vehiculo">Registrar Vehiculo</a></li>@endcan
-                    @can	('editar-deuda')
-                    <li><a href="/editar-deuda">Registrar Pago</a></li>@endcan
+                   
 				</ul>
 			</li>@endif
            

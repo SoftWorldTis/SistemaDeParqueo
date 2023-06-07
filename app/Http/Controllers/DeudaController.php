@@ -17,8 +17,8 @@ class DeudaController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-alquiler|editar-deuda' , ['only' => ['index']]);
-        $this -> middleware('permission: editar-deuda' , ['only' => ['edit, store, editardeudas, show']]);
+        $this -> middleware('permission: ver-deuda|editar-deuda' , ['only' => ['index, store, show']]);
+        $this -> middleware('permission: editar-deuda' , ['only' => ['edit, editardeudas , update']]);
     }
     public function index(){
       

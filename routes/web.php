@@ -126,6 +126,9 @@ Route::group(['middleware' => ['auth']], function(){
    
     Route::get('/lobby', function () {return view('lobby') ;});
     
+    // Rutas Menu
+    Route::get('/ver-reportes', function () {return view('menu.ver-reportes') ;});
+    Route::get('/ver-registros', function () {return view('menu.ver-registros') ;});
     //Rutas Rol
     Route::get('/crear-rol', [RolController::class,'create'])->middleware('permiso:crear-rol');
     Route::post('/crear-rol', [RolController::class,'store'])->middleware('permiso:crear-rol');
