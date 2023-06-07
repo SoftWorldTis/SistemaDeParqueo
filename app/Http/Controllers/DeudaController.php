@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use App\Models\alquiler;
+use Illuminate\Support\Facades\DB;
 use App\Models\factura;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -98,7 +99,7 @@ class DeudaController extends Controller
             ->select('*')
             ->where('alquilerestadopago', '=', false)
             ->where('alquilertipopago','=','Efectivo')
-            ->where('name','LIKE','%'.$consulta.'%')
+            ->where(DB::raw('LOWER(name)'),'LIKE','%'. strtolower($consulta) .'%')
             //->where('clienteci','=',$consulta)
             ->get();
         }else{

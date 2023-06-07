@@ -91,7 +91,7 @@
                                 </ul>
                             </li> @endif
             @if(Gate::any(['crear-entradas','crear-salidas']))  <li>
-                            <a href="#"><img src="{{asset('dash/assets/eys.png')}}" width="45">
+                            <a href="#"><img src="{{asset('dash/assets/eys.png')}}" width="45" height="45">
                             <span class="label">E/S </span></a>
                      
                                 <ul class="menu-vertical">
@@ -101,8 +101,8 @@
                                 <li><a href="/registrar-salida">Marcar Salida</a></li>@endcan 
                                 </ul>
                             </li> @endif 
-             @can('ver-vehiculos')   <li>
-                            <a href="#"><img src="{{asset('dash/assets/user2 2.png')}}" width="45">
+             @can('ver-vehiculoos')   <li>
+                            <a href="#"><img src="{{asset('dash/assets/mensaje.png')}}" width="45" height="45">
                             <span class="label">Mensajes </span></a>
                                 <ul class="menu-vertical">
                                

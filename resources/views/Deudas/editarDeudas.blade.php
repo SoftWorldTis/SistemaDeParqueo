@@ -32,7 +32,7 @@
             
             <div class="exportar">
                 
-                <a href="/editar-deuda/imprimir">
+                <a href="/editar-deuda/reporte">
                     <button class="btnExportar">Exportar</button>
                 </a>
             </div>
@@ -60,7 +60,7 @@
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>
                         
-                           <a href="/cobrar-deudas/{{$deuda->alquilerid }}" onclick="recargar()">Cobrar</a>
+                           <a href="/editar-deuda/{{$deuda->alquilerid }}" onclick="recargar()">Cobrar</a>
                         </td>
                     </tr>
                 @endforeach

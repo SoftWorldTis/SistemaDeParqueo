@@ -57,9 +57,7 @@ padding: 15px 20px;
 color: white;
 text-decoration: none;
 }
-.menu-horizontal > li:hover{
-background-color: #0A1C44;
-}
+
 .menu-vertical{
 position: absolute;
 display: none;

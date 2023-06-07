@@ -177,17 +177,34 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update']);
  
  
-    //Rutas deudas
-    Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
-    Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
-    Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
-    //Rutas pagos
-    Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-    Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
-    Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
-    Route::get('/editar-pagos', [PagoController::class,'editarpagos'])->middleware('permiso:editar-pagos')->name('editarPagos');
-    Route::get('/editar-pagos/{id}', [PagoController::class,'edit'])->middleware('permiso:editar-pagos');
-    Route::post('/editar-pagos/{id}', [PagoController::class,'update'])->middleware('permiso:editar-pagos');
+   //Rutas deudas
+   Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+   Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+   Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
+   Route::get('/editar-deuda', [DeudaController::class,'editardeudas'])->middleware('permiso:editar-deuda')->name('editarDeuda');
+   Route::get('/editar-deuda/{id}', [DeudaController::class,'edit'])->middleware('permiso:editar-deuda')->name('cobrarDeuda');
+   Route::post('/editar-deuda/{id}', [DeudaController::class,'update'])->middleware('permiso:editar-deuda');
+
+
+   Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+   Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+   Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
+   //Rutas pagos
+
+   
+   Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
+   Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+   Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
+
+
+
+   Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
+   Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+   Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
+   Route::get('/editar-pagos', [PagoController::class,'editarpagos'])->middleware('permiso:editar-pagos')->name('editarPagos');
+   Route::get('/editar-pagos/{id}', [PagoController::class,'edit'])->middleware('permiso:editar-pagos');
+   Route::post('/editar-pagos/{id}', [PagoController::class,'update'])->middleware('permiso:editar-pagos');
+
 
 
     
