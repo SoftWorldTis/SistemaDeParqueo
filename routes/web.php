@@ -196,15 +196,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/editar-perfil', [PerfilController::class,'edit']);
     Route::post('/editar-perfil/{id}', [PerfilController::class,'update']);
 
-    //Rutas entradas
+    //Rutas entradas salidas
     Route::get('/registrar-entrada', [EntradasController::class,'buscarEntrada'])->middleware('permiso:crear-entradas');
     Route::get('/registrar-entrada/{alquiler}/{vehiculo}', [EntradasController::class,'marcarEntrada'])->middleware('permiso:crear-entradas');
-    Route::get('/registrar-salida', [EntradasController::class,'buscarSalida'])->middleware('permiso:crear-salidas');
+    Route::get('/registrar-salida', [EntradasController::class,'buscarSalida'])->middleware('permiso:crear-salidas')->name('salida');
     Route::get('/registrar-salida/{id}', [EntradasController::class,'marcarSalida'])->middleware('permiso:crear-salidas');
     Route::get('/ver-entradas-salidas', [EntradasController::class,'index'])->middleware('permiso:ver-salidas');
+    Route::post('/ver-entradas-salidas', [EntradasController::class,'buscar'])->middleware('permiso:ver-salidas');
+    Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-salidas')->name('reporteES');
 
-    //Rutas salidas
-    Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');
 
    // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
    // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
