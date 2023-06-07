@@ -9,13 +9,23 @@
 @endsection
 
 @section('contenido')
+<div class="titulo">
+    <div class="ParAr">
+        <p>Ingresos de parqueo</p>
+    </div>
+    @if ($message = Session::get('Registrado'))
+            <div class="valido">
+                <span>{{$message}}</span>
+            </div>
+    @endif
+
 <div class="herramientas">
-    
+  
+    <div class="contenedor-grid">
+
     <form method="get" action="/ver-ingresos" autocomplete="off" role="search">
     @csrf
-    <div class="ParAr">
-            <p>Ingresos de parqueo</p>
-        </div>
+  
         
         <div class="ParMed">
             <div class="buscador" id="buscador">
@@ -48,11 +58,21 @@
                          <img src="{{asset('/dash/assets/lupita_icono.png')}}" class="lupa" alt="">
                         </button>
                     </div>
+                  
             </div>
             
             
         </div>
     </form>
+
+    <div class="exportar">
+                
+        <a href="/ver-ingresos/reporte">
+            <button class="btnExportar">Exportar</button>
+        </a>
+    </div>
+
+</div>
     @if($resultados2&& $monto != 0 )
     <div  class="ParAb">
         <table class="tabla" >

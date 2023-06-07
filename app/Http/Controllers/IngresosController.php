@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class IngresosController extends Controller
 {
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-caja' , ['only' => ['update']]);
+        $this -> middleware('permission: ver-caja' , ['only' => ['update , show']]);
         
     }
 
@@ -53,11 +53,30 @@ class IngresosController extends Controller
                         $valor = $iteracion->alquilerprecio;
                         $sumatoria = $sumatoria + $valor;
                     }
-          
-            
-                
-         return view('ver-ingresos')->with('resultados2',$resultados2)->with('monto', $sumatoria) ->with('seleccionar',$seleccionar)->with('parking',$parking);
+                    $monto = $sumatoria;
+
+                    session(['resultados2' => $resultados2]);
+                    session(['monto' => $monto]);
+                    session(['seleccionar' => $seleccionar]);
+                    session(['parking' => $parking]);
+                    return view('ver-ingresos', compact('resultados2', 'monto', 'seleccionar', 'parking'));
     
         }
+
+        public function show(){
+            $resultados2 = session('resultados2');
+            $monto = session('monto');
+            $seleccionar = session('seleccionar');
+            $parking = session('parking');
+                
+              
+            $data = compact('resultados2', 'seleccionar', 'parking');
+    
+            $pdf = Pdf::loadView('ReportesPDF.reporteIngresos', $data);
+
+            return $pdf->stream();
+        }
+
+
 }
 

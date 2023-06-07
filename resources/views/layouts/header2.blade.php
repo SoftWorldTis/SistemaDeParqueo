@@ -25,7 +25,7 @@
 				</ul>
 			</li>@endif
           
-            @if(Gate::any(['ver-usuario','ver-parqueo','ver-vehiculos','ver-deuda','ver-pagos','editar-deuda']))  <li>
+            @if(Gate::any(['ver-usuario','ver-parqueo','ver-vehiculos','ver-deuda','ver-pagos','editar-deuda','ver-caja']))  <li>
             <a href="/ver-reportes"><img src="{{asset('dash/assets/report.png')}}" width="45">
             <span class="label">Reportes</span></a>
 				<ul class="menu-vertical">
@@ -39,7 +39,8 @@
                     <li><a href="/ver-parqueo">Ver Parqueos</a></li>@endcan
                     @can	('ver-vehiculos')
                     <li><a href="/ver-vehiculo">Ver Vehiculos</a></li>@endcan
-                  
+                    @can	('ver-caja')
+                    <li><a href="/ver-ingresos">Reporte de Ingresos</a></li>@endcan
                     @can	('ver-salidas')
                     <li><a href="/ver-entradas-salidas">Reporte de Entradas y Salidas</a></li>@endcan
                     @can	('editar-deuda')

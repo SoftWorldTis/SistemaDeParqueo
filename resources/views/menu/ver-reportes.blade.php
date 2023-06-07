@@ -77,6 +77,18 @@
             </div>
         </div>
         @endcan
+        @can('ver-caja')
+        <div class="usuarios">
+            <div class="r3">
+                <img src="{{asset('/dash/assets/documento icono 1.png')}}" class="iconUsuarios" alt="">
+               <a id="link" href="{{('/ver-ingresos')}}">
+                  <div class="botonUsuarios">
+                    <p>Reporte de Ingresos</p>
+                  </div>
+               </a>
+            </div>
+        </div>
+        @endcan
 
         @can	('ver-salidas')
         <div class="usuarios">

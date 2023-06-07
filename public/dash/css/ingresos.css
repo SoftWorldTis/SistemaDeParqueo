@@ -13,7 +13,7 @@
     .ParAr{
         text-align: center;
        margin-top: 10px;
-
+       margin-bottom: 20px;
     
     }
     .ParAr p {
@@ -29,10 +29,16 @@
  }
  .buscador{
      display: grid;
-     grid-template-columns: 1fr 1fr 1fr 0.4fr;
+     grid-template-columns: 1fr 1fr 1fr 0.4fr ;
      width: 100%;
 
  }
+
+ .contenedor-grid {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10px;
+}
  .linea{
     margin-right: 4.47%;
     width: 82.5%;
@@ -62,6 +68,25 @@
 
  }
  
+
+ .btnExportar{
+    border-radius: 20px;
+    width:180px ;
+    height:58px ;
+    background-color: #0A1C44;
+    margin-top: 29px ;
+    margin-bottom: 3px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #E4EAEA;
+    font-weight: bold;
+    cursor:pointer;
+
+}
+
+
  /*parte de abajo      //tabla y datos    */
 
  .ParAb{

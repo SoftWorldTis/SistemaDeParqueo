@@ -220,7 +220,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Rutas ingresos
     Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
- 
+    Route::get('/ver-ingresos/reporte',[IngresosController::class,'show'])->middleware('permiso:ver-caja');
     
    // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
    // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
