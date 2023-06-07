@@ -216,7 +216,7 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     //Rutas ingresos
-    Route::get('/ver-ingresos',[IngresosController::class,'update'])->name('ver-ingresos');
+    Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
  
     
    // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');

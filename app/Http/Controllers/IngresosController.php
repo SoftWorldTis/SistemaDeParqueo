@@ -9,7 +9,13 @@ use Carbon\Carbon;
 
 class IngresosController extends Controller
 {
- 
+    public function __construct()
+    {
+        //asignacion de permisos
+        $this -> middleware('permission: ver-caja' , ['only' => ['update']]);
+        
+    }
+
        public function update (Request $request) {
         $sumatoria =0;
         $seleccionar = DB::table('estacionamiento')
@@ -54,19 +60,4 @@ class IngresosController extends Controller
     
         }
 }
- /*
-        if ($request->filled('FechaInicio')&& $request -> filled ('FechaFin')) {
 
-            $fechaInicio = Carbon::parse($request->input('FechaInicio'));
-            $fechaFin = Carbon::parse($request->input('FechaFin'));
-        
-            $resultados = DB::table('alquiler')
-            ->whereBetween('alquilerfecha', [$fechaInicio, $fechaFin])
-            ->get();
-       
-            return view('ver-ingresos', ['resultados' => $resultados]);
-        } else {
-            // El input está vacío
-            // Realiza las acciones necesarias
-        }
-          */ 
