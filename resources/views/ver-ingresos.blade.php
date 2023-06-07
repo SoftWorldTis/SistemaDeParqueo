@@ -69,8 +69,7 @@
             </thead>
             <tbody id="table-body" class="tablaContenido">
                 <tr>
-                    
-                        
+
                    
                     @foreach ($resultados2 as $elemento)
                     <tr>
@@ -90,17 +89,17 @@
                   
   
         </table>
-        <div class="ParFin">
-            <div>
-                <p class="nom">Total</p>
-            </div>
-            <div class="din">
-                <input type="text" class="linea" class="dinero" value={{$monto}} readonly >
-            </div>
-        </div>
     </div>
     
-   @endif
+    <div class="ParFin">
+        <div>
+            <p class="nom">Total</p>
+        </div>
+        <div class="din">
+            <input type="text" class="linea" class="dinero" value={{$monto}} readonly >
+        </div>
+    </div>
+    @endif
 </div>
 
 

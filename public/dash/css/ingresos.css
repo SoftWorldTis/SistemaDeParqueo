@@ -24,7 +24,7 @@
 .ParMed{
     display: inline-block;
     width: 100%;
-
+    margin-bottom: 35px;
 
  }
  .buscador{
@@ -34,18 +34,17 @@
 
  }
  .linea{
-     margin-right: 4.47%;
-     width: 82.5%;
-     height: 36px;
-     background-color: transparent;
-     border:0;
-     border-bottom:1px solid #000000;
-     box-shadow: none;
-     outline:none;
-     font-size: 30px;
-    
- }
-
+    margin-right: 4.47%;
+    width: 82.5%;
+    height: 36px;
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 30px;
+   
+}
  .botonBuscar{
      display: inline-flex;
      width:50%;
@@ -66,12 +65,12 @@
  /*parte de abajo      //tabla y datos    */
 
  .ParAb{
-    /*height: 427px; */
+    height: 230px; 
     overflow: auto;
 
 }
 .tabla{
-    margin-top: 35px;
+   
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -79,7 +78,7 @@
     border-collapse: collapse;
     text-align: center;
     border: 1px solid #cdcdcd;
-    overflow: auto;
+    overflow-x: hidden;
     max-height: 300px; 
     
 }
@@ -88,6 +87,8 @@
     background-color: #0A1C44;
     color: #ffff;
     height: 61px;
+    position: sticky;
+    top:0;
 
 }
 
@@ -119,11 +120,12 @@ td{
     display: flex;
     justify-content: right;
     width: 100%;
+    margin-top: 10px;
 }
 .din{
     display: flex;
     justify-content: center;
     text-align: center;
     
-    width: 7%;
+    width: 7.5%;
 }
