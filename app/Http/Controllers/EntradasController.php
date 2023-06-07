@@ -196,7 +196,7 @@ class EntradasController extends Controller
         $consulta='';
         $vehiculo='';
         $entradas='';
-        //return view('EntradaSalida.marcar-salida', compact('consulta', 'vehiculo', 'entradas')) -> with('Mensaje', 'Salida marcada');
-        return back() -> with('Mensaje', 'Salida marcada');
+        return redirect()->route('salida', compact('consulta', 'vehiculo', 'entradas'))
+        ->with('Mensaje', 'Salida Marcada');
     }
 }
