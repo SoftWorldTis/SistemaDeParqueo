@@ -1,0 +1,185 @@
+
+/*generales , reajustar el fondo y creacion del grid    */
+.fondo{
+    background-color: #ffff;
+    margin-top: 1.56em;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+   width: 90.157%;
+  
+
+  }
+
+
+  .herramientas{
+    padding-left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 98.441%;
+   padding-top: 0px;
+     display: grid;
+     grid-template-rows: 114px 155px auto;
+
+
+    }
+
+/*parte de arriba           */
+    .ParAr{
+        text-align: center;
+       margin-top: 10px;
+
+    
+    }
+    .ParAr p {
+        font-size: 38px;
+        color: black;
+    }
+
+/*parte de medio       //buscador y exportar     */
+    .ParMed{
+       display: inline-block;
+
+
+    }
+    .buscador{
+        display: inline-block;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+
+    }
+    .linea{
+        margin-right: 4.47%;
+        /*width: 82.5%;*
+        height: 36px;*/
+        background-color: transparent;
+        border:0;
+        border-bottom:1px solid #000000;
+        box-shadow: none;
+        outline:none;
+        font-size: 20px;
+       
+    }
+
+    .botonBuscar{
+        display: inline-flex;
+        width:11.02%;
+        height:56px ;
+        background-color: #0A1C44;
+        justify-content: center;
+        align-items: center;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    .lupa{
+       width: 30px;
+       height: 30px;
+
+    }
+    
+    
+    .botonExportar{
+        margin-left: 51.997% ;
+        width:10.109% ;
+        height:56px ;
+        background-color: #0A1C44;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .botonExportar p {
+
+        font-size: 30px;
+    }
+
+    form{
+        display: inline-block;
+        width: 37.279%;
+    }
+
+
+
+/*parte de abajo      //tabla y datos    */
+
+    .ParAb{
+        /*height: 427px; */
+        overflow: auto;
+
+    }
+    .tabla{
+        width: 100%;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-size: 24px;
+        border-collapse: collapse;
+        text-align: center;
+        border: 1px solid #cdcdcd
+    }
+
+    .tablaTitulos{
+        background-color: #0A1C44;
+        color: #ffff;
+        height: 61px;
+
+    }
+    
+    .tablaContenido{
+        color: #0A1C44;
+        font-weight: lighter;
+
+        
+    }
+    .tablaContenido a{
+        text-decoration: none;
+    
+    }
+
+    td{
+        border-bottom: 1px solid #cdcdcd;
+        padding-bottom: 5px;
+    }
+    .borrarclie{
+
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        
+        color: purple;
+    }
+    .editarclie{
+        color: purple;  
+    }
+
+    .nom{
+        color: #000000;
+        font-size: 24px;
+        display: inline-block;
+    }
+
+    .item{
+        flex-direction: column;
+    }
+
+    .buscador .item {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      
+      .buscador .nom.inline {
+        display: inline;
+        margin-right: 5px;
+      }
+    
+      
+      
+      
+      
+      

@@ -202,6 +202,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/registrar-salida', [EntradasController::class,'buscarSalida'])->middleware('permiso:crear-salidas');
     Route::get('/registrar-salida/{id}', [EntradasController::class,'marcarSalida'])->middleware('permiso:crear-salidas');
     Route::get('/ver-entradas-salidas', [EntradasController::class,'index'])->middleware('permiso:ver-salidas');
+    Route::post('/ver-entradas-salidas', [EntradasController::class,'buscar'])->middleware('permiso:ver-salidas');
+    Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-salidas')->name('reporteES');
 
     //Rutas salidas
     Route::get('/ver-salidas', [SalidasController::class,'index'])->middleware('permiso:ver-salidas');

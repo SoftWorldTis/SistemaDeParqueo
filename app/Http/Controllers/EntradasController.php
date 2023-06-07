@@ -6,22 +6,91 @@ use App\Models\alquiler;
 use App\Models\entradaSalida;
 use App\Models\vehiculo;
 use App\Models\User;
+use App\Models\estacionamiento;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EntradasController extends Controller
 {
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-entradas|crear-entradas|editar-entrada|borrar-entrada' , ['only' => ['index']]);
-        $this -> middleware('permission: crear-entrada' , ['only' => ['create, store, entrada, buscarEntrada']]);
-        $this -> middleware('permission: editar-entrada' , ['only' => ['edit, update']]);
-        $this -> middleware('permission: borrar-entrada' , ['only' => ['destroy, borrar']]);
+        $this -> middleware('permission: crear-entradas' , ['only' => ['buscarEntrada, marcarEntrada']]);
+        $this -> middleware('permission: crear-salidas' , ['only' => ['buscarSalida, marcarSalida']]);
+        $this -> middleware('permission: ver-salidas' , ['only' => ['index, buscar, show']]);
     }
-    
+
+    public function index(Request $request){
+        $parqueos = estacionamiento::all();
+        $entradas = '';
+        return view('EntradaSalida.index', compact('parqueos', 'entradas', 'request'));
+    }
+
+    public function buscar(Request $request){
+        //dd($request);
+        $validatedData = $request->validate([
+            'fechainicio' => 'required|date',
+            'fechafin' => 'required|date|after_or_equal:fechainicio',
+        ],[
+            'fechafin.after_or_equal' =>'Fecha fin debe ser mayor a la Fecha inicio'
+        ]);
+
+        $fechaini =  DateTime::createFromFormat('Y-m-d', $request->input('fechainicio'));
+        $fechafin = Carbon::create($request->input('fechafin'));
+
+        if($request->input('parqueo') == null){
+            //dd('No hay parqueo');
+            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
+            ->where('salidatime', '<=', $fechafin)
+            ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
+            ->get();
+
+            //dd($entradas);
+        }else{
+            $parqueo = $request->input('parqueo');
+            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
+            ->where('salidatime', '<=', $fechafin)
+            ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
+            ->whereHas('alquiler', function ($query) use ($parqueo) {
+                $query->where('estacionamientoid', $parqueo);
+            })
+            ->get();
+            //dd($entradas);
+        }
+        $parqueos=estacionamiento::all();;
+        return view('EntradaSalida.index', compact('entradas' , 'parqueos', 'request'));
+    }
+
+    public function show(Request $request){
+
+        $fechaini =  DateTime::createFromFormat('Y-m-d', $request->input('fechainicio'));
+        $fechafin = Carbon::create($request->input('fechafin'));
+
+        if($request->input('parqueo') == null){
+            //dd('No hay parqueo');
+            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
+            ->where('salidatime', '<=', $fechafin)
+            ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
+            ->get();
+        }else{
+            $parqueo = $request->input('parqueo');
+            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
+            ->where('salidatime', '<=', $fechafin)
+            ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
+            ->whereHas('alquiler', function ($query) use ($parqueo) {
+                $query->where('estacionamientoid', $parqueo);
+            })
+            ->get();
+        }
+        $data=compact('entradas', 'request');
+        $pdf = Pdf::loadView('Reportes.EntradaSalida', $data);
+        return $pdf->stream();
+    }
+
     public function buscarEntrada(Request $request){
 
         $consulta= trim($request-> get('buscador'));
