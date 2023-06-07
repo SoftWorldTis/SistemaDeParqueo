@@ -11,7 +11,7 @@
 <div class="principal">
 
     <div class="titulo">
-        <p>Deudas</p>
+        <p>Cobrar</p>
     </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">

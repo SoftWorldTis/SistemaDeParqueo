@@ -46,7 +46,7 @@
 				</ul>
 			</li>@endif
            
-            @if(Gate::any(['crear-usuario','crear-parqueo','crear-alquiler','crear-vehiculo']))  <li>
+            @if(Gate::any(['crear-usuario','crear-parqueo','crear-alquiler','crear-vehiculo','editar-deuda']))  <li>
             <a href="#"><img src="{{asset('dash/assets/registroNav.png')}}" width="45">
             <span class="label">Registrar</span></a>
 				<ul class="menu-vertical">
@@ -58,7 +58,8 @@
                     <li><a href="/crear-alquiler">Registrar Alquiler</a></li>@endcan
                     @can	('crear-vehiculos')
                     <li><a href="/crear-vehiculo">Registrar Vehiculo</a></li>@endcan
-                  
+                    @can	('editar-deuda')
+                    <li><a href="/editar-deuda">Registrar Pago</a></li>@endcan
 				</ul>
 			</li>@endif
            
