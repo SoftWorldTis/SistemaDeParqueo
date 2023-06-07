@@ -26,6 +26,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\SalidasController;
+use App\Http\Controllers\IngresosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -217,6 +218,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-salidas')->name('reporteES');
 
 
+    //Rutas ingresos
+    Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
+ 
+    
    // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
    // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
     //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
