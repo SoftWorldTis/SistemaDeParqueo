@@ -13,6 +13,7 @@
 
     <div class="titulo">
         <p>Pagos</p>
+    </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
                     <span>{{$message}}</span>
@@ -47,8 +48,7 @@
                 <th class="grillatit">Usuario</th>
                 <th class="grillatit">CI</th>
                 <th class="grillatit">Fecha Alquiler</th>
-                <th class="grillatit">Deuda</th>
-                <th class="grillatit">Tipo</th>
+                <th class="grillatit">Pago</th>
       
               </tr>
             </thead>
@@ -60,7 +60,7 @@
                         <td>{{$pago->ci}}</td>
                         <td>{{$pago->alquilerfecha}}</td>
                         <td>{{$pago->alquilerprecio}}</td>
-                        <td>{{$pago->alquilertipopago}}</td>
+                       
                     </tr>
                 @endforeach
               
@@ -71,6 +71,6 @@
     
     
     
-    </div>
+
     @endsection
-   
+ 
