@@ -38,10 +38,12 @@
 
 /*parte de medio       //buscador y exportar     */
     .ParMed{
-       display: inline-block;
-
-
+       display: flex;
+       align-items: flex-end;
+       justify-content: space-between;
+       height: 70px;
     }
+
     .buscador{
         display: inline-block;
         width: 100%;
@@ -178,6 +180,10 @@
         margin-right: 5px;
       }
     
+      .botonExportar{
+        margin-left: 0px;
+        width: 150px;
+    }
       
       
       

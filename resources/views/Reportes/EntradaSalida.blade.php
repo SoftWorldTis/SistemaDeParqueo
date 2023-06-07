@@ -30,7 +30,6 @@
     <div class="titulo" >
         <h3>Reporte Entradas y Salidas</h3>
     </div>
-    <h4>Parqueo: {{$entradas[0]->alquiler->estacionamiento->estacionamientozona}}</h4>
     <h4>Fechas Inicio: {{date('d/m/Y', strtotime($request->fechainicio))}}</h4>
     <h4>Fechas Fin: {{date('d/m/Y', strtotime($request->fechafin))}}</h4>
     <table style="width: 100%;">

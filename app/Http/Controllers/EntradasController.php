@@ -39,21 +39,20 @@ class EntradasController extends Controller
             'fechafin.after_or_equal' =>'Fecha fin debe ser mayor a la Fecha inicio'
         ]);
 
-        $fechaini =  DateTime::createFromFormat('Y-m-d', $request->input('fechainicio'));
+        $fechaini =  Carbon::create($request->input('fechainicio'));
         $fechafin = Carbon::create($request->input('fechafin'));
-
+        //dd($fechafin);
         if($request->input('parqueo') == null){
             //dd('No hay parqueo');
-            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
-            ->where('salidatime', '<=', $fechafin)
+            $entradas = entradaSalida::whereDate('entradatime', '>=', $fechaini->format('Y-m-d'))
+            ->whereDate('salidatime', '<=', $fechafin->format('Y-m-d'))
             ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
             ->get();
 
-            //dd($entradas);
         }else{
             $parqueo = $request->input('parqueo');
-            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
-            ->where('salidatime', '<=', $fechafin)
+            $entradas = entradaSalida::whereDate('entradatime', '>=', $fechaini->format('Y-m-d'))
+            ->whereDate('salidatime', '<=', $fechafin->format('Y-m-d'))
             ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
             ->whereHas('alquiler', function ($query) use ($parqueo) {
                 $query->where('estacionamientoid', $parqueo);
@@ -67,19 +66,19 @@ class EntradasController extends Controller
 
     public function show(Request $request){
 
-        $fechaini =  DateTime::createFromFormat('Y-m-d', $request->input('fechainicio'));
+        $fechaini = Carbon::create($request->input('fechainicio'));
         $fechafin = Carbon::create($request->input('fechafin'));
 
         if($request->input('parqueo') == null){
             //dd('No hay parqueo');
-            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
-            ->where('salidatime', '<=', $fechafin)
+            $entradas = entradaSalida::whereDate('entradatime', '>=', $fechaini->format('Y-m-d'))
+            ->whereDate('salidatime', '<=', $fechafin->format('Y-m-d'))
             ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
             ->get();
         }else{
             $parqueo = $request->input('parqueo');
-            $entradas = entradaSalida::where('entradatime', '>=', $fechaini)
-            ->where('salidatime', '<=', $fechafin)
+            $entradas = entradaSalida::whereDate('entradatime', '>=', $fechaini->format('Y-m-d'))
+            ->whereDate('salidatime', '<=', $fechafin->format('Y-m-d'))
             ->with('alquiler.user', 'alquiler.estacionamiento', 'vehiculo')
             ->whereHas('alquiler', function ($query) use ($parqueo) {
                 $query->where('estacionamientoid', $parqueo);
@@ -160,10 +159,21 @@ class EntradasController extends Controller
                 ->get();
                 //dd($entradas);
                 if($entradas->count() == 0){
-                    return back() -> with('Error', 'No existe ninguna entrada marcada para el vehículo');
+                    $consulta='';
+                    $vehiculo='';
+                    $entradas='';
+                    //return view('EntradaSalida.marcar-salida', compact('consulta', 'vehiculo', 'entradas'))
+                    return redirect()->route('salida', compact('consulta', 'vehiculo', 'entradas'))
+                    ->with('Error', 'No existe ninguna entrada marcada para el vehículo');
                 }
             }else{
-                return back() -> with('Error', 'No existe ningun vehículo con esa placa');
+                $consulta='';
+                $vehiculo='';
+                $entradas='';
+               // return view('EntradaSalida.marcar-salida', compact('consulta', 'vehiculo', 'entradas'))
+                //->with('Error', 'No existe ningun vehículo con esa placa');
+                return redirect()->route('salida', compact('consulta', 'vehiculo', 'entradas'))
+                ->with('Error', 'No existe ningún vehículo con esa placa');
             }
         }else{
             $vehiculo = '';
@@ -183,7 +193,10 @@ class EntradasController extends Controller
             $entrada->salidatime= $tiempoActual;
             $entrada->save();
         }
-        
+        $consulta='';
+        $vehiculo='';
+        $entradas='';
+        //return view('EntradaSalida.marcar-salida', compact('consulta', 'vehiculo', 'entradas')) -> with('Mensaje', 'Salida marcada');
         return back() -> with('Mensaje', 'Salida marcada');
     }
 }
