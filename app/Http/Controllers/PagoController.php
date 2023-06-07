@@ -11,7 +11,13 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 class PagoController extends Controller
 {
+    public function __construct()
+    {
+        //asignacion de permisos
+     
+        $this -> middleware('permission:  ver-pagos' , ['only' => ['index, store, show']]);
 
+    }
 
     public function index(){
       

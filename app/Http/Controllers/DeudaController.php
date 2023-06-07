@@ -13,6 +13,12 @@ use App\Mail\facturaCorreo;
 use Barryvdh\DomPDF\Facade\Pdf;
 class DeudaController extends Controller
 {
+    public function __construct()
+    {
+        //asignacion de permisos
+        $this -> middleware('permission: ver-alquiler|editar-deuda' , ['only' => ['index']]);
+        $this -> middleware('permission: editar-deuda' , ['only' => ['edit, store, editardeudas, show']]);
+    }
     public function index(){
       
         $deudas= alquiler::join('users','userid', '=' ,'id')
@@ -75,7 +81,7 @@ class DeudaController extends Controller
             $mail = new facturaCorreo($pdfContent);
             Mail::to($factura->alquiler->user->email)->send($mail);
 
-            return back() -> with('Registrado', 'Alquiler registrado correctamente. Factura enviada');
+            return back() -> with('Registrado', 'Deuda pagado correctamente. Factura enviada');
 
      
         
