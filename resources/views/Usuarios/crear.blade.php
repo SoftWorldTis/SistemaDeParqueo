@@ -59,7 +59,7 @@
                     </div>
                 @enderror
             </div>
-            <div  class="nacimiento">
+            <div  class="CI">
                 <p class="nom">Fecha de Nacimiento</p>
                 <input type="date" class="linea" class="fecha"  name="fechanacimiento" value="{{old('fechanacimiento')}}" >
                 @error('fechanacimiento')
@@ -72,22 +72,28 @@
     
         <div class="fila3">
             <div class="Correo">
-                <label for="password" class="contra">
-                    <span>Contraseña:</span>
+                <label for="password" class="nom">
+                    <span>Contraseña</span>
                 </label>
+                <br>
                 <input type="password" id="password" name="password" class="linea" value="{{old('password')}}">
                 @error('password')
-                <b class="error">{{$message}}</b>
+                <div class="error">
+                    {{$message}}
+                </div>
                 @enderror
             </div>
             
             <div class="carro1">
-                <label for="password" class="contra">
-                    <span>Confirmar Contraseña:</span>
+                <label for="password" class="nom">
+                    <span>Confirmar Contraseña</span>
                 </label>
                 <input type="password" id="password" name="password_confirmation" class="linea" {{old('password_confirmation')}}>
+
                 @error('password_confirmation')
-                <b class="error">{{$message}}</b>
+                <div class="error">
+                    {{$message}}
+                </div>
                 @enderror
                 
             </div>
@@ -118,7 +124,7 @@
 
     </div>
     <div class="AbBotones">
-        <a id="link" href="{{('/lobby/RegistroUsuarios')}}"> 
+        <a id="link" href="{{('/lobby')}}"> 
         <button  type="button" class="cancelar button">
         <p>Cancelar</p>
         </button>

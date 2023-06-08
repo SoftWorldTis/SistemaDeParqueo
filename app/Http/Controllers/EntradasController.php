@@ -32,12 +32,7 @@ class EntradasController extends Controller
 
     public function buscar(Request $request){
         //dd($request);
-        $validatedData = $request->validate([
-            'fechainicio' => 'required|date',
-            'fechafin' => 'required|date|after_or_equal:fechainicio',
-        ],[
-            'fechafin.after_or_equal' =>'Fecha fin debe ser mayor a la Fecha inicio'
-        ]);
+       
 
         $fechaini =  Carbon::create($request->input('fechainicio'));
         $fechafin = Carbon::create($request->input('fechafin'));

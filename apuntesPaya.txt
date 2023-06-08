@@ -139,3 +139,49 @@ href="{{('/lobby/factura')}}"
    */
     // Redirigimos al usuario a la página de inicio de sesión
 
+/// ver-ingresos
+ @if($resultados2 && $monto != 0)
+    <div  class="ParAb">
+        <table class="tabla" >
+            <thead class="tablaTitulos">
+              <tr>
+                <th>Numero</th>
+                <th>Parqueo</th>
+                <th>Usuario</th>
+                <th>Espacio</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Monto</th>
+              </tr>
+            </thead>
+            <tbody id="table-body" class="tablaContenido">
+                <tr>
+                    @foreach ($resultados2 as $elemento)
+                    <tr>
+                        <td>{{ $elemento->alquilerid }}</td>
+                        <td>{{ $elemento->estacionamientoid }}</td>
+                        <td>{{ $elemento->userid }}</td>
+                        <td>{{$elemento->alquilersitio}}</td>
+                        <td>{{$elemento->alquilerfechaini}}</td>
+                        <td>{{$elemento->alguilerfechafin}}</td>
+                        <td>{{$elemento->alquilerprecio}}</td>
+                    </tr>
+                    @endforeach
+                </tr>
+        
+              </tbody>
+                  
+  
+        </table>
+        <div class=ParFin>
+            <p>Monto</p>
+            <input type="text" class="linea"  value={{$monto}}  >
+        </div>
+        
+    </div>
+  @endif
+</div>
+
+
+ 
+@endsection

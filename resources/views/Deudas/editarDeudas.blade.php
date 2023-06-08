@@ -11,7 +11,7 @@
 <div class="principal">
 
     <div class="titulo">
-        <p>Deudas</p>
+        <p>Cobrar</p>
     </div>
         @if ($message = Session::get('Registrado'))
                 <div class="valido">
@@ -30,12 +30,7 @@
             </form>
             
             
-            <div class="exportar">
-                
-                <a href="/editar-deuda/imprimir">
-                    <button class="btnExportar">Exportar</button>
-                </a>
-            </div>
+         
         </div>
         @if($deudas)
         <table class="tabla">
@@ -60,7 +55,7 @@
                         <td>{{$deuda->alquilerprecio}}</td>
                         <td>
                         
-                           <a href="/cobrar-deudas/{{$deuda->alquilerid }}" onclick="recargar()">Cobrar</a>
+                           <a href="/editar-deuda/{{$deuda->alquilerid }}" onclick="recargar()">Cobrar</a>
                         </td>
                     </tr>
                 @endforeach

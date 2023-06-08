@@ -18,9 +18,6 @@
                     <span>{{$message}}</span>
                 </div>
         @endif
-        <div class="subTit">
-            <p>Parqueo: Fcyt</p>
-        </div>
         <div class="fila">
 
             <form action="/ver-deuda" method="POST" autocomplete="off" role="search">
@@ -48,7 +45,6 @@
                 <th class="grillatit">CI</th>
                 <th class="grillatit">Fecha Alquiler</th>
                 <th class="grillatit">Deuda</th>
-                <th class="grillatit">Tipo</th>
       
               </tr>
             </thead>
@@ -60,7 +56,6 @@
                         <td>{{$deuda->ci}}</td>
                         <td>{{$deuda->alquilerfecha}}</td>
                         <td>{{$deuda->alquilerprecio}}</td>
-                        <td>{{$deuda->alquilertipopago}}</td>
                     </tr>
                 @endforeach
               

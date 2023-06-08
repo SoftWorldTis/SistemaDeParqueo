@@ -1,63 +1,90 @@
-nav{
-    height: 10.625rem;
-    background: #0A1C44;
-    border-radius: 0px 0px 50px 50px;
+
+header{
+
+  background-color: #0A1C44;
+  border-radius: 0px 0px 50px 50px;
+}
+p{
+  margin-top: 0.25rem ;
+  margin-bottom: 0.1875rem;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  line-height: 1.875rem;
+
+  color: #E4EAEA;
 
 }
-
 #link{
   color: black;
   text-decoration: none;
 }
-
-
-p{
-    margin-top: 0.25rem ;
-    margin-bottom: 0.1875rem;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 25px;
-    line-height: 30px;
-    color: #E4EAEA;
-    font-weight: bold;
+.icono{
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  margin-top: 40px;
+  margin-left: 1%;
+}
+.label{
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+body{
+  padding-left: 0%;
+}
+h1{
+  text-align: right;
+  color: white;
+  font-size: 25px;
+  padding-top: 47px;
+  margin-right: 1%;
+}
+.col{
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 
-.nav2{
-  display: flex;
-  justify-content: space-between;
-
-}
-.nav2 div{
- display: flex;
- flex-direction: column;
- height: 10.625rem;
- padding: 0;
- display: grid;
- grid-template-columns: 35.9% 54.4%;
-}
-.nav2 img{
-  width: 67.53%;
-  height: 5.558vh;
-  display: flex;
-  margin-top: 3.625rem;
-  flex-direction: column;
-  margin-left: 23.47%;
-}
-.nav2 p{
-  text-size-adjust: 1.875rem;
-  margin-top: 4.375rem;
-
-}
-.nav2 div:hover{
-  background-color: #324265;
-  width: 100%;
-}
-
-.nav2 .salir:hover{
-  background-color: #324265;
-  width: 114%;
-  border-radius: 0px 0px 50px 0px;
-}
 
 
+
+
+
+.menu-horizontal{
+list-style: none;
+display: flex;
+justify-content: space-around;
+}
+.menu-horizontal > li > a{
+display: block;
+padding: 15px 20px;
+color: white;
+text-decoration: none;
+}
+
+.menu-vertical{
+position: absolute;
+display: none;
+list-style: none;
+width: 200px;
+background-color: #0A1C44;
+}
+.menu-horizontal li:hover .menu-vertical{
+display: block;
+}
+.menu-vertical li:hover{
+background-color: rgba(102, 92, 92, 0.601);
+}
+
+.menu-vertical li a{
+display: block;
+color: white;
+text-decoration: none;
+padding: 15px 15px 15px 20px;
+}
+
+
+@media(max-width: 1600px){
+  body{
+    font-size: 23px;
+
+  }}

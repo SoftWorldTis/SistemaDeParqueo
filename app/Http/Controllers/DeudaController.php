@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use App\Models\alquiler;
+use Illuminate\Support\Facades\DB;
 use App\Models\factura;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -13,6 +14,12 @@ use App\Mail\facturaCorreo;
 use Barryvdh\DomPDF\Facade\Pdf;
 class DeudaController extends Controller
 {
+    public function __construct()
+    {
+        //asignacion de permisos
+        $this -> middleware('permission: ver-deuda|editar-deuda' , ['only' => ['index, store, show']]);
+        $this -> middleware('permission: editar-deuda' , ['only' => ['edit, editardeudas , update']]);
+    }
     public function index(){
       
         $deudas= alquiler::join('users','userid', '=' ,'id')
@@ -75,7 +82,7 @@ class DeudaController extends Controller
             $mail = new facturaCorreo($pdfContent);
             Mail::to($factura->alquiler->user->email)->send($mail);
 
-            return back() -> with('Registrado', 'Alquiler registrado correctamente. Factura enviada');
+            return back() -> with('Registrado', 'Deuda pagado correctamente. Factura enviada');
 
      
         
@@ -92,7 +99,7 @@ class DeudaController extends Controller
             ->select('*')
             ->where('alquilerestadopago', '=', false)
             ->where('alquilertipopago','=','Efectivo')
-            ->where('name','LIKE','%'.$consulta.'%')
+            ->where(DB::raw('LOWER(name)'),'LIKE','%'. strtolower($consulta) .'%')
             //->where('clienteci','=',$consulta)
             ->get();
         }else{

@@ -19,7 +19,7 @@
     width: 98.441%;
    padding-top: 0px;
      display: grid;
-     grid-template-rows: 114px 155px auto;
+     grid-template-rows: 90px 130px auto;
 
 
     }
@@ -27,7 +27,7 @@
 /*parte de arriba           */
     .ParAr{
         text-align: center;
-       margin-top: 10px;
+       margin-top: 25px;
 
     
     }
@@ -38,32 +38,37 @@
 
 /*parte de medio       //buscador y exportar     */
     .ParMed{
-       display: inline-block;
-
-
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 70px
     }
+    .item{
+        flex-direction: column;
+    }
+
     .buscador{
-        display: inline-block;
-        width: 100%;
+        margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
 
     }
     .linea{
-        margin-right: 4.47%;
-        width: 82.5%;
+        width: 394.44px;;
         height: 36px;
         background-color: transparent;
         border:0;
         border-bottom:1px solid #000000;
         box-shadow: none;
         outline:none;
-        font-size: 30px;
+        font-size: 24px;
        
     }
 
     .botonBuscar{
         display: inline-flex;
-        width:11.02%;
-        height:56px ;
+        width:50px;
+        height:40px ;
         background-color: #0A1C44;
         justify-content: center;
         align-items: center;
@@ -79,8 +84,7 @@
     
     
     .botonExportar{
-        margin-left: 51.997% ;
-        width:10.109% ;
+        width:180px ;
         height:56px ;
         background-color: #0A1C44;
         justify-content: center;
@@ -88,11 +92,12 @@
         border-radius: 15px;
         cursor: pointer;
         color: #fff;
+        font-weight: bold
     }
 
     .botonExportar p {
 
-        font-size: 30px;
+        font-size: 25px;
     }
 
     form{

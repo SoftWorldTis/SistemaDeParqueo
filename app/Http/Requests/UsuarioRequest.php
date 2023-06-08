@@ -29,8 +29,8 @@ class UsuarioRequest extends FormRequest
             'ci' => 'required|numeric|min:100000|max:9999999999|unique:App\Models\User,ci',
             'email' => 'required|email|min:10|max:40',
             'fechanacimiento' => 'required|date',
-            'password' => 'required|password|min:8|confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|same:password',
             'roles'=> 'required',
         ];
     }
@@ -50,7 +50,7 @@ class UsuarioRequest extends FormRequest
             'email.max' => 'El campo Correo admite máximo 40 carácteres',
             'email.min' => 'El campo Correo admite máximo 10 carácteres',
 
-            'passwod.min' => 'La contraseña debe tener minímo 8 carácteres',
+            'password.min' => 'La contraseña debe tener minímo 8 carácteres',
             'rol.required' => 'Es campo Roles es obligatorio',
         ];
     }

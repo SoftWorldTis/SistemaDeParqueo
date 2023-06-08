@@ -17,10 +17,9 @@
     margin-left: auto;
     margin-right: auto;
     width: 98.441%;
-   padding-top: 0px;
+     padding-top: 0px;
      display: grid;
      grid-template-rows: 114px 155px auto;
-
 
     }
 
@@ -66,8 +65,8 @@
 
     .botonBuscar{
         display: inline-flex;
-        width:11.02%;
-        height:56px ;
+        width:50px;
+        height:40px ;
         background-color: #0A1C44;
         justify-content: center;
         align-items: center;
@@ -83,20 +82,21 @@
     
     
     .botonExportar{
-        margin-left: 51.997% ;
-        width:10.109% ;
-        height:56px ;
+        width:180px ;
+        height:58px ;
         background-color: #0A1C44;
         justify-content: center;
         align-items: center;
         border-radius: 15px;
         cursor: pointer;
         color: #fff;
+        font-size: 25px;
+        font-weight: bold
     }
 
     .botonExportar p {
 
-        font-size: 30px;
+        font-size: 25px;
     }
 
     form{
@@ -172,7 +172,7 @@
     .buscador .item {
         display: inline-block;
         vertical-align: middle;
-        margin-right: 10px;
+        margin-right: 20px;
       }
       
       .buscador .nom.inline {
@@ -180,10 +180,7 @@
         margin-right: 5px;
       }
     
-      .botonExportar{
-        margin-left: 0px;
-        width: 150px;
-    }
+    
       
       
       

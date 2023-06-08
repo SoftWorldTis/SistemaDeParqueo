@@ -41,7 +41,7 @@
                         </select>
                     </div>
                     <div class="item">
-                        <p class="nom inline">Fecha inicio:</p>
+                        <p class="nom inline">Fecha Inicio:</p>
                         @if($request)
                         <input type="date" class="linea" class="fecha"  name="fechainicio" value="{{$request->fechainicio}}" >   
                         @else
@@ -55,7 +55,7 @@
                         @enderror
                     </div>
                     <div class="item">
-                        <p class="nom inline">Fecha fin:</p>
+                        <p class="nom inline">Fecha Fin:</p>
                         @if ($request)
                         <input type="date" class="linea" class="fecha"  name="fechafin" value="{{$request->fechafin}}" >    
                         @else

@@ -26,6 +26,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\SalidasController;
+use App\Http\Controllers\IngresosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -116,9 +117,9 @@ Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
 
 
 
-Route::get('/', function () {return view('welcome') ;});
+Route::get('/', [LoginController::class,'index'])->name('inicio');
 
-Route::get('/login', [LoginController::class,'index']);
+//Route::get('/login', [LoginController::class,'index']);
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout', [LoginController::class,'logout'])->name('logout');
 
@@ -126,6 +127,9 @@ Route::group(['middleware' => ['auth']], function(){
    
     Route::get('/lobby', function () {return view('lobby') ;});
     
+    // Rutas Menu
+    Route::get('/ver-reportes', function () {return view('menu.ver-reportes') ;});
+    Route::get('/ver-registros', function () {return view('menu.ver-registros') ;});
     //Rutas Rol
     Route::get('/crear-rol', [RolController::class,'create'])->middleware('permiso:crear-rol');
     Route::post('/crear-rol', [RolController::class,'store'])->middleware('permiso:crear-rol');
@@ -177,17 +181,25 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update']);
  
  
-    //Rutas deudas
-    Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
-    Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
-    Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
-    //Rutas pagos
-    Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-    Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
-    Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
-    Route::get('/editar-pagos', [PagoController::class,'editarpagos'])->middleware('permiso:editar-pagos')->name('editarPagos');
-    Route::get('/editar-pagos/{id}', [PagoController::class,'edit'])->middleware('permiso:editar-pagos');
-    Route::post('/editar-pagos/{id}', [PagoController::class,'update'])->middleware('permiso:editar-pagos');
+   //Rutas deudas
+   Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+   Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+   Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
+   Route::get('/editar-deuda', [DeudaController::class,'editardeudas'])->middleware('permiso:editar-deuda')->name('editarDeuda');
+   Route::get('/editar-deuda/{id}', [DeudaController::class,'edit'])->middleware('permiso:editar-deuda')->name('cobrarDeuda');
+   Route::post('/editar-deuda/{id}', [DeudaController::class,'update'])->middleware('permiso:editar-deuda');
+
+
+   //Rutas pagos
+
+   
+   Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
+   Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+   Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
+
+
+
+
 
 
     
@@ -206,6 +218,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-salidas')->name('reporteES');
 
 
+    //Rutas ingresos
+    Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
+    Route::get('/ver-ingresos/reporte',[IngresosController::class,'show'])->middleware('permiso:ver-caja');
+    
    // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
    // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
     //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');

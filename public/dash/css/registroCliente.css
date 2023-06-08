@@ -267,3 +267,18 @@ p::after {
 cursor: pointer;
 position: absolute;
 }
+
+.checkcentreado{
+  /*display: flex;*/
+  align-items: center;
+  margin: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  outline: none;
+  background-color: #D9D9D9;
+}
