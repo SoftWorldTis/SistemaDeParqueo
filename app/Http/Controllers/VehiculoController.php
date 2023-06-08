@@ -15,9 +15,9 @@ class VehiculoController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-vehiculos|crear-vehiculos|editar-vehiculos|borrar-vehiculos' , ['only' => ['index']]);
+        $this -> middleware('permission: ver-vehiculos' , ['only' => ['index, show, buscar']]);
         $this -> middleware('permission: crear-vehiculos' , ['only' => ['create, store']]);
-        $this -> middleware('permission: editar-vehiculos' , ['only' => ['edit, update']]);
+        $this -> middleware('permission: editar-vehiculos' , ['only' => ['edit, update, editarvehiculos']]);
         $this -> middleware('permission: borrar-vehiculos' , ['only' => ['destroy, borrar']]);
     }
 
@@ -99,9 +99,10 @@ class VehiculoController extends Controller
     public function destroy($id)
     {
         $consulta='';
-        if(vehiculo::find($id)){
+        $vehiculo = vehiculo::find($id);
+        if($vehiculo){
             //descomentar para eliminar
-            vehiculo::find($id)->delete();
+            $vehiculo->delete();
             return redirect()->route('borrarParqueo')-> with('Eliminado', 'Vehículo eliminado correctamente');
         }else{
             return redirect()->route('borrarParqueo')-> with('Error', 'Algo salio mal');

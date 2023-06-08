@@ -19,16 +19,16 @@ class UsuarioController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-usuario|crear-usuario|editar-usuario|borrar-usuario' , ['only' => ['index']]);
+        $this -> middleware('permission: ver-usuario' , ['only' => ['index, show, buscar']]);
         $this -> middleware('permission: crear-usuario' , ['only' => ['create, store']]);
-        $this -> middleware('permission: editar-usuario' , ['only' => ['edit, update']]);
+        $this -> middleware('permission: editar-usuario' , ['only' => ['edit, update, editarusuarios']]);
         $this -> middleware('permission: borrar-usuario' , ['only' => ['destroy, borrar']]);
     }
 
     public function index()
     {
         //con paginacion
-        $usuarios = User::paginate(5)->where('name', '!=', 'Superadmin');
+        $usuarios = User::all()->where('name', '!=', 'Superadmin');
         $consulta='';
         //dd($usuarios);
         return view ('Usuarios.index', compact('usuarios','consulta'));
@@ -106,12 +106,22 @@ class UsuarioController extends Controller
 
     
     public function destroy($id)
-    {   //dd($id);
-        $consulta='';
-        $usuarios='';
-        if(User::find($id)){
-            //descomentar para eliminar
-            //User::find($id)->delete();
+    {   
+        $usuario=User::find($id);
+        //dd($usuario->alquileres()->factura()->get());
+        if($usuario){
+            // Eliminar los vehículos relacionados
+            $usuario->vehiculo()->delete();
+            // Eliminar los registros relacionados en la tabla "factura"
+            $usuario->alquileres()->each(function ($alquiler) {
+                $alquiler->factura()->delete();
+            });
+            // Eliminar los alquileres relacionados
+            $usuario->alquileres()->delete();
+            // Eliminar los alquileres relacionados
+            $usuario->alquileres()->delete();
+            // Eliminar el usuario
+            $usuario->delete();
             return redirect()->route('borrarUsuario')-> with('Eliminado', 'Usuario eliminado correctamente');
         }else{
             return redirect()->route('borrarUsuario')-> with('Error', 'Algo salio mal');

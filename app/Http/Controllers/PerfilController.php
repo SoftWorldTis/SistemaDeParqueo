@@ -61,7 +61,7 @@ class PerfilController extends Controller
                 ->where('userid', '=', $user->id)
                 ->get();
 
-            //dd($vehiculos);
+            //dd($alquileres);
             return view('Perfil.ver', [
                 'usuario' =>  $user,
                 'vehiculos' => $vehiculos,

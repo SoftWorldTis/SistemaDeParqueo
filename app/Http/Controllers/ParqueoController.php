@@ -13,9 +13,9 @@ class ParqueoController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-parqueo|crear-parqueo|editar-parqueo|borrar-parqueo' , ['only' => ['index']]);
+        $this -> middleware('permission: ver-parqueo' , ['only' => ['index, show, buscar']]);
         $this -> middleware('permission: crear-parqueo' , ['only' => ['create, store']]);
-        $this -> middleware('permission: editar-parqueo' , ['only' => ['edit, update']]);
+        $this -> middleware('permission: editar-parqueo' , ['only' => ['edit, update, editarparqueos']]);
         $this -> middleware('permission: borrar-parqueo' , ['only' => ['destroy, borrar']]);
     }
 
@@ -113,12 +113,21 @@ class ParqueoController extends Controller
 
     
     public function destroy($id)
-    {   //dd($id);
-        $consulta='';
-        $parqueos='';
-        if(estacionamiento::find($id)){
-            //descomentar para eliminar
-            estacionamiento::find($id)->delete();
+    {   
+        $parqueo=estacionamiento::find($id);
+        if($parqueo){
+            //Eliminar todas las relaciones de entradas y salidas
+            $parqueo->alquileres()->each(function ($alquiler) {
+                $alquiler->entradaSalida()->delete();
+            });
+            //Eliminar todas las relaciones de alquiler 
+            $parqueo->alquileres()->each(function ($alquiler) {
+                $alquiler->factura()->delete();
+            });
+            // Eliminar los alquileres relacionados
+            $parqueo->alquileres()->delete();
+            //Eliminar Parqueo
+            $parqueo->delete();
             return redirect()->route('borrarParqueo')-> with('Eliminado', 'Parqueo eliminado correctamente');
         }else{
             return redirect()->route('borrarParqueo')-> with('Error', 'Algo salio mal');

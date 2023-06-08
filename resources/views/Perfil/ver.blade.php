@@ -11,7 +11,10 @@
         <div class="card--options">
             <a href="/editar-perfil">Editar Perfil</a>
             <br>
-            <a href="/editar-alquiler/{{$usuario->id}}"> Renovar Alquiler</a>
+            @if(count($alquileres)!= 0)
+            <a href="/editar-alquiler/{{$usuario->id}}"> Renovar Alquiler</a>    
+            @endif
+            
           
             
         </div>

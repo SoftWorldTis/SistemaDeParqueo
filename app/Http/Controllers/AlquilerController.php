@@ -25,9 +25,8 @@ class AlquilerController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-alquiler|crear-alquiler|editar-alquiler' , ['only' => ['index']]);
+        $this -> middleware('permission: ver-alquiler' , ['only' => ['index']]);
         $this -> middleware('permission: crear-alquiler' , ['only' => ['create, store, show']]);
-        $this -> middleware('permission: editar-alquiler' , ['only' => ['edit, update, show']]);
     }
 
     public function index(Request $request){
