@@ -94,12 +94,15 @@
    display: flex;
 align-items: center;
 
+
   }
   .textoNav p{
     font-size: 40px;
       color: black;
     margin-left: 50px;
+
   }
+  
 .icona{
 
   border-radius: 250px;
@@ -107,5 +110,6 @@ align-items: center;
   height: 350px;
   filter: brightness(0.79) contrast(2.9);
   margin-left: 110px;
+z-index: 1;
 }
 

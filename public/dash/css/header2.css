@@ -67,6 +67,7 @@ display: none;
 list-style: none;
 width: 200px;
 background-color: #0A1C44;
+z-index: 3;
 }
 .menu-horizontal li:hover .menu-vertical{
 display: block;
