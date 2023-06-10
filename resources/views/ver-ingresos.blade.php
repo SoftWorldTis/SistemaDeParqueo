@@ -117,7 +117,7 @@
             <p class="nom">Total</p>
         </div>
         <div class="din">
-            <input type="text" class="linea" class="dinero" value={{$monto}} readonly >
+            <input type="text" class="linea2" class="dinero" value={{$monto}} readonly >
         </div>
     </div>
     @endif

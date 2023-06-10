@@ -1,4 +1,4 @@
-/*generales , reajustar el fondo y creacion del grid    */
+/*generales , reajustar el fondo y creacion del grid    
 .fondo{
     background-color: #ffff;
     margin-top: 1.56em;
@@ -8,7 +8,7 @@
     width: 90.157%
   
 
-  }
+  }*/
     /*parte de arriba           */
     .ParAr{
         text-align: center;
@@ -54,9 +54,9 @@
     grid-gap: 10px;
 }
  .linea{
-    margin-right: 4.47%;
-    /*width: 82.5%;
-    height: 36px;*/
+    /*margin-right: 4.47%;*/
+    /*width: 82.5%;*/
+    /*height: 36px;*/
     background-color: transparent;
     border:0;
     border-bottom:1px solid #000000;
@@ -65,7 +65,19 @@
     font-size: 20px;
    
 }
- .botonBuscar{
+.linea2{
+    /*margin-right: 4.47%;*/
+    width: 82.5%;
+    /*height: 36px;*/
+    background-color: transparent;
+    border:0;
+    border-bottom:1px solid #000000;
+    box-shadow: none;
+    outline:none;
+    font-size: 24px;
+   
+} 
+.botonBuscar{
     display: inline-flex;
     width: 50px;
     height: 40px;
@@ -104,7 +116,7 @@
  /*parte de abajo      //tabla y datos    */
 
  .ParAb{
-    height: 230px; 
+    /*height: 230px; */
     overflow: auto;
 
 }
@@ -156,9 +168,13 @@ td{
 /*parte final*/
 .ParFin{
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     width: 100%;
     margin-top: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: baseline;
 }
 .din{
     display: flex;
@@ -174,7 +190,7 @@ td{
     margin-right: auto;
     width: 98.441%;
      padding-top: 0px;
-     display: grid;
+    /* display: grid;*/
      grid-template-rows: 114px 155px auto;
 
     }

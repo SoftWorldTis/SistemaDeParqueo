@@ -1,6 +1,7 @@
 
 <br>
-        <nav>
+        <nav style="    font-size: 24px;
+        font-family: 'Inter',sans-serif">
 		<ul class="menu-horizontal">
 			<li><a href="/lobby"><img src="{{asset('dash/assets/inicioNav.png')}}" width="45"> Inicio</a></li>
             @can('crear-rol')     <li>

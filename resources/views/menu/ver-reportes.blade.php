@@ -7,7 +7,7 @@
 @endsection
 
 @section('contenido')
-<div class="herramientas">
+<div class="herramientas" style="width: 100%">
     <div class="fila1">
         @can('ver-deuda')
         <div class="usuarios">
