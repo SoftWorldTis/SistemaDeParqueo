@@ -51,7 +51,7 @@
            
             @if(Gate::any(['crear-usuario','crear-parqueo','crear-alquiler','crear-vehiculo']))  <li>
             <a href="/ver-registros"><img src="{{asset('dash/assets/registroNav.png')}}" width="45">
-            <span class="label">Registrar</span></a>
+            <span class="label">Registro</span></a>
 				<ul class="menu-vertical">
                     @can	('crear-usuario')
                     <li><a href="/crear-usuario">Registrar Usuario</a></li>@endcan
