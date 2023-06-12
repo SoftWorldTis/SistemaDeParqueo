@@ -22,7 +22,7 @@ class ParqueoController extends Controller
     public function index()
     {
         //con paginacion
-        $parqueos = estacionamiento::paginate(5);
+        $parqueos = estacionamiento::all();
         $consulta='';
         return view ('Parqueos.index', compact('parqueos','consulta'));
        

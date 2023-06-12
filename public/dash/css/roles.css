@@ -1,0 +1,135 @@
+.herramientas{
+    padding-left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 98.441%;
+   padding-top: 0px;
+     display: grid;
+     grid-template-rows: 90px 130px auto;
+
+
+    }
+
+/*parte de arriba           */
+    .ParAr{
+        text-align: center;
+       margin-top: 25px;
+
+    
+    }
+    .ParAr p {
+        font-size: 38px;
+        color: black;
+    }
+
+/*parte de medio       //buscador y exportar     */
+    .ParMed{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 70px
+    }
+    .item{
+        flex-direction: column;
+    }
+
+    .buscador{
+        margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+
+    }
+    .linea{
+        width: 394.44px;;
+        height: 36px;
+        background-color: transparent;
+        border:0;
+        border-bottom:1px solid #000000;
+        box-shadow: none;
+        outline:none;
+        font-size: 24px;
+       
+    }
+
+    .botonBuscar{
+        display: inline-flex;
+        width:50px;
+        height:40px ;
+        background-color: #0A1C44;
+        justify-content: center;
+        align-items: center;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    .lupa{
+       width: 30px;
+       height: 30px;
+
+    }
+    
+    
+    .botonExportar{
+        width:180px ;
+        height:56px ;
+        background-color: #0A1C44;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: bold
+    }
+
+    .botonExportar p {
+
+        font-size: 25px;
+    }
+
+    form{
+        display: inline-block;
+        width: 37.279%;
+    }
+
+
+
+/*parte de abajo      //tabla y datos    */
+
+    .ParAb{
+        /*height: 427px; */
+        overflow: auto;
+
+    }
+    .tabla{
+        width: 100%;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-size: 24px;
+        border-collapse: collapse;
+        text-align: center;
+        border: 1px solid #cdcdcd
+    }
+
+    .tablaTitulos{
+        background-color: #0A1C44;
+        color: #ffff;
+        height: 61px;
+
+    }
+    
+    .tablaContenido{
+        color: #0A1C44;
+        font-weight: lighter;
+
+        
+    }
+    .tablaContenido a{
+        text-decoration: none;
+    
+    }
+
+    td{
+        border-bottom: 1px solid #cdcdcd;
+        padding-bottom: 5px;
+    }
+ 
