@@ -110,8 +110,8 @@
                                 <li><a href="/registrar-salida">Marcar Salida</a></li>@endcan 
                                 </ul>
                             </li> @endif 
-             @can('ver-vehiculoos')   <li>
-                            <a href="#"><img src="{{asset('dash/assets/mensaje.png')}}" width="45" height="45">
+             @can('enviar-mensajes')   <li>
+                            <a href="/enviar-mensaje"><img src="{{asset('dash/assets/mensaje.png')}}" width="45" height="45">
                             <span class="label">Mensajes </span></a>
                                 <ul class="menu-vertical">
                                

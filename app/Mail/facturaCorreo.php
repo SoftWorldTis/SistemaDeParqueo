@@ -29,9 +29,9 @@ class facturaCorreo extends Mailable
      */
     public function build()
     {
-        return $this->from('softworldtis@gmail.com', 'Softworld')
+        return $this->from('softworldtis@gmail.com', 'Parqueo UMSS')
         ->subject('Factura - alquiler de parqueo')
-        ->view('Reportes.facturaCuerpo')
+        ->view('Emails.facturaCuerpo')
         ->attachData($this->pdfContent, 'factura.pdf', [
             'mime' => 'application/pdf',
         ]);;
