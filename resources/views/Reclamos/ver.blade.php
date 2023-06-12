@@ -27,7 +27,6 @@
 
                 <p class="descripcion">{{ $reclamo->reclamodescripcion }}</p>
                 <p class="reclamousuario">Realizado por: {{ $reclamo->usuario->name }}</p>
-                <p class="reclamousuario">Fecha : {{ $reclamo->reclamofecha }}</p>
                 </div>     
             </div>
         @endforeach
