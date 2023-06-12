@@ -27,6 +27,7 @@ use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\SalidasController;
 use App\Http\Controllers\IngresosController;
+use App\Http\Controllers\ReclamosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -227,6 +228,12 @@ Route::group(['middleware' => ['auth']], function(){
     //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
 
   
+    //Reclamos 
+    Route::get('/crear-reclamos', [ReclamosController::class,'create'])->middleware('permiso:crear-reclamos');
+    Route::post('/crear-reclamos', [ReclamosController::class,'store'])->middleware('permiso:crear-reclamos');
+    Route::get('/ver-reclamos', [ReclamosController::class,'index'])->middleware('permiso:ver-reclamos');
+    Route::get('/ver-reclamos/reporte',[ReclamosController::class,'show'])->middleware('permiso:ver-reclamos');
+
 
    
 
