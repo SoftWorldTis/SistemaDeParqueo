@@ -4,13 +4,19 @@
         font-family: 'Inter',sans-serif">
 		<ul class="menu-horizontal">
 			<li><a href="/lobby"><img src="{{asset('dash/assets/inicioNav.png')}}" width="45"> Inicio</a></li>
-            @can('crear-rol')     <li>
+            @if(Gate::any(['crear-rol','editar-rol']))     <li>
                 <a href="/registro_usuario"><img src="{{asset('dash/assets/roles.png')}}" width="45" height="45">
                 <span class="label">Rol</span></a>
-                    <ul class="menu-vertical">
-                       <li><a href="/crear-rol">Crear rol</a></li>    
-                    </ul>
-                </li> @endcan
+                <ul class="menu-vertical">
+                @can('crear-rol')
+                    <li><a href="/crear-rol">Crear</a></li>    
+                @endcan
+
+                @can('editar-rol')
+                    <li><a href="/editar-rol">Editar</a></li>        
+                @endcan
+                </ul> 
+                </li>  @endif
                 
          @if(Gate::any(['editar-usuario','borrar-usuario']))  <li>
                      
@@ -31,19 +37,19 @@
             <span class="label">Reportes</span></a>
 				<ul class="menu-vertical">
                     @can	('ver-deuda')
-                    <li><a href="/ver-deuda">Ver Deudas </a></li>@endcan
+                    <li><a href="/ver-deuda">Deudas </a></li>@endcan
                     @can	('ver-pagos')
-                    <li><a href="/ver-pagos">Ver Pagos</a></li>@endcan
+                    <li><a href="/ver-pagos">Pagos</a></li>@endcan
                     @can	('ver-usuario')
-                    <li><a href="/ver-usuario">Ver Usuarios</a></li>@endcan
+                    <li><a href="/ver-usuario">Usuarios</a></li>@endcan
                     @can	('ver-parqueo')
-                    <li><a href="/ver-parqueo">Ver Parqueos</a></li>@endcan
+                    <li><a href="/ver-parqueo">Parqueos</a></li>@endcan
                     @can	('ver-vehiculos')
-                    <li><a href="/ver-vehiculo">Ver Vehiculos</a></li>@endcan
+                    <li><a href="/ver-vehiculo">Vehiculos</a></li>@endcan
                     @can	('ver-caja')
-                    <li><a href="/ver-ingresos">Reporte de Ingresos</a></li>@endcan
-                    @can	('ver-salidas')
-                    <li><a href="/ver-entradas-salidas">Reporte de Entradas y Salidas</a></li>@endcan
+                    <li><a href="/ver-ingresos">Ingresos</a></li>@endcan
+                    @can	('ver-entradas-salidas')
+                    <li><a href="/ver-entradas-salidas">Entradas y Salidas</a></li>@endcan
                     @can	('editar-deuda')
                     <li><a href="/editar-deuda">Cobrar</a></li>@endcan
                 </ul>
@@ -54,13 +60,13 @@
             <span class="label">Registro</span></a>
 				<ul class="menu-vertical">
                     @can	('crear-usuario')
-                    <li><a href="/crear-usuario">Registrar Usuario</a></li>@endcan
+                    <li><a href="/crear-usuario">Usuario</a></li>@endcan
                     @can	('crear-parqueo')
-                    <li><a href="/crear-parqueo">Registrar Parqueo</a></li>@endcan
+                    <li><a href="/crear-parqueo">Parqueo</a></li>@endcan
                     @can	('crear-alquiler')
-                    <li><a href="/crear-alquiler">Registrar Alquiler</a></li>@endcan
+                    <li><a href="/crear-alquiler">Alquiler</a></li>@endcan
                     @can	('crear-vehiculos')
-                    <li><a href="/crear-vehiculo">Registrar Vehiculo</a></li>@endcan
+                    <li><a href="/crear-vehiculo">Vehículo</a></li>@endcan
                    
 				</ul>
 			</li>@endif
@@ -85,7 +91,7 @@
 
             @if(Gate::any(['editar-vehiculos','borrar-vehiculos']))  <li> 
                             <a href="#"><img src="{{asset('dash/assets/carroo.png')}}"height="45"width="45">
-                            <span class="label">Vehiculos</span></a>
+                            <span class="label">Vehículos</span></a>
                                 <ul class="menu-vertical">
                                     @can	('editar-vehiculos')
                                     <li><a href="/editar-vehiculo">Editar</a></li>@endcan
