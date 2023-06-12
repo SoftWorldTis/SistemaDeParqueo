@@ -71,9 +71,9 @@
             <ul class="menu-vertical">
  
                 @can	('crear-reclamos')
-                <li><a href="/crear-reclamos">Registrar Reclamo</a></li>@endcan
+                <li><a href="/crear-reclamos">Registrar</a></li>@endcan
                 @can	('ver-reclamos')
-                <li><a href="/ver-reclamos">Ver Reclamos</a></li>@endcan
+                <li><a href="/ver-reclamos">Ver</a></li>@endcan
             </ul>
 			</li>@endif
 

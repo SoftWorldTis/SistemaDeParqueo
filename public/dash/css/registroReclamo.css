@@ -155,7 +155,7 @@
     
     
       .cartillas-container {
-        width: 100%;
+        width: 75%;
         display: grid;
          grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
         gap: 20px;
@@ -184,9 +184,14 @@
       margin-bottom: 10px;
       color: #000;
   }
+  .titulo-container {
+    display: flex;
+    justify-content: space-between;
+}
   .titulo {
     font-size: 24px;
     margin-bottom: 10px;
+
 }
 .reclamousuario {
   font-size: 16px;
