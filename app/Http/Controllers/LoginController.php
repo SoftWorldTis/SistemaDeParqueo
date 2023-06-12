@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Events\NotificacionDeudaEvent;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,7 @@ class LoginController extends Controller
 
     public function login(Request $request) {
         //dd($request);
-
+        
         $request->validate([
             'email'=> ['required','email','max:30'],
             'password'=> ['required','min:8','max:20'], 
@@ -27,6 +28,7 @@ class LoginController extends Controller
         $credentials = $request->only('email','password');
         if (Auth::attempt($credentials)) {
             // Inicio de sesión exitoso
+            event(new NotificacionDeudaEvent());
             $request->session()->regenerate();
             return redirect()->intended('/lobby');
         }
