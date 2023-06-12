@@ -27,6 +27,8 @@ use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\SalidasController;
 use App\Http\Controllers\IngresosController;
+use App\Http\Controllers\ReclamosController;
+use App\Http\Controllers\MensajeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,6 +135,9 @@ Route::group(['middleware' => ['auth']], function(){
     //Rutas Rol
     Route::get('/crear-rol', [RolController::class,'create'])->middleware('permiso:crear-rol');
     Route::post('/crear-rol', [RolController::class,'store'])->middleware('permiso:crear-rol');
+    Route::get('/editar-rol', [RolController::class,'editarroles'])->middleware('permiso:editar-rol')->name('editarRoles');
+    Route::get('/editar-rol/{id}', [RolController::class,'edit'])->middleware('permiso:editar-rol');
+    Route::post('/editar-rol/{id}', [RolController::class,'update'])->middleware('permiso:editar-rol');
 
     //Rutas Usuarios
     Route::get('/crear-usuario', [UsuarioController::class,'create'])->middleware('permiso:crear-usuario');
@@ -227,6 +232,12 @@ Route::group(['middleware' => ['auth']], function(){
     //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
 
   
+    //Reclamos 
+    Route::get('/crear-reclamos', [ReclamosController::class,'create'])->middleware('permiso:crear-reclamos');
+    Route::post('/crear-reclamos', [ReclamosController::class,'store'])->middleware('permiso:crear-reclamos');
+    Route::get('/ver-reclamos', [ReclamosController::class,'index'])->middleware('permiso:ver-reclamos');
+    Route::get('/ver-reclamos/reporte',[ReclamosController::class,'show'])->middleware('permiso:ver-reclamos');
+
 
    
 
@@ -246,6 +257,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/crear-salidas', [SalidasController::class,'create'])->middleware('permiso:crear-salidas');
     Route::post('/crear-salidas', [SalidasController::class,'store'])->middleware('permiso:crear-salidas');
     */
+
+    
+    //Rutas Mensaje
+    Route::get('/enviar-mensaje',[MensajeController::class,'create'])->middleware('permiso:enviar-mensajes');
+    Route::post('/enviar-mensaje',[MensajeController::class,'store'])->middleware('permiso:enviar-mensajes');
 });
 
 

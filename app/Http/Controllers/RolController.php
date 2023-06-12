@@ -16,17 +16,10 @@ class RolController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-rol|crear-rol|editar-rol|borrar-rol' , ['only' => ['index']]);
         $this -> middleware('permission: crear-rol' , ['only' => ['create, store']]);
-        $this -> middleware('permission: editar-rol' , ['only' => ['edit, update']]);
-        $this -> middleware('permission: borrar-rol' , ['only' => ['destroy']]);
+        $this -> middleware('permission: editar-rol' , ['only' => ['edit, update, editarroles']]);
     }
    
-    public function index()
-    {
-        $roles = Role::paginate();
-        return view ('Roles.index', compact('roles'));
-    }
 
   
     public function create()
@@ -58,12 +51,16 @@ class RolController extends Controller
     public function edit($id)
     {
         $rol= Role::find($id);
-        $permisos = Permission::get();
-        $rolesPermisos = DB::table('roles_has_permission')->where('roles_has_permission.role_id',$id)
-        -> pluck('roles_has_permission.permission_id','roles_has_permission.permission_id')
-        -> all();
-        dd($rolesPermisos);
-        return view('Roles.editar', compact('rol','permisos', 'rolesPermisos'));
+        if($rol){
+            $permisos = Permission::get();
+            //$rolPermisos = $rol->permissions()->get();
+            $rolPermisos = $rol->permissions()->pluck('name', 'name')->all();
+            //dd($rolPermisos);
+            return view('Roles.editar', compact('rol','permisos', 'rolPermisos'));
+        }else{
+            return redirect()->route('editarParqueos');
+        }
+        
     }
     
 
@@ -75,8 +72,8 @@ class RolController extends Controller
         $this -> validate($request, ['nombrerol'=> 'required', 'permisos' => 'required']);
         $rol= Role::find($id);
         $rol -> name = $request->input('nombrerol');
-        $rol -> syncPermission($request->input('permisos'));
-        return redirect()->route('Roles.index');
+        $rol -> syncPermissions($request->input('permisos'));
+        return back() -> with('Registrado', 'Rol actualizado correctamente');
 
     }
 
@@ -85,5 +82,19 @@ class RolController extends Controller
     {
         DB::table('roles')-> where('id', $id) -> delete();
         return redirect()->route('Roles.index');
+    }
+
+    public function editarroles(Request $request){
+        //dd($request);
+        $consulta= trim($request-> get('buscador'));
+        
+        if (!empty($consulta)) {
+            //$parqueos = estacionamiento::where('estacionamientozona', 'LIKE', '%' . $consulta . '%')->get();
+            $roles =Role::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])->where('name', '!=', 'Superadmin')->get();
+        }else{
+            $roles = Role::all()->where('name', '!=', 'Superadmin');
+        }
+
+        return view ('Roles.editarroles', compact('roles','consulta'));
     }
 }

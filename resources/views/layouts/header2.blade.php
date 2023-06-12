@@ -5,7 +5,7 @@
 		<ul class="menu-horizontal">
 			<li><a href="/lobby"><img src="{{asset('dash/assets/inicioNav.png')}}" width="45"> Inicio</a></li>
             @can('crear-rol')     <li>
-                <a href="/registro_usuario"><img src="{{asset('dash/assets/roles.png')}}" width="45" height="45">
+                <a href="#"><img src="{{asset('dash/assets/roles.png')}}" width="45" height="45">
                 <span class="label">Rol</span></a>
                     <ul class="menu-vertical">
                        <li><a href="/crear-rol">Crear rol</a></li>    
@@ -65,11 +65,17 @@
 				</ul>
 			</li>@endif
            
-           @can('ver-vehiculos') <li>
+            @if(Gate::any(['crear-reclamos','ver-reclamos']))  <li>  
             <a href="#"><img src="{{asset('dash/assets/reclamoNav.png')}}" width="45">
             <span class="label">Reclamos</span></a>
-				
-			</li>@endcan
+            <ul class="menu-vertical">
+ 
+                @can	('crear-reclamos')
+                <li><a href="/crear-reclamos">Registrar</a></li>@endcan
+                @can	('ver-reclamos')
+                <li><a href="/ver-reclamos">Ver</a></li>@endcan
+            </ul>
+			</li>@endif
 
             @if(Gate::any(['editar-parqueo','borrar-parqueo']))  <li>  
                 <a href="#"><img src="{{asset('dash/assets/parqueoNav.png')}}" width="45">
@@ -104,8 +110,8 @@
                                 <li><a href="/registrar-salida">Marcar Salida</a></li>@endcan 
                                 </ul>
                             </li> @endif 
-             @can('ver-vehiculoos')   <li>
-                            <a href="#"><img src="{{asset('dash/assets/mensaje.png')}}" width="45" height="45">
+             @can('enviar-mensajes')   <li>
+                            <a href="/enviar-mensaje"><img src="{{asset('dash/assets/mensaje.png')}}" width="45" height="45">
                             <span class="label">Mensajes </span></a>
                                 <ul class="menu-vertical">
                                
