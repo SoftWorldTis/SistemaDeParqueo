@@ -49,7 +49,7 @@ class PagoController extends Controller
         
         ->get();
         $data=compact('pagos');
-        $pdf = Pdf::loadView('ReportesPDF.reportePagos', $data);
+        $pdf = Pdf::loadView('Reportes.reportePagos', $data);
         return $pdf->stream();
         //return $pdf->download('ReportePagos.pdf');
     }

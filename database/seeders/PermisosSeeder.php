@@ -17,10 +17,8 @@ class PermisosSeeder extends Seeder
     {
         $permisos = [
             //permisos de rol
-            'ver-rol',
             'crear-rol',
             'editar-rol',
-            'borrar-rol',
 
             //permisos de usuario
             'ver-usuario',
@@ -41,32 +39,19 @@ class PermisosSeeder extends Seeder
             'borrar-parqueo',
 
             //permisos alquiler
-            'ver-alquiler',
             'crear-alquiler',
-            'editar-alquiler',
-
 
             //permisos deuda
             'ver-deuda',
             'editar-deuda',
+
             //permisos pagos
             'ver-pagos',
-           
-
-            //permisos caja
-            'ver-caja',
-
-            //permisos entradas
-            'ver-entradas',
+        
+            //permisos entradas y salidas
             'crear-entradas',
-
-            //permisos entradas
-            'ver-salidas',
             'crear-salidas',
-
-             //permisos entradas
-             'ver-salidas',
-             'crear-salidas',
+            'ver-entradas-salidas',
 
              //permisos reclamos
              'ver-reclamos',

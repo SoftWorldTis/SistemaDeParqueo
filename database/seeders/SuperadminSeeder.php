@@ -37,7 +37,7 @@ class SuperadminSeeder extends Seeder
         // Crear el superusuario y asignarle el rol de Administrador
         $superadmin = User::create([
             'name' => 'Superadmin',
-            'email' => 'softworld@gmail.com',
+            'email' => 'softworldtis@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
         $superadmin->assignRole('Superadmin');

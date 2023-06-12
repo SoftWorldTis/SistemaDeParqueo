@@ -21,7 +21,7 @@ class EntradasController extends Controller
         //asignacion de permisos
         $this -> middleware('permission: crear-entradas' , ['only' => ['buscarEntrada, marcarEntrada']]);
         $this -> middleware('permission: crear-salidas' , ['only' => ['buscarSalida, marcarSalida']]);
-        $this -> middleware('permission: ver-salidas' , ['only' => ['index, buscar, show']]);
+        $this -> middleware('permission: ver-entradas-salidas' , ['only' => ['index, buscar, show']]);
     }
 
     public function index(Request $request){

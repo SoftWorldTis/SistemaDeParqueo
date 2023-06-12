@@ -175,9 +175,4 @@ class AlquilerController extends Controller
         }
     }
 
-
-    public function enviar (){
-        $correo = new pruebaCorreo();
-        Mail::to('softworldtis@gmail.com')->send($correo);
-    }
 }

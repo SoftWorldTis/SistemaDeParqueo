@@ -51,7 +51,7 @@ class DeudaController extends Controller
         ->where('alquilertipopago','=','Efectivo')
         ->get();
         $data=compact('deudas');
-        $pdf = Pdf::loadView('ReportesPDF.reporteDeudas', $data);
+        $pdf = Pdf::loadView('Reportes.reporteDeudas', $data);
         return $pdf->stream();
         //return $pdf->download('ReporteDeudas.pdf');
     }

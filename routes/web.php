@@ -1,129 +1,41 @@
 <?php
-
-use App\Http\Controllers\AlquilerController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\facturaController;
+
+
+//Controladores de las rutas
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisParqueoController;
-
-use App\Http\Controllers\GuardiaController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\ListaClientesController;
-use App\Http\Controllers\DeudasController;
-use App\Http\Controllers\PerfilController;
-use App\Http\Controller\ListaGuardiasController;
-use App\Http\Controllers\PagosController;
-use App\Http\Controllers\FuncionalidadController;
-use App\Http\Controllers\RenovarAlquilerController;
-
-//Nuevo
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Middleware\RevisarPermiso;
 use App\Http\Controllers\ParqueoController;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\AlquilerController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
-use App\Http\Controllers\SalidasController;
 use App\Http\Controllers\IngresosController;
 use App\Http\Controllers\MensajeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Aqui se encuentran todas las rutas necesarias para el funcionamiento
+| del sistema de parqueo
 |
 */
 
-Route::get('/profile/{editar}', function ($editar) {
-    return view('profile').$editar;
-});
 
 
-
-
-
-Route::group(['prefix'=>'lobby','as'=>'lobby.'], function () {
-    Route::get('/', function () {return view('lobby') ;});
-    Route::get('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'index'])->name('editarcliente');
-    Route::put('/EditarCliente/{idd}', [\App\Http\Controllers\EditarClientesController::class, 'update'])->name('actualizarcliente');
-    //Route::resource('/EditarCliente/{idd}', EditarClientesController::class)->name('/EditarCliente');
-    Route::resource('/RegistroParqueos',RegisParqueoController::class);
-
-    Route::resource('/RegistroGuardias', GuardiaController::class);
-    Route::resource('/CrearFuncionalidad', FuncionalidadController::class);
-
-    Route::resource("/RegistroCliente",ClienteController::class);
-    Route::resource("/ListaClientes",ListaClientesController::class);
-
-
-    Route::get('/ListaUsuarios', function () {return view('listaUsuarios') ;});
-    Route::get('/ListaReportes', function () {return view('listaReportes') ;});
-
-
-    Route::get('/RegistroUsuarios', function () {return view('registroUsuario') ;});
-    Route::get('/RegistroOpciones', function () {return view('registroOpciones') ;});
-    Route::get('/RegistroCliente', function () {return view('registroCliente') ;});
-
-
-
-    Route::resource('/Alquiler', AlquilerController::class);
-    /*Route::post('/Alquiler', [AlquilerController::class, 'index']);
-    Route::get('/Alquiler/{$id}', [AlquilerController::class, 'showparqueo']);
-    Route::post('/Alquiler', [AlquilerController::class, 'showcliente']);*/
-
-    //Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-
-    /*
-    Route::get('/descargar-pdf', [App\Http\Controllers\pdfController::class,'index'])->name('descargar-pdf');
-    */
-    /*
-    Route::get('/descargar-pdf', function () {$pdf = PDF::loadView('pdf'); return $pdf->download('archivo.pdf');});
-    */
-      /*
-    Route::resource('/Alquiler',facturaController::class);
-    */
-    Route::get('/pdf', function () {return view('pdf') ;});
-    /*
-    Route::get('/pdf',[App\Http\Controllers\facturaController::class,'pdf1'])->name('pdf');
-    */
-    //Route::get("/ListaDeudas",[App\Http\Controllers\DeudasController::class,'index'])->name('/ListaDeudas');
-    Route::resource("/ListaDeudas", DeudasController::class);
-    //Route::post("/ReporteDeudas/imprimir", 'DeudasController@imprimir');
-    //Route::get('/ReporteDeudas/{$id}',  DeudasController::class);
-
-    Route::get("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'index'])->name('vercliente');
-    Route::post("/ListaClientes",[App\Http\Controllers\ListaClientesController::class,'store'])->name('guardarcliente');
-    Route::delete('/ListaClientes/{idd}',[App\Http\Controllers\ListaClientesController::class,'destroy'])->name('borrarcliente');
-
-    Route::get("/ReporteClientes/imprimir",[App\Http\Controllers\ListaClientesController::class,'show'])->name('/ReporteClientes/imprimir');
-
-    Route::get("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'index'])->name('/ListaGuardias');
-    Route::get("/ReporteGuardias/imprimir",[App\Http\Controllers\ListaGuardiasController::class,'show'])->name('/ReporteGuardias');
-
-    Route::get("/EditarGuardia/{idd}",[App\Http\Controllers\ListaGuardiasController::class,'edit'])->name('guardia.edit.view');
-    Route::post("/ListaGuardias",[App\Http\Controllers\ListaGuardiasController::class,'store'])->name('/ListaGuardias');
-
-
-    Route::resource('Perfil', PerfilController::class);
-    Route::resource("/ListaPagos", PagosController::class);
-   // Route::resource('/RenovarAlquiler/{id}', RenovarAlquilerController::class);
-});
-
-
-
-
-
+//Ruta Principal
 Route::get('/', [LoginController::class,'index'])->name('inicio');
 
-//Route::get('/login', [LoginController::class,'index']);
+//Rutas de Login
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout', [LoginController::class,'logout'])->name('logout');
 
+//Rutas para todo usuario Autenticado
 Route::group(['middleware' => ['auth']], function(){
    
     Route::get('/lobby', function () {return view('lobby') ;});
@@ -131,6 +43,7 @@ Route::group(['middleware' => ['auth']], function(){
     // Rutas Menu
     Route::get('/ver-reportes', function () {return view('menu.ver-reportes') ;});
     Route::get('/ver-registros', function () {return view('menu.ver-registros') ;});
+
     //Rutas Rol
     Route::get('/crear-rol', [RolController::class,'create'])->middleware('permiso:crear-rol');
     Route::post('/crear-rol', [RolController::class,'store'])->middleware('permiso:crear-rol');
@@ -149,8 +62,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/editar-usuario/{id}', [UsuarioController::class,'update'])->middleware('permiso:editar-usuario');
     Route::get('/borrar-usuario', [UsuarioController::class,'borrar'])->middleware('permiso:borrar-usuario')->name('borrarUsuario');
     Route::get('/borrar-usuario/{id}', [UsuarioController::class,'destroy'])->middleware('permiso:borrar-usuario');
-
-    
 
     //Rutas Parqueos 
     Route::get('/crear-parqueo', [ParqueoController::class,'create'])->middleware('permiso:crear-parqueo');
@@ -180,33 +91,22 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/crear-alquiler', [AlquilerController::class,'create'])->middleware('permiso:crear-alquiler');
     Route::post('/crear-alquiler', [AlquilerController::class,'store'])->middleware('permiso:crear-alquiler');
     Route::get('/crear-alquiler/{id}', [AlquilerController::class,'show'])->middleware('permiso:crear-alquiler');
-    Route::get('/ver-alquiler', [AlquilerController::class,'index'])->middleware('permiso:ver-alquiler');
     Route::get('/editar-alquiler/{id}', [AlquilerController::class,'edit']);
     Route::post('/editar-alquiler/{id}', [AlquilerController::class,'update']);
  
- 
-   //Rutas deudas
-   Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
-   Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
-   Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
-   Route::get('/editar-deuda', [DeudaController::class,'editardeudas'])->middleware('permiso:editar-deuda')->name('editarDeuda');
-   Route::get('/editar-deuda/{id}', [DeudaController::class,'edit'])->middleware('permiso:editar-deuda')->name('cobrarDeuda');
-   Route::post('/editar-deuda/{id}', [DeudaController::class,'update'])->middleware('permiso:editar-deuda');
+    //Rutas deudas
+    Route::get('/ver-deuda', [DeudaController::class,'index'])->middleware('permiso:ver-deuda');
+    Route::post('/ver-deuda', [DeudaController::class,'store'])->middleware('permiso:ver-deuda');
+    Route::get('/ver-deuda/reporte', [DeudaController::class,'show'])->middleware('permiso:ver-deuda');
+    Route::get('/editar-deuda', [DeudaController::class,'editardeudas'])->middleware('permiso:editar-deuda')->name('editarDeuda');
+    Route::get('/editar-deuda/{id}', [DeudaController::class,'edit'])->middleware('permiso:editar-deuda')->name('cobrarDeuda');
+    Route::post('/editar-deuda/{id}', [DeudaController::class,'update'])->middleware('permiso:editar-deuda');
 
+    //Rutas pagos
+    Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
+    Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
+    Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
 
-   //Rutas pagos
-
-   
-   Route::get('/ver-pagos', [PagoController::class,'index'])->middleware('permiso:ver-pagos');
-   Route::post('/ver-pagos', [PagoController::class,'store'])->middleware('permiso:ver-pagos');
-   Route::get('/ver-pagos/reporte', [PagoController::class,'show'])->middleware('permiso:ver-pagos');
-
-
-
-
-
-
-    
     //Rutas Perfil
     Route::get('/ver-perfil', [PerfilController::class,'show']);
     Route::get('/editar-perfil', [PerfilController::class,'edit']);
@@ -217,18 +117,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/registrar-entrada/{alquiler}/{vehiculo}', [EntradasController::class,'marcarEntrada'])->middleware('permiso:crear-entradas');
     Route::get('/registrar-salida', [EntradasController::class,'buscarSalida'])->middleware('permiso:crear-salidas')->name('salida');
     Route::get('/registrar-salida/{id}', [EntradasController::class,'marcarSalida'])->middleware('permiso:crear-salidas');
-    Route::get('/ver-entradas-salidas', [EntradasController::class,'index'])->middleware('permiso:ver-salidas');
-    Route::post('/ver-entradas-salidas', [EntradasController::class,'buscar'])->middleware('permiso:ver-salidas');
-    Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-salidas')->name('reporteES');
-
+    Route::get('/ver-entradas-salidas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas-salidas');
+    Route::post('/ver-entradas-salidas', [EntradasController::class,'buscar'])->middleware('permiso:ver-entradas-salidas');
+    Route::get('/ver-entradas-salidas/reporte',[EntradasController::class,'show'])->middleware('permiso:ver-entradas-salidas')->name('reporteES');
 
     //Rutas ingresos
     Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
     Route::get('/ver-ingresos/reporte',[IngresosController::class,'show'])->middleware('permiso:ver-caja');
-    
-   // Route::get('/ver-entradas', [EntradasController::class,'index'])->middleware('permiso:ver-entradas');
-   // Route::get('/crear-entradas', [EntradasController::class,'create'])->middleware('permiso:crear-entradas');
-    //Route::post('/crear-entradas', [EntradasController::class,'store'])->middleware('permiso:crear-entradas');
 
     //Rutas Mensaje
     Route::get('/enviar-mensaje',[MensajeController::class,'create'])->middleware('permiso:enviar-mensajes');

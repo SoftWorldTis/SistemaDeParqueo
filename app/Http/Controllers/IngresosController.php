@@ -72,7 +72,7 @@ class IngresosController extends Controller
               
             $data = compact('resultados2', 'seleccionar', 'parking');
     
-            $pdf = Pdf::loadView('ReportesPDF.reporteIngresos', $data);
+            $pdf = Pdf::loadView('Reportes.reporteIngresos', $data);
 
             return $pdf->stream();
         }
