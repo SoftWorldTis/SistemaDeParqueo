@@ -28,7 +28,7 @@ class NotiDeudor extends Mailable
      */
     public function build()
     {
-       return $this->from('cespedes10aleydahesse@gmail.com', 'Servicio al cliente')
+       return $this->from('softworldtis@gmail.com', 'Servicio al cliente')
                 ->subject('Tienes un deuda pendiente en nuestro sistema de parqueo')
                 ->view('NotificacionDeuda');
     }
