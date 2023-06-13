@@ -14,6 +14,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\DeudaController;
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\IngresosController;
+use App\Http\Controllers\ReclamosController;
 use App\Http\Controllers\MensajeController;
 
 /*
@@ -125,6 +126,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/ver-ingresos',[IngresosController::class,'update'])->middleware('permiso:ver-caja');
     Route::get('/ver-ingresos/reporte',[IngresosController::class,'show'])->middleware('permiso:ver-caja');
 
+    //Reclamos 
+    Route::get('/crear-reclamos', [ReclamosController::class,'create'])->middleware('permiso:crear-reclamos');
+    Route::post('/crear-reclamos', [ReclamosController::class,'store'])->middleware('permiso:crear-reclamos');
+    Route::get('/ver-reclamos', [ReclamosController::class,'index'])->middleware('permiso:ver-reclamos');
+    Route::get('/ver-reclamos/reporte',[ReclamosController::class,'show'])->middleware('permiso:ver-reclamos');
+    
     //Rutas Mensaje
     Route::get('/enviar-mensaje',[MensajeController::class,'create'])->middleware('permiso:enviar-mensajes');
     Route::post('/enviar-mensaje',[MensajeController::class,'store'])->middleware('permiso:enviar-mensajes');

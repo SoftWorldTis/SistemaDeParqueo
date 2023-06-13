@@ -91,6 +91,10 @@ class AlquilerController extends Controller
             $alquiler -> alquilerestadopago= false;
         }else{
             $alquiler -> alquilerestadopago= true;
+            //para la notificacion de los deudores
+            DB::table('users')
+                 ->where('id',  $request->input('usuarioid'))
+                ->update(['lastnotification' => Carbon::now()]);
         }
 
         $alquiler-> save();

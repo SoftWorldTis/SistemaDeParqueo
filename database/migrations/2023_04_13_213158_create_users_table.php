@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->integer('ci')->nullable();
             $table->date('fechanacimiento')->nullable();
+            $table->date('lastnotification')->nullable();
         });
     }
 

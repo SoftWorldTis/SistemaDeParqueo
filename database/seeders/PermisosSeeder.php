@@ -56,7 +56,7 @@ class PermisosSeeder extends Seeder
              //permisos reclamos
              'ver-reclamos',
              'crear-reclamos',
-             'borrar-reclamos',
+             /*'borrar-reclamos',*/
 
              //permisos enciar mensajes globales - individuales
              'enviar-mensajes'

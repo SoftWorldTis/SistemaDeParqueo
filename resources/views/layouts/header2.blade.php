@@ -71,11 +71,17 @@
 				</ul>
 			</li>@endif
            
-           @can('ver-vehiculos') <li>
+            @if(Gate::any(['crear-reclamos','ver-reclamos']))  <li>  
             <a href="#"><img src="{{asset('dash/assets/reclamoNav.png')}}" width="45">
             <span class="label">Reclamos</span></a>
-				
-			</li>@endcan
+            <ul class="menu-vertical">
+ 
+                @can	('crear-reclamos')
+                <li><a href="/crear-reclamos">Registrar</a></li>@endcan
+                @can	('ver-reclamos')
+                <li><a href="/ver-reclamos">Ver</a></li>@endcan
+            </ul>
+			</li>@endif
 
             @if(Gate::any(['editar-parqueo','borrar-parqueo']))  <li>  
                 <a href="#"><img src="{{asset('dash/assets/parqueoNav.png')}}" width="45">

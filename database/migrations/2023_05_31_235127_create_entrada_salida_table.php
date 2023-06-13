@@ -16,12 +16,12 @@ class CreateEntradaSalidaTable extends Migration
         Schema::create('entrada_salida', function (Blueprint $table) {
             $table->Bigincrements('esid');
             $table->unsignedInteger('alquilerid');
-            $table->unsignedBigInteger('vehiculoid');
+            $table->unsignedInteger('vehiculoid');
             $table->dateTime('entradatime');
             $table->dateTime('salidatime')->nullable();
 
-            $table->foreign('alquilerid')->references('alquilerid')->on('alquiler')->onDelete('cascade');
-            $table->foreign('vehiculoid')->references('vehiculoid')->on('vehiculo')->onDelete('cascade');
+            $table->foreign('alquilerid')->references('alquilerid')->on('alquiler');
+            $table->foreign('vehiculoid')->references('vehiculoid')->on('vehiculo');
         });
     }
 
