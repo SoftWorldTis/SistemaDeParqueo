@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\User;
-
+use Illuminate\Support\Carbon;
 class UsuarioRequest extends FormRequest
 {
     /**
@@ -28,7 +28,7 @@ class UsuarioRequest extends FormRequest
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:10|max:40',
             'ci' => 'required|numeric|min:100000|max:9999999999|unique:App\Models\User,ci',
             'email' => 'required|email|min:10|max:40',
-            'fechanacimiento' => 'required|date',
+            'fechanacimiento' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
             'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required|same:password',
             'roles'=> 'required',
@@ -45,7 +45,8 @@ class UsuarioRequest extends FormRequest
             'ci.max' => 'El campo CI admite máximo 10 dígitos',
             'ci.min' => 'El campo CI admite minímo 6 dígitos',
             'ci.unique' => 'El campo CI ya fue registrado',
-            'fechanacimiento.date' => 'La Fecha de Nacimiento debe ser una fecha',
+            'fechanacimiento.before' => 'Debes ser mayor de 18 años',
+            'fechanacimiento.' => 'La Fecha de Nacimiento debe ser una fecha',
             'email.email' => 'Ingresar un correo valido',
             'email.max' => 'El campo Correo admite máximo 40 carácteres',
             'email.min' => 'El campo Correo admite máximo 10 carácteres',

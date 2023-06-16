@@ -41,7 +41,7 @@ class ParqueoController extends Controller
             $archivo = $request->file('estacionamientoimagen');
             if ($archivo->isValid()) {
                 $imageName = time().'.'.$request->estacionamientoimagen->extension();  
-                $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
+                $pathImg= $request->estacionamientoimagen->move(public_path('img'), $imageName);
 
                 $estacionamiento =new estacionamiento();
                 $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
@@ -104,7 +104,7 @@ class ParqueoController extends Controller
         $archivo = $request->file('estacionamientoimagen');
         if ($archivo!=null) {
             $imageName = time().'.'.$request->estacionamientoimagen->extension();  
-            $pathImg= $request->estacionamientoimagen->move(public_path('images'), $imageName);
+            $pathImg= $request->estacionamientoimagen->move(public_path('img'), $imageName);
             $parqueo -> estacionamientoimagen= $imageName;
         }
         $parqueo -> save();

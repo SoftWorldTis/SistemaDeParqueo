@@ -29,6 +29,13 @@ class ReclamosController extends Controller
     }
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'reclamotitulo' => 'required|min:5|max:30',
+            'reclamodescripcion' => 'required',
+        ], [
+            'reclamotitulo.max' => 'No debe ser mayor a 30 carácteres',
+            'reclamotitulo.min' => 'Debe contener al menos 5 carácteres',
+        ]);
         if (Auth::check()) {
             $user = Auth::user();
             //dd($user);
@@ -44,7 +51,7 @@ class ReclamosController extends Controller
                 $reclamo -> save();    
 
             //dd($alquileres);
-            return back() -> with('Registrado', '}Reclamo registrado correctamente');
+            return back() -> with('Registrado', 'Reclamo registrado correctamente');
         } else {
             dd('Algo salio mal');
         }

@@ -14,6 +14,8 @@ use Illuminate\Support\Arr;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\alquiler;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Carbon;
 class UsuarioController extends Controller
 {
     public function __construct()
@@ -86,9 +88,14 @@ class UsuarioController extends Controller
     {
         $usuario= User::find($id);
         $validatedData = $request->validate([
-            'ci' => 'required|unique:App\Models\User,ci,' . $usuario->ci,
-        ],[
-            'ci.unique' => 'El campo CI ya fue registrado', 
+            'ci' => [
+                'required',
+                Rule::unique('users')->ignore($usuario->id),
+            ],
+            'fechanacimiento' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
+        ], [
+            'ci.unique' => 'El campo CI ya fue registrado',
+            'fechanacimiento.before' => 'Debes ser mayor de 18 años',
         ]);
         //Verificar cambios en password
         $input = $request ->all();

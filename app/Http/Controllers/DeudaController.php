@@ -82,7 +82,7 @@ class DeudaController extends Controller
             $mail = new facturaCorreo($pdfContent);
             Mail::to($factura->alquiler->user->email)->send($mail);
 
-            return back() -> with('Registrado', 'Deuda pagado correctamente. Factura enviada');
+            return back() -> with('Registrado', 'Deuda pagada correctamente. Factura enviada');
 
      
         

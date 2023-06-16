@@ -36,8 +36,13 @@
 
             <div class ="Ci">
                 <p class="nom">Descripcion</p>
-                <textarea class="lineaArea" id="reclamodescripcion" name="reclamodescripcion" value="{{old('reclamodescripcion')}}">
-                </textarea>
+                <textarea name="reclamodescripcion" id="reclamodescripcion" cols="30" rows="10" class="mensaje" 
+                placeholder="Describa su asunto aquí..." >{{old('reclamodescripcion')}}</textarea>
+                @error('reclamodescripcion')
+                    <div class="error">
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
 
                   
@@ -47,38 +52,7 @@
 
 
 
-        <script>
-            const textarea = document.getElementById('reclamodescripcion');
-            const placeholderText = 'Describe tu asunto aquí...';
-          
-            // Establecer el texto de marcador de posición al cargar la página
-            textarea.value = placeholderText;
-            textarea.classList.add('placeholder');
-          
-            // Agregar y eliminar el texto de marcador de posición según las interacciones del usuario
-            textarea.addEventListener('input', function() {
-              if (textarea.value.trim() === '') {
-                textarea.value = placeholderText;
-                textarea.classList.add('placeholder');
-              } else {
-                textarea.classList.remove('placeholder');
-              }
-            });
-          
-            textarea.addEventListener('focus', function() {
-              if (textarea.value === placeholderText) {
-                textarea.value = '';
-                textarea.classList.remove('placeholder');
-              }
-            });
-          
-            textarea.addEventListener('blur', function() {
-              if (textarea.value.trim() === '') {
-                textarea.value = placeholderText;
-                textarea.classList.add('placeholder');
-              }
-            });
-          </script>
+
 
 
 

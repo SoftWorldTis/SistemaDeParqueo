@@ -5,7 +5,7 @@
 		<ul class="menu-horizontal">
 			<li><a href="/lobby"><img src="{{asset('dash/assets/inicioNav.png')}}" width="45"> Inicio</a></li>
             @if(Gate::any(['crear-rol','editar-rol']))     <li>
-                <a href="/registro_usuario"><img src="{{asset('dash/assets/roles.png')}}" width="45" height="45">
+                <a href="#"><img src="{{asset('dash/assets/roles.png')}}" width="45" height="45">
                 <span class="label">Rol</span></a>
                 <ul class="menu-vertical">
                 @can('crear-rol')

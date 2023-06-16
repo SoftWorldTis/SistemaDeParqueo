@@ -59,7 +59,7 @@
                     </div>
                 @enderror
             </div>
-            <div  class="nacimiento">
+            <div  class="CI">
                 <p class="nom">Fecha de Nacimiento</p>
                 <input type="date" class="linea" class="fecha"  name="fechanacimiento" value="{{ $usuario->fechanacimiento}}">
                 @error('fechanacimiento')
@@ -72,7 +72,7 @@
     
         <div class="fila3">
             <div class="Correo">
-                <label for="password" class="contra">
+                <label for="password" class="nom">
                     <span>Contraseña:</span>
                 </label>
                 <input type="password" id="password" name="password" class="linea" value="{{old('password')}}">
@@ -82,7 +82,7 @@
             </div>
             
             <div class="carro1">
-                <label for="password" class="contra">
+                <label for="password" class="nom">
                     <span>Confirmar Contraseña:</span>
                 </label>
                 <input type="password" id="password" name="password_confirmation" class="linea" {{old('password_confirmation')}}>

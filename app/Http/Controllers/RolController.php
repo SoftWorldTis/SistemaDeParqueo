@@ -33,7 +33,14 @@ class RolController extends Controller
     {
         //dd($permisos);
         //Se puede cambiar por un Request
-        $this -> validate($request, ['nombrerol'=> 'required|max:15|min:5|unique:Spatie\Permission\Models\Role,name', 'permisos' => 'required']);
+        $this -> validate($request, ['nombrerol'=> 'required|max:15|min:5|unique:Spatie\Permission\Models\Role,name', 'permisos' => 'required'],
+        [
+            'nombrerol.required' => 'El campo Nombre Rol es requerido.',
+            'nombrerol.max' => 'El campo Nombre Rol no puede tener más de  15 carácteres.',
+            'nombrerol.min' => 'El campo Nombre Rol debe tener al menos 5 carácteres.',
+            'nombrerol.unique' => 'El nombre de rol ya está en uso.',
+            'permisos.required' => 'Debe seleccionar al menos un permiso.'
+        ]);
         
         $rol= Role::create(['name' => $request->input('nombrerol')]);
         $rol -> syncPermissions($request->input('permisos'));

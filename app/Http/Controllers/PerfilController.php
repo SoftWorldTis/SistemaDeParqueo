@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
-
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Carbon;
 class PerfilController extends Controller
 {
    
@@ -32,12 +33,19 @@ class PerfilController extends Controller
 
     public function update(Request $request, $id)
     {
+        //dd(User::find($id));
         $usuario= User::find($id);
         $validatedData = $request->validate([
-            'ci' => 'required|unique:App\Models\User,ci,' . $usuario->ci,
-        ],[
-            'ci.unique' => 'El campo CI ya fue registrado', 
+            'ci' => [
+                'required',
+                Rule::unique('users')->ignore($usuario->id),
+            ],
+            'fechanacimiento' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
+        ], [
+            'ci.unique' => 'El campo CI ya fue registrado',
+            'fechanacimiento.before' => 'Debes ser mayor de 18 años',
         ]);
+       
         $input = $request ->all();
         if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);

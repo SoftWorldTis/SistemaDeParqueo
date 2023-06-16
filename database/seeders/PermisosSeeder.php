@@ -48,6 +48,10 @@ class PermisosSeeder extends Seeder
             //permisos pagos
             'ver-pagos',
         
+            
+            //permisos ingresos
+            'ver-ingresos',
+        
             //permisos entradas y salidas
             'crear-entradas',
             'crear-salidas',

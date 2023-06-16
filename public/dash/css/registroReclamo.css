@@ -346,3 +346,12 @@ input[type="checkbox"] {
   outline: none;
   background-color: #D9D9D9;
 }
+
+.mensaje{
+  width: 100%;
+  height: auto;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  resize: none;
+    
+}
