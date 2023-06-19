@@ -27,7 +27,7 @@ class ParqueoRequest extends FormRequest
     public function rules()
     {
         return [
-            'estacionamientozona'=> ['required','min:3','max:25','unique:App\Models\estacionamiento,estacionamientozona', new superior],
+            'estacionamientozona'=> ['required','min:3','max:25', new superior],
             'estacionamientocorreo'=> ['required','email','min:10','max:25', new superior], 
             'estacionamientohoraInicio'=> ['required'],
             'estacionamientohoraCierre'=> ['required', 'after:estacionamientohoraInicio'],
@@ -44,7 +44,6 @@ class ParqueoRequest extends FormRequest
             'estacionamientozona.required' => 'El campo es obligatorio',
             'estacionamientozona.min' => 'Debe contener al menos 3 carácteres',
             'estacionamientozona.max' => 'Este campo no permite más de 25 carácteres',
-            'estacionamientozona.unique' => 'El estacionamiento ya fue registrado',
             'estacionamientocorreo.required' => 'El campo es obligatorio',
             'estacionamientocorreo.email' => 'Ingresar un correo válido',
             'estacionamientocorreo.max' => 'El campo admite máximo 25 carácteres',

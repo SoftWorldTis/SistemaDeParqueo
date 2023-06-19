@@ -39,6 +39,11 @@
             <div class ="Ci">
                 <p class="nom">CI</p>
                 <input type="text" class="linea" name="ci" value="{{old('ci')}}" placeholder="Ingrese su CI ">
+                @if ($errors->has('uss'))
+                <b class="error">
+                    {{ $errors->first('uss') }}
+                <b>
+              @endif
                 @error('ci')
                     <div class="error">
                         {{$message}}
