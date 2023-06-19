@@ -15,8 +15,8 @@
             @csrf
             <div class="Usuario">
                 <span class="nombre">Usuario</span>
-                <input type="text"  class="linea" name="email" >
-                @error('email')
+                <input type="text"  class="linea" name="email_ci">
+                @error('email_ci')
                 <b class="error">{{$message}}</b>
                 @enderror
             </div>
