@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/editar-rol', [RolController::class,'editarroles'])->middleware('permiso:editar-rol')->name('editarRoles');
     Route::get('/editar-rol/{id}', [RolController::class,'edit'])->middleware('permiso:editar-rol');
     Route::post('/editar-rol/{id}', [RolController::class,'update'])->middleware('permiso:editar-rol');
+    Route::get('/ver-roles/historial',[RolController::class,'show'])->middleware('permiso:ver-historial-permisos-rol');
 
     //Rutas Usuarios
     Route::get('/crear-usuario', [UsuarioController::class,'create'])->middleware('permiso:crear-usuario');
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/editar-usuario/{id}', [UsuarioController::class,'update'])->middleware('permiso:editar-usuario');
     Route::get('/borrar-usuario', [UsuarioController::class,'borrar'])->middleware('permiso:borrar-usuario')->name('borrarUsuario');
     Route::get('/borrar-usuario/{id}', [UsuarioController::class,'destroy'])->middleware('permiso:borrar-usuario');
+    Route::get('/ver-usuarios/historial',[UsuarioController::class,'historial'])->middleware('permiso:ver-historial-roles-usuario');
 
     //Rutas Parqueos 
     Route::get('/crear-parqueo', [ParqueoController::class,'create'])->middleware('permiso:crear-parqueo');

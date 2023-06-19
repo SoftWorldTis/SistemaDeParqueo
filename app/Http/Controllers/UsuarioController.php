@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\alquiler;
+use App\Models\UserRolHistory;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Carbon;
 class UsuarioController extends Controller
@@ -21,10 +22,11 @@ class UsuarioController extends Controller
     public function __construct()
     {
         //asignacion de permisos
-        $this -> middleware('permission: ver-usuario' , ['only' => ['index, show, buscar']]);
-        $this -> middleware('permission: crear-usuario' , ['only' => ['create, store']]);
-        $this -> middleware('permission: editar-usuario' , ['only' => ['edit, update, editarusuarios']]);
-        $this -> middleware('permission: borrar-usuario' , ['only' => ['destroy, borrar']]);
+        $this -> middleware('permission:ver-usuario' , ['only' => ['index, show, buscar']]);
+        $this -> middleware('permission:crear-usuario' , ['only' => ['create, store']]);
+        $this -> middleware('permission:editar-usuario' , ['only' => ['edit, update, editarusuarios']]);
+        $this -> middleware('permission:borrar-usuario' , ['only' => ['destroy, borrar']]);
+        $this -> middleware('permission:ver-historial-roles-usuario' , ['only' => ['historial']]);
     }
 
     public function index()
@@ -48,11 +50,19 @@ class UsuarioController extends Controller
     
     public function store(UsuarioRequest $request)
     {
-        //dd($request);
         $input = $request ->all();
         $input['password'] = Hash::make($input['password']);
         $usuario = User::create($input);
         $usuario->assignRole($request->input('roles'));
+        $roles = $request->input('roles');
+        foreach ($roles as $rol) {
+            UserRolHistory::create([
+                'userid' => $usuario->id,
+                'roleid' => $rol,
+                'change' => 'Asignado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
         return back() -> with('Registrado', 'Usuario registrado correctamente');
     }
 
@@ -97,6 +107,7 @@ class UsuarioController extends Controller
             'ci.unique' => 'El campo CI ya fue registrado',
             'fechanacimiento.before' => 'Debes ser mayor de 18 años',
         ]);
+
         //Verificar cambios en password
         $input = $request ->all();
         if(!empty($input['password'])){
@@ -104,10 +115,35 @@ class UsuarioController extends Controller
         }else{
             $input = Arr::except($input, array('password'));
         }
+
         $usuario= User::find($id);
+        $rolesAnteriores= $usuario->roles->pluck('id')->toArray();
+        $roles = $request->input('roles');
+        foreach ($roles as $rol) {
+            UserRolHistory::create([
+                'userid' => $usuario->id,
+                'roleid' => $rol,
+                'change' => 'Asignado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
+
         $usuario->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-        $usuario->assignRole($request->input('roles'));
+        //$usuario->assignRole($request->input('roles'));
+        $usuario->syncRoles($request->input('roles'));
+
+        $rolesActuales = $usuario->roles->pluck('id')->toArray();
+        $rolesRevocados = array_diff($rolesAnteriores, $rolesActuales);
+        //dd($rolesAnteriores, $rolesActuales, $rolesRevocados);
+        foreach ($rolesRevocados as $rol) {
+            UserRolHistory::create([
+                'userid' => $usuario->id,
+                'roleid' => $rol,
+                'change' => 'Revocado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
         return back() -> with('Registrado', 'Usuario actualizado correctamente');
     }
 
@@ -171,5 +207,12 @@ class UsuarioController extends Controller
         }
 
         return view ('Usuarios.editarusuarios', compact('usuarios','consulta'));
+    }
+
+    public function historial(){
+        $historial = UserRolHistory::with('user', 'role')->get();
+        $data=compact('historial');
+        $pdf = Pdf::loadView('Reportes.historialUsuario', $data);
+        return $pdf->stream();
     }
 }
