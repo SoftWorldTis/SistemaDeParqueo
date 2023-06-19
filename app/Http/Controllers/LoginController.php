@@ -21,21 +21,27 @@ class LoginController extends Controller
         //dd($request);
         
         $request->validate([
-            'email'=> ['required','email','max:30'],
-            'password'=> ['required','min:8','max:20'], 
+            'email_ci' => ['required', 'max:30'],
+            'password' => ['required', 'min:8', 'max:20'], 
         ]);
-        
-        $credentials = $request->only('email','password');
+    
+        $credentials = [
+            'password' => $request->input('password')
+        ];
+    
+        $emailCi = $request->input('email_ci');
+        $field = filter_var($emailCi, FILTER_VALIDATE_EMAIL) ? 'email' : 'ci';
+        $credentials[$field] = $emailCi;
+    
         if (Auth::attempt($credentials)) {
             // Inicio de sesión exitoso
             event(new NotificacionDeudaEvent());
             $request->session()->regenerate();
             return redirect()->intended('/lobby');
         }
-
+    
         // Inicio de sesión fallido
-        return redirect()->back()->withErrors(['email' => 'Credenciales inválidas']);
-        
+        return redirect()->back()->withErrors(['email_ci' => 'Credenciales inválidas']);
 
     }
 
