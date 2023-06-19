@@ -32,6 +32,11 @@
    <div class="Zona Pi" >
         <p>Zona</p>
         <input type="text"id="zona"class="linea"name="estacionamientozona" onkeyup="lettersOnly(this)" onblur="verificar(this)" value="{{old('estacionamientozona')}}"placeholder="Ingrese la Zona del lugar">
+        @if ($errors->has('esta'))
+        <b class="error">
+            {{ $errors->first('esta') }}
+        <b>
+      @endif
         @error('estacionamientozona')
             <b class="error">{{$message}}<b>
         @enderror

@@ -27,6 +27,7 @@
             <div class ="Ci">
                 <p class="nom">CI</p>
                 <input type="text" class="linea" name="ci" value="{{old('ci')}}" placeholder="Ingrese su CI ">
+             
                 @error('ci')
                     <div class="error">
                         {{$message}}
@@ -41,6 +42,11 @@
                  <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vinput')}}" readonly>
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
+                @if ($errors->has('vehiculo'))
+    <div class="error">
+        {{ $errors->first('vehiculo') }}
+    </div>
+@endif
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}
@@ -64,21 +70,21 @@
 
             <div class="Modelo inputmodal">
                 <p class="nom2" data-lastchar="*" >Modelo  </p>
-                <input type="text" class="linea3" name="vehiculomodelo" id="vehiculomodelo1" >
+                <input type="text" class="linea3" name="vehiculomodelo" id="vehiculomodelo1" value="{{ old('vehiculomodelo') }}" >
                 <div id="messageM" class="error" hidden>
                     Introduzca solo letras. Máximo 20 caracteres.
                 </div>
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3"id="vplaca" name="vehiculoplaca">
+                <input type="text" class="linea3"id="vplaca" name="vehiculoplaca" value="{{ old('vehiculoplaca') }}">
                 <div id="messageP" class="error" hidden>
                     Introduzca solo letras y/o números. Máximo 8 caracteres.
                 </div>
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
-                <input type="text" class="linea3" name="vehiculodescripcion"  >
+                <input type="text" class="linea3" name="vehiculodescripcion" value="{{ old('vehiculodescripcion') }}"  >
             </div>
            
         </div>

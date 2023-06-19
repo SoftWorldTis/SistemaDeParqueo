@@ -50,10 +50,36 @@ class UsuarioController extends Controller
     
     public function store(UsuarioRequest $request)
     {
-        $input = $request ->all();
+        $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $usuario = User::create($input);
-        $usuario->assignRole($request->input('roles'));
+        $usuario = User::where('ci', $input['ci'])->first();
+    
+        if ($usuario) {
+            if ($usuario->state === 'inactivo') {
+                // Control del modelo antes de cambiar el estado a 'activo'
+                if ($usuario->isDirty('name')) {
+                    $originalName = $usuario->getOriginal('name');
+                    $newName = $usuario->getAttribute('name');
+    
+                    if (User::isDrasticChange($originalName, $newName)) {
+                        $errorMessage = "No se permite cambiar drásticamente el nombre de usuario.";
+                        return back()->withErrors(['name' => $errorMessage])->withInput();
+                    }
+                }
+    
+                // Actualizar los datos del usuario y cambiar el estado a 'activo'
+                $usuario->fill($input);
+                $usuario->state = 'activo';
+                $usuario->save();
+                return back()->with('Registrado', 'Usuario registrado correctamente');
+            } else {
+                // El usuario ya está registrado y activo
+                return back()->withErrors(['uss' => 'El campo CI ya fue registrado'])->withInput();
+            }
+        } else {
+            // Crear un nuevo usuario
+            $usuario = User::create($input);
+            $usuario->assignRole($request->input('roles'));
         $roles = $request->input('roles');
         foreach ($roles as $rol) {
             UserRolHistory::create([
@@ -63,7 +89,8 @@ class UsuarioController extends Controller
                 'updated' => Carbon::now(), 
             ]);
         }
-        return back() -> with('Registrado', 'Usuario registrado correctamente');
+            return back()->with('Registrado', 'Usuario registrado correctamente');
+        }
     }
 
     
@@ -151,8 +178,13 @@ class UsuarioController extends Controller
     public function destroy($id)
     {   
         $usuario=User::find($id);
+        $usuario -> state= 'inactivo';
+        $usuario->save();
+        return redirect()->route('borrarUsuario')-> with('Eliminado', 'Usuario eliminado correctamente');
         //dd($usuario->alquileres()->factura()->get());
-        if($usuario){
+       
+       
+       /* if($usuario){
             // Eliminar los vehículos relacionados
             $usuario->vehiculo()->delete();
             // Eliminar los registros relacionados en la tabla "factura"
@@ -169,14 +201,16 @@ class UsuarioController extends Controller
         }else{
             return redirect()->route('borrarUsuario')-> with('Error', 'Algo salio mal');
         }
-        
+        */
     }
 
     public function buscar(Request $request){
         $consulta= trim($request-> get('buscador'));
         //$usuarios = User::where('name','LIKE','%'.$consulta.'%')->where('name', '!=', 'Superadmin')->get();
         $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
-        ->where('name', '!=', 'Superadmin')->get();
+        ->where('name', '!=', 'Superadmin')
+          ->where('state', 'activo')
+        ->get();
         //dd($usuarios);
         return view ('Usuarios.index', compact('usuarios','consulta'));
     }
@@ -187,7 +221,9 @@ class UsuarioController extends Controller
         if (!empty($consulta)) {
             //$usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
             $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
-            ->where('name', '!=', 'Superadmin')->get();
+            ->where('name', '!=', 'Superadmin')
+             ->where('state', 'activo')
+            ->get();
         }else{
             $usuarios = '';
         }
@@ -201,7 +237,9 @@ class UsuarioController extends Controller
         if (!empty($consulta)) {
             //$usuarios = User::where('name', 'LIKE', '%' . $consulta . '%')->where('name', '!=', 'Superadmin')->get();
             $usuarios = User::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($consulta) . '%'])
-            ->where('name', '!=', 'Superadmin')->get();
+            ->where('name', '!=', 'Superadmin')
+              ->where('state', 'activo')
+            ->get();
         }else{
             $usuarios = '';
         }

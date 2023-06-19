@@ -26,7 +26,7 @@ class UsuarioRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:10|max:40',
-            'ci' => 'required|numeric|min:100000|max:9999999999|unique:App\Models\User,ci',
+            'ci' => 'required|numeric|min:100000|max:9999999999',
             'email' => 'required|email|min:10|max:40',
             'fechanacimiento' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
             'password' => 'required|min:8|confirmed',
@@ -44,7 +44,6 @@ class UsuarioRequest extends FormRequest
             'ci.numeric' => 'El campo CI solo admite números',
             'ci.max' => 'El campo CI admite máximo 10 dígitos',
             'ci.min' => 'El campo CI admite minímo 6 dígitos',
-            'ci.unique' => 'El campo CI ya fue registrado',
             'fechanacimiento.before' => 'Debes ser mayor de 18 años',
             'fechanacimiento.' => 'La Fecha de Nacimiento debe ser una fecha',
             'email.email' => 'Ingresar un correo valido',

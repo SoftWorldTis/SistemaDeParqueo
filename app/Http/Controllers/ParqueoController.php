@@ -40,27 +40,52 @@ class ParqueoController extends Controller
         if ($request->hasFile('estacionamientoimagen')) {
             $archivo = $request->file('estacionamientoimagen');
             if ($archivo->isValid()) {
-                $imageName = time().'.'.$request->estacionamientoimagen->extension();  
-                $pathImg= $request->estacionamientoimagen->move(public_path('img'), $imageName);
-
-                $estacionamiento =new estacionamiento();
-                $estacionamiento -> estacionamientocorreo= $request->input('estacionamientocorreo');
-                $estacionamiento -> estacionamientozona= $request->input('estacionamientozona');
-                $estacionamiento -> estacionamientoprecio= $request->input('estacionamientoprecio');
-                $estacionamiento -> estacionamientoestado= 'activo';
-                $estacionamiento -> estacionamientohorainicio= $request->input('estacionamientohoraInicio');
-                $estacionamiento -> estacionamientohoracierre= $request->input('estacionamientohoraCierre');
-                $estacionamiento -> estacionamientotelefono= $request->input('estacionamientotelefono');
-                $estacionamiento -> estacionamientositios= $request->input('estacionamientositios');
-                $estacionamiento -> estacionamientoimagen= $imageName;
-
-                $estacionamiento -> save();
-                return back() -> with('Registrado', 'Parqueo registrado correctamente');
-
+                $imageName = time().'.'.$request->estacionamientoimagen->extension();
+                $pathImg = $request->estacionamientoimagen->move(public_path('img'), $imageName);
+    
+                $estacionamiento = Estacionamiento::where('estacionamientozona', $request->input('estacionamientozona'))->first();
+        //        dd($estacionamiento);
+                if ($estacionamiento) {
+                   
+                    if ($estacionamiento->estacionamientoestado == 'activo') {
+           
+                     return back()->withErrors(['esta' => 'El estacionamiento ya fue registrado'] )->withInput();
+                       
+                    } else {
+                        $estacionamiento->estacionamientocorreo = $request->input('estacionamientocorreo');
+                        $estacionamiento->estacionamientozona = $request->input('estacionamientozona');
+                        $estacionamiento->estacionamientoprecio = $request->input('estacionamientoprecio');
+                        $estacionamiento->estacionamientoestado = 'activo';
+                        $estacionamiento->estacionamientohorainicio = $request->input('estacionamientohoraInicio');
+                        $estacionamiento->estacionamientohoracierre = $request->input('estacionamientohoraCierre');
+                        $estacionamiento->estacionamientotelefono = $request->input('estacionamientotelefono');
+                        $estacionamiento->estacionamientositios = $request->input('estacionamientositios');
+                        $estacionamiento->estacionamientoimagen = $imageName;
+    
+                        $estacionamiento->save();
+    
+                        return back()->with('Registrado', 'Parqueo registrado correctamente');
+                    }
+                } else {
+                    $estacionamiento = new Estacionamiento();
+                    $estacionamiento->estacionamientocorreo = $request->input('estacionamientocorreo');
+                    $estacionamiento->estacionamientozona = $request->input('estacionamientozona');
+                    $estacionamiento->estacionamientoprecio = $request->input('estacionamientoprecio');
+                    $estacionamiento->estacionamientoestado = 'activo';
+                    $estacionamiento->estacionamientohorainicio = $request->input('estacionamientohoraInicio');
+                    $estacionamiento->estacionamientohoracierre = $request->input('estacionamientohoraCierre');
+                    $estacionamiento->estacionamientotelefono = $request->input('estacionamientotelefono');
+                    $estacionamiento->estacionamientositios = $request->input('estacionamientositios');
+                    $estacionamiento->estacionamientoimagen = $imageName;
+    
+                    $estacionamiento->save();
+    
+                    return back()->with('Registrado', 'Parqueo registrado correctamente');
+                }
             }
-        }else{
-          return back() -> with('Mal', 'Algo salió mal');
         }
+    
+        return back()->with('Mal', 'Algo salió mal');
     }
 
     
@@ -88,7 +113,7 @@ class ParqueoController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(ParqueoRequest $request, $id)
     {  
         //dd($request);
         $parqueo= estacionamiento::find($id);
@@ -112,11 +137,19 @@ class ParqueoController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {   
-        $parqueo=estacionamiento::find($id);
-        if($parqueo){
-            //Eliminar todas las relaciones de entradas y salidas
+        $parqueo= estacionamiento::find($id);
+ 
+        $parqueo -> estacionamientoestado= 'inactivo';
+       
+        $parqueo -> save();
+        return redirect()->route('borrarParqueo')-> with('Eliminado', 'Parqueo eliminado correctamente');
+
+
+
+         /*  if($parqueo){
+         //Eliminar todas las relaciones de entradas y salidas
             $parqueo->alquileres()->each(function ($alquiler) {
                 $alquiler->entradaSalida()->delete();
             });
@@ -131,14 +164,16 @@ class ParqueoController extends Controller
             return redirect()->route('borrarParqueo')-> with('Eliminado', 'Parqueo eliminado correctamente');
         }else{
             return redirect()->route('borrarParqueo')-> with('Error', 'Algo salio mal');
-        }
+        }*/
         
     }
 
     public function buscar(Request $request){
         $consulta= trim($request-> get('buscador'));
         //$parqueos = estacionamiento::where('estacionamientozona','LIKE','%'.$consulta.'%')->get();
-        $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])->get();
+        $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])
+        ->where('estacionamientoestado', 'activo')
+        ->get();
         return view ('Parqueos.index', compact('parqueos','consulta'));
     }
 
@@ -146,7 +181,9 @@ class ParqueoController extends Controller
         $consulta= trim($request-> get('buscador'));
         if (!empty($consulta)) {
             //$parqueos = estacionamiento::where('estacionamientozona', 'LIKE', '%' . $consulta . '%')->get();
-            $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])->get();
+            $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])
+            ->where('estacionamientoestado', 'activo')
+            ->get();
         }else{
             $parqueos = '';
         }
@@ -159,7 +196,9 @@ class ParqueoController extends Controller
         
         if (!empty($consulta)) {
             //$parqueos = estacionamiento::where('estacionamientozona', 'LIKE', '%' . $consulta . '%')->get();
-            $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])->get();
+            $parqueos = estacionamiento::whereRaw('LOWER(estacionamientozona) LIKE ?', ['%' . strtolower($consulta) . '%'])
+            ->where('estacionamientoestado', 'activo')
+            ->get();
         }else{
             $parqueos = '';
         }

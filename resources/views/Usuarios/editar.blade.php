@@ -38,7 +38,7 @@
         
             <div class ="Ci">
                 <p class="nom">CI</p>
-                <input type="text" class="linea" name="ci" value="{{$usuario->ci}}" placeholder="Ingrese su CI" {{old('ci')}}>
+                <input type="text" class="linea" name="ci" value="{{$usuario->ci}}" readonly placeholder="Ingrese su CI" {{old('ci')}}>
                 @error('ci')
                     <div class="error">
                         {{$message}}

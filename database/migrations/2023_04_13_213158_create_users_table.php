@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('ci')->nullable();
             $table->date('fechanacimiento')->nullable();
             $table->date('lastnotification')->nullable();
+            $table->string('state');
         });
     }
 

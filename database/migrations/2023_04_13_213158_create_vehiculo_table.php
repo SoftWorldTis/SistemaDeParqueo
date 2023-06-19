@@ -21,7 +21,7 @@ class CreateVehiculoTable extends Migration
 
             $table->unsignedBigInteger('userid');
             $table->foreign('userid')->references('id')->on('users');
-           
+            $table->string('vehiculoestado', 20);
         });
     }
 
