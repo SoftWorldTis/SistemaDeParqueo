@@ -80,14 +80,14 @@ class UsuarioController extends Controller
             // Crear un nuevo usuario
             $usuario = User::create($input);
             $usuario->assignRole($request->input('roles'));
-        $roles = $request->input('roles');
-        foreach ($roles as $rol) {
-            UserRolHistory::create([
-                'userid' => $usuario->id,
-                'roleid' => $rol,
-                'change' => 'Asignado',
-                'updated' => Carbon::now(), 
-            ]);
+            $roles = $request->input('roles');
+            foreach ($roles as $rol) {
+                UserRolHistory::create([
+                    'userid' => $usuario->id,
+                    'roleid' => $rol,
+                    'change' => 'Asignado',
+                    'updated' => Carbon::now(), 
+                ]);
         }
             return back()->with('Registrado', 'Usuario registrado correctamente');
         }

@@ -50,7 +50,7 @@ class PermisosSeeder extends Seeder
         
             
             //permisos ingresos
-            'ver-ingresos',
+            'ver-caja',
         
             //permisos entradas y salidas
             'crear-entradas',

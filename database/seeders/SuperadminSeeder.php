@@ -39,6 +39,7 @@ class SuperadminSeeder extends Seeder
             'name' => 'Superadmin',
             'email' => 'softworldtis@gmail.com',
             'password' => bcrypt('12345678'),
+            'state' => 'activo',
         ]);
         $superadmin->assignRole('Superadmin');
     }
