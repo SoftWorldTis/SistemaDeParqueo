@@ -28,8 +28,8 @@ class MensajeController extends Controller
     {
         $usuariosSeleccionados = $request->input('usuarios');
         $usuarios = User::whereIn('id', $usuariosSeleccionados)->get();
-        $mail = new MensajeEmail($request->titulo, $request->mensaje);
         foreach($usuarios as $usuario){
+            $mail = new MensajeEmail($request->titulo, $request->mensaje);
             Mail::to($usuario->email)->send($mail);
         }
         return back() -> with('Registrado', 'Mensaje enviado');

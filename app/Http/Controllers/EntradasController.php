@@ -91,7 +91,7 @@ class EntradasController extends Controller
         if (!empty($consulta)) {
             $vehiculo = vehiculo::whereRaw('LOWER(vehiculoplaca) = ?', [strtolower($consulta)])->get();
             $fechaActual = new DateTime();
-            if(!$vehiculo->isEmpty()){
+            if(!$vehiculo->isEmpty() && $vehiculo[0]->vehiculoestado=='activo'){
                 $user = User::find($vehiculo[0]->userid);    
                 $alquileres = $user->alquileres()->with('estacionamiento', 'user')->get();
                 
@@ -100,7 +100,10 @@ class EntradasController extends Controller
                     $fechaInicio = DateTime::createFromFormat('Y-m-d', $alquiler->alquilerfechaini );
                     $fechaFin = DateTime::createFromFormat('Y-m-d', $alquiler->alquilerfechafin);
                     if ($fechaActual >= $fechaInicio && $fechaActual <= $fechaFin){
-                        array_push($entradas, $alquiler);
+                        if($alquiler->estacionamiento->estacionamientoestado == 'activo'){
+                            array_push($entradas, $alquiler);
+                        }
+                        
                     }
                 }
                 if(empty($entradas)){

@@ -40,13 +40,18 @@
             </thead>
             <tbody id="table-body" class="tablaContenido">
               @foreach ($usuarios as $usuario)    
-                <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;">
+                <tr  id="id=fila-{{$loop->iteration}} " style="height: 61px;
+                  border-bottom: 1px solid #cdcdcd;
+                  padding-bottom: 5px;">
                     <td>{{$loop->iteration}}</td>
                     <td>{{$usuario->name}}</td>
                     <td>{{$usuario->ci}}</td>
                 
                     @foreach($usuario->vehiculo as $vehicle)
-                    <td>{{ $vehicle->vehiculoplaca }}</td>
+                    @if($vehicle->vehiculoestado == 'activo')
+                      <td>{{ $vehicle->vehiculoplaca }}</td>
+                    @endif
+                    
                     @endforeach
     
                 </tr>  

@@ -29,7 +29,7 @@ class MaxVehiculos implements Rule
     {
         $usuario= User::where('ci', $value)->first();
         if($usuario){
-            $vehiculosCount = vehiculo::where('userid', $usuario->id)->count();
+            $vehiculosCount = vehiculo::where('userid', $usuario->id)->where('vehiculoestado', 'activo')->count();
             //dd($vehiculosCount);
             return $vehiculosCount < 3;
         }
