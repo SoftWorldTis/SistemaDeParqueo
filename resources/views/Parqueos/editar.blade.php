@@ -29,6 +29,8 @@
             </div>
             @endif
         </div>
+
+
         <div class="ParIzq" >
            <div class="Zona Pi" >
                 <p>Zona</p>
@@ -68,10 +70,11 @@
                     <label for="foto" class="butQR button"><p> Agregar</p></label>-->
                    
                     <label for="inputImage" id="labelqr" class="labelqr" style="display: block">
-                        <img src="{{ asset('images/'.$parqueo->estacionamientoimagen) }} " class="imagenqr" id="Modific_image" alt=""  >
+                        <img src="{{ asset('dash/images/'.$parqueo->estacionamientoimagen)}}" class="imagenqr" id="Modific_image" alt=""  >
                         <img src="{{asset('/dash/assets/Lapiz.png')}}" 
                          alt="" class="editar" id="editar" >
-                    </label>
+                     </label>
+                     <input type="hidden" name="parqueo_id" value="{{ $parqueo->estacionamientoid }}">
                     @error('estacionamientoimagen')
                     <b class="error">{{$message}}<b>
                    @enderror
@@ -88,7 +91,7 @@
             </div>
         
            <div  class="Telefono Pi">
-                <p>Teléfono</p>
+                <p>TelÃ©fono</p>
                 <input type="number" class="linea" name="estacionamientotelefono" onkeyup="telephone(this)" value="{{$parqueo->estacionamientotelefono}}" placeholder="Ingrese el telefono del lugar">
                 @error('estacionamientotelefono')
                     <b class="error">{{$message}}<b>
@@ -98,7 +101,7 @@
         
             <div  class="PrecioDia Pi">
                 <p>Precio por dia</p>
-                <input type="number" class="linea" onkeyup="telephone(this)" name="estacionamientoprecio" value="{{$parqueo->estacionamientoprecio}}"  placeholder="Precio por dia que se cobrará">
+                <input type="number" class="linea" onkeyup="telephone(this)" name="estacionamientoprecio" value="{{$parqueo->estacionamientoprecio}}"  placeholder="Precio por dia que se cobrarÃ¡">
                 @error('estacionamientoprecio')
                 <b class="error">{{$message}}<b>
                @enderror
