@@ -38,9 +38,11 @@
                 <p class="nom" id="veh1">Vehículo</p>
                 <input type="button" value ="Agregar"class="botonAgregar" name="carro1"  id="mostrar-ventana-emergente" >
                 <div class=" oculto" id="oculto" style="display: none">
-                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vinput')}}" readonly>
+                 <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vehiculoplaca')}}" readonly>
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
+               
+                
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}
@@ -64,21 +66,21 @@
 
             <div class="Modelo inputmodal">
                 <p class="nom2" data-lastchar="*" >Modelo  </p>
-                <input type="text" class="linea3" name="vehiculomodelo" id="vehiculomodelo1" >
+                <input type="text" class="linea3" name="vehiculomodelo" id="vehiculomodelo1" value="{{old('vehiculomodelo')}}"  >
                 <div id="messageM" class="error" hidden>
                     Introduzca solo letras. Máximo 20 caracteres.
                 </div>
             </div>
             <div class="Placa inputmodal">
                 <p class="nom2" data-lastchar="*">Placa  </p>
-                <input type="text" class="linea3"id="vplaca" name="vehiculoplaca">
+                <input type="text" class="linea3"id="vplaca" name="vehiculoplaca" value="{{old('vehiculoplaca')}}" >
                 <div id="messageP" class="error" hidden>
                     Introduzca solo letras y/o números. Máximo 8 caracteres.
                 </div>
             </div>
             <div class="descripcion inputmodal">
                 <p class="nom2" >Descripción</p>
-                <input type="text" class="linea3" name="vehiculodescripcion"  >
+                <input type="text" class="linea3" name="vehiculodescripcion" value="{{old('vehiculodescripcion')}}"  >
             </div>
            
         </div>
@@ -100,31 +102,54 @@
 
 
       <script>
-        var mostrarVentana = document.getElementById('mostrar-ventana-emergente');
-        var editar = document.getElementById('editar');
-        var cerrarVentana = document.getElementById('cerrar-ventana');
-        var ventanaEmergente = document.getElementById('mi-ventana-emergente');
-        var guardar = document.getElementById('guardar-modal');
-       
-
-
+        var mostrarVentana = document.getElementById('mostrar-ventana-emergente'); //boton agregar
+        var editar = document.getElementById('editar'); //boton lapiz
+        var cerrarVentana = document.getElementById('cerrar-ventana'); //boton cerrar ventana
+        var ventanaEmergente = document.getElementById('mi-ventana-emergente'); // div del modal
+        var guardar = document.getElementById('guardar-modal'); //boton guardar modal
+        var hasErrors = {{ $errors->any() ? 'true' : 'false' }};
+   
 
         mostrarVentana.onclick = function() {
       
           ventanaEmergente.style.display = "block";
 
         };
-        editar.onclick = function() {
-      
-      ventanaEmergente.style.display = "block";
-
-    };
         
-        cerrarVentana.onclick = function() {
+         editar.onclick = function() {
+      
+         ventanaEmergente.style.display = "block";
+
+         };
+        
+         cerrarVentana.onclick = function() {
 
           ventanaEmergente.style.display = "none";
         };
+        if (hasErrors) {
+           
+            document.getElementById('oculto').style.display="block";
+             mostrarVentana.style.display="none";
+             guardar.onclick = function() {
+            
+            const modelo = document.getElementById('vehiculomodelo1')
+            const placa = document.getElementById('vplaca')
+            const validandoM = validarLetras(modelo)
+            const validandoP = validarLetrasNum(placa)
 
+            if(validandoM && validandoP){
+               document.getElementById('veh1').style.marginBottom="18px";
+                document.getElementById('vinput').value=document.getElementById('vplaca').value;
+                //document.getElementById('placa').value=document.getElementById('vplaca').value;
+                document.getElementById('oculto').style.display="block";
+                ventanaEmergente.style.display = "none";
+                mostrarVentana.style.display="none";
+            }else{
+               
+                mostrarVentana.style.display="block";
+            }
+        };
+        } 
 
         guardar.onclick = function() {
             
@@ -134,18 +159,18 @@
             const validandoP = validarLetrasNum(placa)
 
             if(validandoM && validandoP){
-                
-                document.getElementById('veh1').style.marginBottom="18px";
+               document.getElementById('veh1').style.marginBottom="18px";
                 document.getElementById('vinput').value=document.getElementById('vplaca').value;
                 //document.getElementById('placa').value=document.getElementById('vplaca').value;
                 document.getElementById('oculto').style.display="block";
                 ventanaEmergente.style.display = "none";
                 mostrarVentana.style.display="none";
             }else{
+               
                 mostrarVentana.style.display="block";
             }
         };
-
+      
 
       </script>
 
