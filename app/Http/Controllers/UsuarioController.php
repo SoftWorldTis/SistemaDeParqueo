@@ -79,6 +79,8 @@ class UsuarioController extends Controller
         } else {
             // Crear un nuevo usuario
             $usuario = User::create($input);
+            $usuario->state = 'activo';
+            $usuario->save();
             $usuario->assignRole($request->input('roles'));
             $roles = $request->input('roles');
             foreach ($roles as $rol) {
@@ -89,6 +91,7 @@ class UsuarioController extends Controller
                     'updated' => Carbon::now(), 
                 ]);
         }
+
             return back()->with('Registrado', 'Usuario registrado correctamente');
         }
     }

@@ -56,32 +56,32 @@ class User extends Authenticatable
 
     static::updating(function ($user) {
         if ($user->state === 'activo' && $user->isDirty('name')) {
-            dd($user);
+          //  dd($user);
             $originalName = $user->getOriginal('name');
             $newName = $user->getAttribute('name');
 
             if (User::isDrasticChange($originalName, $newName)) {
-                $errorMessage = "No se permite cambiar drásticamente el nombre de usuario.";
+                $errorMessage = "No se permite cambiar drasticamente el nombre de usuario.";
                 $validator = Validator::make([], []);
                 $validator->errors()->add('name', $errorMessage);
-                throw new \Illuminate\Validation\ValidationException($validator);
+             throw new \Illuminate\Validation\ValidationException($validator);
             }
         }
     });
 }
- private static function isDrasticChange($originalName, $newName)
-    {
-        // Implementa tu lógica personalizada aquí.
-        // Puedes usar la implementación proporcionada anteriormente o crear tu propia lógica.
-
-        $threshold = 7; // Define el umbral para cambios drásticos
-
-        $originalLength = strlen($originalName);
-        $newLength = strlen($newName);
-
-        return abs($originalLength - $newLength) > $threshold;
-    }
-
+private static function isDrasticChange($originalName, $newName)
+{
+    $originalParts = explode(' ', $originalName);
+    $newParts = explode(' ', $newName);
 
     
+    if (count($originalParts) < 2 || count($newParts) < 2) {
+        return true;
+    }
+
+    
+    $changedPartsCount = abs(count($originalParts) - count($newParts));
+
+    return $changedPartsCount > 1 || count(array_diff($originalParts, $newParts)) > 1;
+}
 }

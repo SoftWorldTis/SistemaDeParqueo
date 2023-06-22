@@ -7,6 +7,7 @@ use App\Http\Requests\ParqueoRequest;
 use Illuminate\Http\Request;
 use App\Models\estacionamiento;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\File;
 
 class ParqueoController extends Controller
 {
@@ -22,7 +23,7 @@ class ParqueoController extends Controller
     public function index()
     {
         //con paginacion
-        $parqueos = estacionamiento::all();
+        $parqueos = estacionamiento::all()->where('estacionamientoestado', 'activo');
         $consulta='';
         return view ('Parqueos.index', compact('parqueos','consulta'));
        
@@ -37,11 +38,19 @@ class ParqueoController extends Controller
     
     public function store(ParqueoRequest $request)
     {
-        if ($request->hasFile('estacionamientoimagen')) {
+          if ($request->hasFile('estacionamientoimagen')) {
             $archivo = $request->file('estacionamientoimagen');
             if ($archivo->isValid()) {
-                $imageName = time().'.'.$request->estacionamientoimagen->extension();
-                $pathImg = $request->estacionamientoimagen->move(public_path('img'), $imageName);
+                $imageName = time().'.'. $archivo->getClientOriginalExtension();
+
+               
+
+                $ruta = base_path('public_html/dash/images/' . $imageName);
+         //       $pathImg= $archivo->move($ruta);
+
+            // Guardar la imagen en la carpeta de almacenamiento de Laravel
+                       File::move($archivo->getPathname(), $ruta);
+           
     
                 $estacionamiento = Estacionamiento::where('estacionamientozona', $request->input('estacionamientozona'))->first();
         //        dd($estacionamiento);
@@ -85,7 +94,7 @@ class ParqueoController extends Controller
             }
         }
     
-        return back()->with('Mal', 'Algo salió mal');
+        return back()->with('Mal', 'Algo saliÃ³ mal');
     }
 
     
@@ -128,9 +137,20 @@ class ParqueoController extends Controller
         
         $archivo = $request->file('estacionamientoimagen');
         if ($archivo!=null) {
-            $imageName = time().'.'.$request->estacionamientoimagen->extension();  
-            $pathImg= $request->estacionamientoimagen->move(public_path('img'), $imageName);
-            $parqueo -> estacionamientoimagen= $imageName;
+           
+          
+
+ $imageName = time().'.'. $archivo->getClientOriginalExtension();
+
+               
+
+                $ruta = base_path('public_html/dash/images/' . $imageName);
+         //       $pathImg= $archivo->move($ruta);
+
+            // Guardar la imagen en la carpeta de almacenamiento de Laravel
+                       File::move($archivo->getPathname(), $ruta);
+
+  $parqueo -> estacionamientoimagen= $imageName;
         }
         $parqueo -> save();
         return back() -> with('Registrado', 'Parqueo actualizado correctamente');
@@ -206,3 +226,4 @@ class ParqueoController extends Controller
         return view ('Parqueos.editarparqueos', compact('parqueos','consulta'));
     }
 }
+	
