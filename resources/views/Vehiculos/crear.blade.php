@@ -27,6 +27,7 @@
             <div class ="Ci">
                 <p class="nom">CI</p>
                 <input type="text" class="linea" name="ci" value="{{old('ci')}}" placeholder="Ingrese su CI ">
+             
                 @error('ci')
                     <div class="error">
                         {{$message}}
@@ -41,8 +42,11 @@
                  <input type="text" class="linea" name="clienteV1" id="vinput" value="{{old('vehiculoplaca')}}" readonly>
                  <img src="{{asset('/dash/assets/Lapiz.png')}}" alt="" class="editar" id="editar" >
                 </div>
-               
-                
+                @if ($errors->has('vehiculo'))
+    <div class="error">
+        {{ $errors->first('vehiculo') }}
+    </div>
+@endif
                 @error('clienteV1')
                     <div class="error">
                         {{$message}}

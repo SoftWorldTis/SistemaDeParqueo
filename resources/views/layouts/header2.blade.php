@@ -52,6 +52,10 @@
                     <li><a href="/ver-entradas-salidas">Entradas y Salidas</a></li>@endcan
                     @can	('editar-deuda')
                     <li><a href="/editar-deuda">Cobrar</a></li>@endcan
+                    @can	('ver-historial-permisos-rol')
+                    <li><a href="/ver-roles/historial">Historial roles </a></li>@endcan
+                    @can	('ver-historial-roles-usuario')
+                    <li><a href="/ver-usuarios/historial">Historial usuarios </a></li>@endcan
                 </ul>
 			</li>@endif
            

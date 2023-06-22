@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\RolPermissionHistory;
 use Illuminate\Http\Request;
 
 //agregamos modelos de permisos 
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 
 class RolController extends Controller
@@ -18,6 +20,7 @@ class RolController extends Controller
         //asignacion de permisos
         $this -> middleware('permission: crear-rol' , ['only' => ['create, store']]);
         $this -> middleware('permission: editar-rol' , ['only' => ['edit, update, editarroles']]);
+        $this -> middleware('permission:ver-historial-permisos-rol' , ['only' => ['show']]);
     }
    
 
@@ -44,14 +47,25 @@ class RolController extends Controller
         
         $rol= Role::create(['name' => $request->input('nombrerol')]);
         $rol -> syncPermissions($request->input('permisos'));
-        //return redirect()->route('Roles.index');
+        $permisos = $request->input('permisos');
+        foreach ($permisos as $permission) {
+            RolPermissionHistory::create([
+                'roleid' => $rol->id,
+                'permissionid' => $permission,
+                'change' => 'Asignado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
         return back() -> with('Registrado', 'Rol registrado correctamente');
     }
     
    
-    public function show($id)
+    public function show()
     {
-        //
+        $historial = RolPermissionHistory::with('role', 'permission')->get();
+        $data=compact('historial');
+        $pdf = Pdf::loadView('Reportes.Roles', $data);
+        return $pdf->stream();
     }
 
   
@@ -78,8 +92,32 @@ class RolController extends Controller
         //Se puede cambiar por un Request
         $this -> validate($request, ['nombrerol'=> 'required', 'permisos' => 'required']);
         $rol= Role::find($id);
+        $lastRol= Role::find($id);
+        $permisosAnteriores= $lastRol->permissions->pluck('id')->toArray();
+
+        $newPermissions = $request->input('permisos');
+        foreach ($newPermissions as $permission) {
+            RolPermissionHistory::create([
+                'roleid' => $rol->id,
+                'permissionid' => $permission,
+                'change' => 'Asignado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
         $rol -> name = $request->input('nombrerol');
         $rol -> syncPermissions($request->input('permisos'));
+
+        $permisosActuales = $rol->permissions->pluck('id')->toArray();
+        $permisosRevocados = array_diff($permisosAnteriores, $permisosActuales);
+        foreach ($permisosRevocados as $permission) {
+            RolPermissionHistory::create([
+                'roleid' => $rol->id,
+                'permissionid' => $permission,
+                'change' => 'Revocado',
+                'updated' => Carbon::now(), 
+            ]);
+        }
+        
         return back() -> with('Registrado', 'Rol actualizado correctamente');
 
     }

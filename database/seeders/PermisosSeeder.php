@@ -50,7 +50,7 @@ class PermisosSeeder extends Seeder
         
             
             //permisos ingresos
-            'ver-ingresos',
+            'ver-caja',
         
             //permisos entradas y salidas
             'crear-entradas',
@@ -63,7 +63,11 @@ class PermisosSeeder extends Seeder
              /*'borrar-reclamos',*/
 
              //permisos enciar mensajes globales - individuales
-             'enviar-mensajes'
+             'enviar-mensajes',
+
+             //permisos de historial
+             'ver-historial-roles-usuario',
+             'ver-historial-permisos-rol'
              
         ];
 
