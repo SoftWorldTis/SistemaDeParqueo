@@ -31,7 +31,7 @@ class AlquilerController extends Controller
 
     public function index(Request $request){
     }
-
+    
     public function create(Request $request){
         $parqueo = estacionamiento::all();
         //$clientes = User::all()->where('name', '!=', 'Superadmin');
